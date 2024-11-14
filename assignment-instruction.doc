@@ -1,0 +1,42 @@
+1. Create a React application using the `create-next-app` npm package
+
+a. Create a multi-page application with at least 4 page components
+
+b. Set up a shared Bootstrap navigation bar to provide consistent. Style this differently from our in-class site.
+
+2. Create a stateful component that manages the application's data using the `useState` hook.
+
+a. Manipulate data in the stateful component, e.g., adding, editing, or deleting items. You can use an array, local storage, or session storage to hold the data.
+
+b. Display data from the state in various components of your application.
+
+c. Implementation of at least one user interaction demonstrating state changes.
+
+3. Style your application using Bootstrap for a professional and responsive design.
+
+a. Use Bootstrap components (e.g., forms, buttons, icons) and the shared Bootstrap navigation bar for layout.
+
+4. Create at least 4 separate page components (e.g., a homepage and a settings page) within your application.
+
+b. Set up Next.js Links in the navigation bar to switch between these pages.
+
+5. Use a `prop` to pass data (1 or more values) from a parent to a child component. You must choose your own implementation not simply copy the code from our class app.
+
+6. Implement `useEffect` to fetch data from a mock API or a real API of your choosing (not the one we used during our in-class lessons). Display the fetched data in a meaningful way within your application.
+
+7. Use the `context` hook to store data (1 or more values) globally. The value should be set in 1 component but visible in at least 1 other component. You must choose your own implementation not simply copy the code from our class app.
+
+8. Make regular GitHub commits (minimum 4 spread over at least 2 days). Create a README.md explaining your site’s purpose and includes a link to the live web site. Include the correct GitHub repository link in your Blackboard submission.
+
+
+9. Publish to the site to vercel.com or other React hosting provider. Include this link in your README.md file AND your Blackboard submission.
+
+10. Create a Short Video presentation (5 minutes max) on YouTube or another streaming provider. You must include a short PowerPoint (or Google Slides) Slide Deck that includes a single slide to start your video.
+
+a. The first (and only) Slide of your Slide Deck must include a current image of you (no avatars allowed) that is displayed appropriately on the page. You must also include your Full Name, Student ID, the Course Code, Course Name, and your Assignment information
+
+b. Demonstrate your site’s functionality showing each page working properly
+
+c. Show the code for 1 of the React Hooks and explain how it works
+
+d. Sound for your video must at an appropriate level so your voice is clearly heard, and your screen resolution should ensure your code and site details are clearly visible
