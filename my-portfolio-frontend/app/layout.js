@@ -1,8 +1,7 @@
-import localFont from "next/font/local";
 import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+
 import { Sour_Gummy } from "next/font/google";
+import AppLayout from "./AppLayout";
 
 // importing the font from google
 const sourGummy = Sour_Gummy({
@@ -19,9 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${sourGummy.className} bg-colorBody`}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <AppLayout children={children} />
       </body>
     </html>
   );
