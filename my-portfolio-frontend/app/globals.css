@@ -4,13 +4,14 @@
 
 @layer base {
   :root {
-    --primary-clr: rgb(105, 177, 204);
-    --color-text: rgb(255, 255, 255);
-    --nav-clr: rgb(43, 45, 45);
-    --body-clr: rgb(51, 51, 51);
-    --clr-5: rgba(43, 45, 45);
-    --clr-6: rgba(255, 255, 255);
+    --primary-clr: 105 177 204;
+    --color-text: 255 255 255;
+    --nav-clr: 43 45 45;
+    --body-clr: 51 51 51;
+    --clr-5: 43 45 45;
+    --clr-6: 255 255 255;
   }
+  /* i will try to make the theme of the website to be same as theme of the browser */
   :root[class~="light"] {
     --primary-clr: #69b1cc;
     --color-text: #000000;
