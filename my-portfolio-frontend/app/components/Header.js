@@ -5,7 +5,7 @@ import { CiDark } from "react-icons/ci";
 import { ActiveNavContext } from "./activeNavContext";
 import { act, useContext } from "react";
 const Header = () => {
-  const { activeNav, setActiveNav } = useContext(ActiveNavContext);
+  const { activeNav } = useContext(ActiveNavContext);
   // read activeNav
   console.log(activeNav);
 
@@ -19,11 +19,12 @@ const Header = () => {
                 text={e.name}
                 link={e.link}
                 key={i}
+                index={i}
                 handleNavList={(e) => {
                   // e.preventDefault();
                   console.log("handle list");
-                  setActiveNav(2);
-                  console.log(activeNav);
+
+                  // console.log(activeNav);
                 }}
               />
             );
