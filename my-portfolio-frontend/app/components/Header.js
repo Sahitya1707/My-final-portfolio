@@ -6,6 +6,7 @@ import { ActiveNavContext } from "./activeNavContext";
 import { act, useContext } from "react";
 import ButtonTheme from "./ButtonTheme";
 import { ThemeContext } from "./themeContext";
+import { setCookie } from "cookies-next";
 const Header = () => {
   // read theme value
   const { theme, setTheme } = useContext(ThemeContext);
@@ -13,10 +14,12 @@ const Header = () => {
   // intriquing the function toggle light and toggle dark
   const toggleLightMode = () => {
     setTheme("light");
+    setCookie("theme", "light");
   };
   // dark mode
   const toggleDarkMode = () => {
-    setTheme(null);
+    setTheme("dark");
+    setCookie("theme", "dark");
   };
   return (
     <header>
@@ -37,7 +40,7 @@ const Header = () => {
           })}
 
           <div className="flex items-center text-2xl">
-            {theme === null ? (
+            {theme === "dark" ? (
               <ButtonTheme icon={<CiLight />} handleTheme={toggleLightMode} />
             ) : (
               <ButtonTheme icon={<CiDark />} handleTheme={toggleDarkMode} />

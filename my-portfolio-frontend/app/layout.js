@@ -7,6 +7,7 @@ import Provider from "./components/activeNavProvider";
 import ThemeProviderWrapper from "./components/themeProvider";
 // import { useContext } from "react";
 import { ActiveNavContext } from "./components/activeNavContext";
+import { cookies } from "next/headers";
 import { ThemeContext } from "./components/themeContext";
 
 // importing the font from google

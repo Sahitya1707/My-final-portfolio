@@ -6,6 +6,9 @@ import { useContext, useEffect } from "react";
 import { ThemeContext } from "./components/themeContext";
 import { ActiveNavContext } from "./components/activeNavContext";
 
+// import this in order to set cookies from the client component
+import { getCookie, setCookie } from "cookies-next";
+
 const AppLayout = ({ children }) => {
   // read current path url
   const pathname = usePathname();
@@ -34,15 +37,21 @@ const AppLayout = ({ children }) => {
 
   useEffect(() => {
     // let's know if the browser is darkmode or light mode https://stackoverflow.com/questions/50840168/how-to-detect-if-the-os-is-in-dark-mode-in-browsers
-    // if browser theme is dark then set to null and vice versa
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? setTheme(null)
-      : setTheme("light");
+    const currentTheme = getCookie("theme");
+    // console.log(currentTheme);
   }, []);
   return (
     <body className={` bg-colorBody ${theme}`}>
       <Header />
-      <main>{children}</main>
+      <main className="relative p-4 text-colorText">
+        <span
+          className="absolute top-0 right-0 text-colorText/80 text-[10rem] stroke-none text-fill-[red]"
+          style={{}}
+        >
+          {"</>"}
+        </span>
+        {children}
+      </main>
       <Footer />
     </body>
   );

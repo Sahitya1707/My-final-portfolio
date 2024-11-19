@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  .dark {
     --primary-clr: 105 177 204;
     --color-text: 255 255 255;
     --nav-clr: 43 45 45;
