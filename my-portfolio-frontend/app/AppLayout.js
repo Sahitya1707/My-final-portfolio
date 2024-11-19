@@ -30,18 +30,15 @@ const AppLayout = ({ children }) => {
     } else {
       setActiveNav(null);
     }
-    // let's know if the browser is darkmode or light mode https://stackoverflow.com/questions/50840168/how-to-detect-if-the-os-is-in-dark-mode-in-browsers
-
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      // if browser theme is dark then set to null
-      setTheme(null);
-    } else {
-      // if browser theme is light then set to light
-      setTheme("light");
-    }
-
-    console.log(theme);
   }, [pathname]);
+
+  useEffect(() => {
+    // let's know if the browser is darkmode or light mode https://stackoverflow.com/questions/50840168/how-to-detect-if-the-os-is-in-dark-mode-in-browsers
+    // if browser theme is dark then set to null and vice versa
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? setTheme(null)
+      : setTheme("light");
+  }, []);
   return (
     <body className={` bg-colorBody ${theme}`}>
       <Header />

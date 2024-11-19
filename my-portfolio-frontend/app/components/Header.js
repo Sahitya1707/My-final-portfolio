@@ -4,9 +4,20 @@ import { CiLight } from "react-icons/ci";
 import { CiDark } from "react-icons/ci";
 import { ActiveNavContext } from "./activeNavContext";
 import { act, useContext } from "react";
+import ButtonTheme from "./ButtonTheme";
+import { ThemeContext } from "./themeContext";
 const Header = () => {
-  // read activeNav
+  // read theme value
+  const { theme, setTheme } = useContext(ThemeContext);
 
+  // intriquing the function toggle light and toggle dark
+  const toggleLightMode = () => {
+    setTheme("light");
+  };
+  // dark mode
+  const toggleDarkMode = () => {
+    setTheme(null);
+  };
   return (
     <header>
       <nav className="p-2">
@@ -26,12 +37,11 @@ const Header = () => {
           })}
 
           <div className="flex items-center text-2xl">
-            <button className="hidden">
-              <CiLight />
-            </button>
-            <button>
-              <CiDark />
-            </button>
+            {theme === null ? (
+              <ButtonTheme icon={<CiLight />} handleTheme={toggleLightMode} />
+            ) : (
+              <ButtonTheme icon={<CiDark />} handleTheme={toggleDarkMode} />
+            )}
           </div>
         </ul>
       </nav>
