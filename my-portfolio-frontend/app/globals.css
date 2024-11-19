@@ -12,11 +12,11 @@
     --clr-6: 255 255 255;
   }
   /* i will try to make the theme of the website to be same as theme of the browser */
-  :root[class~="light"] {
+  .light {
     --primary-clr: 105 177 204;
     --color-text: 0 0 0;
     --nav-clr: 216 216 216;
-    --body-clr: 50 250 250;
+    --body-clr: 250 250 250;
     --clr-5: 174 174 174;
     --clr-6: 41 41 41;
   }

@@ -1,8 +1,13 @@
 import "./globals.css";
 
 import { Sour_Gummy } from "next/font/google";
+
 import AppLayout from "./AppLayout";
 import Provider from "./components/activeNavProvider";
+import ThemeProviderWrapper from "./components/themeProvider";
+// import { useContext } from "react";
+import { ActiveNavContext } from "./components/activeNavContext";
+import { ThemeContext } from "./components/themeContext";
 
 // importing the font from google
 const sourGummy = Sour_Gummy({
@@ -16,13 +21,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // const { theme } = useContext(ThemeContext);
   return (
-    <html lang="en">
-      <body className={`${sourGummy.className} bg-colorBody light`}>
+    <ThemeProviderWrapper>
+      <html lang="en" className={`${sourGummy.className}`}>
         <Provider>
           <AppLayout children={children} />
         </Provider>
-      </body>
-    </html>
+      </html>
+    </ThemeProviderWrapper>
   );
 }
