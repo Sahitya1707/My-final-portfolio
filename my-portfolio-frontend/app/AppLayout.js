@@ -41,7 +41,9 @@ const AppLayout = ({ children }) => {
     // console.log(currentTheme);
   }, []);
   return (
-    <body className={` bg-colorBody ${theme}`}>
+    <body
+      className={` bg-colorBody ${theme} max-w-full w-full overflow-hidden max-h-screen `}
+    >
       <Header />
       <main className="relative p-4 text-colorText">
         <span
