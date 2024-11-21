@@ -24,6 +24,10 @@ export const menuItems = [
     link: "/experience",
   },
   {
+    name: "contact",
+    link: "/contact",
+  },
+  {
     name: "Resume",
     link: "/some-where_else",
   },

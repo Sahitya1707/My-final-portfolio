@@ -5,7 +5,7 @@ import { getCookie, setCookie } from "cookies-next";
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(null);
+  const [theme, setTheme] = useState("dark");
   useEffect(() => {
     const currentTheme = getCookie("theme");
     console.log("theme provider");

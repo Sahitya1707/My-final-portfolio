@@ -31,6 +31,8 @@ const AppLayout = ({ children }) => {
       setActiveNav(3);
     } else if (pathname === "/experience") {
       setActiveNav(4);
+    } else if (pathname === "/contact") {
+      setActiveNav(5);
     } else {
       setActiveNav(null);
     }
@@ -46,10 +48,12 @@ const AppLayout = ({ children }) => {
       className={` bg-colorBody ${theme} max-w-full w-full overflow-hidden max-h-screen `}
     >
       <Header />
-      <main className="relative p-4 text-colorText">
+      <main className="relative px-[12rem] py-[6rem] text-colorText z-[1000]">
         <span
-          className="absolute top-0 right-0 text-colorText/80 text-[10rem] stroke-none text-fill-[red]"
-          style={{}}
+          className="absolute top-0 right-0 text-colorText/5 text-[15rem] stroke-none "
+          style={{
+            WebkitTextStroke: "0.5px rgb(var(--primary-clr))",
+          }}
         >
           {"</>"}
         </span>

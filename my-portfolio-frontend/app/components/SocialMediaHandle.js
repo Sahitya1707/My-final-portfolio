@@ -6,7 +6,7 @@ import { socialMediaData } from "../utils/constant";
 import SocialMediaIcon from "./SocialMediaIcon";
 const SocialMediaHandle = () => {
   return (
-    <div className="text-colorText flex flex-col gap-y-4 text-3xl fixed right-6 bottom-[6rem]">
+    <div className="text-colorText flex flex-col gap-y-4 text-3xl fixed right-6 bottom-[6rem] z-[1001]">
       {socialMediaData.map((e, i) => {
         return (
           <SocialMediaIcon
