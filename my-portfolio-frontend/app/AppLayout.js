@@ -8,6 +8,7 @@ import { ActiveNavContext } from "./components/activeNavContext";
 
 // import this in order to set cookies from the client component
 import { getCookie, setCookie } from "cookies-next";
+import SocialMediaHandle from "./components/SocialMediaHandle";
 
 const AppLayout = ({ children }) => {
   // read current path url
@@ -54,6 +55,7 @@ const AppLayout = ({ children }) => {
         </span>
         {children}
       </main>
+      <SocialMediaHandle />
       <Footer />
     </body>
   );
