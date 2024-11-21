@@ -17,8 +17,6 @@ const ButtonTypeOne = ({ color, bgColor, text, link }) => {
 
   const [buttonStyle, setButtonStyle] = useState(initialStyle);
 
-  console.log(buttonStyle);
-
   return (
     <Link href={link}>
       <button

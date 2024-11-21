@@ -7,8 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // adding root color read it here https://stackoverflow.com/questions/64872861/how-to-use-css-variables-with-tailwind-css
+      fontFamily: {
+        "poppins-500": "var(--font-poppins)",
+      },
     },
+    // adding root color read it here https://stackoverflow.com/questions/64872861/how-to-use-css-variables-with-tailwind-css
     colors: {
       primary: "rgb(var(--primary-clr)/<alpha-value>)",
       colorText: "rgb(var(--color-text)/<alpha-value>)",

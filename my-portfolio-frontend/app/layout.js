@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import { Sour_Gummy } from "next/font/google";
+import { Sour_Gummy, Inter, Poppins } from "next/font/google";
 
 import AppLayout from "./AppLayout";
 import Provider from "./components/activeNavProvider";
@@ -15,6 +15,13 @@ const sourGummy = Sour_Gummy({
   subsets: ["latin"],
 });
 
+// added another font's
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: "500",
+  variable: "--font-poppins",
+});
+
 export const metadata = {
   title: "Sahitya Portfolio",
   description:
@@ -25,7 +32,7 @@ export default function RootLayout({ children }) {
   // const { theme } = useContext(ThemeContext);
   return (
     <ThemeProviderWrapper>
-      <html lang="en" className={`${sourGummy.className}`}>
+      <html lang="en" className={`${sourGummy.className}  ${poppins.variable}`}>
         <Provider>
           <AppLayout children={children} />
         </Provider>
