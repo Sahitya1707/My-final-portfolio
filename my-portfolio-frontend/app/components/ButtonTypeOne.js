@@ -21,7 +21,7 @@ const ButtonTypeOne = ({ color, bgColor, text, link }) => {
     <Link href={link}>
       <button
         style={buttonStyle}
-        className="px-3 py-2 mt-2 rounded-lg text-xl  hover:ease-in duration-75"
+        className="px-3 py-2 mt-2 rounded-lg text-xl capitalize hover:ease-in duration-75"
         onMouseEnter={() => {
           setButtonStyle(hoverStyle);
         }}

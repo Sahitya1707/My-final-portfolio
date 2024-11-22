@@ -1,7 +1,13 @@
-import React from "react";
+"use client";
+
+import AboutDescription from "../components/AboutDescription";
 
 const About = () => {
-  return <div>About</div>;
+  return (
+    <>
+      <AboutDescription />
+    </>
+  );
 };
 
 export default About;

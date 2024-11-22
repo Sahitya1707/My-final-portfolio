@@ -8,3 +8,17 @@ export const useBackgroundText = create((set) => ({
     set((state) => ({ backgroundText: backgroundText })),
   updatePosition: (position) => set((state) => ({ position: position })),
 }));
+
+/* 
+
+  ------------------------------------ Reading and updating value through global state manage using Zustand --------------------------
+  reading the value of backgroundText through store using zustand
+  const backgroundText = useBackgroundText((state) => state.backgroundText);
+  const position = useBackgroundText((state) => state.position);
+  const updateBackgroundText = useBackgroundText(
+    (state) => state.updateBackgroundText
+  );
+  const updatePosition = useBackgroundText((state) => state.updatePosition);
+  // ------------------------------------
+
+*/

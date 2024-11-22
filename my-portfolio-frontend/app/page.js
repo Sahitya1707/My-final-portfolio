@@ -11,12 +11,8 @@ export default function Home() {
   const updatePosition = useBackgroundText((state) => state.updatePosition);
 
   useEffect(() => {
-    updateBackgroundText("</>");
-    updatePosition("translate(-80%, -50%) rotate(165deg)");
+    // updateBackgroundText("</>");
+    // updatePosition("translate(-80%, -50%) rotate(165deg)");
   }, []);
-  return (
-    <div>
-      <HomePageDescription />
-    </div>
-  );
+  return <HomePageDescription />;
 }

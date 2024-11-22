@@ -22,9 +22,9 @@ const Header = () => {
     setCookie("theme", "dark");
   };
   return (
-    <header className="relative z-[1000]">
+    <header className="relative z-[1000] max-w-[150rem] mx-auto">
       <nav className="p-2">
-        <ul className="flex  text-lg justify-evenly p-3 border-colorText/20 border-[1px] w-[40%] mx-auto rounded-xl bg-colorNav text-colorText tracking-wider items-center">
+        <ul className="flex  text-lg justify-evenly p-3 border-colorText/20 border-[1px] w-[40%] mx-auto rounded-xl bg-colorNav text-colorText tracking-wider items-center ">
           {menuItems.map((e, i) => {
             return (
               <HeaderComponent

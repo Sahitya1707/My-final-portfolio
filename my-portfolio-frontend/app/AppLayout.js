@@ -12,16 +12,6 @@ import SocialMediaHandle from "./components/SocialMediaHandle";
 import { useBackgroundText } from "./utils/stores/backgroundTextStore";
 
 const AppLayout = ({ children }) => {
-  // ------------------------------------ Reading and updating value through global state manage using Zustand --------------------------
-  // reading the value of backgroundText through store using zustand
-  const backgroundText = useBackgroundText((state) => state.backgroundText);
-  const position = useBackgroundText((state) => state.position);
-  const updateBackgroundText = useBackgroundText(
-    (state) => state.updateBackgroundText
-  );
-  const updatePosition = useBackgroundText((state) => state.updatePosition);
-  // ------------------------------------
-
   // read current path url
   const pathname = usePathname();
   const { theme, setTheme } = useContext(ThemeContext);
@@ -34,13 +24,8 @@ const AppLayout = ({ children }) => {
     // setting the active nav
     if (pathname === "/") {
       setActiveNav(0);
-      // updating the background text here
-      updateBackgroundText("</>");
-      updatePosition("translate(-80%, -50%) rotate(165deg)");
     } else if (pathname === "/about") {
       setActiveNav(1);
-      updateBackgroundText("?");
-      updatePosition("translate(-80%, -50%) rotate(165deg)");
     } else if (pathname === "/projects") {
       updateBackgroundText("");
       setActiveNav(2);
@@ -65,9 +50,9 @@ const AppLayout = ({ children }) => {
       className={` bg-colorBody ${theme} max-w-full w-full overflow-hidden max-h-screen `}
     >
       <Header />
-      <main className="relative px-[12rem] py-[6rem] text-colorText max-w-[200rem] z-[1000] mx-auto flex justify-evenly items-center">
+      <main className="relative px-[12rem] py-[2rem] text-colorText max-w-[150rem] z-[1000] mx-auto h-[80vh]">
         {children}
-        <span
+        {/* <span
           className="   flex text-colorText/5 text-[20rem] stroke-none font-poppins-500 rotate-[-10deg]"
           style={{
             WebkitTextStroke: "2px rgb(var(--primary-clr))",
@@ -75,7 +60,7 @@ const AppLayout = ({ children }) => {
           }}
         >
           {backgroundText}
-        </span>
+        </span> */}
       </main>
       <SocialMediaHandle />
       <Footer />
