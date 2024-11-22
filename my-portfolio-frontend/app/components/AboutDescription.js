@@ -13,7 +13,7 @@ const AboutDescription = () => {
             Hi, I'm Sahitya Neupane, currently studying Interactive Media Design
             - Web at Georgian College. My journey in web development started in
             2021, and I've loved every bit of it since! JavaScript is my
-            avourite language, and I enjoy keeping things simple yet effective.{" "}
+            favourite language, and I enjoy keeping things simple yet effective.{" "}
             <br />
             <br />
             I've gained hands-on experience working as a Part-Time Web Developer

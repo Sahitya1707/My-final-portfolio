@@ -27,7 +27,6 @@ const AppLayout = ({ children }) => {
     } else if (pathname === "/about") {
       setActiveNav(1);
     } else if (pathname === "/projects") {
-      updateBackgroundText("");
       setActiveNav(2);
     } else if (pathname === "/skills") {
       setActiveNav(3);
