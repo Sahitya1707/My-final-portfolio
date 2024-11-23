@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ProjectDescription, ProjectHeading } from "./ProjectComponent";
 import ButtonTypeOne from "./ButtonTypeOne";
 import TechStack from "./TechStack";
+import { techStackData } from "../utils/techStackData";
+import { useTechStack, usetechStack } from "../utils/stores/techStackStore";
 
 const ProjectCard = ({
   heading,
@@ -10,33 +12,44 @@ const ProjectCard = ({
   liveProject,
   techUsed,
 }) => {
+  const updateTechStackUsed = useTechStack(
+    (state) => state.updateTechStackUsed
+  );
+  useEffect(() => {
+    const filterTechStack = techStackData.filter((e, i) => {
+      return techUsed.includes(e.name);
+    });
+    updateTechStackUsed(filterTechStack);
+  }, []);
+
   return (
     <div
       className="flex justify-evenly gap-x-4 
      gap-y-[5rem] h-[50%]"
     >
       <div className=" ">
-        <ProjectHeading text={"Youtube Clone"} />
-        <ProjectDescription
-          text={`  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-              dolore corrupti quidem accusantium, corporis reiciendis magnam
-              tenetur itaque fugit omnis vero obcaecati architecto assumenda
-              quos pariatur.`}
-        />
+        <ProjectHeading text={heading} />
+        <ProjectDescription text={description} />
 
         <div className="flex gap-x-6">
-          <ButtonTypeOne
-            text={"View Source"}
-            color={"primary"}
-            bgColor={"colorNav"}
-            link={"/"}
-          />
-          <ButtonTypeOne
-            text={"View Live Project"}
-            color={"colorText"}
-            bgColor={"colorNav"}
-            link={"/"}
-          />
+          {viewSource && viewSource ? (
+            <ButtonTypeOne
+              text={"View Source"}
+              color={"primary"}
+              bgColor={"colorNav"}
+              link={"/"}
+              target={true}
+            />
+          ) : null}
+          {liveProject && liveProject ? (
+            <ButtonTypeOne
+              text={"View Live Project"}
+              color={"colorText"}
+              bgColor={"colorNav"}
+              link={"/"}
+              target={true}
+            />
+          ) : null}
         </div>
       </div>
     </div>

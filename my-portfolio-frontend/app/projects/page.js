@@ -17,7 +17,7 @@ const Projects = () => {
     <>
       <HeadingTypeOne text={"My Projects"} />
       <div
-        className="w-[90%] mx-auto max-w-[80rem] h-[90%] my-auto mt-6 border-2 border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 shadow-md relative p-10 flex gap-x-5 mx-auto"
+        className="w-[90%] max-w-[80rem] h-[90%] my-auto mt-6 border-2 border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 shadow-md relative p-10 flex gap-x-5 mx-auto"
         style={
           {
             // scrollbarWidth: "none",
@@ -25,10 +25,20 @@ const Projects = () => {
         }
       >
         <div className="w-[55%]">
-          <ProjectCard />
-          <ProjectCard />
+          {projectsData.map((e, i) => {
+            return (
+              <ProjectCard
+                key={i}
+                heading={e.projectName}
+                description={e.projectDescription}
+                viewSource={e.source_link}
+                liveProject={e.live_link}
+                techUsed={e.techUsed}
+              />
+            );
+          })}
         </div>
-        <div className="w-[50%]">
+        <div className="w-[50%] sticky top-0">
           <TechStack />
         </div>
         <span className="text-xl absolute bottom-3 right-3">
