@@ -3,8 +3,11 @@ import React from "react";
 
 const SkillCard = ({ image, name }) => {
   return (
-    <div className="flex flex-col items-center p-2 justify-center">
-      <div className="h-[5rem] w-[5rem] relative ">
+    <div
+      className="flex gap-2 flex-col items-center p-4 justify-center"
+      id="skillCard"
+    >
+      <div className="h-[4rem] w-[4rem] relative ">
         <Image src={`/images/tech-stack/${image}.svg`} fill alt={`${image}`} />
       </div>
       <p className="uppercase text-xl tracking-wider text-center">{name}</p>

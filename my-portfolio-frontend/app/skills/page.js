@@ -4,10 +4,12 @@ import SkillsComponent from "../components/SkillsComponent";
 
 const Skills = () => {
   return (
-    <div>
-      <HeadingTypeOne text={"Skills"} />
-      <SkillsComponent />
-    </div>
+    <>
+      <HeadingTypeOne text={"My Skills"} />
+      <div className="flex items-center h-[100%]">
+        <SkillsComponent />
+      </div>
+    </>
   );
 };
 

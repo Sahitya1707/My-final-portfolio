@@ -21,3 +21,20 @@
     --clr-6: 41 41 41;
   }
 }
+
+#skillComponent {
+  /* color: red !important; */
+}
+
+#skillCard {
+  border-right: 1px solid rgb(var(--primary-clr));
+  border-bottom: 1px solid rgb(var(--primary-clr));
+}
+#skillCard:nth-child(n + 11) {
+  border-bottom: none;
+}
+#skillCard:nth-child(5),
+#skillCard:nth-child(10),
+#skillCard:nth-child(15) {
+  border-right: none;
+}
