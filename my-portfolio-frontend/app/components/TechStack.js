@@ -10,9 +10,22 @@ const TechStack = ({ image, text, alt }) => {
     <div>
       <p className="uppercase my-2 text-2xl">Tech stack</p>
       <div className="grid gap-4 grid-cols-3">
-        {techStackUsed.map((e, i) => (
-          <TechCard image={e.name} name={e.tech} key={i} />
-        ))}
+        {techStackUsed &&
+          techStackUsed.map((e, i) => {
+            return <TechCard image={e.name} name={e.tech} key={i} />;
+          })}
+        {/* {techStackUsed && (
+          <TechCard
+            image={techStackUsed[0].name}
+            name={techStackUsed[0].tech}
+            key={i}
+          />
+        )} */}
+        {/* <TechCard
+          image={techStackUsed[0].name}
+          name={techStackUsed[0].tech}
+          key={i}
+        /> */}
       </div>
     </div>
   );

@@ -19,4 +19,8 @@ export const techStackData = [
     name: "css",
     tech: "CSS",
   },
+  {
+    name: "javascript",
+    tech: "JavaScript",
+  },
 ];

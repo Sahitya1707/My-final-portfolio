@@ -10,8 +10,8 @@ const TechCard = ({ image, name }) => {
           // height={50}
 
           // width={50}
-          layout="fill"
-          alt={name - `icon`}
+          fill
+          alt={`${name}- icon`}
         />
       </div>
       <span className="uppercase">{name}</span>

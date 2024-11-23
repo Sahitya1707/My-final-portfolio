@@ -18,11 +18,9 @@ const Projects = () => {
       <HeadingTypeOne text={"My Projects"} />
       <div
         className="w-[90%] max-w-[80rem] h-[90%] my-auto mt-6 border-2 border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 shadow-md relative p-10 flex gap-x-5 mx-auto"
-        style={
-          {
-            // scrollbarWidth: "none",
-          }
-        }
+        style={{
+          scrollbarWidth: "none",
+        }}
       >
         <div className="w-[55%]">
           {projectsData.map((e, i) => {

@@ -19,13 +19,14 @@ const ProjectCard = ({
     const filterTechStack = techStackData.filter((e, i) => {
       return techUsed.includes(e.name);
     });
+    console.log(filterTechStack);
     updateTechStackUsed(filterTechStack);
   }, []);
 
   return (
     <div
       className="flex justify-evenly gap-x-4 
-     gap-y-[5rem] h-[50%]"
+     gap-y-[5rem] h-[70%] relative"
     >
       <div className=" ">
         <ProjectHeading text={heading} />
