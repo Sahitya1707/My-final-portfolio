@@ -20,6 +20,10 @@ export const menuItems = [
     link: "/skills",
   },
   {
+    name: "To-do",
+    link: "/todo",
+  },
+  {
     name: "experience",
     link: "/experience",
   },
