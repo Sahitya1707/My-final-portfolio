@@ -1,20 +1,17 @@
+import Image from "next/image";
 import React from "react";
+import TechCard from "./TechCard";
 
-const TechStack = ({ image, text }) => {
+const TechStack = ({ image, text, alt }) => {
   return (
-    <>
-      <div className="relative w-[35px] h-[35px]">
-        <Image
-          src="/images/tech-stack/reactjs.svg"
-          // height={50}
-
-          // width={50}
-          layout="fill"
-          alt="react-icon"
-        />
+    <div>
+      <p className="uppercase my-2 text-xl">Tech stack</p>
+      <div className="grid gap-4 grid-cols-3">
+        <TechCard />
+        <TechCard />
+        <TechCard />
       </div>
-      <span className="uppercase">React Js</span>
-    </>
+    </div>
   );
 };
 
