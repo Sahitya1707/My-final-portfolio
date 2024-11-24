@@ -31,9 +31,11 @@ const AppLayout = ({ children }) => {
     } else if (pathname === "/skills") {
       setActiveNav(3);
     } else if (pathname === "/experience") {
-      setActiveNav(4);
+      // setActiveNav(4);
     } else if (pathname === "/contact") {
       setActiveNav(5);
+    } else if (pathname === "/todo") {
+      setActiveNav(4);
     } else {
       setActiveNav(null);
     }
