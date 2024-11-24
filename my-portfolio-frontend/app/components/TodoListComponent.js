@@ -1,19 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaEdit, FaTrashAlt, FaPlus } from "react-icons/fa";
 
 const TodoListComponent = () => {
+  const initialRender = useRef(true);
   const [todos, setTodos] = useState([]);
   const [task, setTask] = useState("");
   const [editId, setEditId] = useState(null);
 
   // Load saved todos from localStorage
   useEffect(() => {
+    console.log(localStorage.getItem(todos));
     const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    console.log(savedTodos);
     setTodos(savedTodos);
   }, []);
 
   // Save todo task to localStorage whenever the list changes
   useEffect(() => {
+    if (initialRender.current) {
+      // https://stackoverflow.com/questions/73271093/localstorage-resets-to-empty-on-refresh-in-nextjs
+      initialRender.current = false;
+      return;
+    }
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
