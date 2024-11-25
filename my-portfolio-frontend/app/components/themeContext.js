@@ -8,7 +8,6 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("dark");
   useEffect(() => {
     const currentTheme = getCookie("theme");
-    console.log("theme provider");
 
     if (currentTheme === "dark") {
       setTheme("dark");
@@ -24,8 +23,6 @@ export const ThemeProvider = ({ children }) => {
         : setTheme("light");
       setCookie("theme", theme);
     }
-    // console.log(currentTheme);
-    // setTheme(currentTheme);
   }, []);
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

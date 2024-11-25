@@ -23,18 +23,18 @@ export const menuItems = [
     name: "To-do",
     link: "/todo",
   },
-  {
-    name: "experience",
-    link: "/experience",
-  },
-  {
-    name: "contact",
-    link: "/contact",
-  },
-  {
-    name: "Resume",
-    link: "/some-where_else",
-  },
+  // {
+  //   name: "experience",
+  //   link: "/experience",
+  // },
+  // {
+  //   name: "contact",
+  //   link: "/contact",
+  // },
+  // {
+  //   name: "Resume",
+  //   link: "/some-where_else",
+  // },
 ];
 
 export const socialMediaData = [
