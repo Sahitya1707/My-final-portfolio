@@ -19,22 +19,19 @@ export const menuItems = [
     name: "Skills",
     link: "/skills",
   },
+
   {
-    name: "To-do",
-    link: "/todo",
+    name: "experience",
+    link: "/experience",
   },
-  // {
-  //   name: "experience",
-  //   link: "/experience",
-  // },
-  // {
-  //   name: "contact",
-  //   link: "/contact",
-  // },
-  // {
-  //   name: "Resume",
-  //   link: "/some-where_else",
-  // },
+  {
+    name: "contact",
+    link: "/contact",
+  },
+  {
+    name: "Resume",
+    link: "/some-where_else",
+  },
 ];
 
 export const socialMediaData = [
