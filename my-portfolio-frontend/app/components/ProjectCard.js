@@ -25,33 +25,31 @@ const ProjectCard = ({
 
   return (
     <div
-      className="flex justify-evenly gap-x-4 
-     gap-y-[5rem] h-[70%] relative"
+      className="flex justify-center  gap-x-4 
+      h-[100%] relative flex-col"
     >
-      <div className=" ">
-        <ProjectHeading text={heading} />
-        <ProjectDescription text={description} />
+      <ProjectHeading text={heading} />
+      <ProjectDescription text={description} />
 
-        <div className="flex gap-x-6">
-          {viewSource && viewSource ? (
-            <ButtonTypeOne
-              text={"View Source"}
-              color={"primary"}
-              bgColor={"colorNav"}
-              link={"/"}
-              target={true}
-            />
-          ) : null}
-          {liveProject && liveProject ? (
-            <ButtonTypeOne
-              text={"View Live Project"}
-              color={"colorText"}
-              bgColor={"colorNav"}
-              link={"/"}
-              target={true}
-            />
-          ) : null}
-        </div>
+      <div className="flex gap-x-6">
+        {viewSource && viewSource ? (
+          <ButtonTypeOne
+            text={"View Source"}
+            color={"primary"}
+            bgColor={"colorNav"}
+            link={"/"}
+            target={true}
+          />
+        ) : null}
+        {liveProject && liveProject ? (
+          <ButtonTypeOne
+            text={"View Live Project"}
+            color={"colorText"}
+            bgColor={"colorNav"}
+            link={"/"}
+            target={true}
+          />
+        ) : null}
       </div>
     </div>
   );
