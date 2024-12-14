@@ -4,11 +4,6 @@ import { Sour_Gummy, Inter, Poppins } from "next/font/google";
 
 import AppLayout from "./AppLayout";
 import Provider from "./components/activeNavProvider";
-import ThemeProviderWrapper from "./components/themeProvider";
-// import { useContext } from "react";
-import { ActiveNavContext } from "./components/activeNavContext";
-import { cookies } from "next/headers";
-import { ThemeContext } from "./components/themeContext";
 
 // importing the font from google
 const sourGummy = Sour_Gummy({
@@ -31,12 +26,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   // const { theme } = useContext(ThemeContext);
   return (
-    <ThemeProviderWrapper>
-      <html lang="en" className={`${sourGummy.className}  ${poppins.variable}`}>
-        <Provider>
-          <AppLayout children={children} />
-        </Provider>
-      </html>
-    </ThemeProviderWrapper>
+    <html lang="en" className={`${sourGummy.className}  ${poppins.variable}`}>
+      <Provider>
+        <AppLayout children={children} />
+      </Provider>
+    </html>
   );
 }

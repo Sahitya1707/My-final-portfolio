@@ -5,11 +5,14 @@ import { CiDark } from "react-icons/ci";
 import { ActiveNavContext } from "./activeNavContext";
 import { act, useContext } from "react";
 import ButtonTheme from "./ButtonTheme";
-import { ThemeContext } from "./themeContext";
+
 import { setCookie } from "cookies-next";
+import { useTheme } from "../utils/stores/theme";
 const Header = () => {
+  const setTheme = useTheme((state) => state.updateTheme);
+  const theme = useTheme((state) => state.theme);
   // read theme value
-  const { theme, setTheme } = useContext(ThemeContext);
+  // const { theme, setTheme } = useContext(ThemeContext);
 
   // intriquing the function toggle light and toggle dark
   const toggleLightMode = () => {

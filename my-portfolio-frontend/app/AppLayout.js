@@ -3,24 +3,27 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { usePathname } from "next/navigation";
 import { useContext, useEffect } from "react";
-import { ThemeContext } from "./components/themeContext";
+
 import { ActiveNavContext } from "./components/activeNavContext";
 
 // import this in order to set cookies from the client component
 import { getCookie, setCookie } from "cookies-next";
 import SocialMediaHandle from "./components/SocialMediaHandle";
 import { useBackgroundText } from "./utils/stores/backgroundTextStore";
+import { useTheme } from "./utils/stores/theme";
 
 const AppLayout = ({ children }) => {
+  // reading theme through zustand
+  const theme = useTheme((state) => state.theme);
+  const setTheme = useTheme((state) => state.updateTheme);
+
   // read current path url
   const pathname = usePathname();
-  const { theme, setTheme } = useContext(ThemeContext);
+
   const { activeNav, setActiveNav } = useContext(ActiveNavContext);
   // importing the font from google
 
   useEffect(() => {
-    console.log(ThemeContext);
-    console.log("useEffect called");
     // setting the active nav
     if (pathname === "/") {
       setActiveNav(0);
@@ -41,8 +44,24 @@ const AppLayout = ({ children }) => {
 
   useEffect(() => {
     // let's know if the browser is darkmode or light mode https://stackoverflow.com/questions/50840168/how-to-detect-if-the-os-is-in-dark-mode-in-browsers
-    const currentTheme = getCookie("theme");
+    // const currentTheme = getCookie("theme");
     // console.log(currentTheme);
+    const currentTheme = getCookie("theme");
+
+    if (currentTheme === "dark") {
+      setTheme("dark");
+      return;
+    } else if (currentTheme === "light") {
+      setTheme("light");
+      return;
+    } else {
+      // if browser theme is dark then set to null and vice versa
+
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? setTheme("dark")
+        : setTheme("light");
+      setCookie("theme", theme);
+    }
   }, []);
   return (
     <body
