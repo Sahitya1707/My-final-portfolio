@@ -2,15 +2,14 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { usePathname } from "next/navigation";
-import { useContext, useEffect } from "react";
-
-import { ActiveNavContext } from "./components/activeNavContext";
+import { useEffect } from "react";
 
 // import this in order to set cookies from the client component
 import { getCookie, setCookie } from "cookies-next";
 import SocialMediaHandle from "./components/SocialMediaHandle";
 import { useBackgroundText } from "./utils/stores/backgroundTextStore";
 import { useTheme } from "./utils/stores/theme";
+import { useActiveNav } from "./utils/stores/activeNav";
 
 const AppLayout = ({ children }) => {
   // reading theme through zustand
@@ -20,7 +19,9 @@ const AppLayout = ({ children }) => {
   // read current path url
   const pathname = usePathname();
 
-  const { activeNav, setActiveNav } = useContext(ActiveNavContext);
+  // const { activeNav, setActiveNav } = useContext(ActiveNavContext);
+  const setActiveNav = useActiveNav((state) => state.updateActiveNav);
+
   // importing the font from google
 
   useEffect(() => {

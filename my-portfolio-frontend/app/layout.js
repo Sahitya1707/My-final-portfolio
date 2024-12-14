@@ -27,9 +27,8 @@ export default function RootLayout({ children }) {
   // const { theme } = useContext(ThemeContext);
   return (
     <html lang="en" className={`${sourGummy.className}  ${poppins.variable}`}>
-      <Provider>
-        <AppLayout children={children} />
-      </Provider>
+      =
+      <AppLayout children={children} />=
     </html>
   );
 }

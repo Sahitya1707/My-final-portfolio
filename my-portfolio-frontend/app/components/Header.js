@@ -2,8 +2,7 @@ import { menuItems } from "../utils/constant";
 import HeaderComponent from "./HeaderComponent";
 import { CiLight } from "react-icons/ci";
 import { CiDark } from "react-icons/ci";
-import { ActiveNavContext } from "./activeNavContext";
-import { act, useContext } from "react";
+
 import ButtonTheme from "./ButtonTheme";
 
 import { setCookie } from "cookies-next";

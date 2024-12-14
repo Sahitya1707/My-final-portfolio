@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { useContext } from "react";
-import { ActiveNavContext } from "./activeNavContext";
+
+import { useActiveNav } from "../utils/stores/activeNav";
 
 const HeaderComponent = ({ text, link, handleNavList, index }) => {
   // reading the current activeNav value
-  const { activeNav } = useContext(ActiveNavContext);
+  // const { activeNav } = useContext(ActiveNavContext);
+  const activeNav = useActiveNav((state) => state.activeNav);
+  console.log(activeNav);
 
   return (
     <li
