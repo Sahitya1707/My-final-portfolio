@@ -1,3 +1,4 @@
+// this includes all the tech stack
 export const techStackData = [
   {
     name: "react",

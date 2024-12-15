@@ -17,12 +17,17 @@ const Projects = () => {
     <>
       <HeadingTypeOne text={"My Projects"} />
       <div
-        className="w-[90%] max-w-[80rem] h-[70%] my-auto mt-10 border-2 border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 shadow-md relative px-10 flex gap-x-5 mx-auto py-4"
+        className="w-[90%] max-w-[80rem] h-[70%] my-auto mt-10 border-2 border-primary rounded-xl overflow-y-hidden realtive shadow-colorText/50 shadow-md relative px-10 flex gap-x-5 mx-auto py-4"
         style={{
           scrollbarWidth: "none",
         }}
       >
-        <div className="w-[55%]">
+        <div
+          className="w-[55%] overflow-y-scroll"
+          style={{
+            scrollbarWidth: "none",
+          }}
+        >
           {projectsData.map((e, i) => {
             return (
               <ProjectCard
@@ -36,7 +41,7 @@ const Projects = () => {
             );
           })}
         </div>
-        <div className="w-[50%] sticky top-[40%]">
+        <div className="w-[50%] sticky top-[40%] flex items-center">
           <TechStack />
         </div>
         <span className="text-xl absolute bottom-3 right-3">

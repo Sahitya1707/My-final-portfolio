@@ -19,6 +19,7 @@ const ProjectCard = ({
     const filterTechStack = techStackData.filter((e, i) => {
       return techUsed.includes(e.name);
     });
+    // i am using udateTechStack here to update the tech stack part through zustand
     console.log(filterTechStack);
     updateTechStackUsed(filterTechStack);
   }, []);
@@ -26,7 +27,7 @@ const ProjectCard = ({
   return (
     <div
       className="flex justify-center  gap-x-4 
-      h-[100%] relative flex-col"
+      h-[100%] relative flex-col "
     >
       <ProjectHeading text={heading} />
       <ProjectDescription text={description} />

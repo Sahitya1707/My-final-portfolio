@@ -3,7 +3,6 @@ import "./globals.css";
 import { Sour_Gummy, Inter, Poppins } from "next/font/google";
 
 import AppLayout from "./AppLayout";
-import Provider from "./components/activeNavProvider";
 
 // importing the font from google
 const sourGummy = Sour_Gummy({
@@ -27,8 +26,7 @@ export default function RootLayout({ children }) {
   // const { theme } = useContext(ThemeContext);
   return (
     <html lang="en" className={`${sourGummy.className}  ${poppins.variable}`}>
-      =
-      <AppLayout children={children} />=
+      <AppLayout children={children} />
     </html>
   );
 }
