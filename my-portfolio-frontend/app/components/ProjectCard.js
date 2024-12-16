@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { ProjectDescription, ProjectHeading } from "./ProjectComponent";
 import ButtonTypeOne from "./ButtonTypeOne";
 import TechStack from "./TechStack";
@@ -15,19 +15,39 @@ const ProjectCard = ({
   const updateTechStackUsed = useTechStack(
     (state) => state.updateTechStackUsed
   );
+
+  // using intersectino obeserver
+  const ref = useRef(null);
+
   useEffect(() => {
     const filterTechStack = techStackData.filter((e, i) => {
       return techUsed.includes(e.name);
     });
     // i am using udateTechStack here to update the tech stack part through zustand
-    console.log(filterTechStack);
+    // console.log(filterTechStack);
     updateTechStackUsed(filterTechStack);
   }, []);
+  const options = {
+    root: document.getElementById("project"),
+    rootMargin: "0px",
+    threshold: 0,
+  };
+  const observerCallback = (entries) => {
+    const [entry] = entries;
+
+    console.log(entry.isIntersecting);
+  };
+  // using another useeffect for the intersection obeserver api
+  useEffect(() => {
+    const observer = new IntersectionObserver(observerCallback, options);
+    observer.observe(ref.current);
+  });
 
   return (
     <div
       className="flex justify-center  gap-x-4 
-      h-[100%] relative flex-col "
+      h-[100%] relative flex-col opacity-40"
+      ref={ref}
     >
       <ProjectHeading text={heading} />
       <ProjectDescription text={description} />

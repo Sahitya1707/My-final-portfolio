@@ -13,6 +13,48 @@ import ProjectCard from "../components/ProjectCard";
 import { projectsData } from "../utils/projectsData";
 
 const Projects = () => {
+  const getParentScroll = (e) => {
+    // console.log(e);
+    // console.log(e);
+    // console.log(e.target.childNodes[0].clientHeight);
+    // console.log(e.target.childNodes[0].childNodes[0].clientHeight);
+    // const rect = e.target.childNodes[0].childNodes[0].getBoundingClientRect();
+    // console.log(rect.top);
+    const container = e.target;
+    // console.log(container.scrollTop);
+    // console.log(container.scrollHeight);
+    let containerRect = container.getBoundingClientRect();
+    // console.log(containerRect.top);
+    // console.log(container.clientHeight);
+    // console.log("container");
+    // console.log(containerRect.top);
+
+    // console.log(container.scrollTop);
+    // console.log(containerRect);
+    // console.log(containerRect.top, containerRect.y);
+    // suppose the child element is 1 (considering second item just for now)
+    const child = container.childNodes[0].childNodes[0];
+    const child1 = container.childNodes[0].childNodes[1];
+    const child2 = container.childNodes[0].childNodes[2];
+    // console.log(child.clientHeight);
+    // console.log("child");
+    let childRect = child.getBoundingClientRect();
+    let childRect1 = child1.getBoundingClientRect();
+    // let childRect2 = child2.getBoundingClientRect();
+    // console.log(childRect.top, childRect1.top, childRect2.top);
+    // console.log(childRect1.top, containerRect.top);
+    // console.log("-----------------");
+    // console.log(childRect1.bottom, containerRect.bottom);
+    if (
+      childRect1.top > containerRect.top + 100 &&
+      childRect1.bottom < containerRect.bottom + 100
+    ) {
+      // console.log(true);
+    }
+    // console.log(child);
+    // console.log("child");
+    // console.log(childRect.top, childRect.y);
+  };
   return (
     <>
       <HeadingTypeOne text={"My Projects"} />
@@ -21,6 +63,8 @@ const Projects = () => {
         style={{
           scrollbarWidth: "none",
         }}
+        onScroll={getParentScroll}
+        id="project"
       >
         <div
           className="w-[55%] "

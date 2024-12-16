@@ -38,3 +38,6 @@
 #skillCard:nth-child(15) {
   border-right: none;
 }
+.visible {
+  opacity: 1;
+}

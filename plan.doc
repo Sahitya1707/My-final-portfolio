@@ -7,3 +7,6 @@ so my plan for the project section is that tech stack will reamin  in it positio
 
 
 -- or maybe make the tech stack fixed using absolute and only make the project component scrollable and chang eit accrodingly how much scroll it done through global state.
+
+
+calculates the amount of pixels of each child element currently visible within the container. If the amount is bigger or equal to half the size of the container, it assumes this is the page your visitor is looking at. and set the active class according to that. -https://stackoverflow.com/questions/56999795/how-detect-which-child-element-is-visible-after-scrolling-the-parent-div
