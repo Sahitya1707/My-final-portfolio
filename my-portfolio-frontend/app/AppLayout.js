@@ -66,7 +66,7 @@ const AppLayout = ({ children }) => {
   }, []);
   return (
     <body
-      className={` bg-colorBody ${theme} max-w-full w-full overflow-hidden max-h-screen `}
+      className={` bg-colorBody ${theme} max-w-full w-full overflow-clip max-h-screen `}
     >
       <Header />
       <main className="relative px-[12rem] py-[2rem] text-colorText max-w-[150rem] z-[1000] mx-auto h-[80vh]">

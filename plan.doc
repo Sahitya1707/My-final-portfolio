@@ -1,1 +1,9 @@
 so my plan for the project section is that tech stack will reamin  in it position and when the project part will scroll it will just replace the tech stack number dynamically like 0. 1. 2 . and it will automatically update. and the parent element will remain contant but scroll of parent will be implemented on child. while scrolling parent child will be scroll and parent will be same as it is.
+
+
+-- get the scroll height that user does in the whole project section
+-- and put that scroll to the project component not ont he tech stack
+-- tech stac k should be fixed
+
+
+-- or maybe make the tech stack fixed using absolute and only make the project component scrollable and chang eit accrodingly how much scroll it done through global state.
