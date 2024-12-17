@@ -39,7 +39,8 @@ const AboutDescription = () => {
             text={"my resume"}
             color={"primary"}
             bgColor={"colorText"}
-            link="/"
+            link="/mycv.pdf"
+            target={"_blank"}
           />
         </div>
 

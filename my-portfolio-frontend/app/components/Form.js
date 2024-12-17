@@ -15,25 +15,28 @@ export const Input = ({ label, inputType, placeholderText }) => {
         type={inputType}
         onChange={handleInput}
         placeholder={`${placeholderText}`}
-        className="text-[yellow] p-2 my-2 rounded-sm w-full"
+        className=" text-[black] p-2 my-2 rounded-sm w-full focus:outline-primary "
+        name={label}
       />
     </>
   );
 };
 
-export const TextArea = ({ label, placeholderText }) => {
+export const TextArea = ({ label, placeholderText, rows }) => {
   return (
     <>
       <label
         htmlFor={label}
+        name={label}
         className="capitalize text-lg tracking-wider  font-semibold mt-4"
       >
         {label}
       </label>
       <textarea
+        rows={rows}
         id={label}
         placeholder={`${placeholderText}`}
-        className="text-[yellow] p-2 my-2 rounded-sm w-full"
+        className="text-[black]  p-2 my-2 rounded-sm w-full focus:outline-primary"
       />
     </>
   );
