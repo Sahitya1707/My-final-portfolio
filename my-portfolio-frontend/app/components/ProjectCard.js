@@ -12,9 +12,7 @@ const ProjectCard = ({
   liveProject,
   techUsed,
 }) => {
-  const updateTechStackUsed = useTechStack(
-    (state) => state.updateTechStackUsed
-  );
+  const updateTechStack = useTechStack((state) => state.updateTechStackUsed);
 
   // using intersectino obeserver
   const ref = useRef(null);
@@ -24,18 +22,18 @@ const ProjectCard = ({
       return techUsed.includes(e.name);
     });
     // i am using udateTechStack here to update the tech stack part through zustand
-    // console.log(filterTechStack);
-    updateTechStackUsed(filterTechStack);
-  }, []);
+
+    updateTechStack(filterTechStack);
+  }, [techUsed]);
   const options = {
-    root: document.getElementById("project"),
     rootMargin: "0px",
-    threshold: 0,
+    threshold: 0.65,
   };
   const observerCallback = (entries) => {
     const [entry] = entries;
 
-    console.log(entry.isIntersecting);
+    // console.log(entry.isIntersecting);
+    // console.log(entries);
   };
   // using another useeffect for the intersection obeserver api
   useEffect(() => {

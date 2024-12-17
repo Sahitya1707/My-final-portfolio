@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import HeadingTypeOne from "../components/HeadingTypeOne";
 import { FaAnglesDown } from "react-icons/fa6";
 import Image from "next/image";
@@ -13,48 +13,44 @@ import ProjectCard from "../components/ProjectCard";
 import { projectsData } from "../utils/projectsData";
 
 const Projects = () => {
-  const getParentScroll = (e) => {
-    // console.log(e);
-    // console.log(e);
-    // console.log(e.target.childNodes[0].clientHeight);
-    // console.log(e.target.childNodes[0].childNodes[0].clientHeight);
-    // const rect = e.target.childNodes[0].childNodes[0].getBoundingClientRect();
-    // console.log(rect.top);
-    const container = e.target;
-    // console.log(container.scrollTop);
-    // console.log(container.scrollHeight);
-    let containerRect = container.getBoundingClientRect();
-    // console.log(containerRect.top);
-    // console.log(container.clientHeight);
-    // console.log("container");
-    // console.log(containerRect.top);
+  const getParentScroll = (e) => {};
 
-    // console.log(container.scrollTop);
-    // console.log(containerRect);
-    // console.log(containerRect.top, containerRect.y);
-    // suppose the child element is 1 (considering second item just for now)
-    const child = container.childNodes[0].childNodes[0];
-    const child1 = container.childNodes[0].childNodes[1];
-    const child2 = container.childNodes[0].childNodes[2];
-    // console.log(child.clientHeight);
-    // console.log("child");
-    let childRect = child.getBoundingClientRect();
-    let childRect1 = child1.getBoundingClientRect();
-    // let childRect2 = child2.getBoundingClientRect();
-    // console.log(childRect.top, childRect1.top, childRect2.top);
-    // console.log(childRect1.top, containerRect.top);
-    // console.log("-----------------");
-    // console.log(childRect1.bottom, containerRect.bottom);
-    if (
-      childRect1.top > containerRect.top + 100 &&
-      childRect1.bottom < containerRect.bottom + 100
-    ) {
-      // console.log(true);
-    }
-    // console.log(child);
-    // console.log("child");
-    // console.log(childRect.top, childRect.y);
-  };
+  const projectRef = useRef(null);
+  const [techStackIndex, setTechStackIndex] = useState(0);
+  useEffect(() => {
+    const project = projectRef.current;
+    // the projectChild target all the project like youutbeclone
+    const projectChild = project.childNodes[0].childNodes;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // if intersecting is true means we will make it visible opacity 1 and also another thing we will do is we will compare the target element of intersecting true and projectChild so that we can get the index which we need to update the tech stack.
+            //
+            // if there is none intersecting  we will try to use the previous value, if there are two value intersecting maybe we will use the new one.
+            const index = Array.from(projectChild).indexOf(entry.target);
+            setTechStackIndex(index);
+
+            entry.target.style.opacity = "1";
+          } else {
+            entry.target.style.opacity = "0.4";
+          }
+        });
+      },
+      {
+        root: project,
+        rootMargin: "0px",
+        threshold: 0.55,
+      }
+    );
+
+    // https://stackoverflow.com/questions/67945846/setting-root-property-in-options-argument-of-intersection-observer-causes-weird
+    projectChild.forEach((child) => {
+      observer.observe(child);
+    });
+    return () => observer.disconnect();
+  }, []);
   return (
     <>
       <HeadingTypeOne text={"My Projects"} />
@@ -65,6 +61,7 @@ const Projects = () => {
         }}
         onScroll={getParentScroll}
         id="project"
+        ref={projectRef}
       >
         <div
           className="w-[55%] "
@@ -82,7 +79,7 @@ const Projects = () => {
                 description={e.projectDescription}
                 viewSource={e.source_link}
                 liveProject={e.live_link}
-                techUsed={projectsData[0].techUsed}
+                techUsed={projectsData[techStackIndex].techUsed}
               />
             );
           })}
