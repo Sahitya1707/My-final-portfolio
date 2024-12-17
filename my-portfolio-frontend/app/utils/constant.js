@@ -20,10 +20,10 @@ export const menuItems = [
     link: "/skills",
   },
 
-  {
-    name: "experience",
-    link: "/experience",
-  },
+  // {
+  //   name: "experience",
+  //   link: "/experience",
+  // },
   {
     name: "contact",
     link: "/contact",

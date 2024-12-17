@@ -37,7 +37,7 @@ const AppLayout = ({ children }) => {
     } else if (pathname === "/experience") {
       setActiveNav(4);
     } else if (pathname === "/contact") {
-      setActiveNav(5);
+      setActiveNav(4);
     } else {
       setActiveNav(null);
     }
