@@ -7,7 +7,7 @@ const HomePageDescription = () => {
     <section className="flex  align-center items-center justify-evenly h-full w-full ">
       <div className="">
         <p
-          className="uppercase text-colorText text-5xl  tracking-[0.4rem] font-bold"
+          className="uppercase text-colorText text-4xl  tracking-[0.4rem] font-bold"
           style={{
             textShadow: "3px 2px rgb(var(--primary-clr))",
           }}
@@ -16,7 +16,7 @@ const HomePageDescription = () => {
           Neupane!
         </p>
         <p
-          className="capitalize text-4xl text-primary mt-4 tracking-widest font-semibold"
+          className="capitalize text-3xl text-primary mt-4 tracking-widest font-semibold"
           style={{ textShadow: "1px 2px rgb(var(--color-text))" }}
         >
           {/* run animation maybe through stroke */}

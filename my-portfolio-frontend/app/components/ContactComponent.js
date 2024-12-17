@@ -20,18 +20,18 @@ const ContactComponent = () => {
     name: "",
   });
   return (
-    <div className="flex items-center justify-center flex-col h-full px-20 w-[80%]  mx-auto">
+    <div className="flex items-center justify-center flex-col h-full px-10 w-[80%]  mx-auto">
       <Description
         text="   
         Looking to hire a passionate developer, need a standout website, or just
         want some help with your project? I’m here to help and always open to
-        new opportunities. Let’s connect and make it happen!
+        new opportunities. Drop me a message. I will get back to you asap.  Let’s connect and make it happen! 
       "
       />
       <form
         action={handleSubmit}
         // method="post"
-        className="flex flex-col w-[40rem] bg-colorNav border-colorText/20 border-solid border-2 p-5 rounded-xl my-10"
+        className="flex flex-col w-[35rem] bg-colorNav border-colorText/20 border-solid border-2 p-5 rounded-xl shadow-colorText/20 shadow-md"
       >
         <Input type="text" placeholderText={"Enter Your Name"} label={"name"} />
         <Input

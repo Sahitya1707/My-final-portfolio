@@ -14,7 +14,7 @@ const TechCard = ({ image, name }) => {
           alt={`${name}- icon`}
         />
       </div>
-      <span className="uppercase">{name}</span>
+      <span className="uppercase text-sm">{name}</span>
     </div>
   );
 };

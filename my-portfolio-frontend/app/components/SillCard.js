@@ -10,7 +10,7 @@ const SkillCard = ({ image, name }) => {
       <div className="h-[4rem] w-[4rem] relative ">
         <Image src={`/images/tech-stack/${image}.svg`} fill alt={`${image}`} />
       </div>
-      <p className="uppercase text-xl tracking-wider text-center">{name}</p>
+      <p className="uppercase text-lg tracking-wider text-center">{name}</p>
     </div>
   );
 };

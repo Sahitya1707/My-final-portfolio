@@ -31,7 +31,7 @@ const ButtonTypeOne = ({
         <Link href={link} target={target ? "_blank" : "_self"}>
           <button
             style={buttonStyle}
-            className="px-3 py-2 mt-4 rounded-lg text-lg capitalize hover:ease-in duration-75"
+            className="px-3 py-2 mt-4 rounded-lg text-md capitalize hover:ease-in duration-75"
             onMouseEnter={() => {
               setButtonStyle(hoverStyle);
             }}
@@ -45,7 +45,7 @@ const ButtonTypeOne = ({
       ) : (
         <button
           style={buttonStyle}
-          className="px-3 py-2 mt-4 rounded-lg text-lg capitalize hover:ease-in duration-75"
+          className="px-3 py-2 mt-4 rounded-lg text-md capitalize hover:ease-in duration-75"
           type={btnType ? btnType : ""}
           onMouseEnter={() => {
             setButtonStyle(hoverStyle);

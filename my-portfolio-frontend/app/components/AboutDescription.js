@@ -9,7 +9,7 @@ const AboutDescription = () => {
       <HeadingTypeOne text="What I do?" />
       <div className="flex items-center gap-x-10 justify-evenly h-full">
         <div className="px-5 w-[60%]">
-          <p className="mb-2 text-lg">
+          <p className="mb-2 text-md">
             Hi, I'm Sahitya Neupane, currently studying Interactive Media Design
             - Web at Georgian College. My journey in web development started in
             2021, and I've loved every bit of it since! JavaScript is my

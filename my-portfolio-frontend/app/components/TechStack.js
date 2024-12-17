@@ -9,8 +9,8 @@ const TechStack = ({ image, text, alt }) => {
 
   return (
     <div>
-      <p className="uppercase my-2 text-2xl">Tech stack Used</p>
-      <div className="grid gap-4 grid-cols-3">
+      <p className="uppercase mb-2 text-xl">Tech stack Used</p>
+      <div className="grid gap-2 grid-cols-3">
         {techStackUsed &&
           techStackUsed.map((e, i) => {
             return <TechCard image={e.name} name={e.tech} key={i} />;

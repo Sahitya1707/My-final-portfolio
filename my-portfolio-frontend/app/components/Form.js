@@ -6,7 +6,7 @@ export const Input = ({ label, inputType, placeholderText }) => {
     <>
       <label
         htmlFor={label}
-        className="capitalize text-lg tracking-wider  font-semibold mt-4"
+        className="capitalize text-md tracking-wider  font-semibold mt-4"
       >
         {label}
       </label>
@@ -15,7 +15,7 @@ export const Input = ({ label, inputType, placeholderText }) => {
         type={inputType}
         onChange={handleInput}
         placeholder={`${placeholderText}`}
-        className=" text-[black] p-2 my-2 rounded-sm w-full focus:outline-primary "
+        className=" text-[black] p-2  rounded-sm w-full focus:outline-primary "
         name={label}
       />
     </>
@@ -28,7 +28,7 @@ export const TextArea = ({ label, placeholderText, rows }) => {
       <label
         htmlFor={label}
         name={label}
-        className="capitalize text-lg tracking-wider  font-semibold mt-4"
+        className="capitalize text-md tracking-wider  font-semibold mt-4"
       >
         {label}
       </label>
@@ -36,7 +36,7 @@ export const TextArea = ({ label, placeholderText, rows }) => {
         rows={rows}
         id={label}
         placeholder={`${placeholderText}`}
-        className="text-[black]  p-2 my-2 rounded-sm w-full focus:outline-primary"
+        className="text-[black]  p-2  rounded-sm w-full focus:outline-primary"
       />
     </>
   );
