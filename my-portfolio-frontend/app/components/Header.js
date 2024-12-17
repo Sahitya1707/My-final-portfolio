@@ -32,6 +32,7 @@ const Header = () => {
               <HeaderComponent
                 text={e.name}
                 link={e.link}
+                target={e.target}
                 key={i}
                 index={i}
                 handleNavList={(e) => {

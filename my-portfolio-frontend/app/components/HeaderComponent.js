@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { useActiveNav } from "../utils/stores/activeNav";
 
-const HeaderComponent = ({ text, link, handleNavList, index }) => {
+const HeaderComponent = ({ text, link, handleNavList, index, target }) => {
   // reading the current activeNav value
   // const { activeNav } = useContext(ActiveNavContext);
   const activeNav = useActiveNav((state) => state.activeNav);
@@ -17,7 +17,9 @@ const HeaderComponent = ({ text, link, handleNavList, index }) => {
       onClick={handleNavList}
     >
       {" "}
-      <Link href={link}>{text} </Link>
+      <Link href={link} target={target ? target : ""}>
+        {text}{" "}
+      </Link>
     </li>
   );
 };

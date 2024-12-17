@@ -30,7 +30,8 @@ export const menuItems = [
   },
   {
     name: "Resume",
-    link: "/some-where_else",
+    link: "/mycv.pdf",
+    target: "_blank",
   },
 ];
 
