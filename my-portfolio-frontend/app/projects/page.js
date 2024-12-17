@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import HeadingTypeOne from "../components/HeadingTypeOne";
-import { FaAnglesDown } from "react-icons/fa6";
+import { FaAnglesDown, FaAnglesUp } from "react-icons/fa6";
 import Image from "next/image";
 import {
   ProjectDescription,
@@ -13,15 +13,20 @@ import ProjectCard from "../components/ProjectCard";
 import { projectsData } from "../utils/projectsData";
 
 const Projects = () => {
-  const [scrollPositionMax, setScrollPositionMax] = useState(false);
+  const [currenScrollBarPosition, setCurrenScrollBarPosition] = useState(false);
   const getParentScroll = (e) => {
     // getting the total scrollheight
     const scrollableHeight = e.target.scrollHeight - e.target.clientHeight;
     // current scrollbar postion
-    const scrollabarPosition = e.target.scrollTop;
-
-    if (scrollableHeight === scrollabarPosition) {
-      setScrollPositionMax(true);
+    const scrollbarPosition = e.target.scrollTop;
+    // console.log(scrollbarPosition);
+    if (scrollbarPosition >= scrollableHeight / 2) {
+      console.log("equal");
+      // if the position is more then half
+      setCurrenScrollBarPosition(true);
+    } else {
+      // if the positionis less than half
+      setCurrenScrollBarPosition(false);
     }
   };
 
@@ -68,7 +73,7 @@ const Projects = () => {
     <>
       <HeadingTypeOne text={"My Projects"} />
       <div
-        className="w-[90%] max-w-[80rem] h-[70%] my-auto mt-10 border-2 border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 shadow-md relative px-10 flex gap-x-5 mx-auto py-4"
+        className="w-[90%] max-w-[80rem] h-[90%] my-auto mt-10 border-2 border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 shadow-md relative px-10 flex gap-x-5 mx-auto py-4"
         style={{
           scrollbarWidth: "none",
         }}
@@ -100,13 +105,12 @@ const Projects = () => {
         <div className="w-[50%] px-4 sticky top-[0%] flex items-center">
           <TechStack />
         </div>
-        {scrollPositionMax ? null : (
-          <span className="absolute bottom-10 right-10">
-            <span className="text-xl fixed animate-bounce">
-              <FaAnglesDown />
-            </span>
+
+        <span className="absolute bottom-10 right-10">
+          <span className="text-xl fixed animate-bounce rotate-[180] ">
+            {currenScrollBarPosition ? <FaAnglesUp /> : <FaAnglesDown />}
           </span>
-        )}
+        </span>
       </div>
     </>
   );
