@@ -13,7 +13,17 @@ import ProjectCard from "../components/ProjectCard";
 import { projectsData } from "../utils/projectsData";
 
 const Projects = () => {
-  const getParentScroll = (e) => {};
+  const [scrollPositionMax, setScrollPositionMax] = useState(false);
+  const getParentScroll = (e) => {
+    // getting the total scrollheight
+    const scrollableHeight = e.target.scrollHeight - e.target.clientHeight;
+    // current scrollbar postion
+    const scrollabarPosition = e.target.scrollTop;
+
+    if (scrollableHeight === scrollabarPosition) {
+      setScrollPositionMax(true);
+    }
+  };
 
   const projectRef = useRef(null);
   const [techStackIndex, setTechStackIndex] = useState(0);
@@ -31,16 +41,19 @@ const Projects = () => {
             // if there is none intersecting  we will try to use the previous value, if there are two value intersecting maybe we will use the new one.
             const index = Array.from(projectChild).indexOf(entry.target);
             setTechStackIndex(index);
-
+            // making opacity one when it is in screen
             entry.target.style.opacity = "1";
           } else {
+            // making it low when it is not in screen
             entry.target.style.opacity = "0.4";
           }
         });
       },
       {
         root: project,
+        // An offset margin applied to the root's bounding box, affecting when the observer's callback is triggered.
         rootMargin: "0px",
+        // a value that determines when the callback function is triggered
         threshold: 0.55,
       }
     );
@@ -87,11 +100,13 @@ const Projects = () => {
         <div className="w-[50%] px-4 sticky top-[0%] flex items-center">
           <TechStack />
         </div>
-        <span className="absolute bottom-10 right-10">
-          <span className="text-xl fixed animate-bounce">
-            <FaAnglesDown />
+        {scrollPositionMax ? null : (
+          <span className="absolute bottom-10 right-10">
+            <span className="text-xl fixed animate-bounce">
+              <FaAnglesDown />
+            </span>
           </span>
-        </span>
+        )}
       </div>
     </>
   );

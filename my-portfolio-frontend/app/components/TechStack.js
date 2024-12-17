@@ -6,7 +6,7 @@ import { useTechStack } from "../utils/stores/techStackStore";
 const TechStack = ({ image, text, alt }) => {
   // reading the tech stack which is being updated in projectCard.js
   const techStackUsed = useTechStack((state) => state.techStackUsed);
-  console.log(techStackUsed);
+
   return (
     <div>
       <p className="uppercase my-2 text-2xl">Tech stack</p>
