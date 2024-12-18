@@ -6,7 +6,7 @@ const Skills = () => {
   return (
     <>
       <HeadingTypeOne text={"My Skills"} />
-      <div className="flex items-center h-[100%]">
+      <div className="flex items-center min-h-[inherit] lg:h-[100%]">
         <SkillsComponent />
       </div>
     </>

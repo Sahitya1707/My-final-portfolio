@@ -5,7 +5,7 @@ import { SkillsData } from "../utils/skillsData";
 const SkillsComponent = () => {
   return (
     <div
-      className="bg-colorNav p-6 w-[70%] mx-auto my-2 rounded-xl grid grid-cols-5 shadow-lg shadow-colorText/5"
+      className="bg-colorNav p-6 w-[80%] xl:w-[70%] mx-auto my-2 rounded-xl grid grid-cols-5 shadow-lg shadow-colorText/5"
       id="skillComponent"
     >
       {SkillsData.map((e, i) => {

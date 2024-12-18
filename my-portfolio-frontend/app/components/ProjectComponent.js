@@ -14,5 +14,5 @@ export const ProjectHeading = ({ text }) => {
   );
 };
 export const ProjectDescription = ({ text }) => {
-  return <p className="text-sm">{text} </p>;
+  return <p className="text-[0.7rem] lg:text-sm">{text} </p>;
 };

@@ -4,7 +4,7 @@ import BackgroundText from "./BackgroundText";
 
 const HomePageDescription = () => {
   return (
-    <section className="flex  align-center items-center justify-evenly h-full w-full ">
+    <section className="flex  align-center items-center justify-evenly min-h-[inherit] lg:h-full w-full ">
       <div className="">
         <p
           className="uppercase text-colorText text-4xl  tracking-[0.4rem] font-bold"

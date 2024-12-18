@@ -4,7 +4,7 @@ const BackgroundText = ({ text, style }) => {
   console.log(style);
   return (
     <span
-      className="text-colorText/5 text-[15rem] stroke-none font-poppins-500 rotate-[-10deg] "
+      className="text-colorText/5  text-[10rem] lg:text-[15rem] stroke-none font-poppins-500 rotate-[-10deg] "
       style={style}
     >
       {text}

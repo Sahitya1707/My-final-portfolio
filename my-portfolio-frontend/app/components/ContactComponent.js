@@ -16,11 +16,9 @@ const ContactComponent = () => {
 
     console.log("hi");
   };
-  const [formValue, setFormValue] = useState({
-    name: "",
-  });
+
   return (
-    <div className="flex items-center justify-center flex-col h-full px-10 w-[80%]  mx-auto">
+    <div className="flex items-center justify-center flex-col lg:h-full lg:px-10 px-0 w-[90%] xl:w-[80%]  mx-auto min-h-[inherit]">
       <Description
         text="   
         Looking to hire a passionate developer, need a standout website, or just
@@ -31,7 +29,7 @@ const ContactComponent = () => {
       <form
         action={handleSubmit}
         // method="post"
-        className="flex flex-col w-[35rem] bg-colorNav border-colorText/20 border-solid border-2 p-5 rounded-xl shadow-colorText/20 shadow-md"
+        className="flex flex-col w-[35rem] lg:w-[40rem] xl:w-[35rem] bg-colorNav border-colorText/20 border-solid border-2 p-5 rounded-xl shadow-colorText/20 shadow-md mt-4"
       >
         <Input type="text" placeholderText={"Enter Your Name"} label={"name"} />
         <Input
@@ -42,7 +40,7 @@ const ContactComponent = () => {
         <TextArea
           label={"message"}
           placeholderText={"Enter Your Message"}
-          rows={5}
+          rows={4}
         />
         <ButtonTypeOne
           color={"colorText"}

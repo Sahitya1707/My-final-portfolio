@@ -73,7 +73,7 @@ const Projects = () => {
     <>
       <HeadingTypeOne text={"My Projects"} />
       <div
-        className="w-[90%] max-w-[80rem] h-[90%] my-auto mt-10 border-2 border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 shadow-md relative px-10 flex gap-x-5 mx-auto py-4"
+        className="w-[90%] max-w-[80rem] h-[70%] lg:h-[90%] my-auto mt-10 border-2 border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 shadow-md relative px-10 flex gap-x-5 mx-auto py-4"
         style={{
           scrollbarWidth: "none",
         }}
@@ -106,7 +106,7 @@ const Projects = () => {
           <TechStack />
         </div>
 
-        <span className="absolute bottom-10 right-10">
+        <span className="absolute bottom-10 right-10 lg:block hidden">
           <span className="text-xl fixed animate-bounce rotate-[180] ">
             {currenScrollBarPosition ? <FaAnglesUp /> : <FaAnglesDown />}
           </span>
