@@ -13,12 +13,10 @@ const ContactComponent = () => {
     console.log(formData.get("name"));
     // console.log(e.currentTarget);
     console.log(formData.entries());
-
-    console.log("hi");
   };
 
   return (
-    <div className="flex items-center justify-center flex-col lg:h-full lg:px-10 px-0 w-[90%] xl:w-[80%]  mx-auto min-h-[inherit]">
+    <div className="flex items-center lg:justify-start md:justify-center mt-16 flex-col lg:h-full  px-0 w-[100%] xl:w-[80%]  mx-auto min-h-[inherit] md:mt-auto ">
       <Description
         text="   
         Looking to hire a passionate developer, need a standout website, or just
@@ -29,7 +27,7 @@ const ContactComponent = () => {
       <form
         action={handleSubmit}
         // method="post"
-        className="flex flex-col w-[35rem] lg:w-[40rem] xl:w-[35rem] bg-colorNav border-colorText/20 border-solid border-2 p-5 rounded-xl shadow-colorText/20 shadow-md mt-4"
+        className="flex flex-col w-[30em] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-5 rounded-xl shadow-colorText/20 shadow-md md:mt-4 mt-[5rem]"
       >
         <Input type="text" placeholderText={"Enter Your Name"} label={"name"} />
         <Input

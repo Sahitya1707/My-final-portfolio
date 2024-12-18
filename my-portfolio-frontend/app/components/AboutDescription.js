@@ -8,8 +8,8 @@ const AboutDescription = () => {
     <>
       <HeadingTypeOne text="What I do?" />
       <div className="flex items-center lg:gap-y-0 gap-y-4 gap-x-10 xl:gap-x-5 justify-evenly h-full lg:flex-row flex-col-reverse">
-        <div className="px-5 lg:w-[60%] w-[90%]">
-          <p className="mb-2 xl:text-md lg:text-sm text-md">
+        <div className="px-0 sm:px-5 lg:w-[60%] w-[90%] md:py-auto py-3">
+          <p className="mb-2 xl:text-md lg:text-sm md:text-md text-sm">
             Hi, I'm Sahitya Neupane, currently studying Interactive Media Design
             - Web at Georgian College. My journey in web development started in
             2021, and I've loved every bit of it since! JavaScript is my
@@ -43,7 +43,7 @@ const AboutDescription = () => {
             target={"_blank"}
           />
         </div>
-        <div className="lg:h-[400px] lg:w-[350px] h-[350px] w-[250px]  relative">
+        <div className="lg:h-[400px] lg:w-[350px] h-[350px] w-[250px]  relative z-[1005]">
           <Image
             src={"/images/myimg.png"}
             alt="my-img"

@@ -4,6 +4,8 @@ import ButtonTypeOne from "./ButtonTypeOne";
 import TechStack from "./TechStack";
 import { techStackData } from "../utils/techStackData";
 import { useTechStack, usetechStack } from "../utils/stores/techStackStore";
+import TechCard from "./TechCard";
+import { projectsData } from "../utils/projectsData";
 
 const ProjectCard = ({
   heading,
@@ -11,7 +13,10 @@ const ProjectCard = ({
   viewSource,
   liveProject,
   techUsed,
+  index,
 }) => {
+  // console.log(techUsed);
+  console.log(index);
   const updateTechStack = useTechStack((state) => state.updateTechStackUsed);
 
   // using intersectino obeserver
@@ -41,14 +46,24 @@ const ProjectCard = ({
     observer.observe(ref.current);
   });
 
+  // setting the data for each mobile tech stack
+  const techStackMblData = projectsData[index].techUsed;
+  console.log(techStackData);
+
   return (
     <div
       className="flex justify-center  gap-x-4 
-      h-[100%] relative flex-col opacity-40"
+      h-[100%] relative flex-col opacity-40 mt-6 md:my-0 border-b pb-4 md:pb-0 md:border-0 border-textColor/20"
       ref={ref}
     >
       <ProjectHeading text={heading} />
       <ProjectDescription text={description} />
+      <div className="md:hidden block">
+        <TechCard
+          image={projectsData[index].techUsed}
+          name={projectsData[index].techUsed}
+        />
+      </div>
 
       <div className="flex gap-x-6">
         {viewSource && viewSource ? (

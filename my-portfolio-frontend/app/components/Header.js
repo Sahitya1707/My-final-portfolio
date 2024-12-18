@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 
 export const Icon = ({ icon, handleClick }) => {
   return (
-    <span className="text-xl" onClick={handleClick}>
+    <span className="text-xl cursor-pointer" onClick={handleClick}>
       {icon}
     </span>
   );
@@ -52,9 +52,10 @@ const Header = () => {
     <header className="md:relative z-[1005] max-w-[150rem] mx-auto sticky top-0">
       <nav className={`md:p-2 p-4 sticky top-0`}>
         <ul
-          className={` md:static text-2xl md:text-lg md:justify-evenly md:p-3 md:border-colorText/20 md:border-[1px] xl:w-[45%] lg:w-[60%] md:w-[70%] mx-auto rounded-xl md:bg-colorNav text-colorText tracking-wider md:items-center  left-0 w-[100%] z-[1005] md:h-[auto] h-screen backdrop-blur-lg md:bg-[colorBody] flex md:flex-row flex-col justify-center items-start md:px-auto px-10 md:gap-y-auto gap-y-5 fixed  duration-150 ${
+          className={` md:static text-2xl md:text-lg md:justify-evenly md:p-3 md:border-colorText/20 md:border-[1px] xl:w-[45%] lg:w-[60%] md:w-[70%] mx-auto rounded-xl md:bg-colorNav text-colorText tracking-wider md:items-center  left-0 w-[100%] z-[1005] md:h-[auto] h-screen backdrop-blur-lg md:bg-[colorBody] flex md:flex-row flex-col justify-center items-start md:px-auto px-10 md:gap-y-auto gap-y-5 fixed  duration-200 ${
             openModal ? "top-0 ease-in" : "top-[-100%] ease-out"
           }`}
+          onClick={handleCloseModal}
         >
           <span
             className="text-5xl absolute top-4 md:hidden cursor-pointer"
@@ -100,7 +101,7 @@ const Header = () => {
           </div>
         </ul>
         {/* mobile nav */}
-        <ul className="md:hidden  text-colorText flex justify-between p-3 border-colorText/20 border-[1px] w-[70%] mx-auto rounded-xl bg-colorNav items-center backdrop-blur-sm">
+        <ul className="md:hidden  text-colorText flex justify-between p-3 border-colorText/20 border-[1px] w-[95%] mx-auto rounded-xl bg-colorNav/60 items-center backdrop-blur-md ">
           <Icon icon={<HiOutlineMenuAlt3 />} handleClick={handleOpenModal} />
           <Link href="/">
             <Icon icon={<RiHome4Line />} handleClick={() => {}} />

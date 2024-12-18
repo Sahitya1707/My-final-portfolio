@@ -9,10 +9,8 @@ const HeaderComponent = ({ text, link, handleNavList, index, target }) => {
 
   return (
     <li
-      className={`relative after:absolute after:h-[2px]  after:duration-100 after:ease-out after:bottom-0 after:left-0 after:content-[' ']  after:bg-primary md:capitalize  uppercase ${
-        activeNav === index
-          ? "md:after:w-[100%]"
-          : "hover:after:w-[100%] after:w-[0%] "
+      className={`relative after:absolute after:h-[2px]  after:duration-100 after:ease-out after:bottom-0 after:left-0 after:content-[' ']  after:bg-primary md:capitalize  uppercase hover:after:w-[100%] ${
+        activeNav === index ? "md:after:w-[100%]" : " after:w-[0%] "
       }`}
       onClick={handleNavList}
     >

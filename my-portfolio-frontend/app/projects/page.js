@@ -73,7 +73,7 @@ const Projects = () => {
     <>
       <HeadingTypeOne text={"My Projects"} />
       <div
-        className="w-[90%] max-w-[80rem] h-[70%] lg:h-[90%] my-auto mt-10 border-2 border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 shadow-md relative px-10 flex gap-x-5 mx-auto py-4"
+        className="md:w-[90%] max-w-[80rem] h-[70%] lg:h-[80%] my-auto mt-10 md:border-2 md:border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 md:shadow-md relative px-4 md:flex gap-x-5 mx-auto md:py-4   border-b border-colorNav/80"
         style={{
           scrollbarWidth: "none",
         }}
@@ -82,7 +82,7 @@ const Projects = () => {
         ref={projectRef}
       >
         <div
-          className="w-[55%] "
+          className="md:w-[55%] "
           style={
             {
               // scrollbarWidth: "none",
@@ -98,11 +98,12 @@ const Projects = () => {
                 viewSource={e.source_link}
                 liveProject={e.live_link}
                 techUsed={projectsData[techStackIndex].techUsed}
+                index={i}
               />
             );
           })}
         </div>
-        <div className="w-[50%] px-4 sticky top-[0%] flex items-center">
+        <div className="w-[50%] px-4 sticky top-[0%]  items-center hidden md:flex">
           <TechStack />
         </div>
 
