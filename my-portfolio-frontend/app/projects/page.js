@@ -73,7 +73,7 @@ const Projects = () => {
     <>
       <HeadingTypeOne text={"My Projects"} />
       <div
-        className="md:w-[90%] max-w-[80rem] h-[70%] lg:h-[80%] my-auto mt-10 md:border-2 md:border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 md:shadow-md relative px-4 md:flex gap-x-5 mx-auto md:py-4   border-b border-colorNav/80"
+        className="md:w-[90%] max-w-[80rem] h-[70%] lg:h-[80%] my-auto mt-10 md:border-2 md:border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 md:shadow-md relative px-4 md:flex gap-x-5 mx-auto md:py-4   border-b border-colorNav/80 pb-8"
         style={{
           scrollbarWidth: "none",
         }}

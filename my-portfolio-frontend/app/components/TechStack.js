@@ -7,7 +7,7 @@ const TechStack = ({ image, text, alt, mblVersionTechIndex }) => {
   // console.log(mblVersionTechIndex);
   // reading the tech stack which is being updated in projectCard.js
   const techStackUsed = useTechStack((state) => state.techStackUsed);
-  console.log(techStackUsed);
+  // console.log(techStackUsed);
 
   return (
     <div>
