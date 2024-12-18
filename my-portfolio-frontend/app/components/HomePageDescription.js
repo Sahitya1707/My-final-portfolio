@@ -29,11 +29,11 @@ const HomePageDescription = () => {
           link={"/about"}
         />
       </div>
+
       <BackgroundText
         text="</>"
         style={{
           WebkitTextStroke: "2px rgb(var(--primary-clr))",
-          opacity: "80%",
         }}
       />
       {/* <span
