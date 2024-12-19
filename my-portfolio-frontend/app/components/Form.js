@@ -1,6 +1,6 @@
 // This will contain all the form input, textarea
 
-export const Input = ({ label, inputType, placeholderText }) => {
+export const Input = ({ label, inputType, placeholderText, inputRequired }) => {
   const handleInput = () => {};
   return (
     <>

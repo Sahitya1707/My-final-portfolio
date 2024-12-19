@@ -23,8 +23,8 @@ app.use(
 );
 
 app.listen(port, () => {
-  console.log("App running on port 5001");
+  console.log(`App running on port ${port}`);
 });
 app.use(express.json());
-
+console.log(loginRoute);
 app.use("/admin", loginRoute);

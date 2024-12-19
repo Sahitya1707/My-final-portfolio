@@ -12,3 +12,10 @@ const adminLoginSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+// creating model
+
+const AdminLogin = mongoose.model("adminLogin", adminLoginSchema);
+
+// exporting the module
+module.export = AdminLogin;

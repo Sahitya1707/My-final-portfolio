@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import HeadingTypeOne from "../components/HeadingTypeOne";
 import ContactComponent from "../components/ContactComponent";
