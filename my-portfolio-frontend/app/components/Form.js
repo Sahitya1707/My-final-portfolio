@@ -1,22 +1,26 @@
 // This will contain all the form input, textarea
 
+import { useState } from "react";
+import { Icon } from "./Header";
 export const Input = ({ label, inputType, placeholderText, inputRequired }) => {
   const handleInput = () => {};
   return (
     <>
       <label
         htmlFor={label}
-        className="capitalize text-md tracking-wider  font-semibold mt-4"
+        className="capitalize text-md tracking-wider  font-semibold mt-4 text-colorText"
       >
         {label}
       </label>
+
       <input
         id={label}
         type={inputType}
         onChange={handleInput}
         placeholder={`${placeholderText}`}
-        className=" text-[black] p-2  rounded-sm w-full focus:outline-primary "
+        className={` text-[black] p-2  rounded-sm w-full focus:outline-primary `}
         name={label}
+        required
       />
     </>
   );
@@ -37,6 +41,7 @@ export const TextArea = ({ label, placeholderText, rows }) => {
         id={label}
         placeholder={`${placeholderText}`}
         className="text-[black]  p-2  rounded-sm w-full focus:outline-primary"
+        required
       />
     </>
   );

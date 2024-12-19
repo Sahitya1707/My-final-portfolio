@@ -18,6 +18,7 @@ const AppLayout = ({ children }) => {
 
   // read current path url
   const pathname = usePathname();
+  console.log(pathname);
 
   // const { activeNav, setActiveNav } = useContext(ActiveNavContext);
   const setActiveNav = useActiveNav((state) => state.updateActiveNav);
@@ -68,10 +69,14 @@ const AppLayout = ({ children }) => {
     <body
       className={` bg-colorBody ${theme} max-w-full w-full lg:overflow-clip overflow-auto lg:max-h-screen max-h-auto `}
     >
-      <Header />
-      <main className="relative px-[3rem] md:px-[5rem] xl:px-[12rem] lg:py-[2rem] text-colorText max-w-[150rem] z-[1000] mx-auto lg:h-[80vh] lg:min-h-auto min-h-[90vh]">
-        {children}
-        {/* <span
+      {pathname.includes("/admin") ? (
+        <main className="">{children}</main>
+      ) : (
+        <>
+          <Header />
+          <main className="relative px-[3rem] md:px-[5rem] xl:px-[12rem] lg:py-[2rem] text-colorText max-w-[150rem] z-[1000] mx-auto lg:h-[80vh] lg:min-h-auto min-h-[90vh]">
+            {children}
+            {/* <span
           className="   flex text-colorText/5 text-[20rem] stroke-none font-poppins-500 rotate-[-10deg]"
           style={{
             WebkitTextStroke: "2px rgb(var(--primary-clr))",
@@ -80,9 +85,11 @@ const AppLayout = ({ children }) => {
         >
           {backgroundText}
         </span> */}
-      </main>
-      <SocialMediaHandle />
-      <Footer />
+          </main>
+          <SocialMediaHandle />
+          <Footer />
+        </>
+      )}
     </body>
   );
 };

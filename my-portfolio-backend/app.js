@@ -7,9 +7,12 @@ const connectDB = require("./config/dbConnection");
 
 const clientDomain = process.env.CLIENT_DOMAIN;
 const loginRoute = require("./routes/admin/admin");
+const cookieParser = require("cookie-parser");
 
 // setting the port
 const port = process.env.PORT || 6001;
+
+app.use(cookieParser());
 
 //
 connectDB();
@@ -26,5 +29,5 @@ app.listen(port, () => {
   console.log(`App running on port ${port}`);
 });
 app.use(express.json());
-console.log(loginRoute);
+
 app.use("/admin", loginRoute);

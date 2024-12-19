@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Description from "./Description";
 import { Input, TextArea } from "./Form";
 import ButtonTypeOne from "./ButtonTypeOne";
-import handleLogin from "../actions/login";
+
+import handleMessage from "../actions/sendMessage";
 
 const ContactComponent = () => {
   const handleSubmit = async (formData) => {};
@@ -17,7 +18,7 @@ const ContactComponent = () => {
       "
       />
       <form
-        action={handleLogin}
+        action={handleMessage}
         className="flex flex-col w-[100%] md:w-[30rem] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-3 sm:p-5 rounded-md sm:rounded-xl shadow-colorText/20 shadow-md  sm:mt-[5rem] my-4"
       >
         <Input

@@ -4,17 +4,18 @@ import { backendURI } from "../utils/secret";
 
 export default async function handleLogin(formData) {
   console.log(formData.get("email"));
-  console.log(backendURI);
+  console.log(formData.get("password"));
+
   try {
     // const formData = new FormData(e.currentTarget);
     // console.log(e.currentTarget);
     const response = await fetch(`${backendURI}/admin/login`, {
       method: "POST",
-      header: {
-        "Content-Type": "applicaiton/json",
+      headers: {
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: formData.get("email"),
+        email: "neuapnesahitya",
         password: formData.get("password"),
       }),
       credentials: "include",
@@ -23,7 +24,7 @@ export default async function handleLogin(formData) {
       console.log("ok");
     }
 
-    console.log(formData.entries());
+    console.log(formData.get("email"));
   } catch (err) {}
   // e.preventDefault();
   // why not use State for form
