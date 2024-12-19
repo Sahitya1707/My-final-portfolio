@@ -27,7 +27,7 @@ const ContactComponent = () => {
       <form
         action={handleSubmit}
         // method="post"
-        className="flex flex-col w-[30em] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-5 rounded-xl shadow-colorText/20 shadow-md md:mt-4 mt-[5rem]"
+        className="flex flex-col w-[25rem] md:w-[30rem] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-5 rounded-xl shadow-colorText/20 shadow-md md:mt-4 mt-[5rem]"
       >
         <Input type="text" placeholderText={"Enter Your Name"} label={"name"} />
         <Input
