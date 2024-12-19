@@ -7,6 +7,7 @@ const { getLogin } = require("../../controllers/getLogin");
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 
+// router.post("/register", loginUser);
 router.post("/login", getLogin);
 
 module.exports = router;

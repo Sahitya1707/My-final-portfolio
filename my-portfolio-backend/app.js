@@ -8,6 +8,7 @@ const connectDB = require("./config/dbConnection");
 const clientDomain = process.env.CLIENT_DOMAIN;
 const loginRoute = require("./routes/admin/admin");
 const cookieParser = require("cookie-parser");
+const seedData = require("./config/seed");
 
 // setting the port
 const port = process.env.PORT || 6001;
@@ -26,6 +27,7 @@ app.use(
 );
 
 app.listen(port, () => {
+  seedData();
   console.log(`App running on port ${port}`);
 });
 app.use(express.json());
