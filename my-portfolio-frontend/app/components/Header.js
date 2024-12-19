@@ -50,7 +50,9 @@ const Header = () => {
   }, []);
   return (
     <header className="md:relative z-[1005] max-w-[150rem] mx-auto sticky top-0">
-      <nav className={`md:p-2 p-4 sticky top-0`}>
+      <nav
+        className={`md:p-2 md:pt-auto pt-4 sticky top-0 md:bg-auto  before:absolute before:top-0 before:left-0 before:right-0 before:h-4 before:backdrop-blur-sm before:z-[-1]`}
+      >
         <ul
           className={` md:static text-2xl md:text-lg md:justify-evenly md:p-3 md:border-colorText/20 md:border-[1px] xl:w-[45%] lg:w-[60%] md:w-[70%] mx-auto rounded-xl md:bg-colorNav text-colorText tracking-wider md:items-center  left-0 w-[100%] z-[1005] md:h-[auto] h-screen backdrop-blur-lg md:bg-[colorBody] flex md:flex-row flex-col justify-center items-start md:px-auto px-10 md:gap-y-auto gap-y-5 fixed  duration-200 ${
             openModal ? "top-0 ease-in" : "top-[-100%] ease-out"

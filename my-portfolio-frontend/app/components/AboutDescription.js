@@ -49,7 +49,7 @@ const AboutDescription = () => {
             alt="my-img"
             objectFit="cover"
             fill
-            className="rounded-xl w-full h-full left-0 top-0 object-cover"
+            className="rounded-sm md:rounded-xl w-full h-full left-0 top-0 object-cover"
           />
         </div>
       </div>

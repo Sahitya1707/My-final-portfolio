@@ -48,11 +48,11 @@ const ProjectCard = ({
   return (
     <div
       className="flex justify-center  gap-x-4 
-      h-[100%] relative flex-col opacity-40 mt-6 md:my-0 border-b pb-4 md:pb-0 md:border-0 border-textColor/20"
+      h-[100%] relative flex-col opacity-40 sm:mt-6 md:my-0 border-b py-4 md:pb-0 md:border-0 border-textColor/20"
     >
       <ProjectHeading text={heading} />
       <ProjectDescription text={description} />
-      <div className="md:hidden grid grid-cols-3 gap-x-3 gap-y-2">
+      <div className="md:hidden grid sm:grid-cols-3 gap-x-3 gap-y-2 grid-cols-2">
         {techStackIndexForMobile.map((e, i) => {
           return <TechCard image={e.name} name={e.tech} key={i} />;
         })}
