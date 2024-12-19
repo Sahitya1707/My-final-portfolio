@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import { Sour_Gummy, Inter, Poppins } from "next/font/google";
+import { Sour_Gummy, Poppins } from "next/font/google";
 
 import AppLayout from "./AppLayout";
 
