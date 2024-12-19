@@ -32,7 +32,7 @@ const Login = () => {
               inputRequired={true}
               inputType={showPassword}
               label={"password"}
-              placeholderText={"Enter your mail."}
+              placeholderText={"Enter your password."}
             />
             <div className="absolute right-5 top-[2rem] text-colorNav">
               {showPassword === "text" ? (

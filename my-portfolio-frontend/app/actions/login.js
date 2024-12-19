@@ -3,7 +3,7 @@
 import { backendURI } from "../utils/secret";
 
 export default async function handleLogin(formData) {
-  console.log(formData.get("email"));
+  console.log();
   console.log(formData.get("password"));
 
   try {
@@ -15,7 +15,7 @@ export default async function handleLogin(formData) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: "neuapnesahitya",
+        email: formData.get("email"),
         password: formData.get("password"),
       }),
       credentials: "include",
