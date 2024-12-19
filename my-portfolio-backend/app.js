@@ -6,6 +6,7 @@ const path = require("path");
 const connectDB = require("./config/dbConnection");
 
 const clientDomain = process.env.CLIENT_DOMAIN;
+const loginRoute = require("./routes/admin/admin");
 
 // setting the port
 const port = process.env.PORT || 6001;
@@ -25,3 +26,5 @@ app.listen(port, () => {
   console.log("App running on port 5001");
 });
 app.use(express.json());
+
+app.use("/admin", loginRoute);

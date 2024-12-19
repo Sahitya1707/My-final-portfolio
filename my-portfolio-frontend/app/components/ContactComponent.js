@@ -16,7 +16,7 @@ const ContactComponent = () => {
   };
 
   return (
-    <div className="flex items-center lg:justify-start md:justify-center mt-16 flex-col lg:h-full  px-0 w-[100%] xl:w-[80%]  mx-auto min-h-[inherit] md:mt-auto ">
+    <div className="flex justify-center items-center lg:justify-start md:justify-center mt-0 sm:mt-16 flex-col lg:h-full  px-0 w-[100%] xl:w-[80%]  mx-auto min-h-[inherit] md:mt-2 ">
       <Description
         text="   
         Looking to hire a passionate developer, need a standout website, or just
@@ -27,7 +27,7 @@ const ContactComponent = () => {
       <form
         action={handleSubmit}
         // method="post"
-        className="flex flex-col w-[25rem] md:w-[30rem] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-5 rounded-xl shadow-colorText/20 shadow-md md:mt-4 mt-[5rem]"
+        className="flex flex-col w-[100%] md:w-[30rem] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-3 sm:p-5 rounded-md sm:rounded-xl shadow-colorText/20 shadow-md  sm:mt-[5rem] my-4"
       >
         <Input type="text" placeholderText={"Enter Your Name"} label={"name"} />
         <Input
