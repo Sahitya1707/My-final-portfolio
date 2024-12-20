@@ -12,6 +12,7 @@ export default async function handleLogin(formData) {
     const response = await fetch(`${backendURI}/admin/login`, {
       method: "POST",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -25,7 +26,9 @@ export default async function handleLogin(formData) {
     }
 
     console.log(formData.get("email"));
-  } catch (err) {}
+  } catch (err) {
+    console.log("err", err);
+  }
   // e.preventDefault();
   // why not use State for form
   // https://medium.com/@TheKalpit/stop-using-usestate-for-form-data-ce5cc9a4ce93

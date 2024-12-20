@@ -20,6 +20,7 @@ export const Input = ({ label, inputType, placeholderText, inputRequired }) => {
         placeholder={`${placeholderText}`}
         className={` text-[black] p-2  rounded-sm w-full focus:outline-primary `}
         name={label}
+        autoComplete="fill"
         required
       />
     </>
