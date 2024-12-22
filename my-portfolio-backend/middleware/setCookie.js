@@ -1,8 +1,7 @@
 const sendCookie = (expiryTime, token, tokenName, res) => {
   return res.cookie(tokenName, token, {
     httpOnly: true,
-    secure: false,
-
+    secure: true,
     sameSite: "None",
     expires: new Date(Date.now() + expiryTime),
   });

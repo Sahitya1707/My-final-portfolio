@@ -7,9 +7,10 @@ import handleLogin from "../../actions/login";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { Input } from "@/app/components/Form";
 import ButtonTypeOne from "@/app/components/ButtonTypeOne";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Icon } from "@/app/components/Header";
 import { backendURI } from "@/app/utils/secret";
+import ProtectedRoute from "@/app/components/HOC/ProtectedRoute";
 
 const Login = () => {
   const { push } = useRouter();
@@ -54,17 +55,8 @@ const Login = () => {
       });
 
       if (response.ok) {
-        console.log("");
-        // push("/admin/dashboard");
+        push("/admin/dashboard");
       }
-
-      // const setCookieHeader = response.headers.get("set-cookie");
-      // console.log(setCookieHeader);
-      // const cookieStore = await cookies();
-      // if (setCookieHeader) {
-      //   // await cookies().set(setCookieHeader);
-      //   cookieStore.set(setCookieHeader);
-      // }
     } catch (err) {
       console.log("err", err);
     }
@@ -73,6 +65,32 @@ const Login = () => {
     // https://medium.com/@TheKalpit/stop-using-usestate-for-form-data-ce5cc9a4ce93
   }
 
+  // running the useEffect once to check if there is token or not
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const authResponse = await fetch(`${backendURI}/admin/verify`, {
+          method: "GET",
+          credentials: "include",
+        });
+        console.log(authResponse);
+        if (authResponse.ok) {
+          console.log("ok");
+          push("/admin/dashboard");
+        }
+        if (!authResponse.ok) {
+          console.log("not okay");
+          push("/admin/login");
+        }
+      } catch (err) {
+        console.log(err);
+        // add some auth like need login using global state management.
+
+        router.push("/admin/login");
+      }
+    };
+    checkAuth();
+  }, []);
   return (
     <div className="text-center h-[100vh] w-[40%] max-w-[35rem] mx-auto flex flex-col justify-center">
       <div className="border-primary border-solid border-2 p-6 rounded-lg">
@@ -124,4 +142,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ProtectedRoute(Login);
