@@ -1,4 +1,6 @@
 "use client";
+import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ProjectHeading } from "@/app/components/ProjectComponent";
 
 import handleLogin from "../../actions/login";
@@ -10,6 +12,7 @@ import { Icon } from "@/app/components/Header";
 import { backendURI } from "@/app/utils/secret";
 
 const Login = () => {
+  const { push } = useRouter();
   const [showPassword, setShowPassword] = useState("password");
   const [formData, setFormData] = useState({
     email: "",
@@ -40,7 +43,7 @@ const Login = () => {
       const response = await fetch(`${backendURI}/admin/login`, {
         method: "POST",
         headers: {
-          Accept: "application/json",
+          // Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -51,7 +54,8 @@ const Login = () => {
       });
 
       if (response.ok) {
-        console.log("ok");
+        console.log("");
+        // push("/admin/dashboard");
       }
 
       // const setCookieHeader = response.headers.get("set-cookie");
@@ -61,10 +65,6 @@ const Login = () => {
       //   // await cookies().set(setCookieHeader);
       //   cookieStore.set(setCookieHeader);
       // }
-
-      if (!response.ok) {
-        throw new Error("Login failed");
-      }
     } catch (err) {
       console.log("err", err);
     }

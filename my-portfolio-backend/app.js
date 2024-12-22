@@ -22,7 +22,7 @@ app.use(
   cors({
     origin: clientDomain,
     credentials: true,
-    methods: "GET,POST,PUT,DELETE,HEAD,OPTIONS",
+    // methods: "GET,POST,PUT,DELETE,HEAD,OPTIONS",
   })
 );
 

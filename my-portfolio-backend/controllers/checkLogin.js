@@ -14,9 +14,8 @@ const checkLogin = async (req, res, next) => {
         if (err) {
           console.log("Error", err);
         }
-        console.log(result);
+
         if (result) {
-          console.log("inside the result");
           const accessToken = generateToken(
             email,
             process.env.ACCESS_TOKEN_SIGNATURE,
@@ -31,19 +30,17 @@ const checkLogin = async (req, res, next) => {
           );
 
           // sending the token to frontend
-          const refreshTokenExpiry = 60 * 60 * 24 * 20;
+          const refreshTokenExpiry = 60 * 60 * 24 * 20 * 1000;
           const accessTokenExpiry = 60 * 15 * 1000;
-          console.log("sending the cookie");
+
           sendCookie(refreshTokenExpiry, refreshToken, "refreshToken", res);
           sendCookie(accessTokenExpiry, accessToken, "accessToken", res);
-          console.log("safafdaf the cookie");
-          console.log(res.getHeaders());
+
           // sending message authentication done
-          res.send({
+          res.json({
             success: true,
             message: "Authentication successfull",
           });
-          console.log("json send as well");
         } else {
           res.status(401).send({ message: "Invalid Credentials" });
         }
