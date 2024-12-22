@@ -3,7 +3,7 @@ const sendCookie = require("../middleware/setCookie");
 const AdminData = require("../modals/adminLogin");
 const bcrypt = require("bcryptjs");
 
-const checkLogin = async (req, res) => {
+const checkLogin = async (req, res, next) => {
   const { email, password } = req.body;
 
   AdminData.findOne({ email: req.body.email }).then((loginData) => {
@@ -33,13 +33,17 @@ const checkLogin = async (req, res) => {
           // sending the token to frontend
           const refreshTokenExpiry = 60 * 60 * 24 * 20;
           const accessTokenExpiry = 60 * 15 * 1000;
+          console.log("sending the cookie");
           sendCookie(refreshTokenExpiry, refreshToken, "refreshToken", res);
           sendCookie(accessTokenExpiry, accessToken, "accessToken", res);
+          console.log("safafdaf the cookie");
+          console.log(res.getHeaders());
           // sending message authentication done
-          res.json({
+          res.send({
             success: true,
             message: "Authentication successfull",
           });
+          console.log("json send as well");
         } else {
           res.status(401).send({ message: "Invalid Credentials" });
         }

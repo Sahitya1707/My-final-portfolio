@@ -2,8 +2,13 @@
 
 import { useState } from "react";
 import { Icon } from "./Header";
-export const Input = ({ label, inputType, placeholderText, inputRequired }) => {
-  const handleInput = () => {};
+export const Input = ({
+  label,
+  inputType,
+  placeholderText,
+  inputRequired,
+  handleInput,
+}) => {
   return (
     <>
       <label

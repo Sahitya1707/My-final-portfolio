@@ -1,11 +1,9 @@
 // it will contain the login server form action
 "use server";
+import { cookies } from "next/headers";
 import { backendURI } from "../utils/secret";
 
 export default async function handleLogin(formData) {
-  console.log();
-  console.log(formData.get("password"));
-
   try {
     // const formData = new FormData(e.currentTarget);
     // console.log(e.currentTarget);
@@ -21,11 +19,22 @@ export default async function handleLogin(formData) {
       }),
       credentials: "include",
     });
+
     if (response.ok) {
       console.log("ok");
     }
 
-    console.log(formData.get("email"));
+    const setCookieHeader = response.headers.get("set-cookie");
+    console.log(setCookieHeader);
+    const cookieStore = await cookies();
+    if (setCookieHeader) {
+      // await cookies().set(setCookieHeader);
+      cookieStore.set(setCookieHeader);
+    }
+
+    if (!response.ok) {
+      throw new Error("Login failed");
+    }
   } catch (err) {
     console.log("err", err);
   }

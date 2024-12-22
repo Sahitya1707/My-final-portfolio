@@ -27,7 +27,7 @@ app.use(
 );
 
 app.listen(port, () => {
-  seedData();
+  // seedData();
   console.log(`App running on port ${port}`);
 });
 

@@ -1,10 +1,11 @@
 const sendCookie = (expiryTime, token, tokenName, res) => {
-  res.cookie(tokenName, token, {
+  console.log(expiryTime);
+  return res.cookie(tokenName, token, {
     httpOnly: true,
-    secure: false,
+    secure: "",
+
     sameSite: "None",
     expires: new Date(Date.now() + expiryTime),
   });
-  console.log(`Cookie set: ${tokenName} = ${token}`);
 };
 module.exports = sendCookie;
