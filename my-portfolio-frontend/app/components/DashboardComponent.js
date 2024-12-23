@@ -31,6 +31,7 @@ export const DashboardMainComponent = ({
   btnColor,
   btnBgColor,
   componentBgColor,
+  handleClick,
   btnText,
 }) => {
   return (
@@ -49,6 +50,7 @@ export const DashboardMainComponent = ({
         color={btnColor}
         bgColor={btnBgColor}
         link={linkText}
+        handleClick={handleClick}
       />
     </div>
   );

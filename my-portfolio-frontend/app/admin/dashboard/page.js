@@ -4,14 +4,22 @@ import ProtectedRoute from "@/app/components/HOC/ProtectedRoute";
 import { ProjectHeading } from "@/app/components/ProjectComponent";
 import { CiMenuFries } from "react-icons/ci";
 import { RiPagesLine } from "react-icons/ri";
+import { GrTechnology } from "react-icons/gr";
+import { useDashboardPopup } from "@/app/utils/stores/dashboardPopup";
 
 const Dashboard = () => {
+  const updatePopupActive = useDashboardPopup(
+    (state) => state.updatePopupActive
+  );
+  const handleMenuPopup = () => {
+    updatePopupActive(true);
+  };
   return (
     <div className="">
       <ProjectHeading text={"Dashboard"} />
-      <div className="flex my-4 gap-4">
+      <div className="flex my-4 gap-y-4 gap-x-6">
         <DashboardMainComponent
-          // link={"/admin/dashboard/menu"}
+          handleClick={handleMenuPopup}
           linkText={""}
           text={"Menus"}
           componentBgColor={"primary"}
@@ -26,6 +34,15 @@ const Dashboard = () => {
           componentBgColor={"primary"}
           icon={<RiPagesLine />}
           btnText={"Edit Page"}
+          btnColor={"primary"}
+          btnBgColor={"colorText"}
+        />
+        <DashboardMainComponent
+          linkText={"/admin/dashboard/techstack"}
+          text={"Tech Stack"}
+          componentBgColor={"primary"}
+          icon={<GrTechnology />}
+          btnText={"Edit Tech Stack"}
           btnColor={"primary"}
           btnBgColor={"colorText"}
         />

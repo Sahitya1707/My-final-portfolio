@@ -13,7 +13,7 @@ export const Input = ({
     <>
       <label
         htmlFor={label}
-        className="capitalize text-md tracking-wider  font-semibold mt-4 text-colorText"
+        className="capitalize text-md tracking-wider  font-semibold mt-5 text-colorText"
       >
         {label}
       </label>
