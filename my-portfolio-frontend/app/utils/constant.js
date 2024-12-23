@@ -67,8 +67,8 @@ export const dashboardMenu = [
   },
   {
     icon: <LiaPagerSolid />,
-    link: "/admin/page",
-    text: "page",
+    link: "/admin/pages",
+    text: "pages",
   },
   {
     icon: <GoProject />,

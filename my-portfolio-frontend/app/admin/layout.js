@@ -13,7 +13,7 @@ export default function AdminLayout({ children }) {
   useEffect(() => {
     if (pathname === "/admin/dashboard") {
       updateActiveDashboard(0);
-    } else if (pathname === "/admin/page") {
+    } else if (pathname === "/admin/pages") {
       updateActiveDashboard(1);
     } else if (pathname === "/admin/projects") {
       updateActiveDashboard(2);

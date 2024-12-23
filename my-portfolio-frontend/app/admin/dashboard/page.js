@@ -21,8 +21,7 @@ const Dashboard = () => {
           btnBgColor={"colorText"}
         />
         <DashboardMainComponent
-          link={"/admin/page"}
-          linkText={""}
+          linkText={"/admin/pages"}
           text={"Pages"}
           componentBgColor={"primary"}
           icon={<RiPagesLine />}

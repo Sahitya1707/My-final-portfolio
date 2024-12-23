@@ -8,14 +8,13 @@ import { colorMapping } from "../utils/Colors";
 
 export const DashboardIconText = ({ icon, text, link, index }) => {
   const activeDashboard = useActiveNav((state) => state.activeDashboard);
-  console.log(activeDashboard, index);
 
   return (
     <Link href={link}>
       <li
         className={`uppercase  p-2 rounded-lg text-lg  flex items-center gap-x-3 mt-3 ${
           index === activeDashboard ? "bg-colorText/100" : "bg-colorText/30"
-        } hover:bg-colorText duration-75 ease-in`}
+        } hover:bg-colorText duration-75 ease-in text-colorNav`}
       >
         <span>{icon}</span>
         <span>{text}</span>
