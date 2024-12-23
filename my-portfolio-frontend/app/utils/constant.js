@@ -1,6 +1,8 @@
 import { FaGithub, FaLink, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { CiMail } from "react-icons/ci";
-
+import { IoHome } from "react-icons/io5";
+import { LiaPagerSolid } from "react-icons/lia";
+import { GoProject } from "react-icons/go";
 export const backendConnect = "http://localhost:2001";
 export const menuItems = [
   {
@@ -55,5 +57,22 @@ export const socialMediaData = [
     icon: <CiMail />,
     link: "mailto:neupanesahitya1@gmail.com",
     target: "_self",
+  },
+];
+export const dashboardMenu = [
+  {
+    icon: <IoHome />,
+    link: "/admin/dashboard",
+    text: "Home",
+  },
+  {
+    icon: <LiaPagerSolid />,
+    link: "/admin/page",
+    text: "page",
+  },
+  {
+    icon: <GoProject />,
+    link: "/admin/projects",
+    text: "Projects",
   },
 ];
