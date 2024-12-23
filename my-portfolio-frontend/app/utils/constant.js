@@ -63,7 +63,7 @@ export const dashboardMenu = [
   {
     icon: <IoHome />,
     link: "/admin/dashboard",
-    text: "Home",
+    text: "dashboard",
   },
   {
     icon: <LiaPagerSolid />,

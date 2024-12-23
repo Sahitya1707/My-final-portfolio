@@ -29,11 +29,11 @@ export default function AdminLayout({ children }) {
       ) : (
         <>
           <div className="relative">
-            <div className="fixed  left-0 top-0 bottom-0 bg-primary w-[15rem] shadow-sm shadow-colorText p-4">
+            <div className="fixed  left-0 top-0 bottom-0 bg-primary w-[15rem] shadow-sm shadow-colorText p-4 h-[100vh]">
               <Dashboard />
             </div>
 
-            {/* <div className="w-[70^]">{children}</div> */}
+            <div className="pl-[20rem] text-colorText py-5">{children}</div>
           </div>{" "}
         </>
       )}
