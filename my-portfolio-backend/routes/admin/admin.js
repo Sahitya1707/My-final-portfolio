@@ -12,5 +12,6 @@ router.use(express.json());
 router.post("/login", checkLogin);
 // verify if there is cookie or not
 router.get("/verify", authUser);
+//post the data
 
 module.exports = router;

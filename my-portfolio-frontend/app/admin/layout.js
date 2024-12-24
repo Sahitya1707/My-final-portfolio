@@ -3,13 +3,13 @@ import { usePathname } from "next/navigation";
 import Dashboard from "../components/Dashboard";
 import { useEffect } from "react";
 import { useActiveNav } from "../utils/stores/activeNav";
-import DashboardPopup from "../components/DashboardPopup";
-import { useDashboardPopup } from "../utils/stores/dashboardPopup";
+import DashboardPopup from "../components/MenuPopup";
+import { useMenuPopup } from "../utils/stores/menuPopup";
 // import Dashboard from "";
 
 export default function AdminLayout({ children }) {
   const pathname = usePathname();
-  const popupDashboard = useDashboardPopup((state) => state.popupActive);
+  const popupDashboard = useMenuPopup((state) => state.popupActive);
   const updateActiveDashboard = useActiveNav(
     (state) => state.updateActiveDashboard
   );
@@ -20,11 +20,13 @@ export default function AdminLayout({ children }) {
       updateActiveDashboard(1);
     } else if (pathname === "/admin/projects") {
       updateActiveDashboard(2);
+    } else if (pathname === "/admin/techstack") {
+      updateActiveDashboard(3);
     } else {
       updateActiveDashboard(0);
     }
   }, [pathname]);
-  console.log(pathname);
+
   return (
     <>
       {pathname && pathname.includes("/login") ? (

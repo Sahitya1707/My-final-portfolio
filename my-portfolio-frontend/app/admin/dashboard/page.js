@@ -5,12 +5,10 @@ import { ProjectHeading } from "@/app/components/ProjectComponent";
 import { CiMenuFries } from "react-icons/ci";
 import { RiPagesLine } from "react-icons/ri";
 import { GrTechnology } from "react-icons/gr";
-import { useDashboardPopup } from "@/app/utils/stores/dashboardPopup";
+import { useMenuPopup } from "@/app/utils/stores/menuPopup";
 
 const Dashboard = () => {
-  const updatePopupActive = useDashboardPopup(
-    (state) => state.updatePopupActive
-  );
+  const updatePopupActive = useMenuPopup((state) => state.updatePopupActive);
   const handleMenuPopup = () => {
     updatePopupActive(true);
   };
@@ -38,7 +36,7 @@ const Dashboard = () => {
           btnBgColor={"colorText"}
         />
         <DashboardMainComponent
-          linkText={"/admin/dashboard/techstack"}
+          linkText={"/admin/techstack"}
           text={"Tech Stack"}
           componentBgColor={"primary"}
           icon={<GrTechnology />}

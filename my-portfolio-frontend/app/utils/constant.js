@@ -3,6 +3,7 @@ import { CiMail } from "react-icons/ci";
 import { IoHome } from "react-icons/io5";
 import { LiaPagerSolid } from "react-icons/lia";
 import { GoProject } from "react-icons/go";
+import { GrTechnology } from "react-icons/gr";
 export const backendConnect = "http://localhost:2001";
 export const menuItems = [
   {
@@ -74,5 +75,10 @@ export const dashboardMenu = [
     icon: <GoProject />,
     link: "/admin/projects",
     text: "Projects",
+  },
+  {
+    icon: <GrTechnology />,
+    link: "/admin/techstack",
+    text: "Techstack",
   },
 ];
