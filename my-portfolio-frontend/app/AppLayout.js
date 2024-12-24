@@ -10,8 +10,11 @@ import SocialMediaHandle from "./components/SocialMediaHandle";
 import { useBackgroundText } from "./utils/stores/backgroundTextStore";
 import { useTheme } from "./utils/stores/theme";
 import { useActiveNav } from "./utils/stores/activeNav";
+import Popup from "./components/Popup";
+import { usePopupStatus } from "./utils/stores/popup";
 
 const AppLayout = ({ children }) => {
+  const popupStatus = usePopupStatus((state) => state.popupStatus);
   // reading theme through zustand
   const theme = useTheme((state) => state.theme);
   const setTheme = useTheme((state) => state.updateTheme);
@@ -70,9 +73,14 @@ const AppLayout = ({ children }) => {
       className={` bg-colorBody ${theme} max-w-full w-full lg:overflow-clip overflow-auto lg:max-h-screen max-h-auto `}
     >
       {pathname.includes("/admin") ? (
-        <main className="">{children}</main>
+        <main className="">
+          {popupStatus ? <Popup /> : null}
+
+          {children}
+        </main>
       ) : (
         <>
+          <Popup />
           <Header />
           <main className="relative px-[3rem] md:px-[5rem] xl:px-[12rem] lg:py-[2rem] text-colorText max-w-[150rem] z-[1000] mx-auto lg:h-[80vh] lg:min-h-auto min-h-[90vh]">
             {children}

@@ -18,14 +18,13 @@ const checkToken = (req, res, next) => {
       next();
     }
   } catch (err) {
-    if (!accessToken) {
-      console.log("No access token found");
-    }
     try {
       const decodeRefreshToken = jwt.verify(
         refreshToken,
         process.env.REFRESH_TOKEN_SIGNATURE
       );
+      console.log("refresh token decode");
+      console.log(decodeRefreshToken);
       if (decodeRefreshToken) {
         next();
       }

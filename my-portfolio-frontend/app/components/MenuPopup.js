@@ -7,8 +7,20 @@ import { RxCross2 } from "react-icons/rx";
 import { useMenuPopup } from "../utils/stores/menuPopup";
 import { backendURI } from "../utils/secret";
 import { Content } from "next/font/google";
+import { usePopupStatus } from "../utils/stores/popup";
 
 const MenuPopup = ({ width }) => {
+  // ------------show popup after submission
+  const updatePopupContent = usePopupStatus(
+    (state) => state.updatePopupContent
+  );
+  const updatePopupStatusForm = usePopupStatus(
+    (state) => state.updatePopupStatus
+  );
+  const updateSuccessMessageIcon = usePopupStatus(
+    (state) => state.updateSuccessMessageIcon
+  );
+  // -----------
   const updatePopup = useMenuPopup((state) => state.updatePopupActive);
   const [formData, setFormData] = useState({
     name: "",
@@ -33,6 +45,9 @@ const MenuPopup = ({ width }) => {
         credentials: "include",
       });
       if (response.ok) {
+        updatePopupStatusForm(true);
+        updateSuccessMessageIcon(true);
+        updatePopupContent("Submitted success fully");
       }
     } catch (err) {}
   };
