@@ -8,29 +8,14 @@ import { GrTechnology } from "react-icons/gr";
 import { useMenuPopup } from "@/app/utils/stores/menuPopup";
 import { useEffect } from "react";
 import { backendURI } from "@/app/utils/secret";
+import MenuComponent from "@/app/components/MenuComponent";
 
 const Dashboard = () => {
   const updatePopupActive = useMenuPopup((state) => state.updatePopupActive);
   const handleMenuPopup = () => {
     updatePopupActive(true);
   };
-  useEffect(() => {
-    const getMenu = async () => {
-      try {
-        const response = await fetch(`${backendURI}/admin/data/getAllMenu`, {
-          method: "GET",
-          headers: {},
-        });
-        if (response.ok) {
-        }
-        const data = await response.json();
-        console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getMenu();
-  }, []);
+
   return (
     <div className="">
       <ProjectHeading text={"Dashboard"} />
@@ -41,7 +26,7 @@ const Dashboard = () => {
           text={"Menus"}
           componentBgColor={"primary"}
           icon={<CiMenuFries />}
-          btnText={"Edit Menu"}
+          btnText={"Add Menu"}
           btnColor={"primary"}
           btnBgColor={"colorText"}
         />
@@ -63,6 +48,9 @@ const Dashboard = () => {
           btnColor={"primary"}
           btnBgColor={"colorText"}
         />
+      </div>
+      <div className="px-6">
+        <MenuComponent />
       </div>
     </div>
   );
