@@ -86,14 +86,14 @@ const Login = () => {
         console.log(err);
         // add some auth like need login using global state management.
 
-        router.push("/admin/login");
+        push("/admin/login");
       }
     };
     checkAuth();
   }, []);
   return (
-    <div className="text-center h-[100vh] w-[40%] max-w-[35rem] mx-auto flex flex-col justify-center">
-      <div className="border-primary border-solid border-2 p-6 rounded-lg">
+    <div className="text-center h-[100vh] w-[40%] max-w-[35rem] mx-auto flex flex-col justify-center  ">
+      <div className="border-primary border-solid border-2 p-6 rounded-lg shadow-lg shadow-colorText/40">
         {}
         <ProjectHeading text={"Admin Login"} />
         <form

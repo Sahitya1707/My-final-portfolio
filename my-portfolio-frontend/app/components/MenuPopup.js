@@ -47,11 +47,20 @@ const MenuPopup = ({ width }) => {
       });
       console.log(response);
       if (response.ok) {
+        // closing the menu after successfull submission
+        updatePopup(false);
+        // this is for the small popup
         updatePopupStatusForm(true);
         updateSuccessMessageIcon(true);
         updatePopupContent("Submitted success fully");
+      } else {
+        updatePopupStatusForm(true);
+        updateSuccessMessageIcon(false);
+        updatePopupContent("Error submitting the data.");
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
   const handleMenuForm = (e) => {
     setFormData({ ...formData, [`${e.target.name}`]: e.target.value });

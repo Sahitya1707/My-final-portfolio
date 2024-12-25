@@ -17,11 +17,7 @@ const addMenu = async (req, res, next) => {
       menuName: name.toLowerCase(),
       menuLink: link.toLowerCase(),
     });
-    console.log(newMenu);
-    mongoose.connection.on("connected", () => console.log("MongoDB Connected"));
-    mongoose.connection.on("error", (err) =>
-      console.error("Connection error:", err)
-    );
+
     await newMenu.save();
     console.log("saved");
     res.json({ message: "Menu item added successfully", data: newMenu });
