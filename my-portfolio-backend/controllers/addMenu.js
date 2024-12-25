@@ -1,23 +1,30 @@
 const MenuData = require("../modals/menu");
+const mongoose = require("mongoose");
 
 const addMenu = async (req, res, next) => {
   console.log("Menu has been called");
   try {
     const { name, link } = req.body;
-    const existingMenu = await MenuData.findOne({ name: name });
-    if (existingMenu) {
+    console.log(name, link);
+    const existingMenu = await MenuData.findOne({ menuName: name });
+
+    if (existingMenu === true) {
       // If the item exists, respond with an appropriate message
       return res.status(400).json({ message: "Menu item already exists" });
     }
+    console.log(MenuData);
     const newMenu = new MenuData({
-      name: name.toLowerCase(),
-      link: link.toLowerCase(),
+      menuName: name.toLowerCase(),
+      menuLink: link.toLowerCase(),
     });
-
+    console.log(newMenu);
+    mongoose.connection.on("connected", () => console.log("MongoDB Connected"));
+    mongoose.connection.on("error", (err) =>
+      console.error("Connection error:", err)
+    );
     await newMenu.save();
-    res
-      .status(201)
-      .json({ message: "Menu item added successfully", data: newMenu });
+    console.log("saved");
+    res.json({ message: "Menu item added successfully", data: newMenu });
     console.log("saved");
   } catch (err) {
     if (err.code === 11000) {

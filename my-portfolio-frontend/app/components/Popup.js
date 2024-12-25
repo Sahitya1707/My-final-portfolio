@@ -12,11 +12,13 @@ const Popup = () => {
 
   useEffect(() => {
     if (popupStatus === true) {
-      setTimeout(setPopupShow(false), 3000);
+      setTimeout(() => {
+        setPopupShow(false);
+      }, 3000);
     }
   }, [popupStatus]);
   return (
-    <div className="fixed top-5 right-5   bg-colorNav p-2 rounded-lg flex items-center gap-x-2 shadow-sm shadow-colorText/30 text-colorText">
+    <div className="fixed top-5 right-5   bg-colorNav p-2 rounded-lg flex items-center gap-x-2 shadow-sm shadow-colorText/30 text-colorText z-[2000]">
       {successMessageIcon ? (
         <span className="text-[green] border-[green] border-2  border-solid p-1 rounded-full text-lg">
           <TiTick />

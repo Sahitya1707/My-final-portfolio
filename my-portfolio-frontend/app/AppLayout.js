@@ -15,13 +15,13 @@ import { usePopupStatus } from "./utils/stores/popup";
 
 const AppLayout = ({ children }) => {
   const popupStatus = usePopupStatus((state) => state.popupStatus);
+  console.log(popupStatus);
   // reading theme through zustand
   const theme = useTheme((state) => state.theme);
   const setTheme = useTheme((state) => state.updateTheme);
 
   // read current path url
   const pathname = usePathname();
-  console.log(pathname);
 
   // const { activeNav, setActiveNav } = useContext(ActiveNavContext);
   const setActiveNav = useActiveNav((state) => state.updateActiveNav);

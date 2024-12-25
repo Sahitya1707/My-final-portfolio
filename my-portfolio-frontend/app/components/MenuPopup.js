@@ -20,6 +20,7 @@ const MenuPopup = ({ width }) => {
   const updateSuccessMessageIcon = usePopupStatus(
     (state) => state.updateSuccessMessageIcon
   );
+
   // -----------
   const updatePopup = useMenuPopup((state) => state.updatePopupActive);
   const [formData, setFormData] = useState({
@@ -31,7 +32,7 @@ const MenuPopup = ({ width }) => {
   };
   const handleMenu = async (e) => {
     e.preventDefault();
-    console.log(formData.link);
+
     try {
       const response = await fetch(`${backendURI}/admin/data/menu`, {
         method: "POST",
@@ -40,10 +41,11 @@ const MenuPopup = ({ width }) => {
         },
         body: JSON.stringify({
           name: formData.name,
-          link: `${formData.link}`,
+          link: formData.link,
         }),
         credentials: "include",
       });
+      console.log(response);
       if (response.ok) {
         updatePopupStatusForm(true);
         updateSuccessMessageIcon(true);

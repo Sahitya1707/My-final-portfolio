@@ -6,17 +6,17 @@ export const usePopupStatus = create((set) => {
     popupContent: "",
     successMessageIcon: true,
     updatePopupStatus: (popupStatus) => {
-      set(() => ({
+      set((state) => ({
         popupStatus: popupStatus,
       }));
     },
     updatePopupContent: (popupContent) => {
-      set(() => ({
+      set((state) => ({
         popupContent: popupContent,
       }));
     },
     updateSuccessMessageIcon: (successMessageIcon) => {
-      set(() => ({
+      set((state) => ({
         successMessageIcon: successMessageIcon,
       }));
     },
