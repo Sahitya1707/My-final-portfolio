@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 // import this in order to set cookies from the client component
+
 import { getCookie, setCookie } from "cookies-next";
 import SocialMediaHandle from "./components/SocialMediaHandle";
 import { useBackgroundText } from "./utils/stores/backgroundTextStore";
@@ -68,19 +69,19 @@ const AppLayout = ({ children }) => {
       setCookie("theme", theme);
     }
   }, []);
+  console.log(popupStatus);
   return (
     <body
       className={` bg-colorBody ${theme} max-w-full w-full lg:overflow-clip overflow-auto lg:max-h-screen max-h-auto `}
     >
       {pathname.includes("/admin") ? (
         <main className="">
-          {popupStatus ? <Popup /> : null}
+          {popupStatus ? <Popup /> : <></>}
 
           {children}
         </main>
       ) : (
         <>
-          <Popup />
           <Header />
           <main className="relative px-[3rem] md:px-[5rem] xl:px-[12rem] lg:py-[2rem] text-colorText max-w-[150rem] z-[1000] mx-auto lg:h-[80vh] lg:min-h-auto min-h-[90vh]">
             {children}

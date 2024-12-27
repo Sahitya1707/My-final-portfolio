@@ -3,16 +3,29 @@ import Link from "next/link";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import Icon from "./CrudIcon";
+import { backendURI } from "../utils/secret";
 
 const ListComponent = ({ text, link, id }) => {
-  const handleDelete = (id) => {
-    console.log(id);
+  const handleDelete = async (id) => {
+    // console.log(id);
+
+    try {
+      const response = await fetch(
+        `${backendURI}/admin/data/menu/delete/${id}`,
+        {
+          method: "Delete",
+          credentials: "include",
+        }
+      );
+    } catch (err) {}
   };
-  const handleEdit = (id) => {
+  const handleEdit = async (id) => {
     console.log(id);
+    try {
+    } catch (err) {}
   };
   return (
-    <li className="flex items-center justify-between   p-2 rounded-lg  my-2 border-2 border-colorText/10">
+    <li className="flex items-center justify-between   p-2 rounded-lg  my-2 border-2 border-colorText/10 bg-colorNav">
       <p>
         {`${text}  `}(
         <Link href={`${link}`} target="_blank" className="text-primary">

@@ -2,8 +2,8 @@ const AdminData = require("../modals/adminLogin");
 const jwt = require("jsonwebtoken");
 
 const checkToken = (req, res, next) => {
-  console.log("check token called");
-  console.log("------------------");
+  console.log("checkToken.js");
+
   const { refreshToken, accessToken } = req.cookies;
 
   if (!refreshToken && !accessToken) {

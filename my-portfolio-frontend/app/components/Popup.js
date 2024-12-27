@@ -13,6 +13,7 @@ const Popup = () => {
   useEffect(() => {
     if (popupStatus === true) {
       setTimeout(() => {
+        console.log(false);
         setPopupShow(false);
       }, 3000);
     }
