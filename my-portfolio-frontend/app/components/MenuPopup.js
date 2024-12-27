@@ -8,8 +8,11 @@ import { useMenuPopup } from "../utils/stores/menuPopup";
 import { backendURI } from "../utils/secret";
 import { Content } from "next/font/google";
 import { usePopupStatus } from "../utils/stores/popup";
+import { useCrudData } from "../utils/stores/crudData";
 
 const MenuPopup = ({ width }) => {
+  const setMenuData = useCrudData((state) => state.updateMenu);
+  const menuData = useCrudData((state) => state.menuData);
   // ------------show popup after submission
   const updatePopupContent = usePopupStatus(
     (state) => state.updatePopupContent
@@ -46,13 +49,18 @@ const MenuPopup = ({ width }) => {
         credentials: "include",
       });
       console.log(response);
+
       if (response.ok) {
         // closing the menu after successfull submission
         updatePopup(false);
         // this is for the small popup
         updatePopupStatusForm(true);
         updateSuccessMessageIcon(true);
-        updatePopupContent("Submitted success fully");
+        const data = await response.json();
+        updatePopupContent(data.message);
+        console.log(data.data);
+        setMenuData(data.data);
+        console.log(menuData);
       } else {
         updatePopupStatusForm(true);
         updateSuccessMessageIcon(false);

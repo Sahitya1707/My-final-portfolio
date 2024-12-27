@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import { backendURI } from "../utils/secret";
 import { useCrudData } from "../utils/stores/crudData";
@@ -8,23 +9,28 @@ import ListComponent from "./ListComponent";
 const MenuComponent = () => {
   const menuData = useCrudData((state) => state.menu);
   const setMenuData = useCrudData((state) => state.updateMenu);
+  // const refreshMenu = useCrudData((state = state.refreshMenu));
+  const getMenu = async () => {
+    try {
+      const response = await fetch(`${backendURI}/admin/data/getAllMenu`, {
+        method: "GET",
+        headers: {},
+      });
+
+      const data = await response.json();
+      console.log(data);
+      // if (JSON.stringify(menuData) !== JSON.stringify(data)) {
+      //   setMenuData(data);
+      // }
+      setMenuData(data);
+      console.log(menuData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
-    const getMenu = async () => {
-      try {
-        const response = await fetch(`${backendURI}/admin/data/getAllMenu`, {
-          method: "GET",
-          headers: {},
-        });
-        if (response.ok) {
-        }
-        const data = await response.json();
-        setMenuData(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     getMenu();
-  }, [menuData]);
+  }, []);
 
   return (
     <div>

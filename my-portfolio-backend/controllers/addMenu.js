@@ -12,7 +12,7 @@ const addMenu = async (req, res, next) => {
       // If the item exists, respond with an appropriate message
       return res.status(400).json({ message: "Menu item already exists" });
     }
-    console.log(MenuData);
+
     const newMenu = new MenuData({
       menuName: name.toLowerCase(),
       menuLink: link.toLowerCase(),
@@ -20,7 +20,9 @@ const addMenu = async (req, res, next) => {
 
     await newMenu.save();
     console.log("saved");
-    res.json({ message: "Menu item added successfully", data: newMenu });
+    // sending all menu data to frontend
+    const allMenu = await MenuData.find();
+    res.json({ message: "Menu item added successfully", data: allMenu });
     console.log("saved");
   } catch (err) {
     if (err.code === 11000) {

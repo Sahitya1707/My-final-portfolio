@@ -4,8 +4,10 @@ import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import Icon from "./CrudIcon";
 import { backendURI } from "../utils/secret";
+import { useCrudData } from "../utils/stores/crudData";
 
 const ListComponent = ({ text, link, id }) => {
+  const setMenuData = useCrudData((state) => state.updateMenu);
   const handleDelete = async (id) => {
     // console.log(id);
 
@@ -17,6 +19,9 @@ const ListComponent = ({ text, link, id }) => {
           credentials: "include",
         }
       );
+      console.log(response);
+      const data = await response.json();
+      setMenuData(data.data);
     } catch (err) {}
   };
   const handleEdit = async (id) => {

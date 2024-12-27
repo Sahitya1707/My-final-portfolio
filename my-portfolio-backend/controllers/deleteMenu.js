@@ -5,10 +5,13 @@ const deleteMenu = async (req, res) => {
   try {
     const removeMenu = await menuData.findByIdAndDelete(id);
     console.log(removeMenu);
+    // sending all menu data to frontend
+    const allMenu = await menuData.find();
     if (removeMenu) {
       res.json({
         status: true,
         message: "Successfully deleted",
+        data: allMenu,
       });
     }
   } catch (err) {
