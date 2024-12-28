@@ -5,9 +5,14 @@ import { FaEdit } from "react-icons/fa";
 import Icon from "./CrudIcon";
 import { backendURI } from "../utils/secret";
 import { useCrudData } from "../utils/stores/crudData";
+import { useMenuPopup } from "../utils/stores/menuPopup";
 
 const ListComponent = ({ text, link, id }) => {
   const setMenuData = useCrudData((state) => state.updateMenu);
+  const setPopupActive = useMenuPopup((state) => state.updatePopupActive);
+  // const setPopupActive = useCrudData((state) => state.updatePopupActive);
+  const setMenuHeading = useMenuPopup((state) => state.updateMenuHeading);
+  const setAddMenuState = useMenuPopup((state) => state.updateAddMenuState);
   const handleDelete = async (id) => {
     // console.log(id);
 
@@ -26,6 +31,9 @@ const ListComponent = ({ text, link, id }) => {
   };
   const handleEdit = async (id) => {
     console.log(id);
+    setPopupActive(true);
+    setMenuHeading("Edit Menu");
+    setAddMenuState(false);
     try {
     } catch (err) {}
   };

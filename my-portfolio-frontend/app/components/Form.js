@@ -8,6 +8,7 @@ export const Input = ({
   placeholderText,
   inputRequired,
   handleInput,
+  value,
 }) => {
   return (
     <>
@@ -20,6 +21,7 @@ export const Input = ({
 
       <input
         id={label}
+        value={value}
         type={inputType}
         onChange={handleInput}
         placeholder={`${placeholderText}`}
@@ -32,7 +34,7 @@ export const Input = ({
   );
 };
 
-export const TextArea = ({ label, placeholderText, rows }) => {
+export const TextArea = ({ label, placeholderText, rows, value }) => {
   return (
     <>
       <label
@@ -44,6 +46,7 @@ export const TextArea = ({ label, placeholderText, rows }) => {
       </label>
       <textarea
         rows={rows}
+        value={value}
         id={label}
         placeholder={`${placeholderText}`}
         className="text-[black]  p-2  rounded-sm w-full focus:outline-primary"

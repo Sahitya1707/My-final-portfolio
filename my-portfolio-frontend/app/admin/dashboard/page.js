@@ -11,9 +11,13 @@ import { backendURI } from "@/app/utils/secret";
 import MenuComponent from "@/app/components/MenuComponent";
 
 const Dashboard = () => {
-  const updatePopupActive = useMenuPopup((state) => state.updatePopupActive);
-  const handleMenuPopup = () => {
-    updatePopupActive(true);
+  const setPopupActive = useMenuPopup((state) => state.updatePopupActive);
+  const setMenuHeading = useMenuPopup((state) => state.updateMenuHeading);
+  const setAddMenuState = useMenuPopup((state) => state.updateAddMenuState);
+  const handleAddMenuPopup = () => {
+    setPopupActive(true);
+    setMenuHeading("Add menu");
+    setAddMenuState(true);
   };
 
   return (
@@ -21,7 +25,7 @@ const Dashboard = () => {
       <ProjectHeading text={"Dashboard"} />
       <div className="flex my-4 gap-y-4 gap-x-6 flex-wrap">
         <DashboardMainComponent
-          handleClick={handleMenuPopup}
+          handleClick={handleAddMenuPopup}
           linkText={""}
           text={"Menus"}
           componentBgColor={"primary"}

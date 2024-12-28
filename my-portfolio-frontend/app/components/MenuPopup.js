@@ -13,7 +13,7 @@ import { useCrudData } from "../utils/stores/crudData";
 const MenuPopup = ({ width }) => {
   const setMenuData = useCrudData((state) => state.updateMenu);
   const menuData = useCrudData((state) => state.menuData);
-  // ------------show popup after submission
+  // ------------showing success popup after submission
   const updatePopupContent = usePopupStatus(
     (state) => state.updatePopupContent
   );
@@ -26,6 +26,9 @@ const MenuPopup = ({ width }) => {
 
   // -----------
   const updatePopup = useMenuPopup((state) => state.updatePopupActive);
+  const addMenuState = useMenuPopup((state) => state.addMenuState);
+  const menuHeading = useMenuPopup((state) => state.menuHeading);
+
   const [formData, setFormData] = useState({
     name: "",
     link: "",
@@ -33,7 +36,7 @@ const MenuPopup = ({ width }) => {
   const closeMenuPopup = () => {
     updatePopup(false);
   };
-  const handleMenu = async (e) => {
+  const handleAddMenu = async (e) => {
     e.preventDefault();
 
     try {
@@ -70,6 +73,10 @@ const MenuPopup = ({ width }) => {
       console.log(err);
     }
   };
+  const handleEditMenu = async (e) => {
+    e.preventDefault();
+    console.log("edit menu");
+  };
   const handleMenuForm = (e) => {
     setFormData({ ...formData, [`${e.target.name}`]: e.target.value });
   };
@@ -91,8 +98,11 @@ const MenuPopup = ({ width }) => {
         >
           <RxCross2 />
         </span>
-        <ProjectHeading text={"Add Menu"} />
-        <form action="" onSubmit={handleMenu}>
+        <ProjectHeading text={menuHeading} />
+        <form
+          action=""
+          onSubmit={addMenuState ? handleAddMenu : handleEditMenu}
+        >
           <Input
             placeholderText={"Add Your Menu name"}
             label={"name"}
