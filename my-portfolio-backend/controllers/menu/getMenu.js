@@ -1,4 +1,4 @@
-const menuData = require("../modals/menu");
+const menuData = require("../../modals/menu");
 
 const getMenu = async (req, res, next) => {
   try {

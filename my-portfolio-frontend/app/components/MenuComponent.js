@@ -15,6 +15,7 @@ const MenuComponent = () => {
       const response = await fetch(`${backendURI}/admin/data/getAllMenu`, {
         method: "GET",
         headers: {},
+        credentials: "include",
       });
 
       const data = await response.json();

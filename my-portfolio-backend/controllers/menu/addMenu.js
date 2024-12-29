@@ -1,4 +1,4 @@
-const MenuData = require("../modals/menu");
+const MenuData = require("../../modals/menu");
 const mongoose = require("mongoose");
 
 const addMenu = async (req, res, next) => {

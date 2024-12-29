@@ -5,6 +5,7 @@ export const useMenuPopup = create((set) => {
     popupActive: false,
     addMenuState: true,
     menuHeading: "",
+    editId: null,
 
     // this will contain all the data that will be passed as a props
     updatePopupActive: (popupActive) =>
@@ -20,6 +21,11 @@ export const useMenuPopup = create((set) => {
     updateMenuHeading: (menuHeading) =>
       set((state) => ({
         menuHeading: menuHeading,
+      })),
+    //edit id through state
+    updateEditId: (editId) =>
+      set((state) => ({
+        editId: editId,
       })),
   };
 });

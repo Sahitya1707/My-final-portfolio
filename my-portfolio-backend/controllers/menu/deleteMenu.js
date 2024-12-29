@@ -1,4 +1,4 @@
-const menuData = require("../modals/menu");
+const menuData = require("../../modals/menu");
 
 const deleteMenu = async (req, res) => {
   const id = req.params.id;

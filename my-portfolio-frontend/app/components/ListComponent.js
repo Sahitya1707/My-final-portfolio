@@ -13,6 +13,7 @@ const ListComponent = ({ text, link, id }) => {
   // const setPopupActive = useCrudData((state) => state.updatePopupActive);
   const setMenuHeading = useMenuPopup((state) => state.updateMenuHeading);
   const setAddMenuState = useMenuPopup((state) => state.updateAddMenuState);
+  const setEditId = useMenuPopup((state) => state.updateEditId);
   const handleDelete = async (id) => {
     // console.log(id);
 
@@ -30,10 +31,12 @@ const ListComponent = ({ text, link, id }) => {
     } catch (err) {}
   };
   const handleEdit = async (id) => {
-    console.log(id);
+    console.log("handle edit called");
     setPopupActive(true);
     setMenuHeading("Edit Menu");
     setAddMenuState(false);
+    setEditId(id);
+
     try {
     } catch (err) {}
   };

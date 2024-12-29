@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeadingTypeOne from "./HeadingTypeOne";
 import { ProjectHeading } from "./ProjectComponent";
 import { Input } from "./Form";
@@ -28,12 +28,16 @@ const MenuPopup = ({ width }) => {
   const updatePopup = useMenuPopup((state) => state.updatePopupActive);
   const addMenuState = useMenuPopup((state) => state.addMenuState);
   const menuHeading = useMenuPopup((state) => state.menuHeading);
+  //edit id and set edit id
+  const id = useMenuPopup((state) => state.editId);
+  const setEditId = useMenuPopup((state) => state.updateEditId);
 
   const [formData, setFormData] = useState({
     name: "",
     link: "",
   });
   const closeMenuPopup = () => {
+    setEditId(null);
     updatePopup(false);
   };
   const handleAddMenu = async (e) => {
@@ -75,11 +79,58 @@ const MenuPopup = ({ width }) => {
   };
   const handleEditMenu = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await fetch(`${backendURI}/admin/data/menu/edit/${id}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          link: formData.link,
+        }),
+      });
+      console.log(response);
+    } catch (err) {}
     console.log("edit menu");
   };
   const handleMenuForm = (e) => {
     setFormData({ ...formData, [`${e.target.name}`]: e.target.value });
   };
+
+  // using useEffect for the get
+  useEffect(() => {
+    console.log("useEffect called");
+    if (!addMenuState) {
+      console.log("edit called");
+      const fetchIndividualMenu = async () => {
+        console.log("fetchIndividualMenu");
+        try {
+          const response = await fetch(
+            `${backendURI}/admin/data//get/menu/${id}`,
+            {
+              method: "GET",
+              credentials: "include",
+            }
+          );
+
+          const data = await response.json();
+          if (response.ok) {
+            console.log(data);
+            setFormData({
+              name: data.data.menuName,
+              link: data.data.menuLink,
+            });
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchIndividualMenu();
+    }
+  }, [id]);
   return (
     <div className="fixed z-[500]  h-[100vh] w-[100vw] top-0 right-0 left-0 flex items-center justify-center duration-50 ease-out ">
       <span
@@ -107,12 +158,14 @@ const MenuPopup = ({ width }) => {
             placeholderText={"Add Your Menu name"}
             label={"name"}
             inputType="text"
+            value={formData.name}
             handleInput={handleMenuForm}
           />
           <Input
             placeholderText={"Add a link to menu"}
             label={"link"}
             inputType="text"
+            value={formData.link}
             handleInput={handleMenuForm}
           />
           <ButtonTypeOne
