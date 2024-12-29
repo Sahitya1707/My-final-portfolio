@@ -12,11 +12,11 @@ const menuSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    // order: {
-    //   type: Number,
-    //   required: true,
-    //   unique: true,
-    // },
+    menuOrder: {
+      type: Number,
+      required: true,
+      unique: true,
+    },
   },
   {
     timestamps: true,

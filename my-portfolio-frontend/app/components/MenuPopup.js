@@ -11,6 +11,14 @@ import { usePopupStatus } from "../utils/stores/popup";
 import { useCrudData } from "../utils/stores/crudData";
 
 const MenuPopup = ({ width }) => {
+  // popup after submission of form
+  const setPopupStatus = usePopupStatus((store) => store.updatePopupStatus);
+  const setPopupContent = usePopupStatus((store) => store.updatePopupContent);
+  const setSuccessMessageIcon = usePopupStatus(
+    (store) => store.updateSuccessMessageIcon
+  );
+
+  // ---------------
   const setMenuData = useCrudData((state) => state.updateMenu);
   const menuData = useCrudData((state) => state.menuData);
   // ------------showing success popup after submission
@@ -35,6 +43,7 @@ const MenuPopup = ({ width }) => {
   const [formData, setFormData] = useState({
     name: "",
     link: "",
+    order: "",
   });
   const closeMenuPopup = () => {
     setEditId(null);
@@ -52,6 +61,7 @@ const MenuPopup = ({ width }) => {
         body: JSON.stringify({
           name: formData.name,
           link: formData.link,
+          order: formData.order,
         }),
         credentials: "include",
       });
@@ -61,11 +71,12 @@ const MenuPopup = ({ width }) => {
         // closing the menu after successfull submission
         updatePopup(false);
         // this is for the small popup
+
+        const data = await response.json();
         updatePopupStatusForm(true);
         updateSuccessMessageIcon(true);
-        const data = await response.json();
         updatePopupContent(data.message);
-        console.log(data.data);
+
         setMenuData(data.data);
         console.log(menuData);
       } else {
@@ -90,9 +101,16 @@ const MenuPopup = ({ width }) => {
         body: JSON.stringify({
           name: formData.name,
           link: formData.link,
+          order: formData.order,
         }),
       });
-      console.log(response);
+      // if response is okay
+      if (response.ok) {
+        updatePopup(false);
+        updatePopupStatusForm(true);
+        updateSuccessMessageIcon(true);
+        updatePopupContent("Menu Updated.");
+      }
     } catch (err) {}
     console.log("edit menu");
   };
@@ -122,6 +140,7 @@ const MenuPopup = ({ width }) => {
             setFormData({
               name: data.data.menuName,
               link: data.data.menuLink,
+              order: data.data.menuOrder,
             });
           }
         } catch (err) {
@@ -166,6 +185,13 @@ const MenuPopup = ({ width }) => {
             label={"link"}
             inputType="text"
             value={formData.link}
+            handleInput={handleMenuForm}
+          />
+          <Input
+            placeholderText={"Add a link to menu"}
+            label={"order"}
+            inputType="Number"
+            value={formData.order}
             handleInput={handleMenuForm}
           />
           <ButtonTypeOne
