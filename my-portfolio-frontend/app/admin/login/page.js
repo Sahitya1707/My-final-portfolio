@@ -11,8 +11,10 @@ import { useState, useEffect } from "react";
 import { Icon } from "@/app/components/Header";
 import { backendURI } from "@/app/utils/secret";
 import ProtectedRoute from "@/app/components/HOC/ProtectedRoute";
+import { useLoginStatus } from "@/app/utils/stores/login";
 
 const Login = () => {
+  const setAdminLoginStatus = useLoginStatus((store) => store.updateAdminLogin);
   const { push } = useRouter();
   const [showPassword, setShowPassword] = useState("password");
   const [formData, setFormData] = useState({
@@ -37,6 +39,7 @@ const Login = () => {
   async function handleLogin(e) {
     e.preventDefault();
     console.log(formData);
+
     // console.log(formData.get("password"));
     try {
       // const formData = new FormData(e.currentTarget);
@@ -55,6 +58,7 @@ const Login = () => {
       });
 
       if (response.ok) {
+        setAdminLoginStatus(true);
         push("/admin/dashboard");
       }
     } catch (err) {
@@ -73,14 +77,15 @@ const Login = () => {
           method: "GET",
           credentials: "include",
         });
-        console.log(authResponse);
+
         if (authResponse.ok) {
-          console.log("ok");
           push("/admin/dashboard");
+          setAdminLoginStatus(true);
         }
         if (!authResponse.ok) {
           console.log("not okay");
           push("/admin/login");
+          setAdminLoginStatus(false);
         }
       } catch (err) {
         console.log(err);

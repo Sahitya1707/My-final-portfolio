@@ -32,7 +32,7 @@ const Dashboard = () => {
           icon={<CiMenuFries />}
           btnText={"Add Menu"}
           btnColor={"primary"}
-          btnBgColor={"colorText"}
+          btnBgColor={"colorBody"}
         />
         <DashboardMainComponent
           linkText={"/admin/pages"}
@@ -41,7 +41,7 @@ const Dashboard = () => {
           icon={<RiPagesLine />}
           btnText={"Edit Page"}
           btnColor={"primary"}
-          btnBgColor={"colorText"}
+          btnBgColor={"colorBody"}
         />
         <DashboardMainComponent
           linkText={"/admin/techstack"}
@@ -50,7 +50,7 @@ const Dashboard = () => {
           icon={<GrTechnology />}
           btnText={"Edit Tech Stack"}
           btnColor={"primary"}
-          btnBgColor={"colorText"}
+          btnBgColor={"colorBody"}
         />
       </div>
       <div className="px-6">

@@ -44,20 +44,6 @@ const MenuComponent = () => {
       <p className="text-xl uppercase ">All Menus</p>
 
       <ul className="pl-4 w-[50%] mt-2 border-solid p-2 border-2 rounded-lg">
-        {/* {Array(5)
-              .fill(0)
-              .map((e, i) => {
-                return (
-                  <Shimmer
-                    key={i}
-                    height={"3rem"}
-                    radius={"6px"}
-                    width={"100%"}
-                    margin={"5px 0px 0px 0px"}
-                  />
-                );
-              })} */}
-
         {menuData && menuData
           ? menuData.map((e, i) => {
               return (
