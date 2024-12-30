@@ -5,8 +5,13 @@ import { useCrudData } from "../utils/stores/crudData";
 import { FaEdit } from "react-icons/fa";
 import Link from "next/link";
 import ListComponent from "./ListComponent";
+import Shimmer from "./Shimmer";
 
 const MenuComponent = () => {
+  // shimmer menu list
+  const shimmerMenuList = [];
+
+  // -------------------
   const menuData = useCrudData((state) => state.menu);
   const setMenuData = useCrudData((state) => state.updateMenu);
   // const refreshMenu = useCrudData((state = state.refreshMenu));
@@ -36,27 +41,48 @@ const MenuComponent = () => {
 
   return (
     <div>
-      {menuData && (
-        <>
-          <p className="text-xl uppercase ">All Menus</p>
+      <p className="text-xl uppercase ">All Menus</p>
 
-          {menuData && (
-            <ul className="pl-4 w-[50%] mt-2 border-solid p-2 border-2 rounded-lg">
-              {menuData &&
-                menuData.map((e, i) => {
-                  return (
-                    <ListComponent
-                      text={e.menuName}
-                      link={e.menuLink}
-                      key={e._id}
-                      id={e._id}
-                    />
-                  );
-                })}
-            </ul>
-          )}
-        </>
-      )}
+      <ul className="pl-4 w-[50%] mt-2 border-solid p-2 border-2 rounded-lg">
+        {/* {Array(5)
+              .fill(0)
+              .map((e, i) => {
+                return (
+                  <Shimmer
+                    key={i}
+                    height={"3rem"}
+                    radius={"6px"}
+                    width={"100%"}
+                    margin={"5px 0px 0px 0px"}
+                  />
+                );
+              })} */}
+
+        {menuData && menuData
+          ? menuData.map((e, i) => {
+              return (
+                <ListComponent
+                  text={e.menuName}
+                  link={e.menuLink}
+                  key={e._id}
+                  id={e._id}
+                />
+              );
+            })
+          : Array(5)
+              .fill(0)
+              .map((e, i) => {
+                return (
+                  <Shimmer
+                    key={i}
+                    height={"3rem"}
+                    radius={"6px"}
+                    width={"100%"}
+                    margin={"5px 0px 0px 0px"}
+                  />
+                );
+              })}
+      </ul>
     </div>
   );
 };
