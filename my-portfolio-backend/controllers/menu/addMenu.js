@@ -2,11 +2,13 @@ const MenuData = require("../../modals/menu");
 const mongoose = require("mongoose");
 
 const addMenu = async (req, res, next) => {
-  console.log("Menu has been called");
+  console.log("addMenu has been called");
   try {
     const { name, link } = req.body;
-    console.log(name, link);
-    const existingMenu = await MenuData.findOne({ menuName: name });
+    // console.log(name, link);
+    const existingMenu = await MenuData.findOne({
+      menuName: name.toLowerCase(),
+    });
 
     if (existingMenu === true) {
       // If the item exists, respond with an appropriate message
@@ -23,7 +25,6 @@ const addMenu = async (req, res, next) => {
     // sending all menu data to frontend
     const allMenu = await MenuData.find();
     res.json({ message: "Menu item added successfully", data: allMenu });
-    console.log("saved");
   } catch (err) {
     if (err.code === 11000) {
       // Handle duplicate key error
@@ -32,7 +33,7 @@ const addMenu = async (req, res, next) => {
         .json({ message: "Menu item already exists", error: err.keyValue });
     }
 
-    console.log("err");
+    console.log(err);
     // console.log(err);
   }
 };

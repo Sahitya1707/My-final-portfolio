@@ -23,12 +23,13 @@ const MenuComponent = () => {
       // if (JSON.stringify(menuData) !== JSON.stringify(data)) {
       //   setMenuData(data);
       // }
-      setMenuData(data);
+      setMenuData(data.data);
       console.log(menuData);
     } catch (err) {
       console.log(err);
     }
   };
+  console.log(menuData);
   useEffect(() => {
     getMenu();
   }, []);

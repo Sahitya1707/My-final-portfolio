@@ -6,6 +6,7 @@ import Icon from "./CrudIcon";
 import { backendURI } from "../utils/secret";
 import { useCrudData } from "../utils/stores/crudData";
 import { useMenuPopup } from "../utils/stores/menuPopup";
+import { usePopupStatus } from "../utils/stores/popup";
 
 const ListComponent = ({ text, link, id }) => {
   const setMenuData = useCrudData((state) => state.updateMenu);
@@ -14,6 +15,18 @@ const ListComponent = ({ text, link, id }) => {
   const setMenuHeading = useMenuPopup((state) => state.updateMenuHeading);
   const setAddMenuState = useMenuPopup((state) => state.updateAddMenuState);
   const setEditId = useMenuPopup((state) => state.updateEditId);
+  // -------------- popup
+
+  const updatePopupContent = usePopupStatus(
+    (state) => state.updatePopupContent
+  );
+  const updatePopupStatusForm = usePopupStatus(
+    (state) => state.updatePopupStatus
+  );
+  const updateSuccessMessageIcon = usePopupStatus(
+    (state) => state.updateSuccessMessageIcon
+  );
+
   const handleDelete = async (id) => {
     // console.log(id);
 
@@ -28,6 +41,9 @@ const ListComponent = ({ text, link, id }) => {
       console.log(response);
       const data = await response.json();
       setMenuData(data.data);
+      updatePopupStatusForm(true);
+      updateSuccessMessageIcon(true);
+      updatePopupContent(data.message);
     } catch (err) {}
   };
   const handleEdit = async (id) => {
@@ -42,9 +58,13 @@ const ListComponent = ({ text, link, id }) => {
   };
   return (
     <li className="flex items-center justify-between   p-2 rounded-lg  my-2 border-2 border-colorText/10 bg-colorNav">
-      <p>
+      <p className="capitalize">
         {`${text}  `}(
-        <Link href={`${link}`} target="_blank" className="text-primary">
+        <Link
+          href={`${link}`}
+          target="_blank"
+          className="text-primary normal-case"
+        >
           {link}
         </Link>
         )
