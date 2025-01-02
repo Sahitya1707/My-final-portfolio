@@ -9,23 +9,22 @@ const TechComponent = () => {
   const form = useRef(null);
   const submitForm = async (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+
     const formData = new FormData(form.current);
-    for (const [key, value] of formData) {
-      // output.textContent += `${key}: ${value}\n`;
-      console.log(key, value);
-    }
+
     // while sending the formData content type header should be of multiplate/form-data type in reques header
-    // const response = fetch(`${backendURI}/admin/data/tech`, {
-    //   method: "POST",
-    //   header: {
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    // });
+    const response = fetch(`${backendURI}/admin/data/tech/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      body: formData,
+      credentials: "include",
+    });
     // const data = await response.json();
     // console.log(...formData.entries());
-    // try {
-    // } catch (err) {}
+    try {
+    } catch (err) {}
   };
   return (
     <>

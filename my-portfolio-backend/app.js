@@ -7,7 +7,8 @@ const connectDB = require("./config/dbConnection");
 
 const clientDomain = process.env.CLIENT_DOMAIN;
 const loginRoute = require("./routes/admin/admin");
-const dataRoute = require("./routes/admin/data");
+const dataRoute = require("./routes/admin/menu");
+const techRoute = require("./routes/admin/tech");
 const cookieParser = require("cookie-parser");
 const seedData = require("./config/seed");
 
@@ -35,3 +36,4 @@ app.listen(port, () => {
 app.use(express.json());
 app.use("/admin", loginRoute);
 app.use("/admin/data", dataRoute);
+app.use("/admin/data/tech", techRoute);
