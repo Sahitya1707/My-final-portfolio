@@ -9,15 +9,15 @@ const TechComponent = () => {
   const form = useRef(null);
   const submitForm = async (e) => {
     e.preventDefault();
+    console.log(e);
 
     const formData = new FormData(form.current);
+    console.log(...formData.entries());
 
     // while sending the formData content type header should be of multiplate/form-data type in reques header
     const response = fetch(`${backendURI}/admin/data/tech/add`, {
       method: "POST",
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+
       body: formData,
       credentials: "include",
     });
@@ -32,6 +32,7 @@ const TechComponent = () => {
       <form
         action="
       "
+        encType="multipart/form-data"
         ref={form}
         className="w-[20rem]"
         onSubmit={submitForm}
@@ -39,7 +40,7 @@ const TechComponent = () => {
         <Input
           inputType={"file"}
           id={"techimage"}
-          label={"Image."}
+          label={"Image"}
           placeholder={" "}
         />
         <Input
@@ -50,7 +51,7 @@ const TechComponent = () => {
         />
         <ButtonTypeOne
           text={"Submit"}
-          bgColor={"colorText"}
+          bgColor={"colorNav"}
           color={"primary"}
           handleClick={() => {}}
         />
