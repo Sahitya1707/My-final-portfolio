@@ -9,6 +9,7 @@ import { useMenuPopup } from "@/app/utils/stores/menuPopup";
 import { useEffect } from "react";
 import { backendURI } from "@/app/utils/secret";
 import MenuComponent from "@/app/components/MenuComponent";
+import TechComponent from "@/app/components/TechComponent";
 
 const Dashboard = () => {
   const setPopupActive = useMenuPopup((state) => state.updatePopupActive);
@@ -55,6 +56,7 @@ const Dashboard = () => {
       </div>
       <div className="px-6">
         <MenuComponent />
+        <TechComponent />
       </div>
     </div>
   );

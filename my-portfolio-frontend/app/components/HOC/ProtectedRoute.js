@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { useLoginStatus } from "@/app/utils/stores/login";
 
 const ProtectedRoute = (Wrapper) => {
-  const setAdminLoginStatus = useLoginStatus((store) => store.updateAdminLogin);
   const newComponent = (props) => {
     const router = useRouter();
     useEffect(() => {

@@ -6,6 +6,8 @@ import { FaEdit } from "react-icons/fa";
 import Link from "next/link";
 import ListComponent from "./ListComponent";
 import Shimmer from "./Shimmer";
+import Dashboard from "./Dashboard";
+import DashboardSecondHeading from "./DashboardSecondHeading";
 
 const MenuComponent = () => {
   // shimmer menu list
@@ -40,9 +42,8 @@ const MenuComponent = () => {
   }, []);
 
   return (
-    <div>
-      <p className="text-xl uppercase ">All Menus</p>
-
+    <div className="border-b-2 border-colorText/10 pb-6">
+      <DashboardSecondHeading text={"Menus"} />
       <ul className="pl-4 w-[50%] mt-2 border-solid p-2 border-2 rounded-lg">
         {menuData && menuData
           ? menuData.map((e, i) => {
