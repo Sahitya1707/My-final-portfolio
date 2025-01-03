@@ -21,10 +21,10 @@ const addMenu = async (req, res, next) => {
     });
 
     await newMenu.save();
-    console.log("saved");
+
     // sending all menu data to frontend
     const allMenu = await MenuData.find();
-    res.json({ message: "Menu item added successfully", data: allMenu });
+    return res.json({ message: "Menu item added successfully", data: allMenu });
   } catch (err) {
     if (err.code === 11000) {
       // Handle duplicate key error
