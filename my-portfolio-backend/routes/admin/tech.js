@@ -13,6 +13,7 @@ const storage = multer.diskStorage({
     cb(null, "uploads/img/tech");
   },
   filename: function (req, file, cb) {
+    console.log("multer called");
     // if (file.mimetype !== "image/svg+xml") {
     //   console.log("not a svg");
     //   //   return res.json({
@@ -46,5 +47,5 @@ router.post(
   addTech
 );
 router.delete("/delete/:id", checkToken, deleteTech);
-router.get("/getAllTech", checkToken, getAllTech);
+router.get("/getAll", checkToken, getAllTech);
 module.exports = router;

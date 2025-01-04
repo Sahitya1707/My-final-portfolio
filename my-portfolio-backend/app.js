@@ -39,6 +39,11 @@ app.listen(port, () => {
 });
 
 app.use(express.json());
+app.use(
+  "/admin/images",
+  express.static(path.join(__dirname, "uploads/img/tech"))
+);
+// app.use(express.static("uploads"));
 app.use("/admin", loginRoute);
 app.use("/admin/data", dataRoute);
 app.use("/admin/data/tech", techRoute);

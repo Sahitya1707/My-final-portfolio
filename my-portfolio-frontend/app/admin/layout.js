@@ -25,6 +25,7 @@ export default function AdminLayout({ children }) {
     } else {
       updateActiveDashboard(0);
     }
+    document.title = "Dashboard | Sahitya Portfolio";
   }, [pathname]);
 
   return (

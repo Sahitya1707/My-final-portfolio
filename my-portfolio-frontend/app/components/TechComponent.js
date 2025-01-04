@@ -5,8 +5,11 @@ import { Input } from "./Form";
 import ButtonTypeOne from "./ButtonTypeOne";
 import { backendURI } from "../utils/secret";
 import { usePopupStatus } from "../utils/stores/popup";
+import TechImage from "./TechImage";
+import { useCrudData } from "../utils/stores/crudData";
 
 const TechComponent = () => {
+  const updateTech = useCrudData((state) => state.updateTech);
   const updatePopupContent = usePopupStatus(
     (state) => state.updatePopupContent
   );
@@ -35,12 +38,14 @@ const TechComponent = () => {
         body: formData,
         credentials: "include",
       });
-      console.log(response);
+
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
         updatePopupStatusForm(true);
         updateSuccessMessageIcon(data.status);
         updatePopupContent(data.message);
+        updateTech(data.data);
 
         e.target[0].value = null;
       }
@@ -62,7 +67,7 @@ const TechComponent = () => {
       "
         encType="multipart/form-data"
         ref={form}
-        className="w-[20rem]"
+        className="w-[20rem] border-b-colorText/40 "
         onSubmit={submitForm}
       >
         <Input
@@ -71,7 +76,11 @@ const TechComponent = () => {
           label={"Image"}
           placeholder={" "}
         />
-
+        {/* <Input
+          inputType={"text"}
+          label={"Name"}
+          placeholderText={"Add a image name"}
+        /> */}
         <ButtonTypeOne
           text={"Submit"}
           bgColor={"colorNav"}
@@ -79,6 +88,7 @@ const TechComponent = () => {
           handleClick={() => {}}
         />
       </form>
+      <TechImage />
     </>
   );
 };

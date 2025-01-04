@@ -1,7 +1,11 @@
 const fs = require("fs");
 const TechModal = require("../../modals/tech");
 const addTech = async (req, res, next) => {
+  console.log("add tech called");
   const { filename, mimetype } = req.file;
+
+  console.log(filename);
+  const { Name } = req.body;
 
   //   if (mimetype !== "image/svg+xml") {
   //     res.json({
@@ -15,10 +19,14 @@ const addTech = async (req, res, next) => {
   //     //   //     message: `${file.originalname} already exist in db.`,
   //     //   //   });
   //   }
-  const techExist = await TechModal.findOne({
+  const techImgExist = await TechModal.findOne({
     techImgName: filename.toLowerCase(),
   });
-  if (techExist) {
+  //   const techNameExist = await TechModal.findOne({
+  //     techName: Name.toLowerCase(),
+  //   });
+
+  if (techImgExist) {
     return res.json({ status: false, message: "Was already available in db." });
   }
   const newTech = new TechModal({
@@ -27,9 +35,10 @@ const addTech = async (req, res, next) => {
 
   try {
     await newTech.save();
+    const allTech = await TechModal.find();
     return res
       .status(200)
-      .json({ status: true, message: "Successfully added" });
+      .json({ status: true, message: "Successfully added", data: allTech });
   } catch (err) {
     return res.status(400).json({
       status: false,

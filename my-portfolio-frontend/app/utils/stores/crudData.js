@@ -6,7 +6,8 @@ export const useCrudData = create((set) => {
     refreshMenu: "true",
     pages: "",
     projects: "",
-    techStack: "",
+    tech: "",
     updateMenu: (menu) => set(() => ({ menu: menu })),
+    updateTech: (tech) => set(() => ({ tech: tech })),
   };
 });
