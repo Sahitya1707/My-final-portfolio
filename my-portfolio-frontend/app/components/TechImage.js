@@ -6,8 +6,16 @@ import Shimmer from "./Shimmer";
 import { IoCloseSharp } from "react-icons/io5";
 
 export const TechImageCard = ({ id, name }) => {
-  const handleClose = (e) => {
-    console.log(id);
+  const updateTech = useCrudData((state) => state.updateTech);
+  const handleDelete = async (e) => {
+    const response = await fetch(`${backendURI}/admin/data/tech/delete/${id}`, {
+      method: "DELETE",
+      credentials: "include",
+    });
+
+    const data = await response.json();
+
+    updateTech(data.data);
   };
   return (
     <div className="flex  flex-col items-center" id={id}>
@@ -19,7 +27,7 @@ export const TechImageCard = ({ id, name }) => {
         />
         <span
           className="top-[-12px] right-[-15px] absolute text-[red] font-bold p-1 bg-[white] rounded-full cursor-pointer"
-          onClick={handleClose}
+          onClick={handleDelete}
         >
           <IoCloseSharp />
         </span>
@@ -34,7 +42,7 @@ export const TechImageCard = ({ id, name }) => {
 const TechImage = () => {
   const tech = useCrudData((state) => state.tech);
   const updateTech = useCrudData((state) => state.updateTech);
-  console.log("TechImage");
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -61,11 +69,11 @@ const TechImage = () => {
               <TechImageCard id={e._id} name={e.techImgName} key={e._id} />
             );
           })
-        : Array(5)
+        : Array(15)
             .fill(0)
             .map((e, i) => {
               return (
-                <div className="flex flex-col" key={i}>
+                <div className="" key={i}>
                   <Shimmer
                     height={"5rem"}
                     width={"5rem"}
