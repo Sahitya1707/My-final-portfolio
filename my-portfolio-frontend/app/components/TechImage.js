@@ -3,15 +3,29 @@ import { useEffect } from "react";
 import { backendURI } from "../utils/secret";
 import { useCrudData } from "../utils/stores/crudData";
 import Shimmer from "./Shimmer";
+import { IoCloseSharp } from "react-icons/io5";
 
 export const TechImageCard = ({ id, name }) => {
+  const handleClose = (e) => {
+    console.log(id);
+  };
   return (
     <div className="flex  flex-col items-center" id={id}>
       <div className="xl:h-[4rem] xl:w-[4rem] sm:h-[3rem] sm:w-[3rem] h-[4rem] w-[4rem] relative ">
-        <Image src={`${backendURI}/admin/images/${name}`} fill alt={``} />
+        <Image
+          src={`${backendURI}/admin/images/${name}`}
+          fill
+          alt={`${name.slice(0, -4)} image`}
+        />
+        <span
+          className="top-[-12px] right-[-15px] absolute text-[red] font-bold p-1 bg-[white] rounded-full cursor-pointer"
+          onClick={handleClose}
+        >
+          <IoCloseSharp />
+        </span>
       </div>
-      <p className="uppercase xl:text-lg sm:text-sm tracking-wider text-center text-lg">
-        {name}
+      <p className="uppercase tracking-wider text-center text-sm">
+        {name.slice(0, -4)}
       </p>
     </div>
   );
@@ -40,7 +54,7 @@ const TechImage = () => {
   }, []);
 
   return (
-    <div className="my-2 flex  justify-start gap-x-10 items-center border-t-2 border-b-2 border-colorText/10 py-4">
+    <div className="my-2 grid grid-cols-8 gap-4 justify-start gap-x-10 items-center border-t-2 border-b-2 border-colorText/10 py-4">
       {tech && tech
         ? tech.map((e, i) => {
             return (

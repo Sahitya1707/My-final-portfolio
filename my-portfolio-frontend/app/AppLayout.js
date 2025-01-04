@@ -98,7 +98,14 @@ const AppLayout = ({ children }) => {
   console.log(popupStatus);
   return (
     <body
-      className={` bg-colorBody ${theme} max-w-full w-full lg:overflow-clip overflow-auto lg:max-h-screen max-h-auto `}
+      className={` bg-colorBody ${theme} max-w-full w-full 
+        ${
+          pathname.includes("/admin")
+            ? "lg:overflow-auto "
+            : "lg:overflow-clip lg:max-h-screen"
+        }
+        
+         overflow-auto  max-h-auto `}
     >
       {pathname.includes("/admin") ? (
         <main className="">
