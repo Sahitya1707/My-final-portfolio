@@ -5,9 +5,12 @@ export const useCrudData = create((set) => {
     menu: "",
     refreshMenu: "true",
     pages: "",
-    projects: "",
+    project: "",
     tech: "",
+    projectFormPopup: false,
     updateMenu: (menu) => set(() => ({ menu: menu })),
     updateTech: (tech) => set(() => ({ tech: tech })),
+    updateProjectFormPopup: (projectFormPopup) =>
+      set(() => ({ projectFormPopup: projectFormPopup })),
   };
 });
