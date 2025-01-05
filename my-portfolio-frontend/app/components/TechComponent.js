@@ -45,6 +45,9 @@ const TechComponent = () => {
         updatePopupStatusForm(true);
         updateSuccessMessageIcon(data.status);
         updatePopupContent(data.message);
+        if (data.data.length === 0) {
+          updateTech("No tech stack has been found.");
+        }
         updateTech(data.data);
 
         e.target[0].value = null;

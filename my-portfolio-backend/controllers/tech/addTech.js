@@ -27,7 +27,12 @@ const addTech = async (req, res, next) => {
   //   });
 
   if (techImgExist) {
-    return res.json({ status: false, message: "Was already available in db." });
+    const allTech = await TechModal.find();
+    return res.json({
+      status: false,
+      message: "Was already available in db.",
+      data: allTech,
+    });
   }
   const newTech = new TechModal({
     techImgName: filename.toLowerCase(),

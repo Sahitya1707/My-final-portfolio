@@ -148,7 +148,6 @@ const MenuPopup = ({ width }) => {
 
           const data = await response.json();
           if (response.ok) {
-            console.log(data);
             setFormData({
               name: data.data.menuName,
               link: data.data.menuLink,

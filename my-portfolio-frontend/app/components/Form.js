@@ -40,7 +40,7 @@ export const TextArea = ({ label, placeholderText, rows, value }) => {
       <label
         htmlFor={label}
         name={label}
-        className="capitalize text-md tracking-wider  font-semibold mt-4"
+        className="capitalize text-md tracking-wider  font-semibold mt-4 "
       >
         {label}
       </label>
@@ -49,7 +49,7 @@ export const TextArea = ({ label, placeholderText, rows, value }) => {
         value={value}
         id={label}
         placeholder={`${placeholderText}`}
-        className="text-[black]  p-2  rounded-sm w-full focus:outline-primary"
+        className={` text-colorText p-2  rounded-sm w-full outline-primary border-2 border-primary/50 outline-2 color-primary bg-colorBody`}
         required
       />
     </>

@@ -19,7 +19,7 @@ const ContactComponent = () => {
       />
       <form
         action={handleMessage}
-        className="flex flex-col w-[100%] md:w-[30rem] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-3 sm:p-5 rounded-md sm:rounded-xl shadow-colorText/20 shadow-md  sm:mt-[5rem] my-4"
+        className="flex flex-col w-[100%] md:w-[30rem] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-3 sm:p-2 rounded-md sm:rounded-xl shadow-colorText/20 shadow-md  sm:mt-[5rem] my-4 lg:mt-3"
       >
         <Input
           inputType="text"
@@ -34,7 +34,7 @@ const ContactComponent = () => {
         <TextArea
           label={"message"}
           placeholderText={"Enter Your Message"}
-          rows={4}
+          rows={3}
         />
         <ButtonTypeOne
           color={"colorText"}
