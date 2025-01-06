@@ -26,7 +26,7 @@ export const TechImageCard = ({ id, name }) => {
           alt={`${name.slice(0, -4)} image`}
         />
         <span
-          className="top-[-12px] right-[-15px] absolute text-[red] font-bold p-1 bg-[white] rounded-full cursor-pointer"
+          className="top-[-12px] right-[-15px] absolute text-[#ff0000bc] duration-75 hover:bg-primary/10 font-bold p-1  border-2 border-colorText/10 rounded-full cursor-pointer"
           onClick={handleDelete}
         >
           <IoCloseSharp />

@@ -121,8 +121,9 @@ const MenuPopup = ({ width }) => {
           setMenuData(data.data);
         }
       }
-    } catch (err) {}
-    console.log("edit menu");
+    } catch (err) {
+      console.log(err);
+    }
   };
   const handleMenuForm = (e) => {
     setFormData({ ...formData, [`${e.target.name}`]: e.target.value });
