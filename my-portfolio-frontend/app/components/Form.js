@@ -34,7 +34,13 @@ export const Input = ({
   );
 };
 
-export const TextArea = ({ label, placeholderText, rows, value }) => {
+export const TextArea = ({
+  label,
+  placeholderText,
+  rows,
+  handleTextArea,
+  value,
+}) => {
   return (
     <>
       <label
@@ -47,6 +53,8 @@ export const TextArea = ({ label, placeholderText, rows, value }) => {
       <textarea
         rows={rows}
         value={value}
+        name={label}
+        onChange={handleTextArea}
         id={label}
         placeholder={`${placeholderText}`}
         className={` text-colorText p-2  rounded-sm w-full outline-primary border-2 border-primary/50 outline-2 color-primary bg-colorBody`}

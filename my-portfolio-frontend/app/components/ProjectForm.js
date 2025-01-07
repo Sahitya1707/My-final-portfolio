@@ -8,17 +8,25 @@ import { backendURI } from "../utils/secret";
 import Shimmer from "./Shimmer";
 
 export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
+  console.log(selectedTechItem);
   const getCheckboxValue = (e) => {
     if (e.target.checked) {
       // console.log(e.target.id);
-
-      setSelectItem([...selectedTechItem, e.target.id]);
+      // setSelectItem([...selectedTechItem, e.target.id]);
+      setSelectItem({
+        ...selectedTechItem,
+        ["techUsed"]: [...selectedTechItem.techUsed, e.target.id],
+      });
     } else {
-      const filterItem = selectedTechItem.filter((el) => {
+      const filterItem = selectedTechItem.techUsed.filter((el) => {
         console.log("false");
         return el !== e.target.id;
       });
-      setSelectItem(filterItem);
+      setSelectItem({
+        ...selectedTechItem,
+        ["techUsed"]: filterItem,
+      });
+      // setSelectItem(filterItem);
     }
   };
 
@@ -33,10 +41,24 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
 };
 
 const ProjectForm = () => {
-  // using state for data -> tech
+  // using state for formData -> tech
   const [techData, setTechData] = useState("");
   const [selectedTechData, setSelectedTechData] = useState([]);
-  // const formData =
+  // creating the form DAta
+  const [formData, setFormData] = useState({
+    heading: "",
+    projectLink: "",
+    liveLink: "",
+    description: "",
+    techUsed: [],
+  });
+  const handleData = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  console.log(formData);
 
   const projectFormPopup = useCrudData((state) => state.projectFormPopup);
   const setProjectFormPopup = useCrudData(
@@ -48,6 +70,8 @@ const ProjectForm = () => {
   };
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    // setFormData({ ...formData, ["techUsed"]: selectedTechData });
+    console.log(formData);
 
     // try {
     //   await fetch(`${backendURI}/admin/data/project/add`, {
@@ -103,21 +127,26 @@ const ProjectForm = () => {
           inputType="text"
           placeholderText="Add a project name."
           label="heading"
+          value={formData.heading}
+          handleInput={handleData}
         />
         <Input
           inputType="text"
           placeholderText="Add a project link."
-          label="project-link"
+          label="projectLink"
+          handleInput={handleData}
         />
         <Input
           inputType="text"
           placeholderText="Add a live link."
-          label="live-link"
+          label="liveLink"
+          handleInput={handleData}
         />
         <TextArea
           rows="4"
           placeholderText="Add a live link."
-          label="project-description"
+          label="description"
+          handleTextArea={handleData}
         />
         <DashboardSecondHeading text={"Tech used"} />
         <ul className="flex flex-wrap gap-x-4">
@@ -128,8 +157,8 @@ const ProjectForm = () => {
                     key={e._id}
                     id={e._id}
                     text={e.techImgName}
-                    setSelectItem={setSelectedTechData}
-                    selectedTechItem={selectedTechData}
+                    setSelectItem={setFormData}
+                    selectedTechItem={formData}
                   />
                 );
               })
