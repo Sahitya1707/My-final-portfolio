@@ -6,6 +6,7 @@ import { Input, TextArea } from "./Form";
 import { RxCross2 } from "react-icons/rx";
 import { backendURI } from "../utils/secret";
 import Shimmer from "./Shimmer";
+import { usePopupStatus } from "../utils/stores/popup";
 
 export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
   console.log(selectedTechItem);
@@ -41,6 +42,20 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
 };
 
 const ProjectForm = () => {
+  // ------------showing success popup after submission or vice versa
+  const updatePopupContent = usePopupStatus(
+    (state) => state.updatePopupContent
+  );
+  const updatePopupStatusForm = usePopupStatus(
+    (state) => state.updatePopupStatus
+  );
+  const updateSuccessMessageIcon = usePopupStatus(
+    (state) => state.updateSuccessMessageIcon
+  );
+
+  // global project
+  const setProject = useCrudData((store) => store.updateProject);
+
   // using state for formData -> tech
   const [techData, setTechData] = useState("");
   const [selectedTechData, setSelectedTechData] = useState([]);
@@ -50,6 +65,7 @@ const ProjectForm = () => {
     projectLink: "",
     liveLink: "",
     description: "",
+    order: "",
     techUsed: [],
   });
   const handleData = (e) => {
@@ -58,7 +74,6 @@ const ProjectForm = () => {
       [e.target.name]: e.target.value,
     });
   };
-  console.log(formData);
 
   const projectFormPopup = useCrudData((state) => state.projectFormPopup);
   const setProjectFormPopup = useCrudData(
@@ -71,17 +86,34 @@ const ProjectForm = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     // setFormData({ ...formData, ["techUsed"]: selectedTechData });
-    console.log("Form Data:", JSON.stringify(formData));
+    // console.log("Form Data:", JSON.stringify(formData));
+    const data = JSON.stringify(formData);
+    // console.log(data);
 
     try {
-      await fetch(`${backendURI}/admin/data/project/add`, {
+      const response = await fetch(`${backendURI}/admin/data/project/add`, {
         method: "POST",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: data,
       });
+      // const data = await response.json();
+      if (response.ok) {
+        const respondedData = await response.json();
+        console.log(respondedData);
+        updatePopupStatusForm(response.ok);
+        updatePopupContent(respondedData.message);
+        if (respondedData.success) {
+          setProject(respondedData.data);
+          updateSuccessMessageIcon(respondedData.success);
+          setProjectFormPopup(false);
+
+          return;
+        }
+        updateSuccessMessageIcon(respondedData.success);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -96,7 +128,7 @@ const ProjectForm = () => {
             headers: {},
           });
           const data = await response.json();
-          setTechData(data.data);
+          // setTechData(data.data);
         } catch (err) {
           console.log(err);
         }
@@ -143,6 +175,12 @@ const ProjectForm = () => {
           inputType="text"
           placeholderText="Add a live link."
           label="liveLink"
+          handleInput={handleData}
+        />
+        <Input
+          inputType="Number"
+          placeholderText="Add a order no."
+          label="order"
           handleInput={handleData}
         />
         <TextArea

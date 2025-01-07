@@ -15,7 +15,7 @@ const deleteMenu = async (req, res) => {
       });
     }
   } catch (err) {
-    console.log("failed to delete");
+    console.log("failed to delete menu");
   }
 };
 

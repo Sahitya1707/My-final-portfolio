@@ -116,7 +116,7 @@ const AppLayout = ({ children }) => {
       ) : (
         <>
           <Header />
-          <div className="fixed top-0 right-4 z-[3000] ">
+          <div className="fixed top-0 right-4 z-[3000] hidden xl:block">
             {adminLoginStatus ? (
               <DashboardIconText
                 icon={<RiAdminLine />}

@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+// here menu, project, page, tech are data.
 export const useCrudData = create((set) => {
   return {
     menu: "",
@@ -12,5 +13,6 @@ export const useCrudData = create((set) => {
     updateTech: (tech) => set(() => ({ tech: tech })),
     updateProjectFormPopup: (projectFormPopup) =>
       set(() => ({ projectFormPopup: projectFormPopup })),
+    updateProject: (project) => set(() => ({ project: project })),
   };
 });

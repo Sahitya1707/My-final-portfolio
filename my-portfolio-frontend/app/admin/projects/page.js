@@ -7,6 +7,7 @@ import HeadingTypeOne from "@/app/components/HeadingTypeOne";
 import { ProjectHeading } from "@/app/components/ProjectComponent";
 import { useCrudData } from "@/app/utils/stores/crudData";
 import ProjectForm from "@/app/components/ProjectForm";
+import AdminProjectList from "@/app/components/AdminProjectList";
 
 const Projects = () => {
   const formPopup = useCrudData((state) => state.projectFormPopup);
@@ -28,6 +29,7 @@ const Projects = () => {
         handleClick={handleProjectFormPopup}
       />
       {formPopup ? <ProjectForm /> : null}
+      <AdminProjectList />
     </div>
   );
 };

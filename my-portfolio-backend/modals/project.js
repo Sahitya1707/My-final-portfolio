@@ -18,7 +18,11 @@ const projectSchema = new mongoose.Schema(
     },
     projectLink: {
       type: String,
-      require: true,
+      required: true,
+    },
+    order: {
+      type: Number,
+      required: true,
     },
   },
   {
