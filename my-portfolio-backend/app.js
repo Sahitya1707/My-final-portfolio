@@ -12,6 +12,7 @@ const clientDomain = process.env.CLIENT_DOMAIN;
 const loginRoute = require("./routes/admin/admin");
 const dataRoute = require("./routes/admin/menu");
 const techRoute = require("./routes/admin/tech");
+const projectRoute = require("./routes/admin/project");
 const cookieParser = require("cookie-parser");
 const seedData = require("./config/seed");
 
@@ -47,3 +48,4 @@ app.use(
 app.use("/admin", loginRoute);
 app.use("/admin/data", dataRoute);
 app.use("/admin/data/tech", techRoute);
+app.use("/admin/data/project", projectRoute);

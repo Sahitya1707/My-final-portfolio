@@ -71,17 +71,20 @@ const ProjectForm = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     // setFormData({ ...formData, ["techUsed"]: selectedTechData });
-    console.log(formData);
+    console.log("Form Data:", JSON.stringify(formData));
 
-    // try {
-    //   await fetch(`${backendURI}/admin/data/project/add`, {
-    //     method: "POST",
-    //     credentials: "include",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
-    // } catch (err) {}
+    try {
+      await fetch(`${backendURI}/admin/data/project/add`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
   useEffect(() => {
     if (projectFormPopup === true) {
