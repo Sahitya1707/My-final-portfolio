@@ -4,7 +4,7 @@ import ButtonTypeOne from "./ButtonTypeOne";
 import TechStack from "./TechStack";
 import { techStackData } from "../utils/techStackData";
 import { useTechStack, usetechStack } from "../utils/stores/techStackStore";
-import TechCard from "./TechCard";
+import TechCard, { TechCard2 } from "./TechCard";
 import { projectsData } from "../utils/projectsData";
 
 const ProjectCard = ({
@@ -54,7 +54,7 @@ const ProjectCard = ({
       <ProjectDescription text={description} />
       <div className="md:hidden grid sm:grid-cols-3 gap-x-3 gap-y-2 grid-cols-2">
         {techStackIndexForMobile.map((e, i) => {
-          return <TechCard image={e.name} name={e.tech} key={i} />;
+          return <TechCard2 image={e.name} name={e.tech} key={i} />;
         })}
       </div>
 

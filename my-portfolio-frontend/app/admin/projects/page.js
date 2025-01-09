@@ -11,7 +11,7 @@ import AdminProjectList from "@/app/components/AdminProjectList";
 
 const Projects = () => {
   const formPopup = useCrudData((state) => state.projectFormPopup);
-  console.log(formPopup);
+
   const setProjectFormPopup = useCrudData(
     (state) => state.updateProjectFormPopup
   );

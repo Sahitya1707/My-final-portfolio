@@ -11,7 +11,7 @@ const AdminProjectList = () => {
 
   const project = useCrudData((store) => store.project);
   const setProject = useCrudData((store) => store.updateProject);
-
+  console.log(project);
   const updatePopupContent = usePopupStatus(
     (state) => state.updatePopupContent
   );
@@ -59,26 +59,28 @@ const AdminProjectList = () => {
       <h1 className="text-2xl font-bold mb-4">Projects</h1>
       {project && project ? (
         <ul className="space-y-4">
-          {project.map((p) => (
-            <li
-              key={p._id}
-              className="bg-primary/50 border-2 border-colorText/80 shadow-md shadow-colorText/30 rounded-lg p-4 flex justify-between items-center hover:duration-100 hover:ease-in hover:shadow-md transition-shadow w-[80%]"
-            >
-              <Link href={`/projects/${p._id}`}>
-                <span className="text-blue-600 font-semibold hover:underline">
-                  {p.heading}
-                </span>
-              </Link>
-              <button
-                onClick={() => {
-                  handleDelete(p._id);
-                }}
-                className="text-[red] text-white px-3 py-1 rounded hover:bg-red-600 transition"
+          {project
+            .sort((a, b) => a.order - b.order)
+            .map((p) => (
+              <li
+                key={p._id}
+                className="bg-primary/50 border-2 border-colorText/80 shadow-md shadow-colorText/30 rounded-lg p-4 flex justify-between items-center hover:duration-100 hover:ease-in hover:shadow-md transition-shadow w-[80%]"
               >
-                <MdDelete />
-              </button>
-            </li>
-          ))}
+                <Link href={`/admin/projects/${p._id}`}>
+                  <span className="text-blue-600 font-semibold hover:underline">
+                    {p.heading} {`(${p.order})`}
+                  </span>
+                </Link>
+                <button
+                  onClick={() => {
+                    handleDelete(p._id);
+                  }}
+                  className="text-[red] text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                >
+                  <MdDelete />
+                </button>
+              </li>
+            ))}
         </ul>
       ) : (
         Array(5)

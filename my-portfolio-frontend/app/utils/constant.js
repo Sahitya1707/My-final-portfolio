@@ -66,19 +66,19 @@ export const dashboardMenu = [
     link: "/admin/dashboard",
     text: "dashboard",
   },
-  {
-    icon: <LiaPagerSolid />,
-    link: "/admin/pages",
-    text: "pages",
-  },
+  // {
+  //   icon: <LiaPagerSolid />,
+  //   link: "/admin/pages",
+  //   text: "pages",
+  // },
   {
     icon: <GoProject />,
     link: "/admin/projects",
     text: "Projects",
   },
-  {
-    icon: <GrTechnology />,
-    link: "/admin/techstack",
-    text: "Techstack",
-  },
+  // {
+  //   icon: <GrTechnology />,
+  //   link: "/admin/techstack",
+  //   text: "Techstack",
+  // },
 ];

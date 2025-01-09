@@ -16,13 +16,17 @@ export default function AdminLayout({ children }) {
   useEffect(() => {
     if (pathname === "/admin/dashboard") {
       updateActiveDashboard(0);
-    } else if (pathname === "/admin/pages") {
+    }
+    //  else if (pathname === "/admin/pages") {
+    //   updateActiveDashboard(1);
+    // }
+    else if (pathname.includes("/admin/projects")) {
       updateActiveDashboard(1);
-    } else if (pathname === "/admin/projects") {
-      updateActiveDashboard(2);
-    } else if (pathname === "/admin/techstack") {
-      updateActiveDashboard(3);
-    } else {
+    }
+    //  else if (pathname === "/admin/techstack") {
+    //   updateActiveDashboard(3);
+    // }
+    else {
       updateActiveDashboard(0);
     }
     document.title = "Dashboard | Sahitya Portfolio";

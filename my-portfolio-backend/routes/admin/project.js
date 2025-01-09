@@ -13,5 +13,6 @@ router.use(express.json());
 router.post("/add", checkToken, addProject);
 router.get("/getAll", checkToken, getAllProject);
 router.delete("/delete/:id", checkToken, deleteProject);
+router.get("/:id", checkToken, getProject);
 
 module.exports = router;

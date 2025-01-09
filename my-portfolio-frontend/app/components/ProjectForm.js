@@ -128,7 +128,7 @@ const ProjectForm = () => {
             headers: {},
           });
           const data = await response.json();
-          // setTechData(data.data);
+          setTechData(data.data);
         } catch (err) {
           console.log(err);
         }
