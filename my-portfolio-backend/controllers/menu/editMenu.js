@@ -9,8 +9,6 @@ const editMenu = async (req, res) => {
       menuName: req.body.name.toLowerCase(),
     });
 
-    console.log("object");
-    console.log(exisitingMenu);
     if (exisitingMenu) {
       return res.json({
         status: false,

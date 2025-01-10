@@ -14,5 +14,6 @@ router.post("/add", checkToken, addProject);
 router.get("/getAll", checkToken, getAllProject);
 router.delete("/delete/:id", checkToken, deleteProject);
 router.get("/:id", checkToken, getProject);
+router.put("/edit/:id", checkToken, editProject);
 
 module.exports = router;

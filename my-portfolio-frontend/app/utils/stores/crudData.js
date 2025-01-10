@@ -4,7 +4,7 @@ import { create } from "zustand";
 export const useCrudData = create((set) => {
   return {
     menu: "",
-    refreshMenu: "true",
+    refreshMenu: "",
     pages: "",
     project: "",
     tech: "",
@@ -14,5 +14,9 @@ export const useCrudData = create((set) => {
     updateProjectFormPopup: (projectFormPopup) =>
       set(() => ({ projectFormPopup: projectFormPopup })),
     updateProject: (project) => set(() => ({ project: project })),
+    // this will set if the project form is edit or add, if it is true then it is add if not it is edit
+    projectFormState: true,
+    updateProjectFormState: (projectFormState) =>
+      set(() => ({ projectFormState: projectFormState })),
   };
 });

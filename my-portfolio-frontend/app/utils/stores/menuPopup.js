@@ -3,6 +3,7 @@ import { create } from "zustand";
 export const useMenuPopup = create((set) => {
   return {
     popupActive: false,
+    // i think will help to know wheather it is add or edit
     addMenuState: true,
     menuHeading: "",
     editId: null,

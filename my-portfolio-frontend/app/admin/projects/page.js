@@ -10,14 +10,17 @@ import ProjectForm from "@/app/components/ProjectForm";
 import AdminProjectList from "@/app/components/AdminProjectList";
 
 const Projects = () => {
-  const formPopup = useCrudData((state) => state.projectFormPopup);
-
+  // function to update the form state if it is add/edit
+  const updateProjectFormState = useCrudData(
+    (state) => state.updateProjectFormState
+  );
   const setProjectFormPopup = useCrudData(
     (state) => state.updateProjectFormPopup
   );
 
   const handleProjectFormPopup = () => {
     setProjectFormPopup(true);
+    updateProjectFormState(true);
   };
   return (
     <div>
@@ -28,7 +31,7 @@ const Projects = () => {
         text={"Add project"}
         handleClick={handleProjectFormPopup}
       />
-      {formPopup ? <ProjectForm /> : null}
+
       <AdminProjectList />
     </div>
   );

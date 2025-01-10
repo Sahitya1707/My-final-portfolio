@@ -3,25 +3,45 @@ import CrudBtn from "@/app/components/CrudBtn";
 import Shimmer from "@/app/components/Shimmer";
 import TechCard from "@/app/components/TechCard";
 import { backendURI } from "@/app/utils/secret";
+import { useCrudData } from "@/app/utils/stores/crudData";
+import { usePopupStatus } from "@/app/utils/stores/popup";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 const SinglePost = () => {
+  const router = useRouter();
+  const setProject = useCrudData((store) => store.updateProject);
+  // global project data
+  const project = useCrudData((store) => store.project);
+
+  // function to update the form state if it is add/edit
+  const updateProjectFormState = useCrudData(
+    (state) => state.updateProjectFormState
+  );
+  const updateProjectFormPopup = useCrudData(
+    (state) => state.updateProjectFormPopup
+  );
+
+  const updatePopupContent = usePopupStatus(
+    (state) => state.updatePopupContent
+  );
+  const updatePopupStatusForm = usePopupStatus(
+    (state) => state.updatePopupStatus
+  );
+  const updateSuccessMessageIcon = usePopupStatus(
+    (state) => state.updateSuccessMessageIcon
+  );
+
   const params = useParams();
-  // {
-  //   heading: "",
-  //   description: "",
-  //   liveLink: "",
-  //   order: "",
-  //   projectLink: "",
-  //   techUsed: "",
-  // }
+
   const [pageData, setPageData] = useState("");
-  console.log(params);
+
   useEffect(() => {
+    console.log("use state called for single post");
     const fetchSingleProject = async () => {
       try {
         const response = await fetch(
@@ -43,7 +63,31 @@ const SinglePost = () => {
       }
     };
     fetchSingleProject();
-  }, []);
+  }, [project]);
+
+  const handleEdit = async () => {
+    console.log("edit called");
+    updateProjectFormState(false);
+    updateProjectFormPopup(true);
+  };
+
+  const handleDelete = async () => {
+    const response = await fetch(
+      `${backendURI}/admin/data/project/delete/${params.slug}`,
+      {
+        method: "DELETE",
+        credentials: "include",
+      }
+    );
+    if (response.ok) {
+      const data = await response.json();
+
+      updatePopupContent(data.message);
+      updatePopupStatusForm(data.status);
+      updateSuccessMessageIcon(data.status);
+      router.push("/admin/projects");
+    }
+  };
   console.log(pageData);
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center ">
@@ -94,8 +138,16 @@ const SinglePost = () => {
 
             {/* Buttons */}
             <div className="flex justify-end space-x-4">
-              <CrudBtn bgColor={"#54AF52"} text={<CiEdit />} />
-              <CrudBtn bgColor={"#D74C48"} text={<MdDeleteForever />} />
+              <CrudBtn
+                bgColor={"#54AF52"}
+                text={<CiEdit />}
+                handleButton={handleEdit}
+              />
+              <CrudBtn
+                bgColor={"#D74C48"}
+                text={<MdDeleteForever />}
+                handleButton={handleDelete}
+              />
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ const AdminProjectList = () => {
 
   const project = useCrudData((store) => store.project);
   const setProject = useCrudData((store) => store.updateProject);
-  console.log(project);
+
   const updatePopupContent = usePopupStatus(
     (state) => state.updatePopupContent
   );
@@ -38,7 +38,6 @@ const AdminProjectList = () => {
     fetchData();
   }, []);
   const handleDelete = async (id) => {
-    console.log(id);
     const response = await fetch(
       `${backendURI}/admin/data/project/delete/${id}`,
       {

@@ -5,11 +5,36 @@ import DashboardSecondHeading from "./DashboardSecondHeading";
 import { Input, TextArea } from "./Form";
 import { RxCross2 } from "react-icons/rx";
 import { backendURI } from "../utils/secret";
+import { useParams } from "next/navigation";
 import Shimmer from "./Shimmer";
 import { usePopupStatus } from "../utils/stores/popup";
 
-export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
-  console.log(selectedTechItem);
+export const CheckList = ({
+  text,
+  id,
+  setSelectItem,
+  selectedTechItem,
+  checkedId,
+}) => {
+  const [checked, setChecked] = useState(false);
+
+  // console.log(checkedId);
+  // console.log(id);
+
+  useEffect(() => {
+    if (checkedId === id) {
+      console.log(true);
+      setChecked(true);
+
+      // // if checked value is default, adding it to array,
+      // setSelectItem({
+      //   ...selectedTechItem,
+      //   ["techUsed"]: [...selectedTechItem.techUsed, checkedId],
+      // });
+    }
+  }, [checkedId]);
+  // console.log(checked);
+
   const getCheckboxValue = (e) => {
     if (e.target.checked) {
       // console.log(e.target.id);
@@ -20,9 +45,9 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
       });
     } else {
       const filterItem = selectedTechItem.techUsed.filter((el) => {
-        console.log("false");
         return el !== e.target.id;
       });
+      setChecked(false);
       setSelectItem({
         ...selectedTechItem,
         ["techUsed"]: filterItem,
@@ -33,7 +58,12 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
 
   return (
     <li>
-      <input type="checkbox" id={id} onChange={getCheckboxValue} />
+      <input
+        type="checkbox"
+        id={id}
+        onChange={getCheckboxValue}
+        checked={checked}
+      />
       <label htmlFor={id} className="mx-2 uppercase">
         {text.slice(0, -4)}
       </label>
@@ -42,6 +72,10 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
 };
 
 const ProjectForm = () => {
+  // let's get the id
+  const params = useParams();
+  // this will set if the project form is edit or add, if it is true then it is add if not it is edit
+  const projectFormState = useCrudData((state) => state.projectFormState);
   // ------------showing success popup after submission or vice versa
   const updatePopupContent = usePopupStatus(
     (state) => state.updatePopupContent
@@ -83,12 +117,49 @@ const ProjectForm = () => {
   const handleClose = () => {
     setProjectFormPopup(false);
   };
+
+  // this function will be for the edit nature of form
+
+  const handleFormEdit = async (e) => {
+    e.preventDefault();
+    console.log("handle Edit");
+    const data = JSON.stringify(formData);
+    try {
+      const response = await fetch(
+        `${backendURI}/admin/data/project/edit/${params.slug}`,
+        {
+          method: "PUT",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: data,
+        }
+      );
+      console.log(response);
+      const respondedData = await response.json();
+      if (response.ok) {
+        updatePopupStatusForm(response.ok);
+        updatePopupContent(respondedData.message);
+        if (respondedData.data) {
+          updatePopupStatusForm(respondedData.success);
+
+          setProject(respondedData.data);
+          setProjectFormPopup(false);
+        } else {
+          updateSuccessMessageIcon(respondedData.success);
+        }
+      }
+    } catch (err) {
+      console.log("Error fetching the data");
+    }
+  };
+
+  // this function is for the add nature
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // setFormData({ ...formData, ["techUsed"]: selectedTechData });
-    // console.log("Form Data:", JSON.stringify(formData));
+
     const data = JSON.stringify(formData);
-    // console.log(data);
 
     try {
       const response = await fetch(`${backendURI}/admin/data/project/add`, {
@@ -102,7 +173,7 @@ const ProjectForm = () => {
       // const data = await response.json();
       if (response.ok) {
         const respondedData = await response.json();
-        console.log(respondedData);
+
         updatePopupStatusForm(response.ok);
         updatePopupContent(respondedData.message);
         if (respondedData.success) {
@@ -119,6 +190,40 @@ const ProjectForm = () => {
     }
   };
   useEffect(() => {
+    // there is id present in the url and projectFormState if false then calling the if statement and it will be edit form in this case
+    if (params && !projectFormState) {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(
+            `${backendURI}/admin/data/project/${params.slug}`,
+            {
+              method: "GET",
+              credentials: "include",
+              headers: {},
+            }
+          );
+          console.log(response);
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+
+            console.log(data);
+            setFormData({
+              heading: data.data.heading,
+              description: data.data.description,
+              liveLink: data.data.liveLink,
+              order: data.data.order,
+              projectLink: data.data.projectLink,
+              techUsed: data.data.techUsed,
+            });
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchData();
+    }
+
     if (projectFormPopup === true) {
       const fetchData = async () => {
         try {
@@ -135,9 +240,10 @@ const ProjectForm = () => {
       };
       fetchData();
     } else {
-      setTechData(false);
+      console.log("error while fetch tech data for form");
     }
   }, [projectFormPopup]);
+
   return (
     <div className="fixed z-[500]  h-[100vh] w-[100vw] top-0 right-0 left-0 flex items-center justify-center duration-50 ease-out ">
       <span
@@ -149,7 +255,7 @@ const ProjectForm = () => {
         action="
       "
         className="relative z-[502] w-[65rem] px-4 border-2 border-colorText/20 p-2  shadow-xl shadow-colorText/10 rounded-lg bg-colorNav"
-        onSubmit={handleFormSubmit}
+        onSubmit={projectFormState ? handleFormSubmit : handleFormEdit}
       >
         <span
           className="absolute top-2 right-3 text-lg cursor-pointer text-colorText z-[503]"
@@ -157,7 +263,9 @@ const ProjectForm = () => {
         >
           <RxCross2 />
         </span>
-        <DashboardSecondHeading text={"add project"} />
+        <DashboardSecondHeading
+          text={projectFormState ? "Add a project" : "Edit a Project"}
+        />
         <Input
           inputType="text"
           placeholderText="Add a project name."
@@ -167,6 +275,7 @@ const ProjectForm = () => {
         />
         <Input
           inputType="text"
+          value={formData.projectLink}
           placeholderText="Add a project link."
           label="projectLink"
           handleInput={handleData}
@@ -175,18 +284,21 @@ const ProjectForm = () => {
           inputType="text"
           placeholderText="Add a live link."
           label="liveLink"
+          value={formData.liveLink}
           handleInput={handleData}
         />
         <Input
           inputType="Number"
           placeholderText="Add a order no."
           label="order"
+          value={formData.order}
           handleInput={handleData}
         />
         <TextArea
           rows="4"
           placeholderText="Add a live link."
           label="description"
+          value={formData.description}
           handleTextArea={handleData}
         />
         <DashboardSecondHeading text={"Tech used"} />
@@ -200,6 +312,7 @@ const ProjectForm = () => {
                     text={e.techImgName}
                     setSelectItem={setFormData}
                     selectedTechItem={formData}
+                    checkedId={formData.techUsed[i]}
                   />
                 );
               })

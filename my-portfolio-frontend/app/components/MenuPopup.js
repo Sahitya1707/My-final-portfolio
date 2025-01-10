@@ -12,11 +12,6 @@ import { useCrudData } from "../utils/stores/crudData";
 
 const MenuPopup = ({ width }) => {
   // popup after submission of form
-  const setPopupStatus = usePopupStatus((store) => store.updatePopupStatus);
-  const setPopupContent = usePopupStatus((store) => store.updatePopupContent);
-  const setSuccessMessageIcon = usePopupStatus(
-    (store) => store.updateSuccessMessageIcon
-  );
 
   // ---------------
   const setMenuData = useCrudData((state) => state.updateMenu);
@@ -34,6 +29,7 @@ const MenuPopup = ({ width }) => {
 
   // -----------
   const updatePopup = useMenuPopup((state) => state.updatePopupActive);
+  // this will help to know if you are editing or adding
   const addMenuState = useMenuPopup((state) => state.addMenuState);
   const menuHeading = useMenuPopup((state) => state.menuHeading);
   //edit id and set edit id
@@ -131,11 +127,9 @@ const MenuPopup = ({ width }) => {
 
   // using useEffect for the get
   useEffect(() => {
-    console.log("useEffect called");
+    // if add menuState is false which mean edit is true
     if (!addMenuState) {
-      console.log("edit called");
       const fetchIndividualMenu = async () => {
-        console.log("fetchIndividualMenu");
         try {
           const response = await fetch(
             `${backendURI}/admin/data//get/menu/${id}`,
