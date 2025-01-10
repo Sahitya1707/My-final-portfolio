@@ -4,7 +4,7 @@ const editProject = async (req, res) => {
   console.log("editProject.js");
   console.log(req.body);
   const id = req.params.id;
-  console.log(id);
+
   const { heading, projectLink, liveLink, order, description, techUsed } =
     req.body;
   console.log(heading, projectLink, liveLink, order, description, techUsed);
@@ -13,12 +13,12 @@ const editProject = async (req, res) => {
     const exisitngOrderNumber = await ProjectModal.findOne({
       order: req.body.order,
     });
-    if (exisitngOrderNumber) {
-      return res.json({
-        success: false,
-        message: "Order number you are trying to submit is already there.",
-      });
-    }
+    // if (exisitngOrderNumber) {
+    //   return res.json({
+    //     success: false,
+    //     message: "Order number you are trying to submit is already there.",
+    //   });
+    // }
     await ProjectModal.findByIdAndUpdate(id, {
       heading,
       projectLink,

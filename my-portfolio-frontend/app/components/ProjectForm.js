@@ -9,50 +9,37 @@ import { useParams } from "next/navigation";
 import Shimmer from "./Shimmer";
 import { usePopupStatus } from "../utils/stores/popup";
 
-export const CheckList = ({
-  text,
-  id,
-  setSelectItem,
-  selectedTechItem,
-  checkedId,
-}) => {
+export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
   const [checked, setChecked] = useState(false);
 
-  // console.log(checkedId);
-  // console.log(id);
-
   useEffect(() => {
-    if (checkedId === id) {
-      console.log(true);
+    // if the array of techUsed includes the id then it will have checked properties
+    if (selectedTechItem.techUsed.includes(id)) {
       setChecked(true);
-
-      // // if checked value is default, adding it to array,
-      // setSelectItem({
-      //   ...selectedTechItem,
-      //   ["techUsed"]: [...selectedTechItem.techUsed, checkedId],
-      // });
     }
-  }, [checkedId]);
-  // console.log(checked);
+  }, [selectedTechItem.techUsed]);
 
   const getCheckboxValue = (e) => {
     if (e.target.checked) {
-      // console.log(e.target.id);
-      // setSelectItem([...selectedTechItem, e.target.id]);
+      // if e.target is checked getting it's value inside the array
       setSelectItem({
         ...selectedTechItem,
         ["techUsed"]: [...selectedTechItem.techUsed, e.target.id],
       });
+      // setting checked to be true
+      setChecked(true);
     } else {
+      // if checked is not true filtering the array to remove that items
       const filterItem = selectedTechItem.techUsed.filter((el) => {
         return el !== e.target.id;
       });
+
+      // setting it checked to be false
       setChecked(false);
       setSelectItem({
         ...selectedTechItem,
         ["techUsed"]: filterItem,
       });
-      // setSelectItem(filterItem);
     }
   };
 
@@ -72,6 +59,8 @@ export const CheckList = ({
 };
 
 const ProjectForm = () => {
+  // global project data
+  // const project = useCrudData((store) => store.project);
   // let's get the id
   const params = useParams();
   // this will set if the project form is edit or add, if it is true then it is add if not it is edit
@@ -122,7 +111,7 @@ const ProjectForm = () => {
 
   const handleFormEdit = async (e) => {
     e.preventDefault();
-    console.log("handle Edit");
+
     const data = JSON.stringify(formData);
     try {
       const response = await fetch(
@@ -136,7 +125,7 @@ const ProjectForm = () => {
           body: data,
         }
       );
-      console.log(response);
+
       const respondedData = await response.json();
       if (response.ok) {
         updatePopupStatusForm(response.ok);
@@ -202,12 +191,10 @@ const ProjectForm = () => {
               headers: {},
             }
           );
-          console.log(response);
+
           if (response.ok) {
             const data = await response.json();
-            console.log(data);
 
-            console.log(data);
             setFormData({
               heading: data.data.heading,
               description: data.data.description,
@@ -312,7 +299,7 @@ const ProjectForm = () => {
                     text={e.techImgName}
                     setSelectItem={setFormData}
                     selectedTechItem={formData}
-                    checkedId={formData.techUsed[i]}
+                    // checkedId={formData.techUsed}
                   />
                 );
               })
