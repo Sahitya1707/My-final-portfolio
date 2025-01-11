@@ -18,7 +18,7 @@ export const TechImageCard = ({ id, name }) => {
     updateTech(data.data);
   };
   return (
-    <div className="flex  flex-col items-center" id={id}>
+    <div className="flex  flex-col items-center">
       <div className="xl:h-[4rem] xl:w-[4rem] sm:h-[3rem] sm:w-[3rem] h-[4rem] w-[4rem] relative ">
         <Image
           src={`${backendURI}/admin/images/${name}`}

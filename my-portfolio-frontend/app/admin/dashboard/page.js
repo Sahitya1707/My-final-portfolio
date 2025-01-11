@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { backendURI } from "@/app/utils/secret";
 import MenuComponent from "@/app/components/MenuComponent";
 import TechComponent from "@/app/components/TechComponent";
+import SkillAdminDashboard from "@/app/components/SkillAdminDashboard";
 
 const Dashboard = () => {
   const setPopupActive = useMenuPopup((state) => state.updatePopupActive);
@@ -57,6 +58,7 @@ const Dashboard = () => {
       <div className="px-6">
         <MenuComponent />
         <TechComponent />
+        <SkillAdminDashboard />
       </div>
     </div>
   );

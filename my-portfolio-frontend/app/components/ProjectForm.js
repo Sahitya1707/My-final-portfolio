@@ -8,8 +8,22 @@ import { backendURI } from "../utils/secret";
 import { useParams } from "next/navigation";
 import Shimmer from "./Shimmer";
 import { usePopupStatus } from "../utils/stores/popup";
+import { usePathname } from "next/navigation";
 
 export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
+  // ------------showing  popup after submission or vice versa
+  const updatePopupContent = usePopupStatus(
+    (state) => state.updatePopupContent
+  );
+  const updatePopupStatusForm = usePopupStatus(
+    (state) => state.updatePopupStatus
+  );
+  const updateSuccessMessageIcon = usePopupStatus(
+    (state) => state.updateSuccessMessageIcon
+  );
+  const params = useParams();
+  const router = usePathname();
+
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -20,6 +34,23 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
   }, [selectedTechItem.techUsed]);
 
   const getCheckboxValue = (e) => {
+    console.log(selectedTechItem.techUsed.length);
+    if (
+      e.target.checked &&
+      router === "/admin/dashboard" &&
+      !params.slug &&
+      selectedTechItem.techUsed.length >= 3
+    ) {
+      console.log("hi");
+      setChecked(false);
+      updatePopupContent("Cannot select more then 3 items");
+      updateSuccessMessageIcon(false);
+      updatePopupStatusForm(true);
+      return;
+    }
+
+    // this means if current url is dashboard adn there is no params we will limit the checklist ot be 9 item - it will be used as a skill section
+
     if (e.target.checked) {
       // if e.target is checked getting it's value inside the array
       setSelectItem({
@@ -28,7 +59,8 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
       });
       // setting checked to be true
       setChecked(true);
-    } else {
+      console.log(selectedTechItem.techUsed.length);
+    } else if (!e.target.checked) {
       // if checked is not true filtering the array to remove that items
       const filterItem = selectedTechItem.techUsed.filter((el) => {
         return el !== e.target.id;
