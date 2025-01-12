@@ -13,6 +13,7 @@ const loginRoute = require("./routes/admin/admin");
 const dataRoute = require("./routes/admin/menu");
 const techRoute = require("./routes/admin/tech");
 const projectRoute = require("./routes/admin/project");
+const skillRoute = require("./routes/admin/skill");
 const cookieParser = require("cookie-parser");
 const seedData = require("./config/seed");
 
@@ -49,3 +50,4 @@ app.use("/admin", loginRoute);
 app.use("/admin/data", dataRoute);
 app.use("/admin/data/tech", techRoute);
 app.use("/admin/data/project", projectRoute);
+app.use("/admin/data/skill", skillRoute);

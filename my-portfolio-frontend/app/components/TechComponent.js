@@ -41,7 +41,7 @@ const TechComponent = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+
         updatePopupStatusForm(true);
         updateSuccessMessageIcon(data.status);
         updatePopupContent(data.message);

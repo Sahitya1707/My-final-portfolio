@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const SkillSchema = new mongoose.Schema(
   {
     skillListed: {
-      name: [String],
+      type: [String],
       required: true,
     },
   },

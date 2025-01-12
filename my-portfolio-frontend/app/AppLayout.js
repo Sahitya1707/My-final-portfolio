@@ -95,7 +95,7 @@ const AppLayout = ({ children }) => {
       setCookie("theme", theme);
     }
   }, []);
-  console.log(popupStatus);
+
   return (
     <body
       className={` bg-colorBody ${theme} max-w-full w-full 

@@ -5,19 +5,48 @@ import { CheckList } from "./ProjectForm";
 import ButtonTypeOne from "./ButtonTypeOne";
 import Shimmer from "./Shimmer";
 import { useCrudData } from "../utils/stores/crudData";
+import { SkillsData } from "../utils/skillsData";
+import SkillCard from "./SKillCard";
 
 const SkillAdminDashboard = () => {
   const tech = useCrudData((state) => state.tech);
   const updateTech = useCrudData((state) => state.updateTech);
+  const updateSkills = useCrudData((state) => state.updateSkills);
+  const skills = useCrudData((state) => state.skills);
 
   const [formData, setFormData] = useState({
     techUsed: [],
+    // this will be selected only in the page of the dashboard
+    nameOfTechSelected: [],
   });
+  console.log(formData.nameOfTechSelected);
+  const submitForm = async (e) => {
+    e.preventDefault();
+    console.log(formData.nameOfTechSelected);
+    try {
+      // TODO know why skill is not being sent to backend
+      const response = await fetch(`${backendURI}/admin/data/skill/add`, {
+        credentials: "include",
+        method: "POST",
 
-  const submitForm = (e) => {
-    // e.preventDefault();
-    console.log(e);
+        headers: {
+          Accept:
+            "application/json, application/xml, text/plain, text/html, *.*",
+        },
+        body: formData.nameOfTechSelected,
+      });
+      console.log(response);
+    } catch (err) {
+      console.log("Error submitting the form", err.message);
+    }
+
+    // updateSkills(formData.nameOfTechSelected);
+
+    // console.log(e);
+    // console.log(formData.techUsed);
   };
+
+  console.log("skills", skills);
   return (
     <div className="py-2 border-b-2 border-colorText/10">
       <DashboardSecondHeading text={"Skills"} />
@@ -40,7 +69,7 @@ const SkillAdminDashboard = () => {
                   />
                 );
               })
-            : Array(10)
+            : Array(15)
                 .fill(0)
                 .map((e, i) => {
                   return (
@@ -57,6 +86,10 @@ const SkillAdminDashboard = () => {
 
         <ButtonTypeOne color={"primary"} bgColor={"colorNav"} text={"submit"} />
       </form>
+      {/* {skills &&
+        skills.map((e, i) => {
+          return;
+        })} */}
     </div>
   );
 };

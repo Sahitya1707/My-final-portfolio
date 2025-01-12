@@ -36,7 +36,7 @@ const MenuComponent = () => {
       console.log(err);
     }
   };
-  console.log(menuData);
+
   useEffect(() => {
     getMenu();
   }, []);

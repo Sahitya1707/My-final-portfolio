@@ -34,16 +34,16 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
   }, [selectedTechItem.techUsed]);
 
   const getCheckboxValue = (e) => {
-    console.log(selectedTechItem.techUsed.length);
+    const limitOfItems = 4;
     if (
       e.target.checked &&
       router === "/admin/dashboard" &&
       !params.slug &&
-      selectedTechItem.techUsed.length >= 3
+      selectedTechItem.techUsed.length >= limitOfItems
     ) {
-      console.log("hi");
+      // console.log("hi");
       setChecked(false);
-      updatePopupContent("Cannot select more then 3 items");
+      updatePopupContent(`Cannot select more then ${limitOfItems} items`);
       updateSuccessMessageIcon(false);
       updatePopupStatusForm(true);
       return;
@@ -59,7 +59,8 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
       });
       // setting checked to be true
       setChecked(true);
-      console.log(selectedTechItem.techUsed.length);
+      console.log("-----------------");
+      // console.log(selectedTechItem.techUsed.length);
     } else if (!e.target.checked) {
       // if checked is not true filtering the array to remove that items
       const filterItem = selectedTechItem.techUsed.filter((el) => {
@@ -83,7 +84,49 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
         onChange={getCheckboxValue}
         checked={checked}
       />
-      <label htmlFor={id} className="mx-2 uppercase">
+      <label
+        htmlFor={id}
+        className="mx-2 uppercase"
+        onClick={(e) => {
+          if (
+            router === "/admin/dashboard" &&
+            !params.slug &&
+            selectedTechItem.nameOfTechSelected
+          ) {
+            // checking the item to avoid the items to be dublicate
+            if (
+              selectedTechItem.nameOfTechSelected.includes(
+                e.target.innerText.toLowerCase()
+              ) &&
+              selectedTechItem.nameOfTechSelected.length > 0
+            ) {
+              // filtering the array
+              const filterArray = selectedTechItem.nameOfTechSelected.filter(
+                (el) => {
+                  return el !== e.target.innerText.toLowerCase();
+                }
+              );
+              // console.log(filterArray, "filterArray");
+              setSelectItem({
+                ...selectedTechItem,
+                ["nameOfTechSelected"]: filterArray,
+              });
+
+              return;
+            }
+            setSelectItem({
+              ...selectedTechItem,
+              ["nameOfTechSelected"]: [
+                ...selectedTechItem.nameOfTechSelected,
+                e.target.innerText.toLowerCase(),
+              ],
+            });
+          }
+
+          // console.log(e.target.innerText);
+          // console.log(selectedTechItem.nameOfTechSelected);
+        }}
+      >
         {text.slice(0, -4)}
       </label>
     </li>

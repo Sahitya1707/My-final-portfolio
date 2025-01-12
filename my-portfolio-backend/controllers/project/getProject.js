@@ -11,7 +11,10 @@ const getProject = async (req, res) => {
 
   for (const id of projectData.techUsed) {
     const result = await TechModal.findOne({ _id: id });
-    techImg.push(result.techImgName);
+    console.log(result);
+    if (result.techImgName) {
+      techImg.push(result.techImgName);
+    }
   }
 
   projectData = {

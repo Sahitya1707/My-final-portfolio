@@ -9,6 +9,7 @@ export const useCrudData = create((set) => {
     project: "",
     tech: "",
     projectFormPopup: false,
+    skills: "",
     updateMenu: (menu) => set(() => ({ menu: menu })),
     updateTech: (tech) => set(() => ({ tech: tech })),
     updateProjectFormPopup: (projectFormPopup) =>
@@ -18,5 +19,6 @@ export const useCrudData = create((set) => {
     projectFormState: true,
     updateProjectFormState: (projectFormState) =>
       set(() => ({ projectFormState: projectFormState })),
+    updateSkills: (skills) => set(() => ({ skills })),
   };
 });
