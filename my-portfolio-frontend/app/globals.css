@@ -59,3 +59,29 @@
 #skillCard {
   border-bottom: 1px solid rgb(var(--primary-clr));
 }
+
+/* custom cursor
+ */
+/* Apply custom cursor globally and for all states */
+html,
+body,
+*,
+button,
+a,
+input,
+.disabled,
+a:disabled,
+input:disabled {
+  cursor: url("/images/custom-cursor/blackcircle.svg"), auto;
+}
+
+button:hover,
+a:hover,
+input:hover,
+.hover:hover {
+  cursor: url("/images/custom-cursor/whitecircle.svg"), auto;
+}
+
+body.primary-cursor * {
+  cursor: url("/images/custom-cursor/primary.svg"), auto;
+}

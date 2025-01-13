@@ -43,7 +43,7 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
     }
   }, [selectedTechItem.techUsed, selectedTechItem.nameOfTechSelected]);
 
-  const limitOfItems = 4;
+  const limitOfItems = 15;
   const getCheckboxValue = (e) => {
     // if the length of the nameOfTechSleected is greater then we will limit it and set the check to false.
     if (

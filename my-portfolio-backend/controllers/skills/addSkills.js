@@ -1,7 +1,6 @@
 const SkillModal = require("../../modals/skill");
 
 const addSkill = async (req, res) => {
-  // TODO limit the skill to be one just one array - remove all the data first and add the new one.
   console.log("add skill");
 
   console.log(req.body);

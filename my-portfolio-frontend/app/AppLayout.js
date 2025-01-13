@@ -17,7 +17,9 @@ import { DashboardIconText } from "./components/DashboardComponent";
 import { RiAdminLine } from "react-icons/ri";
 import { useLoginStatus } from "./utils/stores/login";
 import { backendURI } from "./utils/secret";
+import useCustomCursor from "./components/useCustomCursor";
 const AppLayout = ({ children }) => {
+  useCustomCursor();
   // admin status
   const setAdminLoginStatus = useLoginStatus((store) => store.updateAdminLogin);
   const adminLoginStatus = useLoginStatus((store) => store.adminLogin);

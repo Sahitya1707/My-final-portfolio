@@ -91,7 +91,6 @@ const SkillAdminDashboard = () => {
     };
     fetchData();
   }, []);
-  console.log(formData);
 
   return (
     <div className="py-2 border-b-2 border-colorText/10">
@@ -101,7 +100,7 @@ const SkillAdminDashboard = () => {
         action="
       "
       >
-        <ul className="grid grid-cols-5">
+        <ul className="grid grid-cols-7">
           {tech && tech
             ? tech.map((e, i) => {
                 return (
@@ -133,7 +132,7 @@ const SkillAdminDashboard = () => {
         <ButtonTypeOne color={"primary"} bgColor={"colorNav"} text={"submit"} />
       </form>
 
-      <div className="my-2 flex grid-cols-5 gap-x-4">
+      <div className="my-2 grid grid-cols-7 gap-4">
         {formData.nameOfTechSelected && formData.nameOfTechSelected ? (
           formData.nameOfTechSelected.map((e, i) => {
             return <TechCard imageName={`${e}.svg`} key={i} />;
