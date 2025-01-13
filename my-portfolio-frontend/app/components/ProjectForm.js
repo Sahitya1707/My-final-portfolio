@@ -25,23 +25,42 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
   const router = usePathname();
 
   const [checked, setChecked] = useState(false);
+  const labelRef = useRef(null);
 
   useEffect(() => {
     // if the array of techUsed includes the id then it will have checked properties
     if (selectedTechItem.techUsed.includes(id)) {
       setChecked(true);
     }
-  }, [selectedTechItem.techUsed]);
 
+    {
+      selectedTechItem.nameOfTechSelected &&
+      selectedTechItem.nameOfTechSelected.includes(
+        labelRef.current.innerText.toLowerCase()
+      )
+        ? setChecked(true)
+        : null;
+    }
+  }, [selectedTechItem.techUsed, selectedTechItem.nameOfTechSelected]);
+
+  const limitOfItems = 4;
   const getCheckboxValue = (e) => {
-    const limitOfItems = 4;
+    // if the length of the nameOfTechSleected is greater then we will limit it and set the check to false.
     if (
       e.target.checked &&
       router === "/admin/dashboard" &&
       !params.slug &&
-      selectedTechItem.techUsed.length >= limitOfItems
+      selectedTechItem.nameOfTechSelected.length > limitOfItems
     ) {
-      // console.log("hi");
+      console.log("incide the /admi/dashboard");
+      // if the array length exist the limit of items declared above we will remove the last item
+      setSelectItem({
+        ...selectedTechItem,
+        ["nameOfTechSelected"]: selectedTechItem.nameOfTechSelected.slice(
+          0,
+          -1
+        ),
+      });
       setChecked(false);
       updatePopupContent(`Cannot select more then ${limitOfItems} items`);
       updateSuccessMessageIcon(false);
@@ -58,9 +77,6 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
         ["techUsed"]: [...selectedTechItem.techUsed, e.target.id],
       });
       // setting checked to be true
-      setChecked(true);
-      console.log("-----------------");
-      // console.log(selectedTechItem.techUsed.length);
     } else if (!e.target.checked) {
       // if checked is not true filtering the array to remove that items
       const filterItem = selectedTechItem.techUsed.filter((el) => {
@@ -76,6 +92,65 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
     }
   };
 
+  // handle label click
+  const handleClick = (e) => {
+    // if (selectedTechItem.nameOfTechSelected.length > limitOfItems) {
+    //   console.log("handle clicke length called");
+    //   setSelectItem({
+    //     ...selectedTechItem,
+    //     ["nameOfTechSelected"]: selectedTechItem.nameOfTechSelected.slice(
+    //       0,
+    //       -1
+    //     ),
+    //   });
+    //   setChecked(false);
+    //   return;
+    //   // console.log("--------------------------");
+    //   // console.log("hi");
+    //   // console.log(selectedTechItem.nameOfTechSelected);
+    //   // setSelectItem({
+    //   //   ...selectedTechItem,
+    //   //   ["nameOfTechSelected"]: nameOfTechSelected.slice(0, -1),
+    //   // });
+    // } else
+
+    if (
+      router === "/admin/dashboard" &&
+      !params.slug &&
+      selectedTechItem.nameOfTechSelected
+    ) {
+      // checking the item to avoid the items to be dublicate
+      if (
+        selectedTechItem.nameOfTechSelected.includes(
+          e.target.innerText.toLowerCase()
+        ) &&
+        selectedTechItem.nameOfTechSelected.length > 0
+      ) {
+        // filtering the array
+        const filterArray = selectedTechItem.nameOfTechSelected.filter((el) => {
+          return el !== e.target.innerText.toLowerCase();
+        });
+        // console.log(filterArray, "filterArray");
+        setSelectItem({
+          ...selectedTechItem,
+          ["nameOfTechSelected"]: filterArray,
+        });
+
+        return;
+      }
+      setSelectItem({
+        ...selectedTechItem,
+        ["nameOfTechSelected"]: [
+          ...selectedTechItem.nameOfTechSelected,
+          e.target.innerText.toLowerCase(),
+        ],
+      });
+    }
+
+    // console.log(e.target.innerText);
+    // console.log(selectedTechItem.nameOfTechSelected);
+  };
+
   return (
     <li>
       <input
@@ -86,46 +161,9 @@ export const CheckList = ({ text, id, setSelectItem, selectedTechItem }) => {
       />
       <label
         htmlFor={id}
+        ref={labelRef}
         className="mx-2 uppercase"
-        onClick={(e) => {
-          if (
-            router === "/admin/dashboard" &&
-            !params.slug &&
-            selectedTechItem.nameOfTechSelected
-          ) {
-            // checking the item to avoid the items to be dublicate
-            if (
-              selectedTechItem.nameOfTechSelected.includes(
-                e.target.innerText.toLowerCase()
-              ) &&
-              selectedTechItem.nameOfTechSelected.length > 0
-            ) {
-              // filtering the array
-              const filterArray = selectedTechItem.nameOfTechSelected.filter(
-                (el) => {
-                  return el !== e.target.innerText.toLowerCase();
-                }
-              );
-              // console.log(filterArray, "filterArray");
-              setSelectItem({
-                ...selectedTechItem,
-                ["nameOfTechSelected"]: filterArray,
-              });
-
-              return;
-            }
-            setSelectItem({
-              ...selectedTechItem,
-              ["nameOfTechSelected"]: [
-                ...selectedTechItem.nameOfTechSelected,
-                e.target.innerText.toLowerCase(),
-              ],
-            });
-          }
-
-          // console.log(e.target.innerText);
-          // console.log(selectedTechItem.nameOfTechSelected);
-        }}
+        onClick={router === "/admin/dashboard" ? handleClick : null}
       >
         {text.slice(0, -4)}
       </label>

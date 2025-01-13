@@ -23,13 +23,12 @@ const checkToken = (req, res, next) => {
         refreshToken,
         process.env.REFRESH_TOKEN_SIGNATURE
       );
-      console.log("refresh token decode");
-      console.log(decodeRefreshToken);
+
       if (decodeRefreshToken) {
         next();
       }
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
     }
   }
 };

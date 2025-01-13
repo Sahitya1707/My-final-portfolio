@@ -7,8 +7,22 @@ import Shimmer from "./Shimmer";
 import { useCrudData } from "../utils/stores/crudData";
 import { SkillsData } from "../utils/skillsData";
 import SkillCard from "./SKillCard";
+import { usePopupStatus } from "../utils/stores/popup";
+
+import TechCard from "./TechCard";
 
 const SkillAdminDashboard = () => {
+  // ------------showing success popup after submission
+  const updatePopupContent = usePopupStatus(
+    (state) => state.updatePopupContent
+  );
+  const updatePopupStatusForm = usePopupStatus(
+    (state) => state.updatePopupStatus
+  );
+  const updateSuccessMessageIcon = usePopupStatus(
+    (state) => state.updateSuccessMessageIcon
+  );
+
   const tech = useCrudData((state) => state.tech);
   const updateTech = useCrudData((state) => state.updateTech);
   const updateSkills = useCrudData((state) => state.updateSkills);
@@ -24,18 +38,25 @@ const SkillAdminDashboard = () => {
     e.preventDefault();
     console.log(formData.nameOfTechSelected);
     try {
-      // TODO know why skill is not being sent to backend
       const response = await fetch(`${backendURI}/admin/data/skill/add`, {
         credentials: "include",
         method: "POST",
 
         headers: {
+          // don't miss the content type while sending it to backend
+          "Content-Type": "application/json",
           Accept:
             "application/json, application/xml, text/plain, text/html, *.*",
         },
-        body: formData.nameOfTechSelected,
+        body: JSON.stringify(formData.nameOfTechSelected),
       });
-      console.log(response);
+      if (response.ok) {
+        const data = await response.json();
+        updatePopupContent(data.message);
+        updatePopupStatusForm(data.success);
+        updateSuccessMessageIcon(data.success);
+        updateSkills(data.data);
+      }
     } catch (err) {
       console.log("Error submitting the form", err.message);
     }
@@ -46,7 +67,32 @@ const SkillAdminDashboard = () => {
     // console.log(formData.techUsed);
   };
 
-  console.log("skills", skills);
+  // useEffect
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${backendURI}/admin/data/skill/getAll`, {
+          method: "GET",
+          credentials: "include",
+          header: {},
+        });
+        if (response.ok) {
+          const data = await response.json();
+          // updateSkills(data.data[0].skillListed);
+          //   console.log(data.data);
+          setFormData({
+            ...formData,
+            ["nameOfTechSelected"]: data.data[0].skillListed,
+          });
+        }
+      } catch (err) {
+        console.log("Error coming while getting the data", err.message);
+      }
+    };
+    fetchData();
+  }, []);
+  console.log(formData);
+
   return (
     <div className="py-2 border-b-2 border-colorText/10">
       <DashboardSecondHeading text={"Skills"} />
@@ -86,10 +132,16 @@ const SkillAdminDashboard = () => {
 
         <ButtonTypeOne color={"primary"} bgColor={"colorNav"} text={"submit"} />
       </form>
-      {/* {skills &&
-        skills.map((e, i) => {
-          return;
-        })} */}
+
+      <div className="my-2 flex grid-cols-5 gap-x-4">
+        {formData.nameOfTechSelected && formData.nameOfTechSelected ? (
+          formData.nameOfTechSelected.map((e, i) => {
+            return <TechCard imageName={`${e}.svg`} key={i} />;
+          })
+        ) : (
+          <Shimmer width={"5rem"} height={"1rem"} radius={"0"} />
+        )}
+      </div>
     </div>
   );
 };

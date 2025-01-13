@@ -70,7 +70,7 @@ const AppLayout = ({ children }) => {
     } else if (pathname === "/contact") {
       setActiveNav(4);
     } else {
-      setActiveNav(null);
+      setActiveNav(0);
     }
   }, [pathname]);
 
