@@ -63,7 +63,7 @@
 /* custom cursor
  */
 /* Apply custom cursor globally and for all states */
-html,
+/* html,
 body,
 *,
 button,
@@ -84,4 +84,4 @@ input:hover,
 
 body.primary-cursor * {
   cursor: url("/images/custom-cursor/primary.svg"), auto;
-}
+} */

@@ -8,7 +8,11 @@ const SkillCard = ({ image, name }) => {
       id="skillCard"
     >
       <div className="xl:h-[4rem] xl:w-[4rem] sm:h-[3rem] sm:w-[3rem] h-[4rem] w-[4rem] relative ">
-        <Image src={`/images/tech-stack/${image}.svg`} fill alt={`${image}`} />
+        <Image
+          src={`http://localhost:5002/admin/images/${image}.svg`}
+          fill
+          alt={`${image}`}
+        />
       </div>
       <p className="uppercase xl:text-lg sm:text-sm tracking-wider text-center text-lg">
         {name}
