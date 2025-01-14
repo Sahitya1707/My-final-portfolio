@@ -1,16 +1,16 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import HeadingTypeOne from "../components/HeadingTypeOne";
+import HeadingTypeOne from "../../../components/HeadingTypeOne";
 import { FaAnglesDown, FaAnglesUp } from "react-icons/fa6";
 import Image from "next/image";
 import {
   ProjectDescription,
   ProjectHeading,
-} from "../components/ProjectComponent";
-import TechStack from "../components/TechStack";
-import ButtonTypeOne from "../components/ButtonTypeOne";
-import ProjectCard from "../components/ProjectCard";
-import { projectsData } from "../utils/projectsData";
+} from "../../../components/ProjectComponent";
+import TechStack from "../../../components/TechStack";
+import ButtonTypeOne from "../../../components/ButtonTypeOne";
+import ProjectCard from "../../../components/ProjectCard";
+import { projectsData } from "../../projectsData";
 
 const Projects = () => {
   const [currenScrollBarPosition, setCurrenScrollBarPosition] = useState(false);

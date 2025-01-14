@@ -18,6 +18,7 @@ import { RiAdminLine } from "react-icons/ri";
 import { useLoginStatus } from "./utils/stores/login";
 import { backendURI } from "./utils/secret";
 import useCustomCursor from "./components/useCustomCursor";
+import { Circle, Dot } from "./components/cursorElement";
 const AppLayout = ({ children }) => {
   useCustomCursor();
   // admin status
@@ -103,20 +104,22 @@ const AppLayout = ({ children }) => {
       className={` bg-colorBody ${theme} max-w-full w-full 
         ${
           pathname.includes("/admin")
-            ? "lg:overflow-auto "
-            : "lg:overflow-clip lg:max-h-screen"
+            ? "lg:overflow-auto cursor-auto"
+            : "lg:overflow-clip lg:max-h-screen cursor-none"
         }
         
          overflow-auto  max-h-auto `}
     >
       {pathname.includes("/admin") ? (
-        <main className="">
+        <main className="" id="backendPanel">
           {popupStatus ? <Popup /> : <></>}
 
           {children}
         </main>
       ) : (
         <>
+          <Dot />
+          <Circle />
           <Header />
           <div className="fixed top-0 right-4 z-[3000] hidden xl:block">
             {adminLoginStatus ? (
