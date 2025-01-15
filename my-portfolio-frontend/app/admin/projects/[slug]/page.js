@@ -11,6 +11,15 @@ import { useEffect, useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
 import { useRouter } from "next/navigation";
+// Example: A function to get all project slugs, replace with your actual data fetching logic
+
+// export async function generateStaticParams() {
+//   const slugs = await fetchAllProjectSlugs(); // Implement your data fetching logic
+
+//   return slugs.map((slug) => ({
+//     params: { slug },
+//   }));
+// }
 
 const SinglePost = () => {
   const router = useRouter();
