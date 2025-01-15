@@ -7,6 +7,6 @@ const getSkills = require("../../controllers/skills/getSkills");
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 router.post("/add", checkToken, addSkill);
-router.get("/getAll", checkToken, getSkills);
+router.get("/getAll", getSkills);
 
 module.exports = router;

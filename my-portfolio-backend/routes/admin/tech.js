@@ -47,5 +47,5 @@ router.post(
   addTech
 );
 router.delete("/delete/:id", checkToken, deleteTech);
-router.get("/getAll", checkToken, getAllTech);
+router.get("/getAll", getAllTech);
 module.exports = router;

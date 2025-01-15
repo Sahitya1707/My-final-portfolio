@@ -22,5 +22,9 @@
     "eslint-config-next": "15.0.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1"
+  },
+  "env": {
+    "NEXT_PUBLIC_API_URL": "http://localhost:5002",
+    "ADMIN_URL": "http://localhost:3000/admin/"
   }
 }

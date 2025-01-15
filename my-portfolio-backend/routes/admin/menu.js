@@ -12,7 +12,7 @@ router.use(express.json());
 
 // posting the menu data
 router.post("/menu", checkToken, addMenu);
-router.get("/getAllMenu", checkToken, getMenu);
+router.get("/getAllMenu", getMenu);
 //delete the data
 router.delete("/menu/delete/:id", checkToken, deleteMenu);
 //edit the data
