@@ -13,6 +13,10 @@ const projectSchema = new mongoose.Schema(
       type: [String],
       required: true,
     },
+    techName: {
+      type: [String],
+      required: true,
+    },
     liveLink: {
       type: String,
     },

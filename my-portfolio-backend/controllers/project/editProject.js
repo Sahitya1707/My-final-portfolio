@@ -1,14 +1,14 @@
 const ProjectModal = require("../../modals/project");
+const getTechName = require("../../controllers/getTechName");
 // TODO: find the existing project order, I mean filter with yourself if there is anyother project number with the number you are trying to change then it should throw wrror and if you not changing the product number then it shouldnout (not priority)
 const editProject = async (req, res) => {
   console.log("editProject.js");
-  console.log(req.body);
+  // console.log(req.body);
   const id = req.params.id;
 
   const { heading, projectLink, liveLink, order, description, techUsed } =
     req.body;
-  console.log(heading, projectLink, liveLink, order, description, techUsed);
-
+  const techName = await getTechName(techUsed);
   try {
     const exisitngOrderNumber = await ProjectModal.findOne({
       order: req.body.order,
@@ -26,7 +26,9 @@ const editProject = async (req, res) => {
       order,
       description,
       techUsed,
+      techName,
     });
+
     const allProject = await ProjectModal.find();
     res.json({ status: true, message: "Project Updated", data: allProject });
   } catch (err) {

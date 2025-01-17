@@ -1,11 +1,11 @@
 const ProjectData = require("../../modals/project");
+const getTechName = require("../../controllers/getTechName");
 const addProject = async (req, res) => {
   console.log("add project called");
   const { heading, projectLink, liveLink, description, techUsed, order } =
     req.body;
   const exisitingProjectOrder = await ProjectData.findOne({ order });
-  console.log("---------------");
-  console.log(exisitingProjectOrder);
+
   if (exisitingProjectOrder) {
     console.log(">>>>>>>>>>>>>>>>>>>");
     return res.json({
@@ -13,6 +13,7 @@ const addProject = async (req, res) => {
       status: false,
     });
   }
+  const techName = await getTechName(techUsed);
 
   const newProject = new ProjectData({
     heading,
@@ -21,6 +22,7 @@ const addProject = async (req, res) => {
     order,
     liveLink,
     projectLink,
+    techName: techName,
   });
 
   await newProject.save();
