@@ -95,7 +95,6 @@ const Projects = () => {
 
       // https://stackoverflow.com/questions/67945846/setting-root-property-in-options-argument-of-intersection-observer-causes-weird
       projectChild.forEach((child) => {
-        console.log(child);
         observer.observe(child);
       });
       // console.log(project);
@@ -106,9 +105,6 @@ const Projects = () => {
     }
   }, [dataFetched]);
 
-  // console.log(projectData);
-  // console.log(project.childNodes[0].childNodes);
-  // console.log(techStackIndex);
   return (
     <>
       <HeadingTypeOne text={"My Projects"} />
@@ -129,20 +125,6 @@ const Projects = () => {
             }
           }
         >
-          {/* {projectsData.map((e, i) => {
-            return (
-              <h1 key={i}>2</h1>
-              // <ProjectCard
-              //   key={i}
-              //   heading={e.projectName}
-              //   description={e.projectDescription}
-              //   viewSource={e.source_link}
-              //   liveProject={e.live_link}
-              //   techUsed={projectsData[techStackIndex].techUsed}
-              //   index={i}
-              // />
-            );
-          })} */}
           {projectData &&
             projectData.map((e, i) => {
               return (
@@ -152,7 +134,7 @@ const Projects = () => {
                   description={e.description}
                   viewSource={e.projectLink}
                   liveProject={e.liveLink}
-                  techUsed={projectData[techStackIndex].techUsed}
+                  techUsed={projectData[techStackIndex].techName}
                   index={i}
                 />
               );

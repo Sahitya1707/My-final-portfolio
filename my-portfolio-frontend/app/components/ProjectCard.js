@@ -5,7 +5,8 @@ import TechStack from "./TechStack";
 import { techStackData } from "../utils/techStackData";
 import { useTechStack, usetechStack } from "../utils/stores/techStackStore";
 import TechCard, { TechCard2 } from "./TechCard";
-import { projectsData } from "../utils/projectsData";
+import { useCrudData } from "../utils/stores/crudData";
+// import { projectsData } from "../utils/projectsData";
 
 const ProjectCard = ({
   heading,
@@ -15,37 +16,32 @@ const ProjectCard = ({
   techUsed,
   index,
 }) => {
-  console.log(index);
   // console.log(techUsed);
 
   const updateTechStack = useTechStack((state) => state.updateTechStackUsed);
 
   useEffect(() => {
-    console.log(techStackData);
-    console.log("useEffect inside project CArd called");
-    // const filterTechStack = techStackData.filter((e, i) => {
-    //   console.log(e);
-    //   return techUsed.includes(e.name);
-    // });
     // i am using udateTechStack here to update the tech stack part through zustand
-    updateTechStack(techStackData);
+    updateTechStack(techUsed);
   }, [techUsed]);
 
   // setting the state for the techstack index
-  const [techStackIndexForMobile, setTechStackIndexForMobile] = useState([]);
+  // const [techStackIndexForMobile, setTechStackIndexForMobile] = useState([]);
 
-  useEffect(() => {
-    //filtering using index, so that it is displayed in mobile phone
-    const filterTechUsingIndex = techStackData.filter((e, i) => {
-      return projectsData[index].techUsed.includes(e.name);
-    });
-    // setting the filterTechsugin index for mobile
-    // console.log(filterTechUsingIndex);
-    setTechStackIndexForMobile(filterTechUsingIndex);
-  }, []);
+  // useEffect(() => {
+  //   console.log("mbl device use");
+  //   //filtering using index, so that it is displayed in mobile phone
+  //   // const filterTechUsingIndex = techStackData.filter((e, i) => {
+  //   //   return projectsData[index].techUsed.includes(e.name);
+  //   // });
+  //   // console.log(filterTechUsingIndex);
+  //   // setting the filterTechsugin index for mobile
+  //   // console.log(filterTechUsingIndex);
+  //   // setTechStackIndexForMobile(filterTechUsingIndex);
+  // }, []);
 
-  // setting the data for each mobile tech stack
-  const techStackMblData = projectsData[index].techUsed;
+  // this contains all the project data
+  const projectData = useCrudData((store) => store.project);
 
   return (
     <div
@@ -55,8 +51,8 @@ const ProjectCard = ({
       <ProjectHeading text={heading} />
       <ProjectDescription text={description} />
       <div className="md:hidden grid sm:grid-cols-3 gap-x-3 gap-y-2 grid-cols-2">
-        {techStackIndexForMobile.map((e, i) => {
-          return <TechCard2 image={e.name} name={e.tech} key={i} />;
+        {projectData[index].techName.map((e, i) => {
+          return <TechCard imageName={e} key={i} />;
         })}
       </div>
 
