@@ -64,12 +64,15 @@ body a,
 body button,
 body form,
 body span {
-  cursor: none !important;
+  cursor: none;
 }
 #backendPanel a,
 #backendPanel button,
 #backendPanel form {
   cursor: pointer !important;
+}
+#backendPanel span {
+  cursor: auto;
 }
 /* custom cursor
  */

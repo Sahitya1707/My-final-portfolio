@@ -4,6 +4,7 @@ const getAllProject = async (req, res) => {
   console.log("getAllproject.js");
   try {
     const allProject = await ProjectModal.find();
+    console.log(allProject);
     if (allProject) {
       res.json({
         status: true,

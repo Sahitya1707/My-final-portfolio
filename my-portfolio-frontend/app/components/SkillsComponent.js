@@ -12,7 +12,7 @@ const SkillsComponent = () => {
       try {
         const response = await fetch(`${backendURI}/admin/data/skill/getAll`, {
           method: "GET",
-          credentials: "include",
+
           header: {},
         });
         if (response.ok) {

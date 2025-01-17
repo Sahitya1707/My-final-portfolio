@@ -15,18 +15,20 @@ const ProjectCard = ({
   techUsed,
   index,
 }) => {
+  console.log(index);
   // console.log(techUsed);
 
   const updateTechStack = useTechStack((state) => state.updateTechStackUsed);
 
   useEffect(() => {
-    const filterTechStack = techStackData.filter((e, i) => {
-      return techUsed.includes(e.name);
-    });
-
+    console.log(techStackData);
+    console.log("useEffect inside project CArd called");
+    // const filterTechStack = techStackData.filter((e, i) => {
+    //   console.log(e);
+    //   return techUsed.includes(e.name);
+    // });
     // i am using udateTechStack here to update the tech stack part through zustand
-
-    updateTechStack(filterTechStack);
+    updateTechStack(techStackData);
   }, [techUsed]);
 
   // setting the state for the techstack index
@@ -38,7 +40,7 @@ const ProjectCard = ({
       return projectsData[index].techUsed.includes(e.name);
     });
     // setting the filterTechsugin index for mobile
-    console.log(filterTechUsingIndex);
+    // console.log(filterTechUsingIndex);
     setTechStackIndexForMobile(filterTechUsingIndex);
   }, []);
 
