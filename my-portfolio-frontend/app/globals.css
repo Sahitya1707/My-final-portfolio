@@ -62,7 +62,8 @@
 
 body a,
 body button,
-body form {
+body form,
+body span {
   cursor: none !important;
 }
 #backendPanel a,

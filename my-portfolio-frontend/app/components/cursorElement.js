@@ -30,7 +30,7 @@ export const Circle = () => {
   const mousePositionY = useCursorPosition((state) => state.y);
   return (
     <span
-      className="w-8 h-8 border-2 border-colorText pointer-events-none fixed rounded-full  z-[5000] top-[-100%] right-[100%]"
+      className="w-8 h-8 border-2 border-colorText pointer-events-none fixed rounded-full  z-[5000] top-[-100%] right-[100%] hidden sm:block"
       style={{
         // opacity: `${isMoving ? 1 : 0}`,
         transformOrigin: `100% 100%`,

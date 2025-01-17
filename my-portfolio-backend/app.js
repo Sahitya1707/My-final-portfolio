@@ -15,7 +15,6 @@ const techRoute = require("./routes/admin/tech");
 const projectRoute = require("./routes/admin/project");
 const skillRoute = require("./routes/admin/skill");
 const cookieParser = require("cookie-parser");
-const seedData = require("./config/seed");
 
 //
 connectDB();
