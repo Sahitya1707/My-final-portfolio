@@ -55,7 +55,7 @@ const Header = () => {
       >
         <ul
           className={` md:static text-2xl md:text-lg md:justify-evenly md:p-3 md:border-colorText/20 md:border-[1px] xl:w-[45%] lg:w-[60%] md:w-[70%] mx-auto rounded-xl md:bg-colorNav text-colorText tracking-wider md:items-center  left-0 w-[100%] z-[1005] md:h-[auto] h-screen backdrop-blur-lg md:bg-[colorBody] flex md:flex-row flex-col justify-center items-start md:px-auto px-10 md:gap-y-auto gap-y-5 fixed  duration-200 ${
-            openModal ? "top-0 ease-in" : "top-[-100%] ease-out"
+            openModal ? "top-0 ease-in" : "top-[-150%] lg:top-auto ease-out"
           }`}
           onClick={handleCloseModal}
         >

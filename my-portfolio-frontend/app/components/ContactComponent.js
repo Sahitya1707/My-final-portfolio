@@ -7,6 +7,8 @@ import handleMessage from "../actions/sendMessage";
 import { backendURI } from "../utils/secret";
 import { usePopupStatus } from "../utils/stores/popup";
 
+// TODO temporarily i am swithing to using my own mail as dns was not changes, i wanted to make it hello@sahityaneupane.com.np btw.
+
 const ContactComponent = () => {
   const updatePopupContent = usePopupStatus(
     (state) => state.updatePopupContent
@@ -21,10 +23,12 @@ const ContactComponent = () => {
     name: "",
     email: "",
     message: "",
+    number: "",
     agree: null,
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData.agree);
     if (formData.agree) {
       updatePopupContent(
         "Sorry form didnot submitted ! Try again after reloading"
@@ -42,8 +46,26 @@ const ContactComponent = () => {
         method: "POST",
         body: JSON.stringify(formData),
       });
+      console.log(response);
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        // const data = await response;
+        // console.log(data);
+        updatePopupContent(data.message);
+        updatePopupStatusForm(data.success);
+        updateSuccessMessageIcon(data.success);
+
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+          number: "",
+          agree: null,
+        });
+      }
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
       updatePopupContent(
         "Sorry form didnot submitted ! Try again after reloading"
       );
@@ -67,6 +89,7 @@ const ContactComponent = () => {
       />
       <form
         onSubmit={handleSubmit}
+        action={""}
         className="flex flex-col w-[100%] md:w-[30rem] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-3 sm:p-2 rounded-md sm:rounded-xl shadow-colorText/20 shadow-md  sm:mt-[5rem] my-4 lg:mt-3"
       >
         <Input
@@ -81,6 +104,13 @@ const ContactComponent = () => {
           placeholderText={"Enter Your Email"}
           label={"email"}
           value={formData.email}
+          handleInput={handleForm}
+        />
+        <Input
+          inputType="number"
+          placeholderText={"Enter Your Phone Number"}
+          label={"number"}
+          value={formData.number}
           handleInput={handleForm}
         />
         <TextArea

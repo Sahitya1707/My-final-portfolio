@@ -19,7 +19,7 @@ const Popup = () => {
     }
   }, [popupStatus]);
   return (
-    <div className="fixed top-5 right-5   bg-colorNav p-2 rounded-lg flex items-center gap-x-2 shadow-sm shadow-colorText/30 text-colorText z-[2000] capitalize">
+    <div className="fixed top-20 sm:top-5 right-5   bg-colorNav p-2 rounded-lg flex items-center gap-x-2 shadow-sm shadow-colorText/30 text-colorText z-[2000] capitalize sm:text-md text-sm">
       {successMessageIcon ? (
         <span className="text-[green] border-[green] border-2  border-solid p-1 rounded-full text-lg">
           <TiTick />

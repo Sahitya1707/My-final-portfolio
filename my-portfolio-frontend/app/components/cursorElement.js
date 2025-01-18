@@ -8,7 +8,7 @@ export const Dot = () => {
 
   return (
     <span
-      className={`h-2 w-2  bg-primary pointer-events-none fixed z-[5000]  ease-linear duration-150 rounded-full top-[-100%] right-[100%] ${
+      className={`h-2 w-2  bg-primary pointer-events-none fixed z-[5000]  ease-linear duration-150 rounded-full top-[-100%] right-[100%] hidden sm:block ${
         isClicked ? "bg-[red]" : null
       }`}
       style={{

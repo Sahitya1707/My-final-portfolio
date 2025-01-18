@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import { backendURI } from "../utils/secret";
 
 const SkillCard = ({ image, name }) => {
   return (
@@ -9,7 +9,7 @@ const SkillCard = ({ image, name }) => {
     >
       <div className="xl:h-[4rem] xl:w-[4rem] sm:h-[3rem] sm:w-[3rem] h-[4rem] w-[4rem] relative ">
         <Image
-          src={`http://localhost:5002/admin/images/${image}.svg`}
+          src={`${backendURI}/admin/images/${image}.svg`}
           fill
           alt={`${image}`}
         />

@@ -60,16 +60,11 @@
   border-bottom: 1px solid rgb(var(--primary-clr));
 }
 
-body a,
-body button,
-body form,
-body span {
+body * {
   cursor: none;
 }
-#backendPanel a,
-#backendPanel button,
-#backendPanel form {
-  cursor: pointer !important;
+#backendPanel * {
+  cursor: auto !important;
 }
 #backendPanel span {
   cursor: auto;
