@@ -4,9 +4,57 @@ import { Input, TextArea } from "./Form";
 import ButtonTypeOne from "./ButtonTypeOne";
 
 import handleMessage from "../actions/sendMessage";
+import { backendURI } from "../utils/secret";
+import { usePopupStatus } from "../utils/stores/popup";
 
 const ContactComponent = () => {
-  const handleSubmit = async (formData) => {};
+  const updatePopupContent = usePopupStatus(
+    (state) => state.updatePopupContent
+  );
+  const updatePopupStatusForm = usePopupStatus(
+    (state) => state.updatePopupStatus
+  );
+  const updateSuccessMessageIcon = usePopupStatus(
+    (state) => state.updateSuccessMessageIcon
+  );
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    agree: null,
+  });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (formData.agree) {
+      updatePopupContent(
+        "Sorry form didnot submitted ! Try again after reloading"
+      );
+      updatePopupStatusForm(true);
+      updateSuccessMessageIcon(false);
+
+      return;
+    }
+    try {
+      const response = await fetch(`${backendURI}/contact/send`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(formData),
+      });
+    } catch (err) {
+      console.log(err);
+      updatePopupContent(
+        "Sorry form didnot submitted ! Try again after reloading"
+      );
+      updatePopupStatusForm(true);
+      updateSuccessMessageIcon(false);
+    }
+  };
+
+  const handleForm = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className="flex justify-center items-center lg:justify-start md:justify-center mt-0 sm:mt-16 flex-col lg:h-full  px-0 w-[100%] xl:w-[80%]  mx-auto min-h-[inherit] md:mt-2 ">
@@ -18,24 +66,37 @@ const ContactComponent = () => {
       "
       />
       <form
-        action={handleMessage}
+        onSubmit={handleSubmit}
         className="flex flex-col w-[100%] md:w-[30rem] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-3 sm:p-2 rounded-md sm:rounded-xl shadow-colorText/20 shadow-md  sm:mt-[5rem] my-4 lg:mt-3"
       >
         <Input
           inputType="text"
           placeholderText={"Enter Your Name"}
           label={"name"}
+          value={formData.name}
+          handleInput={handleForm}
         />
         <Input
           inputType="email"
           placeholderText={"Enter Your Email"}
           label={"email"}
+          value={formData.email}
+          handleInput={handleForm}
         />
         <TextArea
           label={"message"}
           placeholderText={"Enter Your Message"}
           rows={3}
+          value={formData.message}
+          handleTextArea={handleForm}
         />
+        {/* honeyport form to track spam */}
+        <input
+          type="checkbox"
+          name="agree"
+          hidden
+          onChange={handleForm}
+        ></input>
         <ButtonTypeOne
           color={"colorText"}
           bgColor={"primary"}

@@ -109,7 +109,7 @@ const Projects = () => {
     <>
       <HeadingTypeOne text={"My Projects"} />
       <div
-        className="md:w-[90%] max-w-[80rem] h-[70%] lg:h-[80%] my-auto mt-2 lg:mt-10 md:border-2 md:border-primary rounded-xl overflow-y-scroll realtive shadow-colorText/50 md:shadow-md relative px-4 md:flex gap-x-5 mx-auto md:py-4   border-b border-colorNav/80 pb-8"
+        className="lg:w-[90%] max-w-[80rem] h-[70%] lg:h-[80%] my-auto mt-4  lg:mt-10 lg:border-2 lg:border-primary rounded-xl overflow-y-scroll  shadow-colorText/50 lg:shadow-md relative px-4 lg:flex gap-x-5 mx-auto lg:py-4   border-b border-colorNav/80 pb-8"
         style={{
           scrollbarWidth: "none",
         }}
@@ -118,7 +118,7 @@ const Projects = () => {
         ref={projectRef}
       >
         <div
-          className="md:w-[55%] "
+          className="lg:w-[55%] "
           style={
             {
               // scrollbarWidth: "none",
@@ -126,21 +126,23 @@ const Projects = () => {
           }
         >
           {projectData &&
-            projectData.map((e, i) => {
-              return (
-                <ProjectCard
-                  key={e._id}
-                  heading={e.heading}
-                  description={e.description}
-                  viewSource={e.projectLink}
-                  liveProject={e.liveLink}
-                  techUsed={projectData[techStackIndex].techName}
-                  index={i}
-                />
-              );
-            })}
+            projectData
+              .sort((a, b) => a.order - b.order)
+              .map((e, i) => {
+                return (
+                  <ProjectCard
+                    key={e._id}
+                    heading={e.heading}
+                    description={e.description}
+                    viewSource={e.projectLink}
+                    liveProject={e.liveLink}
+                    techUsed={projectData[techStackIndex].techName}
+                    index={i}
+                  />
+                );
+              })}
         </div>
-        <div className="w-[50%] px-4 sticky top-[0%]  items-center hidden md:flex">
+        <div className="w-[50%] px-4 sticky top-[0%]  items-center hidden lg:flex">
           <TechStack />
         </div>
 

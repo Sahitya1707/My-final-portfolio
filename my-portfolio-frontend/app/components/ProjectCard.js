@@ -46,11 +46,11 @@ const ProjectCard = ({
   return (
     <div
       className="flex justify-center  gap-x-4 
-      h-[100%] relative flex-col opacity-40 sm:mt-6 md:my-0 border-b py-4 md:pb-0 md:border-0 border-textColor/20"
+      h-[100%] relative flex-col opacity-40 sm:mt-6 lg:my-0 border-b py-4 lg:pb-0 lg:border-0 border-textColor/20"
     >
       <ProjectHeading text={heading} />
       <ProjectDescription text={description} />
-      <div className="md:hidden grid sm:grid-cols-3 gap-x-3 gap-y-2 grid-cols-2">
+      <div className="lg:hidden grid sm:grid-cols-3 gap-x-3 gap-y-2 grid-cols-2">
         {projectData[index].techName.map((e, i) => {
           return <TechCard imageName={e} key={i} />;
         })}
