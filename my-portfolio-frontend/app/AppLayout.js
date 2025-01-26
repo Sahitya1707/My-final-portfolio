@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-
+import { RiAdminLine } from "react-icons/ri";
 // import this in order to set cookies from the client component
 
 import { getCookie, setCookie } from "cookies-next";
@@ -15,9 +15,15 @@ import Popup from "./components/Popup";
 import { usePopupStatus } from "./utils/stores/popup";
 import useCustomCursor from "./components/useCustomCursor";
 import { Circle, Dot } from "./components/cursorElement";
+import { useLoginStatus } from "./utils/stores/login";
+import { backendURI } from "./utils/secret";
+import { DashboardIconText } from "./components/DashboardComponent";
 
 const AppLayout = ({ children }) => {
   useCustomCursor();
+  // admin status
+  const setAdminLoginStatus = useLoginStatus((store) => store.updateAdminLogin);
+  const adminLoginStatus = useLoginStatus((store) => store.adminLogin);
   const popupStatus = usePopupStatus((state) => state.popupStatus);
 
   // reading theme through zustand
@@ -33,6 +39,26 @@ const AppLayout = ({ children }) => {
   // importing the font from google
 
   useEffect(() => {
+    const checkAuth = async () => {
+      console.log(" function checkAuth");
+      try {
+        const authResponse = await fetch(`${backendURI}/admin/verify`, {
+          method: "GET",
+          credentials: "include",
+        });
+
+        console.log("checkAuth");
+        console.log(authResponse);
+        if (authResponse.ok) {
+          setAdminLoginStatus(true);
+        } else {
+          setAdminLoginStatus(false);
+        }
+      } catch (err) {
+        setAdminLoginStatus(false);
+      }
+    };
+    checkAuth();
     // setting the active nav
     if (pathname === "/") {
       setActiveNav(0);
@@ -75,27 +101,32 @@ const AppLayout = ({ children }) => {
 
   return (
     <body
-      className={` bg-colorBody ${theme} max-w-full w-full lg:overflow-clip overflow-auto lg:max-h-screen max-h-auto `}
+      className={` bg-colorBody ${theme} max-w-full w-full  overflow-auto  max-h-auto ${
+        pathname.includes("/admin")
+          ? "lg:max-h-auto"
+          : "lg:max-h-screen lg:overflow-clip"
+      }`}
     >
+      <Dot />
+      <Circle />
       {popupStatus ? <Popup /> : <></>}
       {pathname.includes("/admin") ? (
         <main className="">{children}</main>
       ) : (
         <>
-          <Dot />
-          <Circle />
           <Header />
+          <div className="fixed top-0 right-4 z-[3000] ">
+            {adminLoginStatus ? (
+              <DashboardIconText
+                icon={<RiAdminLine />}
+                text={"dashboard"}
+                link={"/admin/dashboard"}
+                bgColor={"primary"}
+              />
+            ) : null}
+          </div>
           <main className="relative px-[3rem] md:px-[5rem] xl:px-[12rem] lg:py-[2rem] text-colorText max-w-[150rem] z-[1000] mx-auto lg:h-[80vh] lg:min-h-auto min-h-[90vh]">
             {children}
-            {/* <span
-          className="   flex text-colorText/5 text-[20rem] stroke-none font-poppins-500 rotate-[-10deg]"
-          style={{
-            WebkitTextStroke: "2px rgb(var(--primary-clr))",
-            // transform: position,
-          }}
-        >
-          {backgroundText}
-        </span> */}
           </main>
           <SocialMediaHandle />
           <Footer />

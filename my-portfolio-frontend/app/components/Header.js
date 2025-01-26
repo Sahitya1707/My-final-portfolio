@@ -23,6 +23,7 @@ export const Icon = ({ icon, handleClick }) => {
 };
 
 const Header = () => {
+  // TODO try make resume dynamic please
   const setTheme = useTheme((state) => state.updateTheme);
   const theme = useTheme((state) => state.theme);
   const [openModal, setOpenModal] = useState(false);

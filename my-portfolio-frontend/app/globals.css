@@ -63,12 +63,12 @@
 body * {
   cursor: none;
 }
-#backendPanel * {
-  cursor: auto !important;
+/* #backendPanel * {
+  cursor: pointer !important;
 }
 #backendPanel span {
   cursor: auto;
-}
+} */
 /* custom cursor
  */
 /* Apply custom cursor globally and for all states */

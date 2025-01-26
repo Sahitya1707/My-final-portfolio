@@ -53,7 +53,7 @@ const formSubmission = (req, res) => {
         html: `Dear ${name},<br><br>
          Thank you for reaching out! I have received your message and will get back to you soon.<br><br>
          \n
-             <p>Form You Submitted is:</p>
+            
         <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; border-top: 3px solid #69b1cc; border-bottom: 3px solid #69b1cc;">
   <p style="font-size: 16px; color: #333; margin: 0; padding-bottom: 10px;">Form You Submitted is:</p>
   <div style="background-color: #fff; padding: 15px; border: 1px solid #ddd; border-radius: 5px;">
