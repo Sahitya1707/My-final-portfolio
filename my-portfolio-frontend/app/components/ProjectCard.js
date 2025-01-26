@@ -16,7 +16,7 @@ const ProjectCard = ({
   techUsed,
   index,
 }) => {
-  // console.log(techUsed);
+  console.log(liveProject, viewSource);
 
   const updateTechStack = useTechStack((state) => state.updateTechStackUsed);
 
@@ -62,7 +62,7 @@ const ProjectCard = ({
             text={"View Source"}
             color={"primary"}
             bgColor={"colorNav"}
-            link={"/"}
+            link={viewSource}
             target={true}
           />
         ) : null}
@@ -71,7 +71,7 @@ const ProjectCard = ({
             text={"View Live Project"}
             color={"colorText"}
             bgColor={"colorNav"}
-            link={"/"}
+            link={liveProject}
             target={true}
           />
         ) : null}

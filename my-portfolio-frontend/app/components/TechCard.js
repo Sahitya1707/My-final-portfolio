@@ -6,8 +6,8 @@ const TechCard = ({ imageName }) => {
   // use of useEffect
 
   return (
-    <div className="flex items-center gap-x-3 bg-colorText p-2 rounded-md lg:rounded-xl text-colorBody h-[3rem] md:mt-0 mt-2">
-      <div className="relative lg:w-[35px] lg:h-[35px] w-[30px] h-[30px]">
+    <div className="flex items-center gap-x-3 bg-colorText p-2 rounded-sm sm:rounded-md lg:rounded-xl text-colorBody h-[3rem] md:mt-0 mt-2">
+      <div className="relative lg:w-[35px] lg:h-[35px] sm:w-[30px] sm:h-[30px] h-[20px] w-[20px]">
         <Image
           src={`${backendURI}/admin/images/${imageName}`}
           // height={50}
