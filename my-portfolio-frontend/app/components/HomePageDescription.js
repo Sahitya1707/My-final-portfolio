@@ -9,7 +9,7 @@ const HomePageDescription = () => {
         <p
           className="uppercase text-colorText text-3xl sm:text-4xl  tracking-[0.4rem] font-bold"
           style={{
-            textShadow: "3px 2px rgb(var(--primary-clr))",
+            textShadow: "2px 1px rgb(var(--primary-clr))",
           }}
         >
           Hey, I am Sahitya <br />
@@ -17,7 +17,7 @@ const HomePageDescription = () => {
         </p>
         <p
           className="capitalize text-xl sm:text-3xl text-primary mt-4 tracking-widest font-semibold"
-          style={{ textShadow: "1px 2px rgb(var(--color-text))" }}
+          style={{ textShadow: "2px 1px rgb(var(--color-text))" }}
         >
           {/* run animation maybe through stroke */}
           FullStack Developer

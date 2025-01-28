@@ -1,11 +1,20 @@
 import "./globals.css";
 
-import { Sour_Gummy, Poppins } from "next/font/google";
+import { Sour_Gummy, Poppins, Quicksand, Outfit } from "next/font/google";
 
 import AppLayout from "./AppLayout";
 
+const quickSand = Quicksand({
+  subsets: ["latin"],
+});
+
+console.log("quick");
+console.log(quickSand);
 // importing the font from google
 const sourGummy = Sour_Gummy({
+  subsets: ["latin"],
+});
+const outfit = Outfit({
   subsets: ["latin"],
 });
 
@@ -25,7 +34,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   // const { theme } = useContext(ThemeContext);
   return (
-    <html lang="en" className={`$ ${poppins.variable}`}>
+    <html lang="en" className={`${outfit.className} ${poppins.variable}`}>
       <AppLayout children={children} />
     </html>
   );

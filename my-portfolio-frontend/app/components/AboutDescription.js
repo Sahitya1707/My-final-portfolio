@@ -8,8 +8,8 @@ const AboutDescription = () => {
     <>
       <HeadingTypeOne text="What I do?" />
       <div className="flex items-center lg:gap-y-0 gap-y-4 gap-x-10 xl:gap-x-5 justify-evenly h-full lg:flex-row flex-col-reverse">
-        <div className="px-0 sm:px-5 lg:w-[60%] w-[90%] md:py-auto py-3">
-          <p className="mb-2 xl:text-md lg:text-sm md:text-md text-sm">
+        <div className="px-0 sm:px-5 lg:w-[65%] w-[90%] md:py-auto py-1">
+          <p className="mb-2  lg:text-[1rem] md:text-md text-sm tracking-wider">
             Hi, I'm Sahitya Neupane, currently studying Interactive Media Design
             - Web at Georgian College. My journey in web development started in
             2021, and I've loved every bit of it since! JavaScript is my
@@ -57,7 +57,7 @@ const AboutDescription = () => {
         text={"?"}
         style={{
           WebkitTextStroke: "2px rgb(var(--primary-clr))",
-          opacity: "40%",
+          opacity: "30%",
           position: "fixed",
           top: " 50%",
           left: "50%",

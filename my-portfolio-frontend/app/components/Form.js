@@ -14,7 +14,7 @@ export const Input = ({
     <>
       <label
         htmlFor={label}
-        className="capitalize text-md tracking-wider  font-semibold mt-5 text-colorText"
+        className="capitalize text-md tracking-wider  font-semibold mt-2 text-colorText"
       >
         {label}
       </label>
@@ -25,7 +25,7 @@ export const Input = ({
         type={inputType}
         onChange={handleInput}
         placeholder={`${placeholderText}`}
-        className={` text-colorText p-2  rounded-sm w-full outline-primary border-2 border-primary/50 outline-2 color-primary bg-colorBody`}
+        className={` text-colorText p-[0.6rem]  rounded-sm w-full outline-primary border-2 border-primary/50 outline-2 color-primary bg-colorBody`}
         name={label}
         autoComplete="fill"
         required

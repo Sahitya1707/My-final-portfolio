@@ -79,7 +79,7 @@ const ContactComponent = () => {
   };
 
   return (
-    <div className="flex justify-center items-center lg:justify-start md:justify-center mt-0 sm:mt-16 flex-col lg:h-full  px-0 w-[100%] xl:w-[80%]  mx-auto min-h-[inherit] md:mt-2 ">
+    <div className="flex justify-center items-center lg:justify-start md:justify-center mt-0 sm:mt-16 flex-col lg:h-full  px-0 w-[100%] xl:w-[90%]  mx-auto min-h-[inherit] md:mt-2 ">
       <Description
         text="   
         Looking to hire a passionate developer, need a standout website, or just
@@ -90,7 +90,7 @@ const ContactComponent = () => {
       <form
         onSubmit={handleSubmit}
         action={""}
-        className="flex flex-col w-[100%] md:w-[30rem] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-3 sm:p-2 rounded-md sm:rounded-xl shadow-colorText/20 shadow-md  sm:mt-[5rem] my-4 lg:mt-3"
+        className="flex flex-col w-[100%] md:w-[30rem] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-2 sm:p-2 rounded-md sm:rounded-xl shadow-colorText/20 shadow-md  sm:mt-[5rem] my-2 lg:mt-2"
       >
         <Input
           inputType="text"
@@ -116,7 +116,7 @@ const ContactComponent = () => {
         <TextArea
           label={"message"}
           placeholderText={"Enter Your Message"}
-          rows={3}
+          rows={2}
           value={formData.message}
           handleTextArea={handleForm}
         />
