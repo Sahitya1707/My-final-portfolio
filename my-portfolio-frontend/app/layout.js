@@ -35,6 +35,13 @@ export default function RootLayout({ children }) {
   // const { theme } = useContext(ThemeContext);
   return (
     <html lang="en" className={`${outfit.className} ${poppins.variable}`}>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="Tl4yrauYYf_veX_JQ_9e8PZOxLmqmDtwGQ-MYxPwVtU"
+        />
+      </head>
+
       <AppLayout children={children} />
     </html>
   );
