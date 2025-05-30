@@ -36,11 +36,11 @@ const AboutDescription = () => {
             things.
           </p>
           <ButtonTypeOne
-            text={"my resume"}
+            text={"my projects"}
             color={"primary"}
             bgColor={"colorText"}
-            link="/mycv.pdf"
-            target={"_blank"}
+            link="/projects"
+           
           />
         </div>
         <div className="lg:h-[400px] lg:w-[350px] h-[350px] w-[250px]  relative z-[1005]">
