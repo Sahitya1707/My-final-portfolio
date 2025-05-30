@@ -31,11 +31,11 @@ export const menuItems = [
     name: "contact",
     link: "/contact",
   },
-  {
-    name: "Resume",
-    link: "/mycv.pdf",
-    target: "_blank",
-  },
+  // {
+  //   name: "Resume",
+  //   link: "/mycv.pdf",
+  //   target: "_blank",
+  // },
 ];
 
 export const socialMediaData = [
