@@ -5,51 +5,49 @@ import HeadingTypeOne from "./HeadingTypeOne";
 
 const AboutDescription = () => {
   return (
-    <>
+    <section className="relative py-10 px-4 sm:px-8 bg-gradient-to-br from-white via-gray-50 to-blue-50 rounded-xl shadow-lg overflow-hidden">
       <HeadingTypeOne text="What I do?" />
-      <div className="flex items-center lg:gap-y-0 gap-y-4 gap-x-10 xl:gap-x-5 justify-evenly h-full lg:flex-row flex-col-reverse">
-        <div className="px-0 sm:px-5 lg:w-[65%] w-[90%] md:py-auto py-1">
-          <p className="mb-2  lg:text-[1rem] md:text-md text-sm tracking-wider">
-            Hi, I'm Sahitya Neupane, currently studying Interactive Media Design
-            - Web at Georgian College. My journey in web development started in
-            2021, and I've loved every bit of it since! JavaScript is my
-            favourite language, and I enjoy keeping things simple yet effective.{" "}
+      <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-12 xl:gap-16">
+        <div className="bg-white/80 backdrop-blur-md rounded-xl  p-6 w-full lg:w-2/3">
+          <p className="mb-6 text-base md:text-lg lg:text-[1.1rem] tracking-wide leading-relaxed text-gray-800">
+            Hi, I'm Sahitya Neupane, a recent graduate of Interactive Media
+            Design - Web from Georgian College. My journey in web development
+            began in 2021, and I've enjoyed every moment since! JavaScript
+            remains my favourite language, and I love building simple yet
+            effective solutions.
             <br />
             <br />
-            I've gained hands-on experience working as a Part-Time Web Developer
-            at DS Digital Media, where I work with WordPress and used different
-            theme in order to make the client dream of making website into
-            live.And, during my internship at Digital Terai Nepal, I dive deep
-            into full-stack development with React JS, Node JS,Express and
-            MongoDB.
+            Professionally, I’ve worked as a Part-Time Web Developer at DS
+            Digital Media, bringing client websites to life with WordPress and
+            custom themes. During my internship at Digital Terai Nepal, I gained
+            full-stack experience with React JS, Node JS, Express, and MongoDB.
             <br />
             <br />
-            I'm always learning—whether it’s .NET, experimenting with Tailwind
-            CSS, or building APIs, I thrive on growth and am excited to keep
-            pushing boundaries in web development! <br />
+            I’m always learning—currently exploring Python, TypeScript, Angular,
+            and sharpening my problem-solving skills on LeetCode. I’m open to
+            software developer roles and excited to contribute to innovative
+            teams and projects.
             <br />
-            Looking ahead, I am eager to apply my growing skill set to new
-            challenges in web development. With a passion for continuous
-            learning and a drive to create impactful web solutions, I look
-            forward to contributing to innovative projects and teams in the near
-            future. I am always eager to learn and don't afraid trying out new
-            things.
+            <br />
+            With a passion for continuous growth, I look forward to tackling new
+            challenges and creating impactful web and software solutions. I’m
+            always eager to learn and experiment with new technologies!
           </p>
-          <ButtonTypeOne
-            text={"my projects"}
-            color={"primary"}
-            bgColor={"colorText"}
-            link="/projects"
-           
-          />
+          <div className="flex justify-start">
+            <ButtonTypeOne
+              text={"my projects"}
+              color={"primary"}
+              bgColor={"colorText"}
+              link="/projects"
+            />
+          </div>
         </div>
-        <div className="lg:h-[400px] lg:w-[350px] h-[350px] w-[250px]  relative z-[1005]">
+        <div className="relative flex-shrink-0 w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] lg:w-[350px] lg:h-[400px] shadow-xl rounded-xl overflow-hidden border-2 ">
           <Image
             src={"/images/myimg.png"}
             alt="my-img"
-            objectFit="cover"
             fill
-            className="rounded-sm md:rounded-xl w-full h-full left-0 top-0 object-cover"
+            className="object-cover w-full h-full"
           />
         </div>
       </div>
@@ -57,15 +55,16 @@ const AboutDescription = () => {
         text={"?"}
         style={{
           WebkitTextStroke: "2px rgb(var(--primary-clr))",
-          opacity: "30%",
+          opacity: "0.2",
           position: "fixed",
-          top: " 50%",
+          top: "50%",
           left: "50%",
-          transform: " translate(-50%, -50%) rotate(-10deg)",
+          transform: "translate(-50%, -50%) rotate(-10deg)",
           zIndex: "1",
+          pointerEvents: "none",
         }}
       />
-    </>
+    </section>
   );
 };
 
