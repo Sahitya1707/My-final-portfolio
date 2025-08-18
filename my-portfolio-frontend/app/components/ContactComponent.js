@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import Description from "./Description";
 import { Input, TextArea } from "./Form";
 import ButtonTypeOne from "./ButtonTypeOne";
-
 import handleMessage from "../actions/sendMessage";
 import { backendURI } from "../utils/secret";
 import { usePopupStatus } from "../utils/stores/popup";
-
-// TODO temporarily i am swithing to using my own mail as dns was not changes, i wanted to make it hello@sahityaneupane.com.np btw.
 
 const ContactComponent = () => {
   const updatePopupContent = usePopupStatus(
@@ -28,14 +25,12 @@ const ContactComponent = () => {
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData.agree);
     if (formData.agree) {
       updatePopupContent(
         "Sorry form didnot submitted ! Try again after reloading"
       );
       updatePopupStatusForm(true);
       updateSuccessMessageIcon(false);
-
       return;
     }
     try {
@@ -46,16 +41,11 @@ const ContactComponent = () => {
         method: "POST",
         body: JSON.stringify(formData),
       });
-      console.log(response);
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
-        // const data = await response;
-        // console.log(data);
         updatePopupContent(data.message);
         updatePopupStatusForm(data.success);
         updateSuccessMessageIcon(data.success);
-
         setFormData({
           name: "",
           email: "",
@@ -65,7 +55,6 @@ const ContactComponent = () => {
         });
       }
     } catch (err) {
-      console.log(err.message);
       updatePopupContent(
         "Sorry form didnot submitted ! Try again after reloading"
       );
@@ -79,18 +68,11 @@ const ContactComponent = () => {
   };
 
   return (
-    <div className="flex justify-center items-center lg:justify-start md:justify-center mt-0 sm:mt-16 flex-col lg:h-full  px-0 w-[100%] xl:w-[90%]  mx-auto min-h-[inherit] md:mt-2 ">
-      <Description
-        text="   
-        Looking to hire a passionate developer, need a standout website, or just
-        want some help with your project? I’m here to help and always open to
-        new opportunities. Drop me a message. I will get back to you asap.  Let’s connect and make it happen! 
-      "
-      />
+    <div className="flex flex-col items-center justify-center min-h-[60vh] px-2 py-8 w-full">
+      <Description text="Looking to hire a passionate developer, need a standout website, or just want some help with your project? I’m here to help and always open to new opportunities. Drop me a message. I will get back to you asap. Let’s connect and make it happen!" />
       <form
         onSubmit={handleSubmit}
-        action={""}
-        className="flex flex-col w-[100%] md:w-[30rem] lg:w-[40rem] xl:w-[35rem]  bg-colorNav border-colorText/20 border-solid border-2 p-2 sm:p-2 rounded-md sm:rounded-xl shadow-colorText/20 shadow-md  sm:mt-[5rem] my-2 lg:mt-2"
+        className="flex flex-col w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-colorNav border-colorText/20 border-2 p-4 sm:p-6 rounded-xl shadow-colorText/20 shadow-md mt-8"
       >
         <Input
           inputType="text"
