@@ -5,6 +5,7 @@ import { LiaPagerSolid } from "react-icons/lia";
 import { GoProject } from "react-icons/go";
 import { GrTechnology } from "react-icons/gr";
 export const backendConnect = "http://localhost:2001";
+import { FaMediumM } from "react-icons/fa";
 export const menuItems = [
   {
     name: "Home",
@@ -50,10 +51,16 @@ export const socialMediaData = [
     target: "_blank",
   },
   {
+    icon: <FaMediumM />,
+    link: "https://medium.com/@neupanesahitya1",
+    target: "_blank",
+  },
+  {
     icon: <FaYoutube />,
     link: "https://www.youtube.com/@sahitya9708",
     target: "_blank",
   },
+
   {
     icon: <CiMail />,
     link: "mailto:neupanesahitya1@gmail.com",
