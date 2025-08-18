@@ -25,7 +25,7 @@ const SkillsComponent = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-[40vh] py-8">
+    <div className="flex items-center justify-center min-h-[40vh] py-8 m-auto">
       <div
         className="bg-colorNav w-full max-w-6xl rounded-xl grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1 shadow-lg shadow-colorText/5 py-3 my-6"
         id="skillComponent"
