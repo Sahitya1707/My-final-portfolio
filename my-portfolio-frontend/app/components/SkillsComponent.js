@@ -6,19 +6,15 @@ import Shimmer from "./Shimmer";
 
 const SkillsComponent = () => {
   const [data, setData] = useState();
-  // useEffect
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(`${backendURI}/admin/data/skill/getAll`, {
           method: "GET",
-
           header: {},
         });
         if (response.ok) {
           const data = await response.json();
-          // updateSkills(data.data[0].skillListed);
-          //   console.log(data.data);
           setData(data.data[0].skillListed);
         }
       } catch (err) {
@@ -27,24 +23,24 @@ const SkillsComponent = () => {
     };
     fetchData();
   }, []);
-  console.log(data);
+
   return (
-    <div
-      className="bg-colorNav w-[90%]   md:w-[80%] xl:w-[70%] mx-auto mg:mt-auto lg:mt-[1rem] sm:my-auto   rounded-xl grid md:grid-cols-5 shadow-lg shadow-colorText/5 sm:grid-cols-3 grid-cols-1 py-3 my-6"
-      id="skillComponent"
-    >
-      {data && data ? (
-        data.map((e, i) => {
-          return <SkillCard key={i} name={e} image={`${e}`} />;
-        })
-      ) : (
-        <Shimmer
-          width={"30rem"}
-          height={"20rem"}
-          radius={"0px"}
-          margin={"10px"}
-        />
-      )}
+    <div className="flex items-center justify-center min-h-[40vh] py-8">
+      <div
+        className="bg-colorNav w-full max-w-6xl rounded-xl grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1 shadow-lg shadow-colorText/5 py-3 my-6"
+        id="skillComponent"
+      >
+        {data && data.length > 0 ? (
+          data.map((e, i) => <SkillCard key={i} name={e} image={`${e}`} />)
+        ) : (
+          <Shimmer
+            width={"30rem"}
+            height={"20rem"}
+            radius={"0px"}
+            margin={"10px"}
+          />
+        )}
+      </div>
     </div>
   );
 };
