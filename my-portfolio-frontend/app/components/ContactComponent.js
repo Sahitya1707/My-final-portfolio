@@ -68,7 +68,7 @@ const ContactComponent = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] px-2 py-8 w-full">
+    <div className="flex flex-col items-center justify-center min-h-[60vh] px-2 py-2 w-full">
       <Description text="Looking to hire a passionate developer, need a standout website, or just want some help with your project? I’m here to help and always open to new opportunities. Drop me a message. I will get back to you asap. Let’s connect and make it happen!" />
       <form
         onSubmit={handleSubmit}
