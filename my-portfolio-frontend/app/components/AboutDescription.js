@@ -6,39 +6,34 @@ import HeadingTypeOne from "./HeadingTypeOne";
 const AboutDescription = () => {
   return (
     <section className="relative py-10 px-4 sm:px-8 bg-gradient-to-br from-white via-gray-50 to-blue-50 rounded-xl shadow-lg overflow-hidden">
-      <HeadingTypeOne text="What I do?" />
+      <HeadingTypeOne text="About Me" />
       <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-12 xl:gap-16">
         <div className="bg-white/80 backdrop-blur-md rounded-xl  p-6 w-full lg:w-2/3">
           <p className="mb-6 text-base md:text-lg lg:text-[1.1rem] tracking-wide leading-relaxed text-gray-800">
-            Hi, I'm Sahitya Neupane, a recent graduate of Interactive Media
-            Design - Web from Georgian College. My journey in web development
-            began in 2021, and I've enjoyed every moment since! JavaScript
-            remains my favourite language, and I love building simple yet
-            effective solutions.
+            I'm Sahitya Neupane, a proactive and adaptable web developer with a
+            passion for technology, problem-solving, and continuous learning. I
+            recently graduated from the Interactive Media Design - Web program
+            at Georgian College and am currently based in Richmond Hill, ON.
             <br />
             <br />
-            Professionally, I’ve worked as a Part-Time Web Developer at DS
-            Digital Media, bringing client websites to life with WordPress and
-            custom themes. During my internship at Digital Terai Nepal, I gained
-            full-stack experience with React JS, Node JS, Express, and MongoDB.
+            I have hands-on experience in both front-end and back-end
+            development, with a strong command of technologies like React,
+            Angular, Node.js, and Python. I'm currently honing my skills in Data
+            Structures and Algorithms using Python.
             <br />
             <br />
-            I’m always learning—currently exploring Python, TypeScript, Angular,
-            and sharpening my problem-solving skills on LeetCode. I’m open to
-            software developer roles and excited to contribute to innovative
-            teams and projects.
-            <br />
-            <br />
-            With a passion for continuous growth, I look forward to tackling new
-            challenges and creating impactful web and software solutions. I’m
-            always eager to learn and experiment with new technologies!
+            I'm actively seeking new opportunities in Canada where I can apply
+            my skills to create elegant and efficient solutions. I'm a
+            collaborative team player with experience in Agile environments and
+            a commitment to writing clean, maintainable, and well-tested code.
           </p>
           <div className="flex justify-start">
             <ButtonTypeOne
-              text={"my projects"}
+              text={"View My Resume"}
               color={"primary"}
               bgColor={"colorText"}
-              link="/projects"
+              link="/mycv.pdf"
+              target={true}
             />
           </div>
         </div>

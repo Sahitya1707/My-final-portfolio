@@ -26,7 +26,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Sahitya Portfolio",
+  title: "Sahitya Portfolio | Software Developer",
   description:
     "This is portfolio of Sahitya Neupane who is eager to get into the web field learning each and doing mistakes everyday.",
 };
