@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Palette: warm uncoated paper, near-black ink, one vermilion "signal" used sparingly
+ * (links on hover, the availability dot, the active filter), and a muted green for "available".
+ */
+:root {
+  --paper: 243 240 233;
+  --paper-2: 234 230 220;
+  --ink: 22 21 18;
+  --muted: 104 99 89;
+  --rule: 208 202 189;
+  --signal: 196 66 27;
+  --leaf: 46 125 79;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: 20 19 17;
+    --paper-2: 30 29 26;
+    --ink: 236 232 222;
+    --muted: 160 154 142;
+    --rule: 58 56 51;
+    --signal: 236 108 64;
+    --leaf: 111 191 139;
+    color-scheme: dark;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: "ss01", "kern";
+  }
+  ::selection {
+    background: rgb(var(--signal));
+    color: rgb(var(--paper));
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--signal));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  h1,
+  h2,
+  h3 {
+    font-variation-settings: "opsz" 72;
+  }
+}
+
+@layer components {
+  .page {
+    @apply mx-auto w-full max-w-page px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Small uppercase mono labels used for metadata, like a printed index. */
+  .label {
+    @apply font-mono text-label uppercase text-muted;
+  }
+
+  /* Text links: thin underline that thickens and turns signal colour on hover. */
+  .link {
+    @apply underline decoration-rule decoration-1 underline-offset-[0.22em] transition-colors duration-200;
+  }
+  .link:hover {
+    @apply text-signal decoration-signal;
+  }
+
+  /* Primary action: solid ink block with an arrow that nudges right. */
+  .btn {
+    @apply inline-flex items-center gap-3 bg-ink px-6 py-4 text-[0.95rem] font-medium text-paper transition-colors duration-200;
+  }
+  .btn:hover {
+    @apply bg-signal;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-3 border border-ink/80 px-6 py-4 text-[0.95rem] font-medium transition-colors duration-200;
+  }
+  .btn-ghost:hover {
+    @apply border-signal text-signal;
+  }
+  .arrow {
+    @apply inline-block transition-transform duration-300 ease-out;
+  }
+  .btn:hover .arrow,
+  .btn-ghost:hover .arrow,
+  a:hover > .arrow,
+  a:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .prose-body p + p {
+    @apply mt-5;
+  }
+}
+
+/* Entrance reveal. Content is visible by default; JS adds .reveal-ready only if motion is allowed. */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-ready [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero headline: lines rise in once on load. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--rise-delay, 0ms);
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(var(--leaf) / 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgb(var(--leaf) / 0);
+  }
+}
+.dot-live {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

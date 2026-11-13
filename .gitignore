@@ -1,4 +1,10 @@
+node_modules/
+.next/
+out/
 .env
-node_modules
-seed.js
-keys
+.env.*
+!.env.example
+*.log
+.DS_Store
+next-env.d.ts
+tsconfig.tsbuildinfo
