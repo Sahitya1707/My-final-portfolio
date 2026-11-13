@@ -14,3 +14,7 @@
 
 /images/*
   Cache-Control: public, max-age=604800
+
+# Self-hosted fonts in the concept demo sites never change.
+/concepts/*
+  Cache-Control: public, max-age=86400
