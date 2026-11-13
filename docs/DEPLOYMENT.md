@@ -1,10 +1,34 @@
-# Deploying for free on Cloudflare Pages
+# Deploying for free on Cloudflare
 
 Total cost: **$0/month**. A custom domain is optional (roughly $15–25 a year from any registrar).
 
 You need: a free Cloudflare account and this repository on GitHub. Takes about 10 minutes.
 
-## 1. Create the Pages project
+## 1. Create the project
+
+Cloudflare offers two free ways to host a static site. Either one works; the repository is set up for both.
+
+### Option A: Workers (Cloudflare's default "Create" flow)
+
+`wrangler.jsonc` in the repository tells Cloudflare to upload the static export in `./out`. No server code runs, so it stays on the free plan.
+
+1. Sign up or log in at <https://dash.cloudflare.com/sign-up> (free plan, no card needed).
+2. **Workers & Pages** → **Create** → **Import a repository** → pick **Sahitya1707/My-final-portfolio**.
+3. Fill in:
+
+   | Setting | Value |
+   |---|---|
+   | Project name | `sahitya-neupane` (must match `name` in `wrangler.jsonc`) |
+   | Build command | `npm run build` |
+   | Deploy command | `npx wrangler deploy` |
+   | Production branch | `production` |
+
+4. Under **Advanced settings** → **Build variables**, add `NODE_VERSION` = `22` and, once you know your address, `NEXT_PUBLIC_SITE_URL` (see section 3).
+5. **Deploy.** The site appears at `https://sahitya-neupane.<your-account>.workers.dev`. Copy that address for section 3.
+
+If a deploy log shows wrangler offering to "configure the project for Next.js with OpenNext", `wrangler.jsonc` is missing from the branch being built. Don't accept the OpenNext setup; this site doesn't need a server.
+
+### Option B: Pages
 
 1. Sign up or log in at <https://dash.cloudflare.com/sign-up> (free plan, no card needed).
 2. In the sidebar open **Workers & Pages** → **Create** → **Pages** tab → **Connect to Git**.
@@ -43,7 +67,7 @@ Without the key the form still works: it opens the visitor's email app with thei
 
 ## 3. Point the site's URL at the right place
 
-If your final URL differs from `https://sahitya-neupane.pages.dev`, update `url` in `content/site.ts` **or** the `NEXT_PUBLIC_SITE_URL` variable, then redeploy. This fixes canonical links, the sitemap and social previews.
+If your final URL differs from `https://sahitya-neupane.pages.dev` (for example a `*.workers.dev` address or your own domain), update `url` in `content/site.ts` **or** set the `NEXT_PUBLIC_SITE_URL` build variable, then redeploy. This fixes canonical links, the sitemap, social previews, `llms.txt` and the links inside the concept sites (`scripts/finalize-concepts.ts` rewrites them after every build).
 
 ## 4. Optional: custom domain
 

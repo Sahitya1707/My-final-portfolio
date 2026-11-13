@@ -5,7 +5,7 @@
   "description": "Static portfolio and freelance site for Sahitya Neupane. Next.js static export, deployable to Cloudflare Pages at $0/month.",
   "scripts": {
     "dev": "next dev",
-    "build": "npm run check && next build",
+    "build": "npm run check && next build && tsx scripts/finalize-concepts.ts",
     "check": "tsc --noEmit && tsx scripts/check-projects.ts",
     "images": "node scripts/optimize-images.mjs",
     "preview": "npx --yes serve@14 out -l 4000",

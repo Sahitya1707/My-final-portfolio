@@ -1,0 +1,15 @@
+// Cloudflare Workers config. The site is a static export (`npm run build` writes ./out),
+// so the Worker only serves files: no server code, nothing to pay for on the free plan.
+// Deploy command in Cloudflare: `npx wrangler deploy`
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sahitya-neupane",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./out",
+    // /work/roadstar -> /work/roadstar/ (matches trailingSlash: true in next.config.mjs)
+    "html_handling": "auto-trailing-slash",
+    // Unknown paths get out/404.html with a real 404 status.
+    "not_found_handling": "404-page"
+  }
+}
