@@ -1,0 +1,2 @@
+business,contact_name,email,phone,website,source,niche,city,observations,status,first_contact_date,last_contact_date,next_action,next_action_date,opt_out,notes
+Example Bakery (delete this row),Jane,hello@examplebakery.ca,,examplebakery.ca,Google Maps,Bakery,Barrie,"Menu is a PDF; phone not tappable; 7s load on mobile",to-contact,,,Send first email,2026-11-17,no,

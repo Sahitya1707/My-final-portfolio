@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quarterday Bakery &amp; Coffee · Concept site</title>
+<meta name="description" content="Concept website for Quarterday, a fictional neighbourhood bakery and café: daily bread, coffee, a simple menu, next-day bread orders and visiting details. Designed and built by Sahitya Neupane.">
+<!-- Quarterday is a fictional business, so this page is kept out of search results. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://sahitya-neupane.pages.dev/concepts/quarterday/">
+<meta name="theme-color" content="#f4ecdf">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Quarterday Bakery & Coffee · Concept site by Sahitya Neupane">
+<meta property="og:description" content="A concept website for a fictional neighbourhood bakery and café.">
+<meta property="og:url" content="https://sahitya-neupane.pages.dev/concepts/quarterday/">
+<meta property="og:image" content="https://sahitya-neupane.pages.dev/concepts/quarterday/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/work-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Bakery",
+      "@id": "https://sahitya-neupane.pages.dev/concepts/quarterday/#business",
+      "name": "Quarterday Bakery & Coffee",
+      "description": "CONCEPT: a fictional neighbourhood bakery and café, created as a design sample. Not a real business.",
+      "url": "https://sahitya-neupane.pages.dev/concepts/quarterday/",
+      "telephone": "+1-555-010-0142",
+      "priceRange": "$",
+      "servesCuisine": ["Bakery", "Coffee", "Breakfast"],
+      "acceptsReservations": false,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "18 Mill Street",
+        "addressLocality": "Larkhaven",
+        "addressRegion": "ON",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "06:30", "closes": "15:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "07:30", "closes": "15:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "08:00", "closes": "13:00" }
+      ],
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Step-free entrance", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Accessible washroom", "value": true }
+      ],
+      "hasMenu": { "@id": "https://sahitya-neupane.pages.dev/concepts/quarterday/#menu" }
+    },
+    {
+      "@type": "Menu",
+      "@id": "https://sahitya-neupane.pages.dev/concepts/quarterday/#menu",
+      "name": "Quarterday menu (sample)",
+      "hasMenuSection": [
+        {
+          "@type": "MenuSection",
+          "name": "Bread",
+          "hasMenuItem": [
+            { "@type": "MenuItem", "name": "Country sourdough", "offers": { "@type": "Offer", "price": "8.50", "priceCurrency": "CAD" }, "suitableForDiet": "https://schema.org/VeganDiet" },
+            { "@type": "MenuItem", "name": "Dark rye with seeds", "offers": { "@type": "Offer", "price": "9.00", "priceCurrency": "CAD" }, "suitableForDiet": "https://schema.org/VeganDiet" },
+            { "@type": "MenuItem", "name": "Milk loaf", "offers": { "@type": "Offer", "price": "7.00", "priceCurrency": "CAD" } }
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Coffee",
+          "hasMenuItem": [
+            { "@type": "MenuItem", "name": "Filter coffee", "offers": { "@type": "Offer", "price": "3.25", "priceCurrency": "CAD" } },
+            { "@type": "MenuItem", "name": "Flat white", "offers": { "@type": "Offer", "price": "4.75", "priceCurrency": "CAD" } }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "name": "Quarterday Bakery & Coffee · Concept site",
+      "url": "https://sahitya-neupane.pages.dev/concepts/quarterday/",
+      "about": { "@id": "https://sahitya-neupane.pages.dev/concepts/quarterday/#business" },
+      "creator": { "@type": "Person", "name": "Sahitya Neupane", "url": "https://sahitya-neupane.pages.dev/" }
+    }
+  ]
+}
+</script>
+<style>
+@font-face { font-family: "Fraunces"; src: url(fonts/fraunces-latin-opsz-normal.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Work Sans"; src: url(fonts/work-sans-latin-wght-normal.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+
+:root {
+  --flour: #f4ecdf;
+  --flour-2: #ebe0cf;
+  --crumb: #2b1d15;
+  --crumb-soft: #5c4a3d;
+  --crust: #a93b17;
+  --butter: #e3bd5b;
+  --line: #d6c6ae;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --wrap: min(72rem, 100% - 2.5rem);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 5rem; }
+body { margin: 0; background: var(--flour); color: var(--crumb); font: 400 1.0625rem/1.6 var(--sans); }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+a:hover { color: var(--crust); }
+:focus-visible { outline: 3px solid var(--crust); outline-offset: 3px; }
+.wrap { width: var(--wrap); margin-inline: auto; }
+.skip { position: absolute; left: 1rem; top: -4rem; background: var(--crumb); color: var(--flour); padding: 0.6rem 1rem; z-index: 50; }
+.skip:focus { top: 1rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Concept notice */
+.concept { background: var(--crumb); color: var(--flour); font-size: 0.875rem; }
+.concept .wrap { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; justify-content: space-between; padding: 0.55rem 0; }
+.concept strong { font-weight: 600; letter-spacing: 0.04em; }
+.concept a { color: var(--butter); }
+
+/* Header */
+.top { border-bottom: 1px solid var(--line); background: var(--flour); position: sticky; top: 0; z-index: 10; }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; }
+.brand { display: flex; align-items: baseline; gap: 0.5rem; text-decoration: none; }
+.brand b { font: 600 1.5rem/1 var(--serif); font-variation-settings: "opsz" 48; letter-spacing: -0.01em; }
+.brand span { font-size: 0.8rem; color: var(--crumb-soft); letter-spacing: 0.08em; text-transform: uppercase; }
+.top nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; font-size: 0.95rem; }
+.top nav a { text-decoration: none; }
+.top nav a:hover { text-decoration: underline; }
+.status { font-size: 0.85rem; white-space: nowrap; }
+.status::before { content: ""; display: inline-block; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--crumb-soft); margin-right: 0.45rem; vertical-align: 0.05em; }
+.status[data-open="true"]::before { background: #3d7a3a; }
+@media (max-width: 52rem) { .top nav { display: none; } }
+@media (max-width: 30rem) { .brand span { display: none; } .status { white-space: normal; text-align: right; font-size: 0.8rem; } }
+
+/* Hero */
+.hero { padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(2.5rem, 6vw, 5rem); }
+.hero .wrap { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: end; }
+.eyebrow { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crust); margin: 0 0 1.25rem; font-weight: 600; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.05; letter-spacing: -0.015em; margin: 0; }
+h1 { font-size: clamp(2.75rem, 7.2vw, 5.75rem); font-variation-settings: "opsz" 144; }
+h1 em { font-style: normal; color: var(--crust); }
+.lede { font-size: 1.2rem; max-width: 34ch; margin: 1.5rem 0 2rem; color: var(--crumb-soft); }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.btn { display: inline-block; padding: 0.85rem 1.3rem; font-weight: 600; text-decoration: none; border: 1.5px solid var(--crumb); }
+.btn-solid { background: var(--crumb); color: var(--flour); }
+.btn-solid:hover { background: var(--crust); border-color: var(--crust); color: var(--flour); }
+.btn:not(.btn-solid):hover { background: var(--flour-2); color: var(--crumb); }
+
+.board { border: 1.5px solid var(--crumb); padding: 1.5rem 1.5rem 1.25rem; background: var(--flour); position: relative; }
+.board h2 { font-size: 1.1rem; font-family: var(--sans); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; display: flex; justify-content: space-between; gap: 1rem; }
+.board h2 small { font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--crumb-soft); font-size: 0.85rem; }
+.board ol { list-style: none; margin: 1rem 0 0; padding: 0; }
+.board li { display: grid; grid-template-columns: 3.25rem 1fr; padding: 0.6rem 0; border-top: 1px dashed var(--line); }
+.board time { font-variant-numeric: tabular-nums; color: var(--crust); font-weight: 600; }
+.board p { margin: 0.75rem 0 0; font-size: 0.85rem; color: var(--crumb-soft); }
+.loaf { width: 5.5rem; position: absolute; right: -1.25rem; top: -2.6rem; }
+@media (max-width: 52rem) { .hero .wrap { grid-template-columns: 1fr; } .loaf { right: 0.5rem; } }
+
+/* Sections */
+section { padding: clamp(3rem, 7vw, 5.5rem) 0; border-top: 1px solid var(--line); }
+.section-head { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin-bottom: 2.5rem; align-items: end; }
+.section-head h2 { font-size: clamp(2rem, 4.5vw, 3.25rem); font-variation-settings: "opsz" 96; }
+.section-head p { margin: 0; max-width: 46ch; color: var(--crumb-soft); }
+@media (max-width: 52rem) { .section-head { grid-template-columns: 1fr; gap: 1rem; } }
+
+/* Menu */
+.menu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+.menu h3 { font-size: 1.5rem; padding-bottom: 0.6rem; border-bottom: 1.5px solid var(--crumb); margin-bottom: 0.25rem; }
+.menu dl { margin: 0; }
+.menu .item { padding: 0.8rem 0; border-bottom: 1px solid var(--line); }
+.menu dt { display: flex; align-items: baseline; gap: 0.5rem; font-weight: 600; }
+.menu dt::after { content: ""; flex: 1; border-bottom: 1px dotted var(--crumb-soft); order: 1; transform: translateY(-0.25em); }
+.menu dt .price { order: 2; font-variant-numeric: tabular-nums; font-weight: 500; }
+.menu dd { margin: 0.2rem 0 0; font-size: 0.93rem; color: var(--crumb-soft); }
+.tag { display: inline-block; font-size: 0.68rem; font-weight: 600; border: 1px solid currentColor; padding: 0 0.3rem; margin-left: 0.35rem; color: var(--crust); vertical-align: 0.15em; letter-spacing: 0.05em; }
+.legend { margin-top: 1.75rem; font-size: 0.9rem; color: var(--crumb-soft); }
+@media (max-width: 60rem) { .menu { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 40rem) { .menu { grid-template-columns: 1fr; } }
+
+/* Orders */
+.orders { background: var(--flour-2); }
+.orders .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); }
+.steps { counter-reset: step; list-style: none; padding: 0; margin: 2rem 0 0; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 3rem 1fr; padding: 1rem 0; border-top: 1px solid var(--line); }
+.steps li::before { content: counter(step, decimal-leading-zero); font: 500 1.4rem/1.2 var(--serif); color: var(--crust); }
+.steps b { display: block; }
+form { display: grid; gap: 1rem; align-content: start; }
+label { display: grid; gap: 0.35rem; font-weight: 600; font-size: 0.95rem; }
+label span { font-weight: 400; color: var(--crumb-soft); font-size: 0.85rem; }
+input, select, textarea { font: inherit; color: var(--crumb); background: var(--flour); border: 1.5px solid var(--crumb-soft); padding: 0.7rem 0.8rem; border-radius: 0; width: 100%; }
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--butter); outline-offset: 0; border-color: var(--crumb); }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+button { font: inherit; cursor: pointer; }
+.form-note { font-size: 0.85rem; color: var(--crumb-soft); margin: 0; }
+.form-result { border-left: 3px solid var(--crust); padding: 0.5rem 0 0.5rem 0.9rem; margin: 0; }
+@media (max-width: 52rem) { .orders .wrap { grid-template-columns: 1fr; } }
+@media (max-width: 30rem) { .row { grid-template-columns: 1fr; } }
+
+/* Visit */
+.visit .wrap { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 2.5rem; }
+.visit h3 { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--crust); margin-bottom: 1rem; }
+address { font-style: normal; font: 500 1.6rem/1.25 var(--serif); }
+.visit p { margin: 0 0 1rem; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 0.5rem 0; border-bottom: 1px solid var(--line); }
+th { font-weight: 500; }
+td { text-align: right; }
+tr[aria-current="true"] th, tr[aria-current="true"] td { font-weight: 700; }
+.map { border: 1.5px solid var(--crumb); background: var(--flour); }
+.map figcaption { font-size: 0.85rem; padding: 0.6rem 0.8rem; border-top: 1px solid var(--line); color: var(--crumb-soft); }
+@media (max-width: 60rem) { .visit .wrap { grid-template-columns: 1fr 1fr; } .map { grid-column: 1 / -1; } }
+@media (max-width: 40rem) { .visit .wrap { grid-template-columns: 1fr; } }
+
+/* About */
+.about .wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(2rem, 6vw, 5rem); }
+.about blockquote { margin: 0; font: 400 clamp(1.6rem, 3.2vw, 2.3rem)/1.2 var(--serif); font-variation-settings: "opsz" 72; }
+.about p { max-width: 58ch; }
+@media (max-width: 52rem) { .about .wrap { grid-template-columns: 1fr; } }
+
+/* Footer */
+footer { background: var(--crumb); color: var(--flour); padding: 3rem 0 2rem; font-size: 0.93rem; }
+footer .wrap { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+footer a { color: var(--butter); }
+footer p { margin: 0 0 0.75rem; max-width: 60ch; }
+footer .small { color: #cbbba6; font-size: 0.85rem; }
+@media (max-width: 40rem) { footer .wrap { grid-template-columns: 1fr; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn, a { transition: background-color 0.15s, color 0.15s, border-color 0.15s; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<aside class="concept" aria-label="About this site">
+  <div class="wrap">
+    <p style="margin:0"><strong>CONCEPT SITE.</strong> Quarterday is a fictional bakery. The menu, prices, hours and address are sample content.</p>
+    <p style="margin:0"><a href="https://sahitya-neupane.pages.dev/work/quarterday-bakery/">Designed and built by Sahitya Neupane</a></p>
+  </div>
+</aside>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#main"><b>Quarterday</b><span>Bakery &amp; Coffee</span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#order">Order bread</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+    <p class="status" id="status" style="margin:0">Tue–Sun from 6:30</p>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Mill Street, Larkhaven</p>
+        <h1>Bread from the oven at seven. <em>Coffee from half six.</em></h1>
+        <p class="lede">A small bakery and café baking naturally leavened bread, a few pastries and one good soup every day.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="#order">Order tomorrow's bread</a>
+          <a class="btn" href="#visit">Hours &amp; directions</a>
+        </div>
+      </div>
+      <aside class="board" aria-labelledby="bake-title">
+        <svg class="loaf" viewBox="0 0 120 80" aria-hidden="true"><path d="M8 58c0-26 22-44 52-44s52 18 52 44c0 8-6 12-14 12H22c-8 0-14-4-14-12z" fill="#e3bd5b" stroke="#2b1d15" stroke-width="3"/><path d="M38 30l10 14M56 24l8 16M76 28l6 14" stroke="#a93b17" stroke-width="3.5" stroke-linecap="round"/></svg>
+        <h2 id="bake-title">Out of the oven <small>Tue–Sat</small></h2>
+        <ol>
+          <li><time>7:00</time><span>Country sourdough, milk loaf</span></li>
+          <li><time>8:30</time><span>Cardamom buns, butter croissants</span></li>
+          <li><time>10:00</time><span>Dark rye, seeded spelt</span></li>
+          <li><time>11:30</time><span>Soup of the day and focaccia</span></li>
+        </ol>
+        <p>When a bake sells out, it's gone until tomorrow. Pre-order to be sure.</p>
+      </aside>
+    </div>
+  </div>
+
+  <section id="menu" aria-labelledby="menu-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="menu-title">Menu</h2>
+        <p>A short menu that changes with the season. Everything is baked here, and the coffee is roasted for us an hour up the road.</p>
+      </div>
+      <div class="menu">
+        <div>
+          <h3>Bread</h3>
+          <dl>
+            <div class="item"><dt>Country sourdough <span class="tag" title="Vegan">VG</span><span class="price">$8.50</span></dt><dd>Two-day ferment, dark crust, open crumb.</dd></div>
+            <div class="item"><dt>Dark rye with seeds <span class="tag" title="Vegan">VG</span><span class="price">$9.00</span></dt><dd>Dense and sour, for slicing thin.</dd></div>
+            <div class="item"><dt>Seeded spelt <span class="tag" title="Vegan">VG</span><span class="price">$9.00</span></dt><dd>Sunflower, flax and pumpkin seeds.</dd></div>
+            <div class="item"><dt>Milk loaf <span class="price">$7.00</span></dt><dd>Soft, for toast and sandwiches.</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3>From the counter</h3>
+          <dl>
+            <div class="item"><dt>Butter croissant <span class="price">$4.25</span></dt><dd>Laminated over three days.</dd></div>
+            <div class="item"><dt>Cardamom bun <span class="price">$4.50</span></dt><dd>Knotted, with a crunchy sugar top.</dd></div>
+            <div class="item"><dt>Soup and bread <span class="tag" title="Vegetarian">V</span><span class="price">$11.00</span></dt><dd>From 11:30 until it's gone.</dd></div>
+            <div class="item"><dt>Toast and jam <span class="tag" title="Vegetarian">V</span><span class="price">$6.00</span></dt><dd>Two thick slices, cultured butter, house jam.</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3>Drinks</h3>
+          <dl>
+            <div class="item"><dt>Filter coffee <span class="price">$3.25</span></dt><dd>Free refill if you're staying.</dd></div>
+            <div class="item"><dt>Flat white <span class="price">$4.75</span></dt><dd>Oat milk at no extra charge.</dd></div>
+            <div class="item"><dt>Hot chocolate <span class="price">$4.50</span></dt><dd>Made with 70% chocolate.</dd></div>
+            <div class="item"><dt>Loose-leaf tea <span class="price">$3.50</span></dt><dd>Ask what's in the tins today.</dd></div>
+          </dl>
+        </div>
+      </div>
+      <p class="legend"><span class="tag" style="margin:0">VG</span> vegan &nbsp; <span class="tag" style="margin:0">V</span> vegetarian. We bake with wheat, nuts, milk and eggs in one small kitchen, so we can't promise anything is free of allergens. Please ask at the counter.</p>
+    </div>
+  </section>
+
+  <section id="order" class="orders" aria-labelledby="order-title">
+    <div class="wrap">
+      <div>
+        <div class="section-head" style="grid-template-columns:1fr;margin:0">
+          <h2 id="order-title">Order tomorrow's bread</h2>
+          <p>Bread sells out most Saturdays. Order by 5 pm and we'll set yours aside.</p>
+        </div>
+        <ol class="steps">
+          <li><div><b>Choose your loaves</b>Order by 5 pm the day before. Saturday orders close Thursday at 5 pm.</div></li>
+          <li><div><b>We confirm by text</b>You'll get a short message when your order is in.</div></li>
+          <li><div><b>Pick up any time after 9</b>Pay at the counter. Unclaimed orders go on the shelf at 1 pm.</div></li>
+        </ol>
+      </div>
+      <form id="order-form" novalidate>
+        <div class="row">
+          <label>Name <input name="name" autocomplete="name" required></label>
+          <label>Mobile number <span>For your confirmation text</span><input name="phone" type="tel" autocomplete="tel" required></label>
+        </div>
+        <div class="row">
+          <label>Pick-up day
+            <select name="day" required>
+              <option value="">Choose a day</option>
+              <option>Tuesday</option><option>Wednesday</option><option>Thursday</option>
+              <option>Friday</option><option>Saturday</option><option>Sunday</option>
+            </select>
+          </label>
+          <label>Loaf
+            <select name="loaf" required>
+              <option value="">Choose a loaf</option>
+              <option>Country sourdough</option><option>Dark rye with seeds</option>
+              <option>Seeded spelt</option><option>Milk loaf</option>
+            </select>
+          </label>
+        </div>
+        <label>Anything else? <span>Optional: extra loaves, sliced or whole</span><textarea name="notes" rows="3"></textarea></label>
+        <button class="btn btn-solid" type="submit">Place order</button>
+        <p class="form-note">Concept site: this form checks your entries but does not send anything.</p>
+        <p class="form-result" id="order-result" role="status" aria-live="polite" hidden></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="visit" class="visit" aria-labelledby="visit-title">
+    <h2 id="visit-title" class="sr-only">Visit</h2>
+    <div class="wrap">
+      <div>
+        <h3>Find us</h3>
+        <address>18 Mill Street<br>Larkhaven, Ontario</address>
+        <p style="margin-top:1rem"><a href="tel:+15550100142">555-010-0142</a></p>
+        <p>Step-free entrance from Mill Street, an accessible washroom, and room for a stroller or wheelchair at every table.</p>
+        <p>Street parking is free for two hours. Bike rack by the door.</p>
+      </div>
+      <div>
+        <h3>Hours</h3>
+        <table id="hours">
+          <caption class="sr-only">Opening hours</caption>
+          <tbody>
+            <tr data-day="2"><th scope="row">Tuesday</th><td>6:30 – 3:00</td></tr>
+            <tr data-day="3"><th scope="row">Wednesday</th><td>6:30 – 3:00</td></tr>
+            <tr data-day="4"><th scope="row">Thursday</th><td>6:30 – 3:00</td></tr>
+            <tr data-day="5"><th scope="row">Friday</th><td>6:30 – 3:00</td></tr>
+            <tr data-day="6"><th scope="row">Saturday</th><td>7:30 – 3:00</td></tr>
+            <tr data-day="0"><th scope="row">Sunday</th><td>8:00 – 1:00</td></tr>
+            <tr data-day="1"><th scope="row">Monday</th><td>Closed</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="map" style="margin:0">
+        <svg viewBox="0 0 400 260" role="img" aria-labelledby="map-t">
+          <title id="map-t">Sketch map: Quarterday is on the north side of Mill Street, between the river bridge and the library.</title>
+          <rect width="400" height="260" fill="#f4ecdf"/>
+          <path d="M0 200 C80 180 120 230 200 210 S330 170 400 190 V260 H0Z" fill="#cfdbd3"/>
+          <g stroke="#d6c6ae" stroke-width="14" fill="none"><path d="M0 120H400"/><path d="M120 0V260"/><path d="M300 0V180"/></g>
+          <g stroke="#2b1d15" stroke-width="1" fill="none" stroke-dasharray="4 4"><path d="M0 120H400"/></g>
+          <rect x="140" y="84" width="40" height="26" fill="#ebe0cf" stroke="#5c4a3d"/>
+          <rect x="232" y="78" width="54" height="32" fill="#ebe0cf" stroke="#5c4a3d"/>
+          <rect x="194" y="80" width="28" height="30" fill="#a93b17"/>
+          <g font-family="Work Sans, sans-serif" font-size="12" fill="#2b1d15">
+            <text x="10" y="142">Mill Street</text>
+            <text x="292" y="100">Library</text>
+            <text x="186" y="66" font-weight="700">Quarterday</text>
+            <text x="20" y="246">River Lark</text>
+            <text x="128" y="20" transform="rotate(90 128 20)">Bridge Road</text>
+          </g>
+          <path d="M208 70v8" stroke="#2b1d15" stroke-width="1.5"/>
+        </svg>
+        <figcaption>Sketch map. On the north side of Mill Street, next to the library.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="about" class="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <div>
+        <h2 id="about-title" class="sr-only">About Quarterday</h2>
+        <blockquote>“A quarter day was the day rent fell due. We named the bakery after the old idea of a day that comes round, reliably, whatever else happens.”</blockquote>
+      </div>
+      <div>
+        <p>Quarterday is two bakers and a coffee machine in a former hardware shop on Mill Street. We bake through the night, open the doors at half past six, and close when the bread runs out or at three, whichever comes first.</p>
+        <p>We buy flour from a mill in the province, keep the menu short, and would rather sell out than throw bread away. Anything left at closing goes to the community fridge on Bridge Road.</p>
+        <p>We also bake for a handful of local cafés and grocers. If you'd like a regular order, call us after 2 pm.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p><strong>This is a concept site.</strong> Quarterday Bakery &amp; Coffee, its staff, address, phone number, prices and hours are fictional. Any resemblance to a real business is unintended. The phone number uses the 555-01xx range reserved for fiction.</p>
+      <p>Designed and built by <a href="https://sahitya-neupane.pages.dev/">Sahitya Neupane</a> to show what a small hospitality business site can be: fast, readable on any phone, and easy for search engines and AI assistants to understand. <a href="https://sahitya-neupane.pages.dev/work/quarterday-bakery/">Read about how it was made</a>.</p>
+    </div>
+    <div class="small">
+      <p>Hand-written HTML and CSS, no framework. Fonts: Fraunces and Work Sans (SIL Open Font License), self-hosted.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Opening hours in minutes after midnight, keyed by JS day (0 = Sunday). Uses the shop's own time zone.
+  var hours = { 0: [480, 780], 2: [390, 900], 3: [390, 900], 4: [390, 900], 5: [390, 900], 6: [450, 900] };
+  try {
+    var parts = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Toronto", weekday: "short", hour: "numeric", minute: "numeric", hourCycle: "h23" }).formatToParts(new Date());
+    var get = function (t) { return parts.find(function (p) { return p.type === t; }).value; };
+    var day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(get("weekday"));
+    var mins = parseInt(get("hour"), 10) * 60 + parseInt(get("minute"), 10);
+    var today = hours[day];
+    var open = !!today && mins >= today[0] && mins < today[1];
+    var fmt = function (m) { var h = Math.floor(m / 60), mm = m % 60; return ((h + 11) % 12 + 1) + (mm ? ":" + String(mm).padStart(2, "0") : "") + (h < 12 ? " am" : " pm"); };
+    var el = document.getElementById("status");
+    el.dataset.open = open;
+    el.textContent = open ? "Open now, until " + fmt(today[1]) : (today && mins < today[0] ? "Opens today at " + fmt(today[0]) : "Closed now");
+    var row = document.querySelector('#hours tr[data-day="' + day + '"]');
+    if (row) { row.setAttribute("aria-current", "true"); row.querySelector("th").insertAdjacentHTML("beforeend", ' <span class="sr-only">(today)</span>'); }
+  } catch (e) { /* Leave the static text in place. */ }
+
+  var form = document.getElementById("order-form");
+  var out = document.getElementById("order-result");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var missing = Array.prototype.filter.call(form.elements, function (f) { return f.required && !f.value.trim(); });
+    form.querySelectorAll("[aria-invalid]").forEach(function (f) { f.removeAttribute("aria-invalid"); });
+    out.hidden = false;
+    if (missing.length) {
+      missing.forEach(function (f) { f.setAttribute("aria-invalid", "true"); });
+      out.textContent = "Please fill in: " + missing.map(function (f) { return f.closest("label").firstChild.textContent.trim(); }).join(", ") + ".";
+      missing[0].focus();
+      return;
+    }
+    out.textContent = "Thanks, " + form.name.value.trim().split(" ")[0] + ". On the real site, your " + form.loaf.value.toLowerCase() + " would now be set aside for " + form.day.value + ". (Concept site: nothing was sent.)";
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>

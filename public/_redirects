@@ -1,0 +1,9 @@
+# Old addresses from the previous version of the site -> new pages. https://developers.cloudflare.com/pages/configuration/redirects/
+/projects        /work/     301
+/projects/       /work/     301
+/skills          /about/    301
+/skills/         /about/    301
+/Experience      /about/    301
+/experience      /about/    301
+/admin/*         /          301
+/mycv.pdf        /files/sahitya-neupane-resume.pdf  301
