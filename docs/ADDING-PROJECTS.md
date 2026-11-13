@@ -51,7 +51,7 @@ Claude will follow the rules in `CLAUDE.md`: ask for anything missing rather tha
 
    The build stops with a plain-English message if something is wrong (missing image, duplicate id, bad date…). `npm run dev` shows it live at http://localhost:3000.
 
-4. **Publish.** Commit and push to `main`. Cloudflare Pages deploys in about a minute.
+4. **Publish.** Commit and push to `production` (or merge a pull request into it). Cloudflare Pages deploys in about a minute.
 
 ## Other things you might update
 

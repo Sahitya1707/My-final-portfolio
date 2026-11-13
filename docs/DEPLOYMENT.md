@@ -10,7 +10,7 @@ You need: a free Cloudflare account and this repository on GitHub. Takes about 1
 2. In the sidebar open **Workers & Pages** → **Create** → **Pages** tab → **Connect to Git**.
 3. Authorise GitHub and pick **Sahitya1707/My-final-portfolio**. You can limit Cloudflare's access to just this repository.
 4. Project name: `sahitya-neupane` (this becomes `https://sahitya-neupane.pages.dev`; pick something else if it's taken).
-5. Production branch: `main`.
+5. Production branch: `production` (this repository's default branch).
 6. Build settings:
 
    | Setting | Value |
@@ -30,7 +30,7 @@ You need: a free Cloudflare account and this repository on GitHub. Takes about 1
 
 8. **Save and Deploy.** The first build takes 1–2 minutes. Open the `*.pages.dev` link when it finishes.
 
-From now on every push to `main` deploys automatically, and every other branch or pull request gets its own preview link.
+From now on every push to `production` deploys automatically, and every other branch or pull request gets its own preview link.
 
 ## 2. Turn on the contact form (free)
 
