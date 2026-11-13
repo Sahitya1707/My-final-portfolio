@@ -1,4 +1,8 @@
 import type { Project } from "./types";
+import { site } from "./site";
+
+/** Concept demo sites live on this same site, under /concepts/. */
+const concept = (slug: string) => `${site.url.replace(/\/$/, "")}/concepts/${slug}/`;
 
 /**
  * ─────────────────────────────────────────────────────────────────────────────
@@ -86,7 +90,7 @@ export const projects: Project[] = [
         caption: "On a phone, the open status, the headline and both main actions fit on the first screen.",
       },
     ],
-    liveUrl: "https://sahitya-neupane.pages.dev/concepts/quarterday/",
+    liveUrl: concept("quarterday"),
     githubUrl: "https://github.com/Sahitya1707/my-final-portfolio/tree/production/public/concepts/quarterday",
     featured: true,
     order: 2,
@@ -126,7 +130,7 @@ export const projects: Project[] = [
         caption: "On a phone, calling is one tap from anywhere on the page.",
       },
     ],
-    liveUrl: "https://sahitya-neupane.pages.dev/concepts/fernwell/",
+    liveUrl: concept("fernwell"),
     githubUrl: "https://github.com/Sahitya1707/my-final-portfolio/tree/production/public/concepts/fernwell",
     featured: true,
     order: 3,
@@ -166,7 +170,7 @@ export const projects: Project[] = [
         caption: "The 'Larger text' button in the header scales every page element and remembers the choice.",
       },
     ],
-    liveUrl: "https://sahitya-neupane.pages.dev/concepts/birchline/",
+    liveUrl: concept("birchline"),
     githubUrl: "https://github.com/Sahitya1707/my-final-portfolio/tree/production/public/concepts/birchline",
     featured: true,
     order: 4,
