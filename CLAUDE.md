@@ -11,7 +11,8 @@ Static Next.js 15 (App Router, TypeScript, Tailwind 3) exported to `./out` and h
 
 ## Where content lives
 
-- `content/projects.ts`: all projects (types in `content/types.ts`)
+- `content/projects.ts`: hand-written projects (types in `content/types.ts`)
+- `content/generated/github-projects.json`: written by `npm run sync` / the daily Action. Never edit by hand; override an import by adding the same `id` to `projects.ts`.
 - `content/site.ts`: name, email, availability, socials, site URL
 - `content/services.ts`: services, process, FAQ
 - `app/about/page.tsx`: bio, experience, tools
@@ -24,6 +25,12 @@ Static Next.js 15 (App Router, TypeScript, Tailwind 3) exported to `./out` and h
 4. Only set `featured: true` if the user asks or it's clearly stronger than an existing featured project; keep 3–4 featured (adjust `order`).
 5. Run `npm run build` and fix any errors.
 6. Commit on a new branch with a clear message and tell the user how to publish (push / merge).
+
+## Rules that keep the site honest
+
+- `Concept` category = self-initiated demo work; the project page says so automatically. Never present concept work as a client project.
+- Keep `/llms.txt`, JSON-LD and the pages generated from the same content files; don't hand-write duplicates.
+- Older or weaker work gets `archived: true`, not deleted.
 
 ## Design rules (keep the site consistent)
 

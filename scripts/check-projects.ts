@@ -4,7 +4,7 @@
  */
 import { existsSync } from "node:fs";
 import { join } from "node:path";
-import { projects } from "../content/projects";
+import { allProjects as projects } from "../content/all-projects";
 
 const errors: string[] = [];
 const warnings: string[] = [];

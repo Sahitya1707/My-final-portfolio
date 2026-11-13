@@ -7,6 +7,7 @@ export const PROJECT_CATEGORIES = [
   "Website",
   "Web app",
   "Product",
+  "Concept",
   "Open source",
   "Experiment",
 ] as const;
@@ -64,4 +65,11 @@ export interface Project {
   featured?: boolean;
   /** Lower numbers come first. Projects without it are sorted by date, newest first. */
   order?: number;
+  /**
+   * Older or smaller work. Archived projects keep their page but are tucked into the
+   * "Archive" section of /work/ and left off the home page.
+   */
+  archived?: boolean;
+  /** Set automatically for projects imported from GitHub. Don't set it by hand. */
+  source?: "github";
 }

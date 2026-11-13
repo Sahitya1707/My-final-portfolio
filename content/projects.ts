@@ -150,6 +150,7 @@ export const projects: Project[] = [
       "Floating contact buttons for WhatsApp, Viber, Facebook and email",
     ],
     githubUrl: "https://github.com/Sahitya1707/different-treks-frontend",
+    archived: true,
   },
   {
     id: "payload-cloudinary",
@@ -220,6 +221,7 @@ export const projects: Project[] = [
     ],
     liveUrl: "https://youtube-clone-by-sahitya.vercel.app/",
     githubUrl: "https://github.com/Sahitya1707/youtube-clone",
+    archived: true,
   },
   {
     id: "jwt-auth",
@@ -240,6 +242,7 @@ export const projects: Project[] = [
       "Separate front end and API",
     ],
     githubUrl: "https://github.com/Sahitya1707/JWT_AUTH",
+    archived: true,
   },
 ];
 
@@ -253,7 +256,7 @@ export const projects: Project[] = [
       "First paragraph: the problem or the client's situation.",
       "Second paragraph: what you built and how.",
     ],
-    category: "Website", // Website | Web app | Product | Open source | Experiment
+    category: "Website", // Website | Web app | Product | Concept | Open source | Experiment
     status: "Live", // Live | In development | Prototype | Archived
     completed: "2026-12",
     role: "What you personally did.",

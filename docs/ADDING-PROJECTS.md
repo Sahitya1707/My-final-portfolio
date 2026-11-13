@@ -1,6 +1,10 @@
 # Adding and updating projects
 
-Everything lives in **one file: `content/projects.ts`**. Pages, the home page, the work index, filters, the sitemap and the "next project" links all update from it.
+There are three ways to add a project. All of them end up in the same place: pages, the home page, the work index, filters, the sitemap and the recent-work feed update by themselves.
+
+1. **Automatic, from the project's own repo.** Add a `portfolio.json` and the `portfolio` topic, and it is imported daily. See [AUTOMATION.md](AUTOMATION.md). Best for anything new.
+2. **Ask Claude Code** (below).
+3. **Edit `content/projects.ts` by hand** (below). Best for work without a GitHub repo, such as client sites.
 
 ## The quickest way: ask Claude Code
 
@@ -31,7 +35,7 @@ Claude will follow the rules in `CLAUDE.md`: ask for anything missing rather tha
    | `id` | yes | URL slug, e.g. `maple-bakery` → `/work/maple-bakery/` |
    | `name`, `summary` | yes | Summary is one sentence (under ~200 characters) |
    | `description` | yes | List of paragraphs: the situation, what you built, how |
-   | `category` | yes | `Website`, `Web app`, `Product`, `Open source`, `Experiment` |
+   | `category` | yes | `Website`, `Web app`, `Product`, `Concept`, `Open source`, `Experiment`. `Concept` pages automatically say the work was self-initiated, not commissioned. |
    | `status` | yes | `Live`, `In development`, `Prototype`, `Archived` |
    | `completed` | yes | `"2026"` or `"2026-12"` |
    | `role` | yes | What *you* did |
@@ -42,6 +46,7 @@ Claude will follow the rules in `CLAUDE.md`: ask for anything missing rather tha
    | `liveUrl`, `githubUrl`, `links` | no | Full `https://` URLs |
    | `featured` | no | `true` to show on the home page (keep 3–4 featured) |
    | `order` | no | Lower numbers first. Without it, newest first. |
+   | `archived` | no | `true` moves it into the collapsed Archive on /work/ and off the home page. Use for older or weaker work. |
 
 3. **Check it.**
 

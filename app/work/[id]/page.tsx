@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { projects } from "@/content/projects";
+import { allProjects as projects } from "@/content/all-projects";
 import { getAllProjects, getNextProject, getProject, hostOf, yearOf } from "@/lib/projects";
 import { pageMeta } from "@/lib/meta";
+import { site } from "@/content/site";
 import { ProjectCover } from "@/components/ProjectCover";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -42,7 +43,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
     description: project.summary,
     dateCreated: project.completed,
     keywords: project.technologies.join(", "),
-    ...(project.liveUrl ? { url: project.liveUrl } : {}),
+    url: `${site.url.replace(/\/$/, "")}/work/${project.id}/`,
+    creator: { "@id": `${site.url.replace(/\/$/, "")}/#person` },
+    genre: project.category,
+    ...(project.liveUrl ? { sameAs: project.liveUrl } : {}),
+    ...(project.cover ? { image: `${site.url.replace(/\/$/, "")}${project.cover.src}` } : {}),
     ...(project.githubUrl ? { codeRepository: project.githubUrl } : {}),
   };
 
@@ -64,6 +69,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               </p>
               <h1 className="font-serif text-display-xl">{project.name}</h1>
               <p className="mt-6 max-w-2xl text-xl leading-relaxed text-ink/85">{project.summary}</p>
+              {project.category === "Concept" ? (
+                <p className="mt-5 max-w-2xl border-l-2 border-signal pl-4 text-[0.95rem] text-muted">
+                  Concept project: a self-initiated design and build to show what I&rsquo;d make for this kind of
+                  business. It was not commissioned by, and is not affiliated with, any real business.
+                </p>
+              ) : null}
             </div>
             <dl className="grid grid-cols-2 content-end gap-x-6 gap-y-5 border-t border-ink pt-5 text-[0.95rem] lg:col-span-4 lg:grid-cols-1">
               <div>

@@ -103,3 +103,34 @@ Per-page titles, descriptions and canonical URLs; Open Graph image (`public/og.p
 ## 10. Accessibility
 
 Real system cursor (the custom cursor is gone), skip link, visible focus outlines, semantic landmarks and headings, labelled form fields, `aria-current` on navigation, `aria-pressed` on filters, reduced-motion support, colour contrast checked in both themes, and alt text required by the build for every project image.
+
+## 11. Projects import themselves from GitHub
+
+**Decision:** A daily GitHub Action (`sync-projects.yml`) imports any of your repositories that have the `portfolio` topic **and** a `portfolio.json`. Screenshots are downloaded and converted to WebP. The result is committed to `content/generated/github-projects.json`, and that push triggers a Cloudflare redeploy. Details are in `docs/AUTOMATION.md`.
+
+**Why:** you wanted new work to show up without editing the portfolio. Requiring both the topic and the file keeps unfinished or weak repos off the site by default, and `"draft": true` hides a project until it's ready. Committing the import (instead of calling GitHub during every Cloudflare build) means a GitHub outage or rate limit can never break a deploy. Hand-written entries in `projects.ts` override imports with the same `id`.
+
+**Cost:** $0. The run takes well under a minute of the free GitHub Actions allowance. Private repos are optional and need a read-only token (`PORTFOLIO_SYNC_TOKEN`).
+
+**Rejected:** a headless CMS. You'd be filling in the same fields in a second place, with another account to keep alive.
+
+## 12. Archive for older work
+
+Projects can be marked `archived: true`. They keep their page but sit in a collapsed **Archive** on `/work/` and never appear on the home page. The YouTube-API study app, JWT Auth and Different Treks start archived, so the work clients see first is the strongest. A **Concept** category is ready for self-initiated demo sites. Concept project pages automatically say the work was self-initiated and not commissioned by a real business.
+
+## 13. No blog (for now)
+
+A blog only helps if you post regularly, and you won't have time to write. An empty or AI-written blog would hurt credibility more than having none. Instead, `/work/feed.xml` is an RSS feed generated from project data, so every new project counts as an update automatically. If you start writing later, Markdown posts can be added without changing hosting.
+
+## 14. Readable by AI assistants
+
+More people now ask ChatGPT, Claude or Perplexity to recommend a developer. To make the site easy for those tools to read:
+
+- `/llms.txt` and `/llms-full.txt` give a plain-text summary of who you are, services with starting prices, availability, work and contact. They are generated from the same content files as the pages, so they never go out of date.
+- JSON-LD `@graph` describes a `Person`, a `ProfessionalService` (with an offer catalogue and CAD starting prices) and the `WebSite`. Each project page has a `CreativeWork` linked to you, and the services page has an `FAQPage`.
+- `robots.txt` explicitly allows the main AI and search crawlers (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended and others).
+- Every page is static HTML with plain, factual copy, so it needs no JavaScript to read.
+
+## 15. Positioning and visible prices
+
+Services are pitched as **fast, modern, low-maintenance sites** with no plugins to update and no platform fees. WordPress is offered only when a client wants to edit pages themselves. Starting prices ("From CA$1,200") are now shown on the services page and in `llms.txt`, because small-business owners and AI assistants both look for a number. You can turn them off with `showPrices` in `content/site.ts`, and they should stay in step with `freelance/PLAYBOOK.md`.

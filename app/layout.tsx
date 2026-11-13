@@ -7,6 +7,7 @@ import "./globals.css";
 import { site } from "@/content/site";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Reveal } from "@/components/Reveal";
+import { siteJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   description: site.description,
   applicationName: site.name,
   authors: [{ name: site.name, url: site.url }],
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", types: { "application/rss+xml": [{ url: "/work/feed.xml", title: "Recent work" }] } },
   openGraph: {
     type: "website",
     siteName: site.name,
@@ -39,22 +40,13 @@ export const viewport: Viewport = {
   ],
 };
 
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: site.name,
-  url: site.url,
-  email: `mailto:${site.email}`,
-  jobTitle: site.role,
-  address: { "@type": "PostalAddress", addressRegion: "ON", addressCountry: "CA" },
-  sameAs: site.socials.map((s) => s.url),
-};
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-CA">
       <body className="min-h-screen">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd()) }} />
         <SiteHeader />
         <main id="main">{children}</main>
         <Reveal />

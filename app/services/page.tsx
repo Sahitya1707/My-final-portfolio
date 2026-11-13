@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { services, process, faqs } from "@/content/services";
 import { pageMeta } from "@/lib/meta";
+import { site } from "@/content/site";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata = pageMeta({
@@ -23,7 +24,7 @@ export default function ServicesPage() {
       <section className="page pt-14 sm:pt-20">
         <p className="label mb-5">Services</p>
         <h1 className="max-w-[18ch] font-serif text-display-lg">
-          Websites that do their job, built by someone who explains things plainly.
+          Fast, modern websites that are cheap to run and easy to look after.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
           I work with small businesses, startups and individuals. Every project starts with understanding what your
@@ -50,6 +51,12 @@ export default function ServicesPage() {
               <span className="font-mono text-sm text-signal">{String(i + 1).padStart(2, "0")}</span>
               <h2 className="mt-3 font-serif text-display-md">{s.name}</h2>
               <p className="mt-3 text-muted">{s.forWho}</p>
+              {site.showPrices && s.startingPrice ? (
+                <p className="mt-5 font-mono text-sm">
+                  <span className="text-muted">From </span>
+                  {s.startingPrice}
+                </p>
+              ) : null}
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="text-lg leading-relaxed">{s.description}</p>

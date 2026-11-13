@@ -21,6 +21,10 @@ export const site = {
   description:
     "Independent web developer in Ontario, Canada. I design and build fast, clear websites for small businesses, and web and mobile apps of my own.",
 
+  /** Third-person one-liner used by llms.txt for AI assistants. No pronouns needed. */
+  tagline:
+    "Designs and builds fast, modern, low-maintenance websites for small businesses, startups and individuals, plus web and mobile apps. Plain WordPress builds are available when a client needs to edit pages themselves.",
+
   /**
    * Availability shown in the header strip and on the contact page.
    * status: "available" | "limited" | "unavailable"
@@ -29,6 +33,12 @@ export const site = {
     status: "available" as "available" | "limited" | "unavailable",
     note: "Taking on new website projects for December 2026 and January 2027.",
   },
+
+  /** Show "From CA$…" starting prices on the services page and in llms.txt. */
+  showPrices: true,
+
+  /** Where you take on work, for search engines and AI assistants. */
+  areaServed: ["Ontario", "Canada", "United States", "Remote"],
 
   /** Typical reply time promised on the contact page. Only promise what you can keep. */
   replyTime: "within two working days",

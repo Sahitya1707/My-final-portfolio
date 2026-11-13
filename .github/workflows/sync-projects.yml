@@ -1,0 +1,48 @@
+name: Sync projects from GitHub
+
+# Imports any of your repositories tagged with the `portfolio` topic that contain a
+# portfolio.json, then commits the result. The push makes Cloudflare Pages redeploy.
+# Free: uses a few seconds of GitHub Actions minutes per run. See docs/AUTOMATION.md.
+
+on:
+  schedule:
+    - cron: "17 6 * * *" # every day at 06:17 UTC (about 1–2 am in Ontario)
+  workflow_dispatch: # "Run workflow" button on the Actions tab, for an instant update
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-projects
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Import tagged repositories
+        env:
+          # Optional secret: a fine-grained token with read-only "Contents" and "Metadata"
+          # on your repositories lets private repos be imported too. Without it, public repos only.
+          GITHUB_TOKEN: ${{ secrets.PORTFOLIO_SYNC_TOKEN || github.token }}
+          SYNC_INCLUDE_PRIVATE: ${{ secrets.PORTFOLIO_SYNC_TOKEN && '1' || '0' }}
+        run: npm run sync
+      - name: Check the site still builds
+        run: npm run build
+      - name: Commit changes
+        run: |
+          git add content/generated public/projects
+          if git diff --cached --quiet; then
+            echo "No project changes."
+          else
+            git config user.name "portfolio-sync[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Sync projects from GitHub"
+            git push
+          fi

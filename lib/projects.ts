@@ -1,4 +1,4 @@
-import { projects } from "@/content/projects";
+import { allProjects as projects } from "@/content/all-projects";
 import type { Project, ProjectCategory } from "@/content/types";
 import { PROJECT_CATEGORIES } from "@/content/types";
 
@@ -14,8 +14,17 @@ export function getAllProjects(): Project[] {
   return [...projects].sort(compare);
 }
 
+/** Current work: everything not marked archived. */
+export function getCurrentProjects(): Project[] {
+  return getAllProjects().filter((p) => !p.archived);
+}
+
+export function getArchivedProjects(): Project[] {
+  return getAllProjects().filter((p) => p.archived);
+}
+
 export function getFeaturedProjects(): Project[] {
-  return getAllProjects().filter((p) => p.featured);
+  return getCurrentProjects().filter((p) => p.featured);
 }
 
 export function getProject(id: string): Project | undefined {
@@ -23,8 +32,8 @@ export function getProject(id: string): Project | undefined {
 }
 
 /** Categories that actually have projects, in the canonical order. */
-export function getUsedCategories(): ProjectCategory[] {
-  const used = new Set(projects.map((p) => p.category));
+export function getUsedCategories(list: Project[] = projects): ProjectCategory[] {
+  const used = new Set(list.map((p) => p.category));
   return PROJECT_CATEGORIES.filter((c) => used.has(c));
 }
 

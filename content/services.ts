@@ -10,6 +10,8 @@ export interface Service {
   forWho: string;
   description: string;
   includes: string[];
+  /** Shown as "From …" when site.showPrices is true. Keep in step with freelance/PLAYBOOK.md. */
+  startingPrice?: string;
 }
 
 export const services: Service[] = [
@@ -18,13 +20,14 @@ export const services: Service[] = [
     name: "Business websites",
     forWho: "For businesses with no website, or one that no longer represents them.",
     description:
-      "A small, fast site that tells people what you do, shows your work or menu or services, and makes it obvious how to call, book or visit. Built so you are not paying monthly fees for features you never use.",
+      "A fast, modern, low-maintenance site that tells people what you do, shows your work, menu or services, and makes it obvious how to call, book or visit. No plugins to update and no monthly platform fees. If you want to edit pages yourself, I can build it on a simple, tidy WordPress setup instead.",
     includes: [
       "Up to about six pages: home, services, about, gallery, contact and similar",
       "Written structure and headings that help customers and search engines",
       "Contact form, click-to-call, map and opening hours",
       "Set up on hosting that can cost $0 a month",
     ],
+    startingPrice: "CA$1,200",
   },
   {
     id: "redesign",
@@ -38,6 +41,7 @@ export const services: Service[] = [
       "Redirects from old page addresses so links keep working",
       "Speed and mobile improvements you can check yourself",
     ],
+    startingPrice: "CA$1,500",
   },
   {
     id: "landing-page",
@@ -50,6 +54,7 @@ export const services: Service[] = [
       "Form or booking link connected to your email",
       "Basic, privacy-friendly visit counting if you want it",
     ],
+    startingPrice: "CA$500",
   },
   {
     id: "web-app",
@@ -62,6 +67,7 @@ export const services: Service[] = [
       "Accounts and sign-in, databases and APIs where needed",
       "Hosting chosen for your budget, including free tiers where they genuinely fit",
     ],
+    startingPrice: "CA$4,000",
   },
   {
     id: "maintenance",
@@ -74,6 +80,7 @@ export const services: Service[] = [
       "Bug fixes and small new features",
       "Speed, accessibility and mobile check-ups",
     ],
+    startingPrice: "CA$60/hour",
   },
 ];
 
@@ -118,7 +125,7 @@ export interface Faq {
 export const faqs: Faq[] = [
   {
     q: "How much does a website cost?",
-    a: "It depends on the number of pages and what the site has to do. I give a fixed price in writing after our first conversation, so there are no surprises. Small business sites are deliberately kept simple so they stay affordable.",
+    a: "Small business websites start at CA$1,200 and landing pages at CA$500. The exact figure depends on the number of pages and what the site has to do. I give a fixed price in writing after our first conversation, so there are no surprises.",
   },
   {
     q: "Will I have to pay monthly fees?",
@@ -131,6 +138,10 @@ export const faqs: Faq[] = [
   {
     q: "I already have a website. Do I need to start over?",
     a: "Not necessarily. Sometimes a few targeted fixes to speed, mobile layout and contact options make the biggest difference. I will tell you honestly which one makes sense.",
+  },
+  {
+    q: "Can I update the website myself?",
+    a: "Yes. By default I build fast sites that need almost no upkeep, and I can make small changes for you. If you'd like to edit pages and photos yourself regularly, I'll build it on WordPress with a simple, tidy setup instead and show you how to use it.",
   },
   {
     q: "Who owns the website?",

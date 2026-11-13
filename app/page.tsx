@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 import { services, process } from "@/content/services";
-import { getAllProjects, getFeaturedProjects } from "@/lib/projects";
+import { getCurrentProjects, getFeaturedProjects } from "@/lib/projects";
 import { Availability } from "@/components/Availability";
 import { FeaturedProject } from "@/components/FeaturedProject";
 import { ProjectIndex } from "@/components/ProjectIndex";
@@ -9,7 +9,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export default function HomePage() {
   const featured = getFeaturedProjects();
-  const rest = getAllProjects().filter((p) => !p.featured).slice(0, 4);
+  const rest = getCurrentProjects().filter((p) => !p.featured).slice(0, 4);
 
   return (
     <>

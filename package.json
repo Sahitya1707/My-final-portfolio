@@ -8,7 +8,9 @@
     "build": "npm run check && next build",
     "check": "tsc --noEmit && tsx scripts/check-projects.ts",
     "images": "node scripts/optimize-images.mjs",
-    "preview": "npx --yes serve@14 out -l 4000"
+    "preview": "npx --yes serve@14 out -l 4000",
+    "sync": "tsx scripts/sync-github.ts",
+    "test:sync": "tsx scripts/test-sync.ts"
   },
   "engines": {
     "node": ">=20"

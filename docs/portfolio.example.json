@@ -1,0 +1,18 @@
+{
+  "name": "Maple Street Bakery",
+  "summary": "A concept website for a neighbourhood bakery: menu, hours and one-tap ordering by phone.",
+  "description": [
+    "Many small bakeries rely on a PDF menu and a Facebook page. This concept shows what a fast, phone-first site could look like instead.",
+    "Built with Next.js and Tailwind CSS, hosted for free on Cloudflare Pages."
+  ],
+  "category": "Concept",
+  "status": "Live",
+  "completed": "2026-12",
+  "role": "Design and development.",
+  "technologies": ["Next.js", "Tailwind CSS", "Cloudflare Pages"],
+  "features": ["Mobile-first menu", "Tap-to-call ordering", "Opening hours and map"],
+  "cover": { "src": "docs/cover.png", "alt": "Home page of the Maple Street Bakery concept site on a phone and a laptop" },
+  "screenshots": [{ "src": "docs/menu.png", "alt": "The menu page", "caption": "The menu works without zooming on a phone." }],
+  "liveUrl": "https://maple-street-bakery.pages.dev",
+  "featured": true
+}
