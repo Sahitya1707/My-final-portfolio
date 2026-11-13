@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fernwell Plumbing &amp; Heating · Concept site</title>
+<meta name="description" content="Concept website for Fernwell, a fictional local plumbing and heating company: services with clear starting prices, how a visit works, what to do in a leak, service area and a quote request form. Designed and built by Sahitya Neupane.">
+<!-- Fernwell is a fictional business, so this page is kept out of search results. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://sahitya-neupane.pages.dev/concepts/fernwell/">
+<meta name="theme-color" content="#11261e">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fernwell Plumbing & Heating · Concept site by Sahitya Neupane">
+<meta property="og:description" content="A concept website for a fictional local plumbing and heating company.">
+<meta property="og:url" content="https://sahitya-neupane.pages.dev/concepts/fernwell/">
+<meta property="og:image" content="https://sahitya-neupane.pages.dev/concepts/fernwell/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Plumber",
+      "@id": "https://sahitya-neupane.pages.dev/concepts/fernwell/#business",
+      "name": "Fernwell Plumbing & Heating",
+      "description": "CONCEPT: a fictional plumbing and heating company, created as a design sample. Not a real business.",
+      "url": "https://sahitya-neupane.pages.dev/concepts/fernwell/",
+      "telephone": "+1-555-010-0167",
+      "priceRange": "$$",
+      "address": { "@type": "PostalAddress", "addressLocality": "Larkhaven", "addressRegion": "ON", "addressCountry": "CA" },
+      "areaServed": ["Larkhaven", "Wrenfield", "Ashby Corners", "Millbrook Flats", "Corran"],
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "07:00", "closes": "21:00" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Plumbing and heating services (sample prices)",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Blocked drain clearing" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": "149", "priceCurrency": "CAD" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Leak repair" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": "129", "priceCurrency": "CAD" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Water heater replacement" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": "1650", "priceCurrency": "CAD" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Furnace and boiler service" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": "159", "priceCurrency": "CAD" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bathroom and kitchen plumbing" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": "95", "priceCurrency": "CAD" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sump pump install and backup" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": "549", "priceCurrency": "CAD" } }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How do I shut off the water in a leak?", "acceptedAnswer": { "@type": "Answer", "text": "Find the main shut-off valve where the water line enters the house, usually in the basement near the water meter, and turn it clockwise until it stops. For a single fixture, use the small valve under the sink or behind the toilet." } },
+        { "@type": "Question", "name": "Do you charge a call-out fee?", "acceptedAnswer": { "@type": "Answer", "text": "No separate call-out fee. The first half hour of labour is included in every starting price, and you approve the price before any work begins." } },
+        { "@type": "Question", "name": "Do you work evenings and weekends?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Phones are answered 7 am to 9 pm every day, and evening and weekend visits are charged at the same rate." } },
+        { "@type": "Question", "name": "How long is your work guaranteed?", "acceptedAnswer": { "@type": "Answer", "text": "Labour is guaranteed for 12 months. Parts carry the manufacturer's warranty, which we register for you." } }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "name": "Fernwell Plumbing & Heating · Concept site",
+      "url": "https://sahitya-neupane.pages.dev/concepts/fernwell/",
+      "about": { "@id": "https://sahitya-neupane.pages.dev/concepts/fernwell/#business" },
+      "creator": { "@type": "Person", "name": "Sahitya Neupane", "url": "https://sahitya-neupane.pages.dev/" }
+    }
+  ]
+}
+</script>
+<style>
+@font-face { font-family: "Archivo"; src: url(fonts/archivo-latin-wdth-normal.woff2) format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+@font-face { font-family: "Plex Mono"; src: url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+
+:root {
+  --pine: #11261e;
+  --pine-2: #1c3a2e;
+  --chalk: #f3f2ed;
+  --chalk-2: #e6e4dc;
+  --ink: #141815;
+  --muted: #4a524d;
+  --hiviz: #f5d547;
+  --rule: #c9c7bd;
+  --sans: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --wrap: min(76rem, 100% - 2.5rem);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 1rem; }
+body { margin: 0; background: var(--chalk); color: var(--ink); font: 400 1.0625rem/1.55 var(--sans); }
+svg { display: block; max-width: 100%; }
+a { color: inherit; text-underline-offset: 0.18em; }
+:focus-visible { outline: 3px solid var(--hiviz); outline-offset: 2px; box-shadow: 0 0 0 6px var(--ink); }
+.wrap { width: var(--wrap); margin-inline: auto; }
+.skip { position: absolute; left: 1rem; top: -4rem; background: var(--hiviz); color: var(--ink); padding: 0.6rem 1rem; z-index: 50; font-weight: 700; }
+.skip:focus { top: 1rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.label { font: 500 0.75rem/1.3 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+
+.concept { background: var(--hiviz); color: var(--ink); font-size: 0.875rem; }
+.concept .wrap { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; justify-content: space-between; padding: 0.5rem 0; }
+.concept p { margin: 0; }
+
+/* Header + hero share the dark band */
+.band { background: var(--pine); color: var(--chalk); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--pine-2); }
+.brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+.brand svg { width: 2.2rem; height: 2.2rem; }
+.brand b { font-weight: 800; font-stretch: 80%; font-size: 1.35rem; letter-spacing: 0.01em; text-transform: uppercase; line-height: 1; }
+.brand small { display: block; font: 500 0.7rem/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: #b9c7bf; }
+.top nav ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
+.top nav a { text-decoration: none; font-weight: 500; }
+.top nav a:hover { text-decoration: underline; }
+.call-top { font-weight: 800; font-stretch: 85%; font-size: 1.2rem; text-decoration: none; white-space: nowrap; color: var(--hiviz); }
+@media (max-width: 60rem) { .top nav { display: none; } }
+
+.hero .wrap { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(2rem, 5vw, 4rem); padding: clamp(2.5rem, 7vw, 5.5rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
+h1, h2, h3 { margin: 0; font-weight: 800; font-stretch: 75%; line-height: 0.98; text-transform: uppercase; letter-spacing: -0.005em; }
+h1 { font-size: clamp(2.9rem, 8.5vw, 6.6rem); }
+h1 span { color: var(--hiviz); }
+.hero p.lede { font-size: 1.2rem; max-width: 40ch; color: #d7e0db; margin: 1.5rem 0 2rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.95rem 1.35rem; font-weight: 700; text-decoration: none; border: 2px solid currentColor; font-size: 1.05rem; }
+.btn-hiviz { background: var(--hiviz); color: var(--ink); border-color: var(--hiviz); }
+.btn-hiviz:hover { background: #fff; border-color: #fff; }
+.btn-ghost:hover { background: var(--pine-2); }
+
+.now { border: 1px solid #3b5a4d; align-self: end; }
+.now > div { padding: 1.1rem 1.25rem; border-bottom: 1px solid #3b5a4d; }
+.now > div:last-child { border-bottom: 0; }
+.now .label { color: #b9c7bf; display: block; margin-bottom: 0.35rem; }
+.now strong { font-size: 1.35rem; font-stretch: 85%; font-weight: 700; }
+.dot { display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--hiviz); margin-right: 0.5rem; vertical-align: 0.1em; }
+@media (max-width: 52rem) { .hero .wrap { grid-template-columns: 1fr; } }
+
+section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem 3rem; margin-bottom: 2.25rem; }
+.head h2 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); }
+.head p { margin: 0; max-width: 46ch; color: var(--muted); }
+.head .label { display: block; margin-bottom: 0.75rem; color: var(--muted); }
+
+/* Price table */
+.prices { width: 100%; border-collapse: collapse; }
+.prices th, .prices td { text-align: left; padding: 1.1rem 1rem 1.1rem 0; border-top: 1px solid var(--rule); vertical-align: top; }
+.prices thead th { border-top: 0; padding-top: 0; color: var(--muted); }
+.prices tbody tr:last-child th, .prices tbody tr:last-child td { border-bottom: 2px solid var(--ink); }
+.prices tbody th { font-size: 1.3rem; font-weight: 700; font-stretch: 85%; width: 30%; }
+.prices td.num { font: 500 1.15rem/1.3 var(--mono); white-space: nowrap; text-align: right; padding-right: 0; }
+.prices td.desc { color: var(--muted); }
+.price-note { font-size: 0.93rem; color: var(--muted); margin-top: 1.25rem; max-width: 70ch; }
+@media (max-width: 44rem) {
+  .prices thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .prices tr { display: grid; grid-template-columns: 1fr auto; border-top: 1px solid var(--rule); padding: 1rem 0; }
+  .prices th, .prices td { border: 0 !important; padding: 0; }
+  .prices tbody th { width: auto; }
+  .prices td.desc { grid-column: 1 / -1; order: 3; margin-top: 0.35rem; }
+}
+
+/* Leak guide */
+.leak { background: var(--hiviz); }
+.leak .wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(2rem, 5vw, 4rem); }
+.leak h2 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+.leak ol { list-style: none; counter-reset: s; margin: 0; padding: 0; }
+.leak li { counter-increment: s; display: grid; grid-template-columns: 3.5rem 1fr; gap: 0.5rem; padding: 1.1rem 0; border-top: 2px solid var(--ink); }
+.leak li::before { content: counter(s); font-weight: 800; font-stretch: 75%; font-size: 2.6rem; line-height: 0.9; }
+.leak li b { display: block; font-size: 1.15rem; }
+@media (max-width: 52rem) { .leak .wrap { grid-template-columns: 1fr; } }
+
+/* Visit steps */
+.process { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--ink); }
+.process li { list-style: none; padding: 1.25rem 1.25rem 1.25rem 0; border-right: 1px solid var(--rule); margin-right: 1.25rem; }
+.process li:last-child { border-right: 0; margin-right: 0; }
+.process .label { color: var(--muted); }
+.process h3 { font-size: 1.6rem; margin: 0.6rem 0 0.6rem; }
+.process p { margin: 0; color: var(--muted); }
+ol.process { padding: 0; margin: 0; }
+@media (max-width: 60rem) { .process { grid-template-columns: 1fr 1fr; } .process li:nth-child(2) { border-right: 0; margin-right: 0; } .process li:nth-child(n+3) { border-top: 1px solid var(--rule); } }
+@media (max-width: 34rem) { .process { grid-template-columns: 1fr; } .process li { border-right: 0; margin-right: 0; border-top: 1px solid var(--rule); } .process li:first-child { border-top: 0; } }
+
+/* Area + facts */
+.area { background: var(--chalk-2); }
+.area .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.towns { columns: 2; padding: 0; margin: 1.5rem 0 0; list-style: none; font-size: 1.2rem; font-weight: 600; }
+.towns li { padding: 0.5rem 0; border-top: 1px solid var(--rule); break-inside: avoid; }
+.facts { border: 2px solid var(--ink); background: var(--chalk); }
+.facts div { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--rule); }
+.facts div:last-child { border-bottom: 0; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; font-weight: 600; }
+@media (max-width: 52rem) { .area .wrap { grid-template-columns: 1fr; } }
+@media (max-width: 26rem) { .facts div { grid-template-columns: 1fr; gap: 0.15rem; } }
+
+/* FAQ + form */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); }
+details { border-top: 1px solid var(--rule); }
+details:last-of-type { border-bottom: 1px solid var(--rule); }
+summary { cursor: pointer; padding: 1rem 2rem 1rem 0; font-weight: 700; font-size: 1.1rem; list-style: none; position: relative; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: 0; top: 0.85rem; font: 500 1.3rem/1 var(--mono); }
+details[open] summary::after { content: "–"; }
+details p { margin: 0 0 1.1rem; color: var(--muted); max-width: 60ch; }
+form { display: grid; gap: 1rem; }
+label { display: grid; gap: 0.35rem; font-weight: 600; }
+label span { font-weight: 400; color: var(--muted); font-size: 0.88rem; }
+input, select, textarea { font: inherit; background: #fff; color: var(--ink); border: 2px solid var(--ink); padding: 0.75rem 0.8rem; border-radius: 0; width: 100%; }
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--hiviz); outline-offset: 0; }
+fieldset { border: 0; padding: 0; margin: 0; }
+legend { font-weight: 600; margin-bottom: 0.5rem; }
+.radios { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.radios label { display: flex; align-items: center; gap: 0.5rem; font-weight: 500; border: 2px solid var(--ink); padding: 0.55rem 0.8rem; cursor: pointer; }
+.radios input { width: auto; accent-color: var(--pine); margin: 0; }
+.radios label:has(input:checked) { background: var(--pine); color: var(--chalk); }
+button { font: inherit; cursor: pointer; }
+.btn-dark { background: var(--ink); color: var(--chalk); border-color: var(--ink); justify-content: center; }
+.btn-dark:hover { background: var(--pine-2); border-color: var(--pine-2); }
+.form-note { font-size: 0.85rem; color: var(--muted); margin: 0; }
+.form-result { border-left: 4px solid var(--pine); padding: 0.5rem 0 0.5rem 0.9rem; margin: 0; font-weight: 500; }
+@media (max-width: 52rem) { .split { grid-template-columns: 1fr; } }
+
+footer { background: var(--pine); color: #d7e0db; padding: 3rem 0 6rem; font-size: 0.93rem; }
+footer .wrap { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+footer p { margin: 0 0 0.75rem; max-width: 62ch; }
+footer a { color: var(--hiviz); }
+@media (max-width: 40rem) { footer .wrap { grid-template-columns: 1fr; } }
+
+/* Mobile call bar: the one action a stressed visitor needs */
+.callbar { position: fixed; inset: auto 0 0 0; display: none; grid-template-columns: 1fr 1fr; z-index: 20; border-top: 2px solid var(--ink); }
+.callbar a { padding: 0.95rem; text-align: center; font-weight: 800; text-decoration: none; font-stretch: 85%; font-size: 1.1rem; }
+.callbar a:first-child { background: var(--hiviz); color: var(--ink); }
+.callbar a:last-child { background: var(--ink); color: var(--chalk); }
+@media (max-width: 40rem) { .callbar { display: grid; } }
+@media (min-width: 40.01rem) { footer { padding-bottom: 2rem; } }
+
+@media (prefers-reduced-motion: no-preference) { .btn, a { transition: background-color 0.15s, color 0.15s; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<aside class="concept" aria-label="About this site">
+  <div class="wrap">
+    <p><strong>Concept site.</strong> Fernwell is a fictional company. Prices, service area and contact details are sample content.</p>
+    <p><a href="https://sahitya-neupane.pages.dev/work/fernwell-plumbing/">Designed and built by Sahitya Neupane</a></p>
+  </div>
+</aside>
+
+<div class="band">
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#main">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" fill="#f5d547"/><path d="M10 30V14h12a6 6 0 0 1 0 12h-6" fill="none" stroke="#141815" stroke-width="4.5" stroke-linecap="square"/><circle cx="29" cy="31" r="2.6" fill="#141815"/></svg>
+        <span><b>Fernwell</b><small>Plumbing &amp; Heating</small></span>
+      </a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#prices">Services &amp; prices</a></li>
+          <li><a href="#leak">Leak right now?</a></li>
+          <li><a href="#area">Where we work</a></li>
+          <li><a href="#quote">Get a quote</a></li>
+        </ul>
+      </nav>
+      <a class="call-top" href="tel:+15550100167">555-010-0167</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="hero">
+      <div class="wrap">
+        <div>
+          <h1>Leaking, blocked or no hot water? <span>A plumber picks up.</span></h1>
+          <p class="lede">Local plumbing and heating repairs, with the price agreed before we start. Phones are answered by a plumber, 7 am to 9 pm, every day.</p>
+          <div class="actions">
+            <a class="btn btn-hiviz" href="tel:+15550100167">Call 555-010-0167</a>
+            <a class="btn btn-ghost" href="#quote">Request a quote</a>
+          </div>
+        </div>
+        <div class="now" aria-label="At a glance">
+          <div><span class="label">Phones</span><strong id="phone-status"><span class="dot" aria-hidden="true"></span>7 am – 9 pm, 7 days</strong></div>
+          <div><span class="label">Typical arrival for urgent jobs</span><strong>Same day, often within 3 hours</strong></div>
+          <div><span class="label">Before any work</span><strong>Fixed price, in writing</strong></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<section id="prices" aria-labelledby="prices-title">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="label">01 · Services</span><h2 id="prices-title">What we fix, and what it costs</h2></div>
+      <p>Starting prices include the visit and the first 30 minutes of labour. You get a fixed price for the whole job before we pick up a tool.</p>
+    </div>
+    <table class="prices">
+      <caption class="sr-only">Services and starting prices in Canadian dollars, plus tax</caption>
+      <thead><tr><th scope="col" class="label">Service</th><th scope="col" class="label">What's included</th><th scope="col" class="label" style="text-align:right">From</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Blocked drains</th><td class="desc">Sinks, tubs, toilets and floor drains. Camera inspection if it keeps coming back.</td><td class="num">$149</td></tr>
+        <tr><th scope="row">Leak repairs</th><td class="desc">Dripping taps, leaking pipes and joints, toilets that won't stop running.</td><td class="num">$129</td></tr>
+        <tr><th scope="row">Water heaters</th><td class="desc">Tank and tankless, supplied and installed, old tank taken away.</td><td class="num">$1,650</td></tr>
+        <tr><th scope="row">Furnace &amp; boiler</th><td class="desc">Annual service, safety check and repairs for gas furnaces and boilers.</td><td class="num">$159</td></tr>
+        <tr><th scope="row">Kitchens &amp; baths</th><td class="desc">Fitting sinks, taps, toilets, showers and dishwashers. Hourly or fixed per job.</td><td class="num">$95/hr</td></tr>
+        <tr><th scope="row">Sump pumps</th><td class="desc">New pumps, battery backups and check valves for basements that flood.</td><td class="num">$549</td></tr>
+      </tbody>
+    </table>
+    <p class="price-note">Sample prices for this concept. Prices are in Canadian dollars before HST. Evenings and weekends cost the same as weekdays. Larger jobs, such as re-piping or a full bathroom, get a free written quote after a visit.</p>
+  </div>
+</section>
+
+<section id="leak" class="leak" aria-labelledby="leak-title">
+  <div class="wrap">
+    <div>
+      <span class="label" style="display:block;margin-bottom:0.75rem">02 · Right now</span>
+      <h2 id="leak-title">Water where it shouldn't be? Do this first.</h2>
+      <p style="margin:1.25rem 0 1.5rem;max-width:36ch">Four steps that limit the damage while you wait for a plumber.</p>
+      <a class="btn btn-dark" href="tel:+15550100167">Then call 555-010-0167</a>
+    </div>
+    <ol>
+      <li><div><b>Turn off the water</b>Find the main shut-off where the water line comes into the house, usually in the basement by the meter. Turn it clockwise until it stops. For one fixture, use the small valve under the sink or behind the toilet.</div></li>
+      <li><div><b>Keep electricity away from water</b>If water is near outlets, appliances or the electrical panel, stay out of it. Switch off that circuit only if you can reach the panel while standing somewhere dry.</div></li>
+      <li><div><b>Open the taps</b>Open the lowest tap in the house to drain what's left in the pipes and take pressure off the leak.</div></li>
+      <li><div><b>Take photos</b>Photograph the leak and any damage before you clean up. Your insurer will ask for them.</div></li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="visit-title">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="label">03 · A visit</span><h2 id="visit-title">How a job works</h2></div>
+      <p>No surprises on the bill. If the job turns out bigger than expected, we stop and ask before going on.</p>
+    </div>
+    <ol class="process">
+      <li><span class="label">Step 1</span><h3>You call</h3><p>A plumber asks a few questions and gives you a likely price range on the phone.</p></li>
+      <li><span class="label">Step 2</span><h3>We confirm</h3><p>You get a text with an arrival window and the name of who's coming.</p></li>
+      <li><span class="label">Step 3</span><h3>Fixed price</h3><p>We look at the problem and give you a written price. Nothing starts until you say yes.</p></li>
+      <li><span class="label">Step 4</span><h3>Done &amp; tidy</h3><p>We clean up, show you what was done, and email the invoice and warranty.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="area" class="area" aria-labelledby="area-title">
+  <div class="wrap">
+    <div>
+      <span class="label" style="display:block;margin-bottom:0.75rem;color:var(--muted)">04 · Where we work</span>
+      <h2 id="area-title" style="font-size:clamp(2.2rem,5vw,3.5rem)">Larkhaven and 30 km around it</h2>
+      <ul class="towns">
+        <li>Larkhaven</li><li>Wrenfield</li><li>Ashby Corners</li><li>Millbrook Flats</li><li>Corran</li><li>Rural routes between</li>
+      </ul>
+    </div>
+    <dl class="facts">
+      <div><dt>Licence</dt><dd>Licensed plumber and gas technician (sample: SAMPLE-0000)</dd></div>
+      <div><dt>Insurance</dt><dd>$2M liability, certificate on request</dd></div>
+      <div><dt>Guarantee</dt><dd>12 months on labour; parts under manufacturer warranty</dd></div>
+      <div><dt>Payment</dt><dd>Card, debit or e-transfer when the job is done</dd></div>
+      <div><dt>Phones</dt><dd>7 am – 9 pm, every day</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="quote" aria-labelledby="quote-title">
+  <div class="wrap split">
+    <div>
+      <span class="label" style="display:block;margin-bottom:0.75rem;color:var(--muted)">05 · Questions</span>
+      <h2 style="font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:1.5rem">Common questions</h2>
+      <details><summary>Do you charge a call-out fee?</summary><p>No separate call-out fee. The first half hour of labour is included in every starting price, and you approve the price before any work begins.</p></details>
+      <details><summary>Do you work evenings and weekends?</summary><p>Yes. Phones are answered 7 am to 9 pm every day, and evening and weekend visits cost the same as weekdays.</p></details>
+      <details><summary>How long is your work guaranteed?</summary><p>Labour is guaranteed for 12 months. Parts carry the manufacturer's warranty, which we register for you.</p></details>
+      <details><summary>My water heater is old. Repair or replace?</summary><p>Tank heaters usually last 8 to 12 years. If yours is in that range and leaking from the tank itself, replacing it is normally better value. If it's a valve or element, a repair is often enough. We'll tell you which, and why.</p></details>
+    </div>
+    <div>
+      <h2 id="quote-title" style="font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:1.5rem">Request a quote</h2>
+      <form id="quote-form" novalidate>
+        <fieldset>
+          <legend>How urgent is it?</legend>
+          <div class="radios">
+            <label><input type="radio" name="urgency" value="today" required> Today</label>
+            <label><input type="radio" name="urgency" value="this week"> This week</label>
+            <label><input type="radio" name="urgency" value="planning"> Just planning</label>
+          </div>
+        </fieldset>
+        <label>What's the problem? <span>A sentence or two is plenty</span><textarea name="problem" rows="3" required></textarea></label>
+        <label>Name <input name="name" autocomplete="name" required></label>
+        <label>Phone <input name="phone" type="tel" autocomplete="tel" required></label>
+        <label>Town
+          <select name="town" required>
+            <option value="">Choose your town</option>
+            <option>Larkhaven</option><option>Wrenfield</option><option>Ashby Corners</option><option>Millbrook Flats</option><option>Corran</option><option>Somewhere else nearby</option>
+          </select>
+        </label>
+        <button class="btn btn-dark" type="submit">Send request</button>
+        <p class="form-note">Concept site: this form checks your entries but does not send anything. For anything urgent, the real site would tell you to call.</p>
+        <p class="form-result" id="quote-result" role="status" aria-live="polite" hidden></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p><strong>This is a concept site.</strong> Fernwell Plumbing &amp; Heating, its licence, service area, phone number and prices are fictional. Any resemblance to a real company is unintended. The phone number uses the 555-01xx range reserved for fiction. The leak steps are general guidance; when in doubt, call a licensed plumber.</p>
+      <p>Designed and built by <a href="https://sahitya-neupane.pages.dev/">Sahitya Neupane</a> to show what a trades website can be: the phone number always in reach, honest prices, and useful advice for someone standing in a wet basement. <a href="https://sahitya-neupane.pages.dev/work/fernwell-plumbing/">Read about how it was made</a>.</p>
+    </div>
+    <div><p>Hand-written HTML and CSS, no framework. Fonts: Archivo and IBM Plex Mono (SIL Open Font License), self-hosted.</p></div>
+  </div>
+</footer>
+
+<nav class="callbar" aria-label="Quick contact">
+  <a href="tel:+15550100167">Call now</a>
+  <a href="#quote">Get a quote</a>
+</nav>
+
+<script>
+(function () {
+  try {
+    var h = parseInt(new Intl.DateTimeFormat("en-CA", { timeZone: "America/Toronto", hour: "numeric", hourCycle: "h23" }).format(new Date()), 10);
+    var open = h >= 7 && h < 21;
+    var el = document.getElementById("phone-status");
+    el.lastChild.textContent = open ? "Answering now, until 9 pm" : "Closed now, back at 7 am";
+    if (!open) el.querySelector(".dot").style.background = "#8a978f";
+  } catch (e) {}
+
+  var form = document.getElementById("quote-form");
+  var out = document.getElementById("quote-result");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    form.querySelectorAll("[aria-invalid]").forEach(function (f) { f.removeAttribute("aria-invalid"); });
+    var missing = [];
+    if (!form.querySelector('input[name="urgency"]:checked')) missing.push({ el: form.querySelector('input[name="urgency"]'), name: "how urgent it is" });
+    ["problem", "name", "phone", "town"].forEach(function (n) {
+      var f = form.elements[n];
+      if (!f.value.trim()) missing.push({ el: f, name: f.closest("label").firstChild.textContent.trim().toLowerCase() });
+    });
+    out.hidden = false;
+    if (missing.length) {
+      missing.forEach(function (m) { m.el.setAttribute("aria-invalid", "true"); });
+      out.textContent = "Please add: " + missing.map(function (m) { return m.name; }).join(", ") + ".";
+      missing[0].el.focus();
+      return;
+    }
+    var urgent = form.querySelector('input[name="urgency"]:checked').value === "today";
+    out.textContent = urgent
+      ? "Thanks. For a job today, the real site would ask you to call 555-010-0167 as well, so a plumber can talk it through. (Concept site: nothing was sent.)"
+      : "Thanks, " + form.elements.name.value.trim().split(" ")[0] + ". On the real site, a plumber would call you back within two working hours. (Concept site: nothing was sent.)";
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>

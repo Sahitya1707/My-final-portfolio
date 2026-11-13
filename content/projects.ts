@@ -52,6 +52,126 @@ export const projects: Project[] = [
     order: 1,
   },
   {
+    id: "quarterday-bakery",
+    name: "Quarterday Bakery & Coffee",
+    summary:
+      "A concept website for a fictional neighbourhood bakery: a short menu, today's bake times, next-day bread orders and visiting details.",
+    description: [
+      "Small cafés and bakeries usually get the same website: a full-screen photo, a PDF menu and opening hours buried in the footer. The things people actually check on their phone, like whether it's open, what's on, and how to get there, take too long to find.",
+      "Quarterday is a fictional bakery I invented to show a better version. The header says whether it's open right now, in the shop's own time zone. The menu is real text with prices and dietary tags, not a PDF. Bake times sit on the first screen, and a short form lets regulars set aside tomorrow's loaf.",
+      "I designed and built it by hand in plain HTML and CSS with a few lines of JavaScript, so the whole page loads in a single request plus two self-hosted fonts. It includes structured data (Bakery, Menu and opening hours) so search engines and AI assistants can read the menu and hours directly.",
+    ],
+    category: "Concept",
+    status: "Live",
+    completed: "2026-11",
+    role: "Solo. Concept, copywriting, design and front-end build.",
+    context: "Self-initiated concept for a fictional business",
+    technologies: ["HTML", "CSS", "JavaScript", "Schema.org JSON-LD", "Accessibility (WCAG AA)"],
+    features: [
+      "Live open or closed status calculated in the shop's time zone, with today highlighted in the hours table",
+      "Menu as real text with prices, dietary tags and an allergen note",
+      "Next-day bread order form with accessible validation",
+      "Hand-drawn SVG sketch map instead of a heavy embedded map",
+      "Bakery, Menu and opening-hours structured data",
+      "Colour contrast checked to WCAG AA, no automated accessibility issues (axe), no horizontal scroll on phones",
+    ],
+    cover: {
+      src: "/projects/quarterday-bakery/cover.webp",
+      alt: "Quarterday home page: the headline 'Bread from the oven at seven. Coffee from half six.' on cream paper, beside a bordered list of today's bake times.",
+    },
+    screenshots: [
+      {
+        src: "/projects/quarterday-bakery/mobile.webp",
+        alt: "Quarterday on a phone: open status in the header, the headline, and buttons to order bread and see hours.",
+        caption: "On a phone, the open status, the headline and both main actions fit on the first screen.",
+      },
+    ],
+    liveUrl: "https://sahitya-neupane.pages.dev/concepts/quarterday/",
+    githubUrl: "https://github.com/Sahitya1707/my-final-portfolio/tree/production/public/concepts/quarterday",
+    featured: true,
+    order: 2,
+  },
+  {
+    id: "fernwell-plumbing",
+    name: "Fernwell Plumbing & Heating",
+    summary:
+      "A concept website for a fictional local plumber: the phone number always in reach, clear starting prices and what to do in a leak.",
+    description: [
+      "People usually find a plumber's website when something has already gone wrong. They are on a phone, often stressed, and want to know three things: can someone come, roughly what will it cost, and what should they do right now.",
+      "Fernwell is a fictional plumbing and heating company I invented to show a site built around that moment. The phone number is in the header and in a call bar fixed to the bottom of the screen on phones. Services are listed with starting prices in a table rather than 'call for a quote'. A high-contrast section explains how to shut off the water and stay safe while waiting.",
+      "It is hand-written HTML and CSS with no framework. It includes Plumber, service-price and FAQ structured data, so search engines and AI assistants can answer questions like 'how much is a blocked drain' straight from the page.",
+    ],
+    category: "Concept",
+    status: "Live",
+    completed: "2026-11",
+    role: "Solo. Concept, copywriting, design and front-end build.",
+    context: "Self-initiated concept for a fictional business",
+    technologies: ["HTML", "CSS", "JavaScript", "Schema.org JSON-LD", "Accessibility (WCAG AA)"],
+    features: [
+      "Call and quote bar fixed to the bottom of the screen on phones",
+      "Services table with starting prices that reflows into a list on small screens",
+      "'Do this first' leak guide written as useful advice",
+      "Quote form that asks how urgent the job is and points urgent jobs to the phone",
+      "Plumber, OfferCatalog and FAQPage structured data",
+      "Colour contrast checked to WCAG AA, no automated accessibility issues (axe), no horizontal scroll on phones",
+    ],
+    cover: {
+      src: "/projects/fernwell-plumbing/cover.webp",
+      alt: "Fernwell home page: a dark green band with the large headline 'Leaking, blocked or no hot water? A plumber picks up.' in white and yellow capitals.",
+    },
+    screenshots: [
+      {
+        src: "/projects/fernwell-plumbing/mobile.webp",
+        alt: "Fernwell on a phone: the headline, a yellow 'Call' button, and a call bar fixed to the bottom of the screen.",
+        caption: "On a phone, calling is one tap from anywhere on the page.",
+      },
+    ],
+    liveUrl: "https://sahitya-neupane.pages.dev/concepts/fernwell/",
+    githubUrl: "https://github.com/Sahitya1707/my-final-portfolio/tree/production/public/concepts/fernwell",
+    featured: true,
+    order: 3,
+  },
+  {
+    id: "birchline-physiotherapy",
+    name: "Birchline Physiotherapy",
+    summary:
+      "A concept website for a fictional physiotherapy clinic: calm, easy to read at any age, and clear about fees and what a first visit involves.",
+    description: [
+      "Clinic websites often lean on stock photos and vague promises, while the questions new patients actually have go unanswered: do I need a referral, what happens at the first appointment, what does it cost, and can I get into the building.",
+      "Birchline is a fictional community physiotherapy clinic I invented to answer those questions plainly. A first-visit timeline breaks the hour down minute by minute. Fees and insurance sit side by side. Accessibility details get their own section, and a 'Larger text' button in the header remembers the visitor's choice.",
+      "The body text uses Atkinson Hyperlegible, a typeface designed for low-vision readers. The page is hand-written HTML and CSS and includes Physiotherapy and FAQ structured data. The team members are fictional, and the page says so.",
+    ],
+    category: "Concept",
+    status: "Live",
+    completed: "2026-11",
+    role: "Solo. Concept, copywriting, design and front-end build.",
+    context: "Self-initiated concept for a fictional business",
+    technologies: ["HTML", "CSS", "JavaScript", "Schema.org JSON-LD", "Accessibility (WCAG AA)"],
+    features: [
+      "'Larger text' toggle that is remembered between visits",
+      "First-visit timeline, fees table and insurance notes",
+      "Accessibility and getting-here details in their own section",
+      "Booking request form with a clear 'not for emergencies' notice",
+      "Physiotherapy and FAQPage structured data",
+      "Colour contrast checked to WCAG AA, no automated accessibility issues (axe), no horizontal scroll on phones",
+    ],
+    cover: {
+      src: "/projects/birchline-physiotherapy/cover.webp",
+      alt: "Birchline home page: the serif headline 'Physiotherapy to get you back to the things you do.' beside a pale green 'At a glance' panel listing visit length, referral and insurance details.",
+    },
+    screenshots: [
+      {
+        src: "/projects/birchline-physiotherapy/mobile.webp",
+        alt: "Birchline on a phone: the headline, 'Book an assessment' and 'Call' buttons, and a 'Larger text' button in the header.",
+        caption: "The 'Larger text' button in the header scales every page element and remembers the choice.",
+      },
+    ],
+    liveUrl: "https://sahitya-neupane.pages.dev/concepts/birchline/",
+    githubUrl: "https://github.com/Sahitya1707/my-final-portfolio/tree/production/public/concepts/birchline",
+    featured: true,
+    order: 4,
+  },
+  {
     id: "elmvale-horticultural-society",
     name: "Elmvale Horticultural Society",
     summary:
@@ -71,8 +191,6 @@ export const projects: Project[] = [
       "Dynamic, content-managed pages",
     ],
     liveUrl: "https://elmvale.infinitecascade.xyz",
-    featured: true,
-    order: 2,
   },
   {
     id: "trackmywork",
@@ -98,8 +216,6 @@ export const projects: Project[] = [
       "Controller unit tests",
     ],
     githubUrl: "https://github.com/Sahitya1707/TrackMyWork",
-    featured: true,
-    order: 3,
   },
   {
     id: "elevate-athletes",
@@ -126,8 +242,6 @@ export const projects: Project[] = [
       alt: "Elevate Athletes home page: a wide photo of a packed football stadium with the headline 'Empowering underrated talents'.",
     },
     githubUrl: "https://github.com/Sahitya1707/Elevate-Athletes",
-    featured: true,
-    order: 4,
   },
   {
     id: "different-treks",
