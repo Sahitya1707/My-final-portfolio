@@ -1,1 +1,14 @@
-{}
+{
+  "roadstar": {
+    "url": "https://sahitya1707.github.io/app-pages/roadstar/",
+    "capturedAt": "2026-11-14",
+    "cover": {
+      "src": "/projects/roadstar/auto-desktop.webp",
+      "alt": "Roadstar home page on a desktop screen (automatic screenshot of the live site)."
+    },
+    "mobile": {
+      "src": "/projects/roadstar/auto-mobile.webp",
+      "alt": "Roadstar on a phone (automatic screenshot of the live site)."
+    }
+  }
+}
