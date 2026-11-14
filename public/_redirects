@@ -6,4 +6,5 @@
 /Experience      /about/    301
 /experience      /about/    301
 /admin/*         /          301
-/mycv.pdf        /files/sahitya-neupane-resume.pdf  301
+/mycv.pdf        /about/    301
+/files/*        /about/    301

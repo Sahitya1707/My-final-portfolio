@@ -162,4 +162,5 @@ work?
 - [ ] No exaggeration, no fake urgency, no criticism of whoever built their site
 - [ ] Your name, site, phone or address, and the opt-out line are in the footer
 - [ ] The project you link is relevant to their type of business
+- [ ] Links to your site end in `?ref=email` (or `?ref=email-bakeries`, etc.), so the enquiry form tells you the email worked
 - [ ] Logged in the tracker with a next-action date

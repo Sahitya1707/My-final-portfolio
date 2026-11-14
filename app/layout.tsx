@@ -7,6 +7,8 @@ import "./globals.css";
 import { site } from "@/content/site";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Reveal } from "@/components/Reveal";
+import { LeadSource } from "@/components/LeadSource";
+import { themeInitScript } from "@/components/ThemeToggle";
 import { siteJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
@@ -35,21 +37,34 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f0e9" },
-    { media: "(prefers-color-scheme: dark)", color: "#141311" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f1e8" },
+    { media: "(prefers-color-scheme: dark)", color: "#181613" },
   ],
 };
 
-
+/** Free Cloudflare Web Analytics token (see docs/HOW-IT-WORKS.md). Leave unset to disable. */
+const ANALYTICS_TOKEN = process.env.NEXT_PUBLIC_CF_ANALYTICS_TOKEN;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-CA">
+    <html lang="en-CA" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="min-h-screen">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd()) }} />
         <SiteHeader />
         <main id="main">{children}</main>
         <Reveal />
+        <LeadSource />
+        {ANALYTICS_TOKEN ? (
+          // Cloudflare Web Analytics: free, no cookies, no consent banner needed.
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: ANALYTICS_TOKEN })}
+          />
+        ) : null}
       </body>
     </html>
   );

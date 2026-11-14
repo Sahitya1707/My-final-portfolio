@@ -8,6 +8,7 @@ Static Next.js 15 (App Router, TypeScript, Tailwind 3) exported to `./out` and h
 - `npm run build`: type-check + `scripts/check-projects.ts` + static export. Must pass before committing.
 - `npm run images`: convert PNG/JPG in `public/projects` and `public/images` to WebP
 - `npm run preview`: serve `./out` on port 4000
+- `npm run screenshots`: after a build, take automatic laptop/phone screenshots of projects with a live link and no images
 
 ## Where content lives
 
@@ -36,6 +37,7 @@ Static Next.js 15 (App Router, TypeScript, Tailwind 3) exported to `./out` and h
 
 - Palette tokens only (`paper`, `paper-2`, `ink`, `muted`, `rule`, `signal`, `leaf`); never add gradients, glows, glassmorphism or new accent colours.
 - Headlines `font-serif`, UI `font-sans`, metadata `.label` (mono, uppercase).
-- Rules (borders) and numbered lists over cards and rounded boxes. No rounded corners except the availability dot.
+- Rules (borders) and numbered lists over boxed card grids. Rounded corners are fine on buttons, nav pills, photos and project images (`rounded-full`, `rounded-xl`/`2xl`); keep layout sections square.
+- Every colour must work in both themes: use the tokens, which switch for dark mode (`data-theme` on `<html>`, toggled by `components/ThemeToggle.tsx`).
 - Motion stays subtle and must respect `prefers-reduced-motion`.
 - Images: `<img>` with width/height, `loading="lazy"` below the fold, WebP from `npm run images`.

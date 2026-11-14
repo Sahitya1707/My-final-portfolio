@@ -165,7 +165,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           </section>
         ) : null}
 
-        <nav aria-label="Next project" className="page mt-24">
+        <section className="page mt-20" aria-label="Start a project">
+          <div className="flex flex-col gap-6 rounded-2xl bg-paper-2 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
+            <div>
+              <p className="font-serif text-2xl sm:text-3xl">Want something like this for your business?</p>
+              <p className="mt-2 text-muted">Tell me what you need. I&rsquo;ll reply with honest next steps and a fixed price.</p>
+            </div>
+            <Link href="/contact/" className="btn shrink-0 justify-center">
+              Get a free quote <span className="arrow">→</span>
+            </Link>
+          </div>
+        </section>
+
+        <nav aria-label="Next project" className="page mt-20">
           <Link href={`/work/${next.id}/`} className="group flex flex-col gap-3 border-y border-ink py-10 sm:flex-row sm:items-baseline sm:justify-between">
             <span className="label">Next project</span>
             <span className="font-serif text-display-md transition-colors group-hover:text-signal">

@@ -43,7 +43,6 @@ ${projects.map((p) => `- [${p.name}](${b}/work/${p.id}/): ${p.summary} (${p.cate
 ## Optional
 
 - [Recent work feed (RSS)](${b}/work/feed.xml)
-- [Résumé (PDF)](${b}${site.resume})
 ${site.socials.map((s) => `- [${s.label}](${s.url})`).join("\n")}
 `;
 }

@@ -65,7 +65,6 @@ Claude will follow the rules in `CLAUDE.md`: ask for anything missing rather tha
 | Availability line ("Taking on new projects for…") | `content/site.ts` → `availability` |
 | Email, socials, location, reply time | `content/site.ts` |
 | Services, process steps, FAQ | `content/services.ts` |
-| Résumé | replace `public/files/sahitya-neupane-resume.pdf` (keep the name) |
 | Bio, experience, tools | `app/about/page.tsx` |
 
 ## Adding a testimonial later
