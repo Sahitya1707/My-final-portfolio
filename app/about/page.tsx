@@ -87,9 +87,6 @@ export default function AboutPage() {
             <Link href="/contact/" className="btn">
               Work with me <span className="arrow">→</span>
             </Link>
-            <a href={site.resume} className="btn-ghost" target="_blank" rel="noopener">
-              Download résumé (PDF)
-            </a>
           </div>
         </div>
         <figure className="lg:col-span-4 lg:col-start-9">
@@ -99,7 +96,7 @@ export default function AboutPage() {
             alt="Sahitya Neupane standing in front of Toronto's Old City Hall at Nathan Phillips Square."
             width={640}
             height={800}
-            className="aspect-[4/5] w-full object-cover"
+            className="aspect-[4/5] w-full rounded-2xl object-cover"
           />
           <figcaption className="label mt-3">Toronto, Nathan Phillips Square</figcaption>
         </figure>

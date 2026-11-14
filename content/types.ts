@@ -55,6 +55,8 @@ export interface Project {
   features: string[];
   /** Main image. Leave out and the site draws a typographic cover instead. */
   cover?: ProjectImage;
+  /** Phone-sized screenshot (about 390px wide). Shown overlapping the cover on cards. */
+  mobile?: ProjectImage;
   /** Extra screenshots shown on the project page. */
   screenshots?: ProjectImage[];
   liveUrl?: string;

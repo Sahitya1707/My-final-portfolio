@@ -20,18 +20,35 @@ export function ProjectCover({
   className?: string;
 }) {
   if (project.cover) {
+    const mobile = project.mobile;
     return (
-      <div className={`relative aspect-[16/10] overflow-hidden bg-paper-2 ${className}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={project.cover.src}
-          alt={project.cover.alt}
-          width={1440}
-          height={900}
-          loading={priority ? "eager" : "lazy"}
-          decoding="async"
-          className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-        />
+      <div className={`relative ${mobile ? "pb-[6%] pr-[6%]" : ""} ${className}`}>
+        <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-rule bg-paper-2 shadow-[0_1px_0_rgb(var(--rule))]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={project.cover.src}
+            alt={project.cover.alt}
+            width={1440}
+            height={900}
+            loading={priority ? "eager" : "lazy"}
+            decoding="async"
+            className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+          />
+        </div>
+        {mobile ? (
+          <div className="absolute bottom-0 right-0 w-[24%] overflow-hidden rounded-[1.1rem] border-[5px] border-ink bg-ink shadow-[0_18px_40px_-18px_rgb(0_0_0/0.45)] transition-transform duration-700 ease-out group-hover:-translate-y-1.5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={mobile.src}
+              alt={mobile.alt}
+              width={390}
+              height={844}
+              loading={priority ? "eager" : "lazy"}
+              decoding="async"
+              className="aspect-[390/780] w-full rounded-[0.75rem] object-cover object-top"
+            />
+          </div>
+        ) : null}
       </div>
     );
   }
@@ -46,7 +63,7 @@ export function ProjectCover({
     <div
       role="img"
       aria-label={`${project.name}: ${project.category.toLowerCase()}, ${yearOf(project)}`}
-      className={`relative flex ${wide ? "aspect-[16/10] sm:aspect-[24/9]" : "aspect-[16/10]"} flex-col justify-between overflow-hidden p-5 sm:p-8 ${plate} ${className}`}
+      className={`relative flex ${wide ? "aspect-[16/10] sm:aspect-[24/9]" : "aspect-[16/10]"} flex-col justify-between overflow-hidden rounded-xl p-5 sm:p-8 ${plate} ${className}`}
     >
       {/* Baseline grid, like a type specimen sheet */}
       <div

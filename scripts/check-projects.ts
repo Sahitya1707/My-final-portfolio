@@ -20,7 +20,7 @@ for (const p of projects) {
   if (p.description.length === 0) errors.push(`${where}: description needs at least one paragraph.`);
   if (p.summary.length > 200) warnings.push(`${where}: summary is ${p.summary.length} characters; under 200 reads better in lists.`);
 
-  const images = [p.cover, ...(p.screenshots ?? [])].filter(Boolean) as { src: string; alt: string }[];
+  const images = [p.cover, p.mobile, ...(p.screenshots ?? [])].filter(Boolean) as { src: string; alt: string }[];
   for (const img of images) {
     if (!img.src.startsWith("/")) errors.push(`${where}: image "${img.src}" should start with "/" (it lives in /public).`);
     else if (!existsSync(join(process.cwd(), "public", img.src))) {

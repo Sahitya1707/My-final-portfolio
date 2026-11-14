@@ -10,7 +10,7 @@ Audit of `Sahitya1707/My-final-portfolio` as of commit `f59ee30` (18 Aug 2025), 
 | `my-portfolio-backend/` | Express + MongoDB (Mongoose) API: admin login (JWT cookies), CRUD for projects / tech / skills / menu, Multer uploads, Nodemailer contact handler | **Removed** |
 | `pages/api/today.js` | Next API route reading a Google Sheet with a service account (`googleapis`) | **Removed** |
 | `plan.doc` | Personal notes on the old scroll interaction | Removed |
-| `public/mycv.pdf`, `public/images/myimg.png` | Résumé and portrait | **Reused** (PDF moved to `/files/`, portrait cropped and converted to WebP) |
+| `public/mycv.pdf`, `public/images/myimg.png` | Résumé and portrait | Portrait **reused** (cropped, WebP). Résumé later removed from the site at the owner's request. |
 | Tech-stack SVG icons | 19 logo icons | Not reused (the new design lists tools in text) |
 
 ## Paid or hosted dependencies found

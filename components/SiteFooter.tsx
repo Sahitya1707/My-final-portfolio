@@ -39,11 +39,6 @@ export function SiteFooter({ showCta = true }: { showCta?: boolean }) {
                 </a>
               </li>
             ))}
-            <li>
-              <a href={site.resume} className="link" target="_blank" rel="noopener">
-                Résumé (PDF)
-              </a>
-            </li>
           </ul>
         </div>
       </div>

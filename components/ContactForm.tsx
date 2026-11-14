@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { site } from "@/content/site";
 import { services } from "@/content/services";
+import { describeFirstTouch, readFirstTouch } from "./LeadSource";
 
 /**
  * Project enquiry form.
@@ -16,7 +17,28 @@ const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
 type State = { kind: "idle" } | { kind: "sending" } | { kind: "sent" } | { kind: "mailto" } | { kind: "error"; msg: string };
 
+const FOUND_VIA = [
+  "Choose one",
+  "Google or another search engine",
+  "An AI assistant (ChatGPT, Claude, Perplexity…)",
+  "An email from you",
+  "LinkedIn or social media",
+  "Someone recommended you",
+  "Saw your work on another site",
+  "Other",
+];
+
+const FIELDS = ["name", "email", "phone", "website", "service", "budget", "found", "message"] as const;
+
 const BUDGETS = ["Not sure yet", "Under CA$1,000", "CA$1,000 – 2,500", "CA$2,500 – 5,000", "Over CA$5,000"];
+
+/** Form values plus where this visitor first came from (see LeadSource). */
+function collect(fd: FormData): Record<string, string> {
+  const data = Object.fromEntries(FIELDS.map((k) => [k, String(fd.get(k) ?? "").trim()])) as Record<string, string>;
+  if (data.found === FOUND_VIA[0]) data.found = "Not given";
+  data.source = describeFirstTouch(readFirstTouch());
+  return data;
+}
 
 export function ContactForm() {
   const [state, setState] = useState<State>({ kind: "idle" });
@@ -25,11 +47,15 @@ export function ContactForm() {
     const body = [
       `Name: ${data.name}`,
       `Email: ${data.email}`,
+      data.phone ? `Phone: ${data.phone}` : "",
       data.website ? `Current website: ${data.website}` : "",
       `Looking for: ${data.service}`,
       `Budget: ${data.budget}`,
+      `Found you via: ${data.found}`,
       "",
       data.message,
+      "",
+      `(Visit source: ${data.source})`,
     ]
       .filter((l) => l !== "")
       .join("\n");
@@ -43,9 +69,7 @@ export function ContactForm() {
     const form = e.currentTarget;
     const fd = new FormData(form);
     if (fd.get("botcheck")) return; // honeypot filled: almost certainly a bot
-    const data = Object.fromEntries(
-      ["name", "email", "website", "service", "budget", "message"].map((k) => [k, String(fd.get(k) ?? "").trim()])
-    ) as Record<string, string>;
+    const data = collect(fd);
 
     if (!ACCESS_KEY) return openMailto(data);
 
@@ -61,9 +85,12 @@ export function ContactForm() {
           replyto: data.email,
           name: data.name,
           email: data.email,
+          Phone: data.phone || "—",
           "Current website": data.website || "—",
           "Looking for": data.service,
           Budget: data.budget,
+          "Found you via": data.found,
+          "Visit source": data.source,
           message: data.message,
           botcheck: "",
         }),
@@ -110,10 +137,16 @@ export function ContactForm() {
           <input name="email" type="email" required autoComplete="email" className={field} />
         </label>
       </div>
-      <label className="block">
-        <span className="label">Current website, if you have one</span>
-        <input name="website" type="text" inputMode="url" placeholder="yourbusiness.com" className={field} />
-      </label>
+      <div className="grid gap-8 sm:grid-cols-2">
+        <label className="block">
+          <span className="label">Phone (optional)</span>
+          <input name="phone" type="tel" autoComplete="tel" className={field} />
+        </label>
+        <label className="block">
+          <span className="label">Current website, if you have one</span>
+          <input name="website" type="text" inputMode="url" placeholder="yourbusiness.com" className={field} />
+        </label>
+      </div>
       <div className="grid gap-8 sm:grid-cols-2">
         <label className="block">
           <span className="label">What do you need?</span>
@@ -143,11 +176,19 @@ export function ContactForm() {
           className={`${field} resize-y`}
         />
       </label>
+      <label className="block">
+        <span className="label">How did you find me?</span>
+        <select name="found" className={`${field} cursor-pointer`} defaultValue={FOUND_VIA[0]}>
+          {FOUND_VIA.map((f) => (
+            <option key={f}>{f}</option>
+          ))}
+        </select>
+      </label>
       {/* Honeypot: hidden from people, tempting to bots */}
       <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" className="btn justify-center disabled:opacity-60" disabled={state.kind === "sending"}>
+        <button type="submit" className="btn shrink-0 justify-center whitespace-nowrap disabled:opacity-60" disabled={state.kind === "sending"}>
           {state.kind === "sending" ? "Sending…" : "Send enquiry"} <span className="arrow">→</span>
         </button>
         <p className="text-sm text-muted">I reply {site.replyTime}. Your details are only used to answer you.</p>
@@ -173,11 +214,7 @@ export function ContactForm() {
                 const form = (ev.currentTarget.closest("form") as HTMLFormElement) || undefined;
                 if (!form) return;
                 const fd = new FormData(form);
-                openMailto(
-                  Object.fromEntries(
-                    ["name", "email", "website", "service", "budget", "message"].map((k) => [k, String(fd.get(k) ?? "")])
-                  ) as Record<string, string>
-                );
+                openMailto(collect(fd));
               }}
             >
               send it from your email app instead

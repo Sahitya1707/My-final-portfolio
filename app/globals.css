@@ -3,31 +3,42 @@
 @tailwind utilities;
 
 /*
- * Palette: warm uncoated paper, near-black ink, one vermilion "signal" used sparingly
+ * Palette: warm paper, warm near-black ink, one terracotta "signal" used sparingly
  * (links on hover, the availability dot, the active filter), and a muted green for "available".
  */
 :root {
-  --paper: 243 240 233;
-  --paper-2: 234 230 220;
-  --ink: 22 21 18;
-  --muted: 104 99 89;
-  --rule: 208 202 189;
-  --signal: 196 66 27;
+  --paper: 246 241 232;
+  --paper-2: 238 230 216;
+  --ink: 30 26 22;
+  --muted: 108 99 87;
+  --rule: 214 204 188;
+  --signal: 191 72 34;
   --leaf: 46 125 79;
   color-scheme: light;
 }
 
+/* Dark theme: follows the system setting unless the visitor picked one with the toggle. */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --paper: 20 19 17;
-    --paper-2: 30 29 26;
-    --ink: 236 232 222;
-    --muted: 160 154 142;
-    --rule: 58 56 51;
-    --signal: 236 108 64;
-    --leaf: 111 191 139;
+  :root:not([data-theme="light"]) {
+    --paper: 24 22 19;
+    --paper-2: 34 31 27;
+    --ink: 238 232 220;
+    --muted: 168 160 146;
+    --rule: 62 58 52;
+    --signal: 238 122 78;
+    --leaf: 120 196 146;
     color-scheme: dark;
   }
+}
+:root[data-theme="dark"] {
+    --paper: 24 22 19;
+    --paper-2: 34 31 27;
+    --ink: 238 232 220;
+    --muted: 168 160 146;
+    --rule: 62 58 52;
+    --signal: 238 122 78;
+    --leaf: 120 196 146;
+    color-scheme: dark;
 }
 
 @layer base {
@@ -76,13 +87,13 @@
 
   /* Primary action: solid ink block with an arrow that nudges right. */
   .btn {
-    @apply inline-flex items-center gap-3 bg-ink px-6 py-4 text-[0.95rem] font-medium text-paper transition-colors duration-200;
+    @apply inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-[0.95rem] font-medium text-paper transition-colors duration-200;
   }
   .btn:hover {
     @apply bg-signal;
   }
   .btn-ghost {
-    @apply inline-flex items-center gap-3 border border-ink/80 px-6 py-4 text-[0.95rem] font-medium transition-colors duration-200;
+    @apply inline-flex items-center gap-3 rounded-full border border-ink/80 px-6 py-3.5 text-[0.95rem] font-medium transition-colors duration-200;
   }
   .btn-ghost:hover {
     @apply border-signal text-signal;

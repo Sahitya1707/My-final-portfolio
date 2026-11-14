@@ -55,7 +55,7 @@ Three directions were sketched before building:
 Why 3: the audience is small-business owners. Editorial type and generous spacing read as care and craft, not as a template, and the first sentence tells them exactly what you do. Specific choices:
 
 - **Type:** Newsreader (variable serif with optical sizes) for headlines and long reading; Schibsted Grotesk for interface text; JetBrains Mono for small labels. All open-source (OFL) and **self-hosted** through Fontsource, so no Google Fonts request and no layout shift.
-- **Colour:** paper `#F3F0E9`, ink `#161512`, signal `#C4421B`, a green dot only for "available". No gradients, glows or glass. Dark mode follows the visitor's system setting automatically.
+- **Colour:** warm paper `#F6F1E8`, warm near-black ink `#1E1A16`, terracotta signal `#BF4822`, a green dot only for "available". No gradients, glows or glass. Light and dark themes (see 16).
 - **Projects without screenshots** get a typographic "plate" built from the project's own name, type, year and stack, instead of a stock photo or a fake mock-up. Real screenshots replace them when you add a `cover`.
 - **Motion:** the headline rises in once on load; sections fade up as they scroll in; links and arrows respond on hover. All of it switches off for visitors with "reduce motion" set, and content is fully visible without JavaScript.
 - **No** fake stats, testimonials, logos, client counts or "years of experience" claims.
@@ -70,7 +70,7 @@ Someone clicks your link from an email. In the first screen they see: what you d
 | `/work/` | Full index of projects, filterable by type (`/work/?type=website` can be linked directly from an email) |
 | `/work/<id>/` | One case study per project, generated from `projects.ts` |
 | `/services/` | Five services in plain language, the five-step process, and an FAQ (cost, monthly fees, timing, ownership) |
-| `/about/` | Short bio, working principles, experience, tools, résumé download |
+| `/about/` | Short bio, working principles, experience, tools (no résumé, by choice) |
 | `/contact/` | Enquiry form, email, what to include, availability |
 
 Considered and **not** built: a separate process page (it's a section of Services, one less click), testimonials (none exist yet; add them only when real), a blog (adds upkeep; Medium already exists), public prices (see `freelance/PLAYBOOK.md`; the FAQ explains how pricing works instead).
@@ -134,3 +134,26 @@ More people now ask ChatGPT, Claude or Perplexity to recommend a developer. To m
 ## 15. Positioning and visible prices
 
 Services are pitched as **fast, modern, low-maintenance sites** with no plugins to update and no platform fees. WordPress is offered only when a client wants to edit pages themselves. Starting prices ("From CA$1,200") are now shown on the services page and in `llms.txt`, because small-business owners and AI assistants both look for a number. You can turn them off with `showPrices` in `content/site.ts`, and they should stay in step with `freelance/PLAYBOOK.md`.
+
+## 16. Warmer, more personal, easier to use (Nov 2026)
+
+You asked for something that feels human rather than like a template, with very simple navigation. Changes:
+
+- **A face first.** Your photo and "Hi, I'm Sahitya" open the home page, and a small avatar sits next to your name in the header. People hire people.
+- **Warmer palette and softer shapes.** The paper is a little creamier and the ink browner. Buttons, nav items, photos and project images have rounded corners; layout still uses thin rules and numbered lists, so it doesn't turn into a grid of generic cards.
+- **Navigation:** four items (Work, Services, About, Contact) plus one always-visible "Get a free quote" button. On phones: a Menu button with the same items, the quote button and your email.
+- **Work comes earlier** on the home page, right after the pitch, because it's what visitors want to judge you by.
+- **Light/dark toggle.** Follows the visitor's system setting until they click the sun/moon button, then remembers their choice. A tiny script in `<head>` applies it before the page paints, so there's no flash.
+- **No résumé.** The PDF, its links and its mentions are gone. Old résumé URLs redirect to `/about/`. Clients buy outcomes, not CVs.
+
+## 17. Automatic screenshots
+
+**Decision:** `npm run screenshots` opens each project's live link in a headless browser (Playwright, free) and saves a laptop and a phone screenshot as WebP. The daily sync Action runs it, so imported projects get real images instead of a typographic plate. Hand-picked images always win, archived projects are skipped, and a site that is down is skipped without failing the run. Results are recorded in `content/generated/screenshots.json`.
+
+**Why:** you wanted the project showcase to look good without manual work. The laptop-plus-phone pairing also shows clients, at a glance, that the sites work on phones.
+
+## 18. Knowing where enquiries come from
+
+**Decision:** the contact form asks "How did you find me?" and also attaches the visit source recorded on the visitor's first page view (referring site, landing page, any `?ref=` or `utm_` tag). It's stored only in the visitor's browser and sent only with their message. Cloudflare Web Analytics (free, cookieless) is available through `NEXT_PUBLIC_CF_ANALYTICS_TOKEN`.
+
+**Why:** with cold email, Google, AI assistants and referrals all in play, you need to know which one is working. **Rejected:** Google Analytics (cookie banner, heavier, more than you need) and paid CRMs. A tracking sheet plus these two fields is enough at this scale. The plain-language version is in `docs/HOW-IT-WORKS.md`.

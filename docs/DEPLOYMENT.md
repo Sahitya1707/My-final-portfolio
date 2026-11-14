@@ -51,6 +51,7 @@ If a deploy log shows wrangler offering to "configure the project for Next.js wi
    | `NODE_VERSION` | `22` |
    | `NEXT_PUBLIC_WEB3FORMS_KEY` | your Web3Forms key (step 2) |
    | `NEXT_PUBLIC_SITE_URL` | `https://sahitya-neupane.pages.dev` (or your domain later) |
+   | `NEXT_PUBLIC_CF_ANALYTICS_TOKEN` | optional, see "Free visitor analytics" below |
 
 8. **Save and Deploy.** The first build takes 1–2 minutes. Open the `*.pages.dev` link when it finishes.
 
@@ -64,6 +65,16 @@ From now on every push to `production` deploys automatically, and every other br
 4. Send yourself a test message from `/contact/`. Check spam the first time and mark it "not spam".
 
 Without the key the form still works: it opens the visitor's email app with their message filled in.
+
+## 2b. Free visitor analytics (optional)
+
+Cloudflare Web Analytics is free, uses no cookies and needs no cookie banner.
+
+1. Cloudflare dashboard → **Analytics & Logs** → **Web Analytics** → **Add a site**, enter your site's address.
+2. Choose the JavaScript snippet option and copy only the `token` value from it.
+3. Add it as `NEXT_PUBLIC_CF_ANALYTICS_TOKEN` (**Settings** → **Variables and secrets**) and redeploy.
+
+You'll then see visits, top pages, countries and which sites sent people to you. If you deploy on Cloudflare **Pages** you can instead tick "Enable Web Analytics" in the project settings and skip the token.
 
 ## 3. Point the site's URL at the right place
 

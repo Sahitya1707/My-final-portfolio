@@ -42,8 +42,8 @@ lib/              small helpers (sorting, metadata)
 scripts/          check-projects.ts (runs before every build), optimize-images.mjs,
                   sync-github.ts (GitHub import) + test-sync.ts
 content/generated/github-projects.json   written by the daily sync, don't edit
-public/           images, résumé PDF, og.png, Cloudflare _headers and _redirects
-docs/             AUDIT.md, DEPLOYMENT.md, ADDING-PROJECTS.md
+public/           images, og.png, Cloudflare _headers and _redirects
+docs/             HOW-IT-WORKS.md, DEPLOYMENT.md, ADDING-PROJECTS.md, AUTOMATION.md, AUDIT.md
 freelance/        PLAYBOOK.md (positioning, services, pricing), OUTREACH-TEMPLATES.md, prospects-template.csv
 DECISIONS.md      why it's built this way
 CLAUDE.md         instructions Claude Code follows in this repo
@@ -54,6 +54,7 @@ CLAUDE.md         instructions Claude Code follows in this repo
 | | |
 |---|---|
 | [DECISIONS.md](DECISIONS.md) | Architecture, hosting, design and contact-form decisions, with the alternatives considered |
+| [docs/HOW-IT-WORKS.md](docs/HOW-IT-WORKS.md) | **Start here.** How projects get added, how people find you (Google, AI assistants) and how enquiries reach you |
 | [docs/AUDIT.md](docs/AUDIT.md) | What the old repository contained, what was broken and what was removed |
 | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | Step-by-step Cloudflare Pages + Web3Forms setup |
 | [docs/ADDING-PROJECTS.md](docs/ADDING-PROJECTS.md) | Adding and updating projects |

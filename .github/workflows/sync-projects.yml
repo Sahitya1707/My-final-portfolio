@@ -1,7 +1,7 @@
 name: Sync projects from GitHub
 
 # Imports any of your repositories tagged with the `portfolio` topic that contain a
-# portfolio.json, then commits the result. The push makes Cloudflare Pages redeploy.
+# portfolio.json, screenshots their live sites, then commits the result. The push makes Cloudflare Pages redeploy.
 # Free: uses a few seconds of GitHub Actions minutes per run. See docs/AUTOMATION.md.
 
 on:
@@ -34,6 +34,15 @@ jobs:
           SYNC_INCLUDE_PRIVATE: ${{ secrets.PORTFOLIO_SYNC_TOKEN && '1' || '0' }}
         run: npm run sync
       - name: Check the site still builds
+        run: npm run build
+      - name: Screenshot live sites that have no images yet
+        # Desktop and phone screenshots of each project's live link (see docs/HOW-IT-WORKS.md).
+        # A site that is down or slow is skipped; it never fails the run.
+        continue-on-error: true
+        run: |
+          npx playwright install --with-deps chromium
+          npm run screenshots
+      - name: Rebuild with the new screenshots
         run: npm run build
       - name: Commit changes
         run: |

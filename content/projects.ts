@@ -83,6 +83,7 @@ export const projects: Project[] = [
       src: "/projects/quarterday-bakery/cover.webp",
       alt: "Quarterday home page: the headline 'Bread from the oven at seven. Coffee from half six.' on cream paper, beside a bordered list of today's bake times.",
     },
+    mobile: { src: "/projects/quarterday-bakery/mobile.webp", alt: "Quarterday on a phone: open status in the header, the headline, and buttons to order bread and see hours." },
     screenshots: [
       {
         src: "/projects/quarterday-bakery/mobile.webp",
@@ -123,6 +124,7 @@ export const projects: Project[] = [
       src: "/projects/fernwell-plumbing/cover.webp",
       alt: "Fernwell home page: a dark green band with the large headline 'Leaking, blocked or no hot water? A plumber picks up.' in white and yellow capitals.",
     },
+    mobile: { src: "/projects/fernwell-plumbing/mobile.webp", alt: "Fernwell on a phone: the headline, a yellow 'Call' button, and a call bar fixed to the bottom of the screen." },
     screenshots: [
       {
         src: "/projects/fernwell-plumbing/mobile.webp",
@@ -163,6 +165,7 @@ export const projects: Project[] = [
       src: "/projects/birchline-physiotherapy/cover.webp",
       alt: "Birchline home page: the serif headline 'Physiotherapy to get you back to the things you do.' beside a pale green 'At a glance' panel listing visit length, referral and insurance details.",
     },
+    mobile: { src: "/projects/birchline-physiotherapy/mobile.webp", alt: "Birchline on a phone: the headline, 'Book an assessment' and 'Call' buttons, and a 'Larger text' button in the header." },
     screenshots: [
       {
         src: "/projects/birchline-physiotherapy/mobile.webp",

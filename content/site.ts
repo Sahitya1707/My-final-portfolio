@@ -43,8 +43,6 @@ export const site = {
   /** Typical reply time promised on the contact page. Only promise what you can keep. */
   replyTime: "within two working days",
 
-  resume: "/files/sahitya-neupane-resume.pdf",
-
   socials: [
     { label: "GitHub", url: "https://github.com/Sahitya1707" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/sahitya-neupane-3b0697212/" },
